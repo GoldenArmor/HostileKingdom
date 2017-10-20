@@ -9,7 +9,7 @@
 ------
 ** BoldText **
 
-* ItalicsText *
+*ItalicsText *
 
 ------
 ### LinkedText
