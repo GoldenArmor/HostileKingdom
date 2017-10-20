@@ -1,20 +1,21 @@
-##Font Formats
+## Font Formats
 ------
-# Large title
-## Normal title
-### Little title
+#Large title
+##Normal title
+###Little title
 
-##Font Styles
+## Font Styles
 ------
-** BoldText **
-* ItalicsText *
+**BoldText**
+*ItalicsText*
 
-##Links
+## Links
 ------
-###LinkedText
+### LinkedText
 ![Text](ImageLink "Link's title")
-###Linked Image
+
+### Linked Image
 [Text](link "Link's title") 
 
-[##Link to Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images "Markdown Cheatsheet")
+[## Link to Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images "Markdown Cheatsheet")
 
