@@ -34,7 +34,7 @@ public class SelectionCircle : MonoBehaviour
         if (unit.isSelected)
         {
             activeTexture.transform.Rotate(Vector3.forward);
-            if (activeTexture.transform.localScale.x < maxScale.x) activeTexture.transform.localScale += new Vector3(Mathf.Lerp(0, maxScale.x, 0.3f), Mathf.Lerp(0, maxScale.y, 0.3f), Mathf.Lerp(0, maxScale.z, 0.3f));
+            if (activeTexture.transform.localScale.x < maxScale.x) activeTexture.transform.localScale += new Vector3(Mathf.Lerp(0, maxScale.x, 0.3f), Mathf.Lerp(0, maxScale.y, 0.3f), maxScale.z);
             if (activeTexture.transform.localScale.x >= maxScale.x) activeTexture.transform.localScale = maxScale;
         }
         if (unit.isSelected == false)

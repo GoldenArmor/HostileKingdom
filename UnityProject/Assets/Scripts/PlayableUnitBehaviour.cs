@@ -10,7 +10,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
 
     [Header("Stats")]
     //private bool canAttack;
-    public Animator anim;
+    //public Animator anim;
     public bool isSelected = false;
 
     [Header("Timers")]
@@ -155,7 +155,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
     {
         if (this.transform.position == agent.destination)
         {
-            anim.SetBool("IsMoving", false);
+            //anim.SetBool("IsMoving", false);
             agent.isStopped = true;
             SetIdle();
             return;
@@ -211,30 +211,30 @@ public class PlayableUnitBehaviour : MonoBehaviour
     void SetIdle()
     {
         //no se mueva
-        anim.SetTrigger("Idle");
+        //anim.SetTrigger("Idle");
         timeCounter = 0;
         state = UnitState.Idle;
     }
 
     void SetMovement()
     {
-        anim.SetBool("Attack", false); 
-        anim.SetBool("IsMoving", true);
+        //anim.SetBool("Attack", false); 
+        //anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
     }
 
     void SetChase()
     {
         //Feedback pasa a modo persecución
-        anim.SetBool("Attack", false);
-        anim.SetBool("IsMoving", true);
+        //anim.SetBool("Attack", false);
+        //anim.SetBool("IsMoving", true);
         agent.isStopped = false; 
         state = UnitState.Chase;
     }
 
     public void SetAttack()
     {
-        anim.SetBool("Attack", true);
+        //anim.SetBool("Attack", true);
         agent.isStopped = true;
         //Feedback pasa a modo ataque
         state = UnitState.Attack;
@@ -242,7 +242,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
 
     void SetStun()
     {
-        anim.SetTrigger("Stun");
+        //anim.SetTrigger("Stun");
         agent.isStopped = true;
         timeCounter = 0;
         state = UnitState.Stun;
@@ -250,7 +250,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
 
     void SetDead()
     {
-        anim.SetTrigger("Die");
+        //anim.SetTrigger("Die");
         agent.isStopped = true;
         state = UnitState.Dead;
 

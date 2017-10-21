@@ -122,7 +122,7 @@ public class MouseBehaviour : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore)) //Si el rayo colisiona con algo.
         {
-            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Unit")) //Si el objeto con el que el rayo ha impactado no está en la capa de "Unit".
+            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado no está en la capa de "Unit".
             {
                 if (CheckMouseDrag())
                 {
@@ -189,7 +189,7 @@ public class MouseBehaviour : MonoBehaviour
                 Debug.Log(hit.transform.name); //Hace un debug del nombre del objeto con el que el rayo ha colisionado.
                 Debug.DrawLine(ray.origin, hit.point, Color.blue, 3); //Se dibuja una línia azul en el trazo del rayo. 
 
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Unit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
                 {
                     Debug.LogError("Unit Selected"); //Se debuguea un error que nos informa de dicha colisión. 
                     selectedUnit = hit.transform.gameObject; //La unidad seleccionada (selectedUnit) pasa a ser el GameObject de dicha colisión.
@@ -217,7 +217,7 @@ public class MouseBehaviour : MonoBehaviour
                 Debug.Log(hit.transform.name); //Hace un debug del nombre del objeto con el que el rayo ha colisionado.
                 Debug.DrawLine(ray.origin, hit.point, Color.blue, 3); //Se dibuja una línia azul en el trazo del rayo. 
 
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Unit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
                 {
                     selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
                     selectedUnit = null; //Se deselecciona la actual unidad seleccionada.
@@ -249,7 +249,7 @@ public class MouseBehaviour : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore)) //Si el rayo colisiona con algo.
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Unit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit"
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit"
             {
                 if (selectedUnit != null) //Si ya hay una unidad seleccionada.
                 {
