@@ -8,6 +8,7 @@ public class CameraZoom : MonoBehaviour
     public float scrollSpeed = 20f;
     public float minY = 20f;
     public float maxY = 120f;
+
     private float scroll;
 
     void Update()

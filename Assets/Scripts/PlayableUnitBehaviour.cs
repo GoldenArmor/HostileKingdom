@@ -20,8 +20,6 @@ public class PlayableUnitBehaviour : MonoBehaviour
     [Header("Stats")]
     //public Animator anim;
     public bool isSelected = false;
-    private Vector3 currentPosition;
-    private Vector3 lastPosition; 
 
     [Header("Timers")]
     public float cooldownAttack;
@@ -31,6 +29,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
     public float chaseRange;
     [SerializeField] private float distanceFromEnemy = Mathf.Infinity;
     private Vector3 newFormationPosition;
+    public float newDestinationRadius;
 
     [Header("OnScreen")]
     public bool isOnScreen = false;
@@ -119,19 +118,11 @@ public class PlayableUnitBehaviour : MonoBehaviour
 
     void MoveUpdate()
     {
-        currentPosition = this.transform.position;
-        if (currentPosition == lastPosition)
-        {
-            lastPosition = Vector3.zero; 
-            SetIdle();
-            return;
-        }
-        lastPosition = currentPosition;
-        /*if (this.transform.position == agent.destination)
+        if (Vector3.Distance(transform.position, agent.destination) <= newDestinationRadius)
         {
             SetIdle();
             return; 
-        }*/
+        }
     }
 
     void ChaseUpdate()
@@ -191,7 +182,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
     void SetMovement()
     {
         isAttacking = false; 
-        agent.isStopped = false;
+        agent.isStopped = false; 
         //anim.SetBool("Attack", false);
         //anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
@@ -319,5 +310,11 @@ public class PlayableUnitBehaviour : MonoBehaviour
         newColor.a = 0.2f;
         Gizmos.color = newColor;
         Gizmos.DrawSphere(transform.position, scope);
+
+       if (state == UnitState.Movement)
+        {
+            Gizmos.color = newColor;
+            Gizmos.DrawSphere(agent.destination, newDestinationRadius);
+        }
     }
 }

@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private Vector3 moveLeft = Vector3.left;
 
     [Header("Rotation")]
-    private bool rotationEnabled;
+    //private bool rotationEnabled;
     private float cameraRotationY;
     private float easeFactor = 10f;
     private float mouseX;
