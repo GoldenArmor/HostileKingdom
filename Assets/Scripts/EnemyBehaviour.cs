@@ -15,7 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float magicArmor;
     public float scope;
     private float rotateSpeed = 125f; 
-    [SerializeField] private bool isDead;
+    [SerializeField] private bool isDead = false;
 
     [Header("Stats")]
     //public Animator anim;
@@ -31,8 +31,8 @@ public class EnemyBehaviour : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent agent;
 
     [Header("UnitsInteraction")]
-    [SerializeField] private GameObject selectedUnit;
-    [SerializeField] private Transform unitTransform;
+    [SerializeField] public GameObject selectedUnit;
+    [SerializeField] public Transform unitTransform;
     public List<GameObject> unitsCanAttack = new List<GameObject>();
     private GameObject closestObject;
     private bool canAttack;
@@ -132,8 +132,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     void AttackUpdate()
     {
-        if (canAttack)
+        if (unitTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0)
         {
+            UnitDies(); 
+        }
+        else if (canAttack)
+        {        
             unitTransform.GetComponent<PlayableUnitBehaviour>().TakeDamage(attack, this.gameObject);
 
             SetIdle();
@@ -173,11 +177,15 @@ public class EnemyBehaviour : MonoBehaviour
         state = UnitState.Attack;
     }
 
-    void SetDead()
+    public void SetDead()
     {
+        isDead = true;
+        hitPoints = 0; 
         agent.isStopped = true;
         //anim.SetTrigger("Die");
         state = UnitState.Dead;
+
+        this.gameObject.SetActive(false); 
     }
     #endregion
 
@@ -239,17 +247,17 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
+    }
 
-        if (hitPoints <= 0 && !isDead)
-        {
-            isDead = true;
-            hitPoints = 0;
-            SetDead();
-        }
-        /*else if (damage > 0)
-        {
-
-        }*/
+    void UnitDies()
+    {
+        unitTransform.GetComponent<PlayableUnitBehaviour>().SetDead();
+        unitsCanAttack.Remove(selectedUnit);
+        unitTransform = null;
+        selectedUnit = null;
+        distanceFromUnit = Mathf.Infinity;
+        SetIdle();
+        return;
     }
 
     void OnDrawGizmos()

@@ -408,6 +408,11 @@ Prefab:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
+        type: 2}
+      propertyPath: attack
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfc687f2e30dd0a47a6b602c381bd9d9, type: 2}
   m_IsPrefabParent: 0
@@ -424,12 +429,12 @@ GameObject:
   - component: {fileID: 1026284663}
   - component: {fileID: 1026284667}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: StartMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1026284663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,8 +499,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1026284662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 319, y: 179.5, z: 0}
-  m_LocalScale: {x: 0.4984375, y: 0.4984375, z: 0.4984375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1033906029}
   - {fileID: 1586202792}
@@ -791,6 +796,10 @@ Prefab:
       propertyPath: newDestinationRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
+      propertyPath: m_Name
+      value: PlayableUnit_01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -1048,7 +1057,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
       propertyPath: m_Name
-      value: PlayableUnit (3)
+      value: PlayableUnit_04
       objectReference: {fileID: 0}
     - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
         type: 2}
@@ -1119,7 +1128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
       propertyPath: m_Name
-      value: PlayableUnit (2)
+      value: PlayableUnit_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
@@ -1185,7 +1194,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
       propertyPath: m_Name
-      value: PlayableUnit (1)
+      value: PlayableUnit_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: attack
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}

@@ -15,7 +15,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
     public float magicArmor;
     public float scope;
     private float rotateSpeed = 125f;
-    private bool isDead;
+    [SerializeField] private bool isDead = false;
 
     [Header("Stats")]
     //public Animator anim;
@@ -145,8 +145,12 @@ public class PlayableUnitBehaviour : MonoBehaviour
     }
 
     void AttackUpdate()
-    { 
-        if (canAttack)
+    {
+        if (enemyTransform.GetComponent<EnemyBehaviour>().hitPoints <= 0)
+        {
+            EnemyDies();
+        }
+        else if (canAttack)
         {
             if (!isAttacking) isAttacking = true; 
             canAttack = false; 
@@ -156,7 +160,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
             SetIdle();
             return;
         }
-        if (distanceFromEnemy >= scope)
+        else if (distanceFromEnemy >= scope)
         {
             isAttacking = false; 
             SetChase();
@@ -196,20 +200,22 @@ public class PlayableUnitBehaviour : MonoBehaviour
         state = UnitState.Chase;
     }
 
-    public void SetAttack()
+    void SetAttack()
     {
         agent.isStopped = true; 
         //anim.SetBool("Attack", true);
         state = UnitState.Attack;
     }
 
-    void SetDead()
+    public void SetDead()
     {
-        /*agent.isStopped = true;
+        isDead = true;
+        hitPoints = 0; 
+        agent.isStopped = true;
         //anim.SetTrigger("Die");
         state = UnitState.Dead;
 
-        this.gameObject.SetActive(false);*/
+        this.gameObject.SetActive(false);
     }
     #endregion
 
@@ -233,24 +239,15 @@ public class PlayableUnitBehaviour : MonoBehaviour
     {
         hitPoints -= damage;
 
-        if (hitPoints <= 0 && !isDead)
+        if (selectedEnemy == null)
         {
-            isDead = true;
-            hitPoints = 0;
-            SetDead();
-        }
-        else if (damage > 0)
-        {
-            if (selectedEnemy == null)
+            selectedEnemy = autoTarget;
+            if (!isAttacking)
             {
-                selectedEnemy = autoTarget;
-                if (!isAttacking)
-                {
-                    canAttack = true;
-                    SetAttack();
-                    return;
-                }                
-            }
+                canAttack = true;
+                SetAttack();
+                return;
+            }                
         }
     }
 
@@ -300,6 +297,17 @@ public class PlayableUnitBehaviour : MonoBehaviour
         }
     }
     #endregion
+
+    void EnemyDies()
+    {
+        enemyTransform.GetComponent<EnemyBehaviour>().SetDead();
+        enemyTransform = null;
+        selectedEnemy = null;
+        distanceFromEnemy = Mathf.Infinity;
+        isAttacking = false;
+        SetIdle();
+        return;
+    }
 
     void OnDrawGizmos()
     {
