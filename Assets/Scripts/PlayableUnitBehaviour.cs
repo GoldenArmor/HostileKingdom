@@ -42,6 +42,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
     [Header("EnemyInteraction")]
     [SerializeField] private GameObject selectedEnemy;
     [SerializeField] private Transform enemyTransform;
+    private LifebarBehaviour lifeBar;
     private bool isAttacking; 
     private bool canAttack;
 
@@ -49,6 +50,7 @@ public class PlayableUnitBehaviour : MonoBehaviour
 
     void Start()
     {
+        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<LifebarBehaviour>();
         mouse = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseBehaviour>();
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
@@ -249,6 +251,8 @@ public class PlayableUnitBehaviour : MonoBehaviour
                 return;
             }                
         }
+
+        if (lifeBar.selectedUnit == this.gameObject) lifeBar.UpdateBar(hitPoints);
     }
 
     public void ClickUpdate(Vector3 formationPosition) //When I click right button. It's called from the InputManager script.  

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : UnitStats
 {
-    private enum UnitState { Idle, Patrol, Chase, Attack, Dead }
+    private enum UnitState { Idle, Movement, Chase, Attack, Dead }
     [SerializeField] private UnitState state;
 
     [Header("Properties")]
@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] public Transform unitTransform;
     public List<GameObject> unitsCanAttack = new List<GameObject>();
     private GameObject closestObject;
+    private LifebarBehaviour lifeBar;
     private bool canAttack;
 
     public LayerMask mask;
@@ -42,6 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<LifebarBehaviour>();
 
         SetIdle();
     }
@@ -65,8 +67,8 @@ public class EnemyBehaviour : MonoBehaviour
             case UnitState.Idle:
                 IdleUpdate();
                 break;
-            case UnitState.Patrol:
-                PatrolUpdate();
+            case UnitState.Movement:
+                MoveUpdate();
                 break;
             case UnitState.Chase:
                 ChaseUpdate();
@@ -106,7 +108,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    void PatrolUpdate()
+    void MoveUpdate()
     {
 
     }
@@ -247,6 +249,8 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
+
+        if (lifeBar.selectedUnit == this.gameObject) lifeBar.UpdateBar(hitPoints);
     }
 
     void UnitDies()

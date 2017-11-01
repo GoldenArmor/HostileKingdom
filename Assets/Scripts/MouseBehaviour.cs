@@ -11,6 +11,7 @@ public class MouseBehaviour : MonoBehaviour
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     private RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     private float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
+    private LifebarBehaviour lifeBar; 
 
     [Header("Drag Selection")]
     public List<GameObject> unitsInDrag = new List<GameObject>(); //Lista de GameObjects para una selección de click y arrastrar.
@@ -26,6 +27,11 @@ public class MouseBehaviour : MonoBehaviour
     public RectTransform selectionBox;
     //private Vector2 selectionBoxOrigin;
     private int i = 0;
+
+    void Start()
+    {
+        lifeBar = GameObject.FindGameObjectWithTag("LifeBar").GetComponent<LifebarBehaviour>();
+    }
 
     void OnGUI()
     {
@@ -83,13 +89,18 @@ public class MouseBehaviour : MonoBehaviour
         }
         else i = 0;
 
-        if (selectedUnit != null) selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = true;
+        if (selectedUnit != null)
+        {
+            selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = true;
+            lifeBar.isSelected = true; 
+        }
         if (selectedUnits.Count > 0)
         {
             for (int i = 0; i < selectedUnits.Count; i++)
             {
                 selectedUnits[i].gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = true;
             }
+            lifeBar.isSelected = true;
         }
     }
 
@@ -197,7 +208,7 @@ public class MouseBehaviour : MonoBehaviour
                     {
                         selectedUnits[i].gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
                     }
-                    selectedUnits.Clear();
+                    selectedUnits.Clear(); 
                 }
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
@@ -207,6 +218,7 @@ public class MouseBehaviour : MonoBehaviour
                     }
                     selectedUnit = null;
                     selectedUnits.Clear();
+                    lifeBar.isSelected = false; 
                 }
             }
         }
@@ -228,6 +240,7 @@ public class MouseBehaviour : MonoBehaviour
                 {
                     selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
                     selectedUnit = null; //Se deselecciona la actual unidad seleccionada.
+                    lifeBar.isSelected = false; 
                 }
             }
         }
