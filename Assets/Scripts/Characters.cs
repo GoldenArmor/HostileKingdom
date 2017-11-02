@@ -8,6 +8,7 @@ public class Characters : MonoBehaviour
     public UnitState state;
 
     [Header("Stats")]
+    public float startingHitPoints;
     public float hitPoints;
     public float armor;
     public float attack;
@@ -31,7 +32,8 @@ public class Characters : MonoBehaviour
     public virtual void Start()
     {
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-
+        hitPoints = startingHitPoints;
+   
         SetIdle();
     }
 
@@ -84,7 +86,7 @@ public class Characters : MonoBehaviour
 
     void DeadUpdate()
     {
-        SetDead();
+        //SetDead();
     }
     #endregion
 

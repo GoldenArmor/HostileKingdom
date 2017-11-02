@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LifebarBehaviour : MonoBehaviour
 {
     public RectTransform maskBar;
-    public RectTransform currentLifeBar;
+    public RectTransform backgroundBar; 
     private MouseBehaviour mouse;
     public GameObject selectedTarget;
     [SerializeField] private bool isSelected = false;
@@ -23,37 +23,27 @@ public class LifebarBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (isSelected == false)
+        if (mouse.selectedUnit != null)
         {
-            if (mouse.selectedUnit != null)
+            if (maskBar.gameObject.activeInHierarchy == false)
             {
-                selectedTarget = mouse.selectedUnit;
-                Init(selectedTarget.gameObject.GetComponent<Characters>().hitPoints);
+                maskBar.gameObject.SetActive(true);
+                backgroundBar.gameObject.SetActive(true);
             }
-        }
-        if (mouse.selectedUnit == null)
-        {
-            selectedTarget = null;
-            isSelected = false; 
-        }
-        if (selectedTarget != null)
-        {
             selectedTarget = mouse.selectedUnit;
+            startingHealth = selectedTarget.gameObject.GetComponent<Characters>().startingHitPoints;
             UpdateBar(selectedTarget.gameObject.GetComponent<Characters>().hitPoints);
         }
-    }
-
-    void Init(float life)
-    {
-        startingHealth = life;
-        maxWidth = maskBar.sizeDelta.x;  //Coge la width(x del Vector2) del objeto MaskBar para determinar el valor de maxWidth
-        UpdateBar(startingHealth);
-        isSelected = true; 
+        else
+        {
+            maskBar.gameObject.SetActive(false);
+            backgroundBar.gameObject.SetActive(false); 
+        }
     }
 
     public void UpdateBar(float newLife)
     {
         float newWidth = (maxWidth * newLife) / startingHealth;
-        currentLifeBar.sizeDelta = new Vector2(newWidth, currentLifeBar.sizeDelta.y);
+        maskBar.sizeDelta = new Vector2(newWidth, maskBar.sizeDelta.y);
     }
 }

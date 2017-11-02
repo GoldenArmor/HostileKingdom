@@ -102,7 +102,7 @@ public class PlayableUnitBehaviour : Characters
 
     public override void AttackUpdate()
     {
-        if (targetTransform.GetComponent<EnemyBehaviour>().hitPoints <= 0)
+        if (targetTransform.GetComponent<EnemyBehaviour>().hitPoints <= 0 || selectedTarget.activeInHierarchy == false)
         {
             EnemyDies();
         }
@@ -144,6 +144,11 @@ public class PlayableUnitBehaviour : Characters
     {
         hitPoints -= damage;
 
+        if (hitPoints <= 0)
+        {
+            SetDead();
+            return;
+        }
         if (selectedTarget == null)
         {
             selectedTarget = autoTarget;
@@ -154,8 +159,6 @@ public class PlayableUnitBehaviour : Characters
                 return;
             }                
         }
-
-        //if (lifeBar.selectedUnit == this.gameObject) lifeBar.UpdateBar(hitPoints);
     }
 
     public void ClickUpdate(Vector3 formationPosition) //When I click right button. It's called from the InputManager script.  
@@ -207,7 +210,6 @@ public class PlayableUnitBehaviour : Characters
 
     void EnemyDies()
     {
-        targetTransform.GetComponent<EnemyBehaviour>().SetDead();
         targetTransform = null;
         selectedTarget = null;
         distanceFromTarget = Mathf.Infinity;

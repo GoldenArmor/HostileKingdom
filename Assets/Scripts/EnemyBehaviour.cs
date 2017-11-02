@@ -85,7 +85,7 @@ public class EnemyBehaviour : Characters
 
     public override void AttackUpdate()
     {
-        if (targetTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0)
+        if (targetTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0 || selectedTarget.activeInHierarchy == false)
         {
             UnitDies(); 
         }
@@ -159,12 +159,15 @@ public class EnemyBehaviour : Characters
     {
         hitPoints -= damage;
 
-        //if (lifeBar.selectedUnit == this.gameObject) lifeBar.UpdateBar(hitPoints);
+        if (hitPoints <= 0)
+        {
+            SetDead();
+            return;
+        }
     }
 
     void UnitDies()
     {
-        targetTransform.GetComponent<PlayableUnitBehaviour>().SetDead();
         unitsCanAttack.Remove(selectedTarget);
         targetTransform = null;
         selectedTarget = null;

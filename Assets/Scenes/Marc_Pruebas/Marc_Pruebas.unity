@@ -535,6 +535,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
+        type: 2}
+      propertyPath: attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
+        type: 2}
+      propertyPath: hitPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
+        type: 2}
+      propertyPath: startingHitPoints
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfc687f2e30dd0a47a6b602c381bd9d9, type: 2}
   m_IsPrefabParent: 0
@@ -1046,6 +1061,26 @@ Prefab:
       propertyPath: m_Name
       value: PlayableUnit_01
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: attack
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: hitPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: maxHitPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: startingHitPoints
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -1290,7 +1325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskBar: {fileID: 1442241521}
-  currentLifeBar: {fileID: 1442241521}
+  backgroundBar: {fileID: 1814985631}
   selectedTarget: {fileID: 0}
   isSelected: 0
   startingHealth: 0
@@ -1318,7 +1353,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814985630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 55.5, z: 0}
+  m_LocalPosition: {x: -20, y: 55.499985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1696840549}
@@ -1326,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 30, y: 55.5}
+  m_AnchoredPosition: {x: 30, y: 55.499985}
   m_SizeDelta: {x: 125, y: 13}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1814985632
@@ -1430,6 +1465,16 @@ Prefab:
       propertyPath: newDestinationRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: hitPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: startingHitPoints
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -1495,6 +1540,16 @@ Prefab:
     - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
       propertyPath: m_Name
       value: PlayableUnit_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: startingHitPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: hitPoints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
@@ -1565,7 +1620,17 @@ Prefab:
     - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
         type: 2}
       propertyPath: attack
-      value: 20
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: startingHitPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: hitPoints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
