@@ -46,10 +46,13 @@ public class EnemyBehaviour : Characters
                 return;
             }
 
-            if (targetTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0)
+            if (selectedTarget.GetComponent<Characters>().hitPoints <= 0)
             {
-                UnitDies();
-                return;
+                if (selectedTarget.GetComponent<Characters>().isDead == false)
+                {
+                    UnitDies();
+                    return;
+                }
             }
             if (timeCounter >= cooldownAttack)
             {
@@ -92,7 +95,7 @@ public class EnemyBehaviour : Characters
     {
         if (canAttack)
         {        
-            targetTransform.GetComponent<PlayableUnitBehaviour>().TakeDamage(attack, this.gameObject);
+            selectedTarget.GetComponent<PlayableUnitBehaviour>().TakeDamage(attack, this.gameObject);
 
             SetIdle();
             return;
@@ -163,7 +166,7 @@ public class EnemyBehaviour : Characters
 
     void UnitDies()
     {
-        selectedTarget.GetComponent<PlayableUnitBehaviour>().SetDead(); 
+        selectedTarget.GetComponent<Characters>().SetDead(); 
         unitsCanAttack.Remove(selectedTarget);
         targetTransform = null;
         selectedTarget = null;

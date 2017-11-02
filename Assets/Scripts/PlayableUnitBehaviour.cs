@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayableUnitBehaviour : Characters
 {
     //public Animator anim;
-    public bool isSelected = false;
 
     [Header("Timers")]
     public float cooldownAttack;
@@ -60,7 +59,7 @@ public class PlayableUnitBehaviour : Characters
     {
         if (isAttacking)
         {
-            if (targetTransform.GetComponent<EnemyBehaviour>().hitPoints <= 0)
+            if (selectedTarget.GetComponent<Characters>().hitPoints <= 0)
             {
                 EnemyDies();
                 return;
@@ -111,7 +110,7 @@ public class PlayableUnitBehaviour : Characters
         {
             if (!isAttacking) isAttacking = true; 
             canAttack = false; 
-            targetTransform.GetComponent<EnemyBehaviour>().TakeDamage(attack);
+            selectedTarget.GetComponent<EnemyBehaviour>().TakeDamage(attack);
 
             timeCounter = 0;
             SetIdle();
@@ -137,6 +136,13 @@ public class PlayableUnitBehaviour : Characters
     {
         isAttacking = true;
         base.SetAttack();
+    }
+
+    public override void SetDead()
+    {
+        if (mouse.selectedUnit == this.gameObject) mouse.selectedUnit = null;
+        if (mouse.selectedUnits.Contains(this.gameObject)) mouse.selectedUnits.Remove(this.gameObject); 
+        base.SetDead();
     }
     #endregion
 
@@ -206,7 +212,7 @@ public class PlayableUnitBehaviour : Characters
 
     void EnemyDies()
     {
-        selectedTarget.GetComponent<EnemyBehaviour>().SetDead();
+        selectedTarget.GetComponent<Characters>().SetDead();
         targetTransform = null;
         selectedTarget = null;
         distanceFromTarget = Mathf.Infinity;

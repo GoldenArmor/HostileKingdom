@@ -85,13 +85,13 @@ public class MouseBehaviour : MonoBehaviour
 
         if (selectedUnit != null)
         {
-            selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = true; 
+            selectedUnit.gameObject.GetComponent<Characters>().isSelected = true; 
         }
         if (selectedUnits.Count > 0)
         {
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = true;
+                selectedUnits[i].gameObject.GetComponent<Characters>().isSelected = true;
             }
         }
     }
@@ -194,11 +194,11 @@ public class MouseBehaviour : MonoBehaviour
 
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
                 {
-                    Debug.LogError("Unit Selected"); //Se debuguea un error que nos informa de dicha colisión. 
+                    //Debug.LogError("Unit Selected"); //Se debuguea un error que nos informa de dicha colisión. 
                     selectedUnit = hit.transform.gameObject; //La unidad seleccionada (selectedUnit) pasa a ser el GameObject de dicha colisión.
                     for (int i = 0; i < selectedUnits.Count; i++)
                     {
-                        selectedUnits[i].gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
+                        selectedUnits[i].gameObject.GetComponent<Characters>().isSelected = false;
                     }
                     selectedUnits.Clear(); 
                 }
@@ -206,7 +206,7 @@ public class MouseBehaviour : MonoBehaviour
                 {
                     for (int i = 0; i < selectedUnits.Count; i++)
                     {
-                        selectedUnits[i].gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
+                        selectedUnits[i].gameObject.GetComponent<Characters>().isSelected = false;
                     }
                     selectedUnit = null;
                     selectedUnits.Clear();
@@ -222,14 +222,14 @@ public class MouseBehaviour : MonoBehaviour
 
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
                 {
-                    selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
+                    selectedUnit.gameObject.GetComponent<Characters>().isSelected = false;
                     selectedUnit = null; //Se deselecciona la actual unidad seleccionada.
                     Debug.LogError("Unit Selected"); //Se debuguea un error que nos informa de dicha colisión.
                     selectedUnit = hit.transform.gameObject; //La unidad seleccionada (selectedUnit) pasa a ser el GameObject de dicha colisión.
                 }
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground")) //Si el objeto con el que el rayo ha impactado está en la capa de "Unit".
                 {
-                    selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
+                    selectedUnit.gameObject.GetComponent<Characters>().isSelected = false;
                     selectedUnit = null; //Se deselecciona la actual unidad seleccionada.
                 }
             }
@@ -257,7 +257,7 @@ public class MouseBehaviour : MonoBehaviour
                 if (selectedUnit != null) //Si ya hay una unidad seleccionada.
                 {
                     selectedUnits.Add(selectedUnit); //Se añade la unidad seleccionada a la lista.
-                    selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().isSelected = false;
+                    selectedUnit.gameObject.GetComponent<Characters>().isSelected = false;
                     selectedUnit = null; //Vaciamos la selección individual de unidad porqué queremos seleccionar más de una.
                 }
                 selectedUnits.Add(hit.transform.gameObject); //Se añade el GameObject con el que el rayo ha chocado a la Lista.

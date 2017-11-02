@@ -17,12 +17,13 @@ public class Characters : MonoBehaviour
     public float scope;
     public string characterName;
     private float rotateSpeed = 125f;
-    [SerializeField] private bool isDead = false;
+    [HideInInspector] public bool isDead = false;
 
     [Header("CharactersInteraction")]
     public GameObject selectedTarget;
     public Transform targetTransform;
     public float distanceFromTarget = Mathf.Infinity;
+    public bool isSelected = false;
 
     [Header("NavMeshAgent")]
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
@@ -122,7 +123,7 @@ public class Characters : MonoBehaviour
         state = UnitState.Attack;
     }
 
-    public void SetDead()
+    public virtual void SetDead()
     {
         isDead = true;
         hitPoints = 0;
