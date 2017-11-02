@@ -15,6 +15,7 @@ public class Characters : MonoBehaviour
     public float magicAttack;
     public float magicArmor;
     public float scope;
+    public string characterName;
     private float rotateSpeed = 125f;
     [SerializeField] private bool isDead = false;
 
@@ -22,7 +23,6 @@ public class Characters : MonoBehaviour
     public GameObject selectedTarget;
     public Transform targetTransform;
     public float distanceFromTarget = Mathf.Infinity;
-    private LifebarBehaviour lifeBar;
 
     [Header("NavMeshAgent")]
     [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;

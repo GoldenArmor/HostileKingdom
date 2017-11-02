@@ -46,6 +46,11 @@ public class EnemyBehaviour : Characters
                 return;
             }
 
+            if (targetTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0)
+            {
+                UnitDies();
+                return;
+            }
             if (timeCounter >= cooldownAttack)
             {
                 SetAttack();
@@ -85,11 +90,7 @@ public class EnemyBehaviour : Characters
 
     public override void AttackUpdate()
     {
-        if (targetTransform.GetComponent<PlayableUnitBehaviour>().hitPoints <= 0 || selectedTarget.activeInHierarchy == false)
-        {
-            UnitDies(); 
-        }
-        else if (canAttack)
+        if (canAttack)
         {        
             targetTransform.GetComponent<PlayableUnitBehaviour>().TakeDamage(attack, this.gameObject);
 
@@ -158,16 +159,11 @@ public class EnemyBehaviour : Characters
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
-
-        if (hitPoints <= 0)
-        {
-            SetDead();
-            return;
-        }
     }
 
     void UnitDies()
     {
+        selectedTarget.GetComponent<PlayableUnitBehaviour>().SetDead(); 
         unitsCanAttack.Remove(selectedTarget);
         targetTransform = null;
         selectedTarget = null;
