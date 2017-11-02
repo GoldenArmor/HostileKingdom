@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402791691210402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4075681541397654}
@@ -143,22 +143,25 @@ MonoBehaviour:
   state: 0
   hitPoints: 100
   armor: 0
-  attack: 5
+  attack: 20
   magicAttack: 0
   magicArmor: 0
-  scope: 4
-  isSelected: 0
-  cooldownAttack: 1.5
-  timeCounter: 0
-  chaseRange: 0
-  distanceFromEnemy: Infinity
-  isOnScreen: 0
-  screenPosition: {x: 0, y: 0}
-  selectedEnemy: {fileID: 0}
-  enemyTransform: {fileID: 0}
+  scope: 4.25
+  isDead: 0
+  selectedTarget: {fileID: 0}
+  targetTransform: {fileID: 0}
+  distanceFromTarget: Infinity
+  agent: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+  isSelected: 0
+  cooldownAttack: 1.5
+  timeCounter: 0
+  chaseRange: 23
+  newDestinationRadius: 2
+  isOnScreen: 0
+  screenPosition: {x: 0, y: 0}
 --- !u!136 &136542749530400120
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -180,9 +183,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 1402791691210402}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.65
-  m_Speed: 5
-  m_Acceleration: 10
+  m_Radius: 1
+  m_Speed: 10
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 720
   m_StoppingDistance: 0

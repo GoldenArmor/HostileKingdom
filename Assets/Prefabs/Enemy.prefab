@@ -119,17 +119,18 @@ MonoBehaviour:
   attack: 10
   magicAttack: 0
   magicArmor: 0
-  scope: 4
+  scope: 4.25
   isDead: 0
-  cooldownAttack: 1.5
-  timeCounter: 0
-  distanceFromUnit: Infinity
-  selectedUnit: {fileID: 0}
-  unitTransform: {fileID: 0}
-  unitsCanAttack: []
+  selectedTarget: {fileID: 0}
+  targetTransform: {fileID: 0}
+  distanceFromTarget: Infinity
+  agent: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+  cooldownAttack: 1.5
+  timeCounter: 0
+  unitsCanAttack: []
 --- !u!135 &135952539457527462
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -163,7 +164,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1650103319846260}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.65
+  m_Radius: 1
   m_Speed: 5
   m_Acceleration: 10
   avoidancePriority: 50

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitStats : MonoBehaviour
+public class Characters : MonoBehaviour
 {
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
     public UnitState state;

@@ -535,21 +535,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
-        type: 2}
-      propertyPath: scope
-      value: 4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 195816256720045540, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
-        type: 2}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114439062791600572, guid: dfc687f2e30dd0a47a6b602c381bd9d9,
-        type: 2}
-      propertyPath: attack
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfc687f2e30dd0a47a6b602c381bd9d9, type: 2}
   m_IsPrefabParent: 0
@@ -1057,59 +1042,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: scope
-      value: 4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 195709427342387272, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195709427342387272, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: m_Speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 195709427342387272, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: newDestinationRadius
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
       propertyPath: m_Name
       value: PlayableUnit_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: hitPoints
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: attack
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: mask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: cooldownAttack
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-        type: 2}
-      propertyPath: chaseRange
-      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
@@ -1356,7 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maskBar: {fileID: 1442241521}
   currentLifeBar: {fileID: 1442241521}
-  selectedUnit: {fileID: 0}
+  selectedTarget: {fileID: 0}
   isSelected: 0
   startingHealth: 0
 --- !u!1 &1814985630

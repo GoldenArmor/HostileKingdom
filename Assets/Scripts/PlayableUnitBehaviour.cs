@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableUnitBehaviour : UnitStats
+public class PlayableUnitBehaviour : Characters
 {
     //public Animator anim;
     public bool isSelected = false;

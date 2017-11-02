@@ -8,12 +8,12 @@ public class LifebarBehaviour : MonoBehaviour
     public RectTransform maskBar;
     public RectTransform currentLifeBar;
     private MouseBehaviour mouse;
-    public GameObject selectedUnit;
-    public bool isSelected = false; 
+    public GameObject selectedTarget;
+    [SerializeField] private bool isSelected = false;
 
     [SerializeField] private float startingHealth;
 
-    private float maxWidth;
+    private float maxWidth = 125f;
     private float newWidth;
 
     void Start()
@@ -23,13 +23,23 @@ public class LifebarBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (isSelected == true)
+        if (isSelected == false)
         {
-            if (mouse.selectedUnit != null) selectedUnit = mouse.selectedUnit;
-            else selectedUnit = mouse.selectedUnits[0];
-
-            if (selectedUnit.tag == "Enemy") Init(selectedUnit.gameObject.GetComponent<EnemyBehaviour>().hitPoints);
-            if (selectedUnit.tag == "PlayableUnit") Init(selectedUnit.gameObject.GetComponent<PlayableUnitBehaviour>().hitPoints);  
+            if (mouse.selectedUnit != null)
+            {
+                selectedTarget = mouse.selectedUnit;
+                Init(selectedTarget.gameObject.GetComponent<Characters>().hitPoints);
+            }
+        }
+        if (mouse.selectedUnit == null)
+        {
+            selectedTarget = null;
+            isSelected = false; 
+        }
+        if (selectedTarget != null)
+        {
+            selectedTarget = mouse.selectedUnit;
+            UpdateBar(selectedTarget.gameObject.GetComponent<Characters>().hitPoints);
         }
     }
 
@@ -38,6 +48,7 @@ public class LifebarBehaviour : MonoBehaviour
         startingHealth = life;
         maxWidth = maskBar.sizeDelta.x;  //Coge la width(x del Vector2) del objeto MaskBar para determinar el valor de maxWidth
         UpdateBar(startingHealth);
+        isSelected = true; 
     }
 
     public void UpdateBar(float newLife)
