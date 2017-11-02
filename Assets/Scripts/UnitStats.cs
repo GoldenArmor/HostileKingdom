@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitStats
+public class UnitStats : MonoBehaviour
 {
-    private enum UnitState { Idle, Movement, Chase, Attack, Dead }
-    [SerializeField] private UnitState state;
+    [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
+    public UnitState state;
 
     [Header("Stats")]
     public float hitPoints;
@@ -17,19 +17,28 @@ public class UnitStats
     private float rotateSpeed = 125f;
     [SerializeField] private bool isDead = false;
 
-    [Header("UnitsInteraction")]
-    [SerializeField] private GameObject selectedTarget;
-    [SerializeField] private Transform targetTransform;
-    [SerializeField] private float distanceFromTarget = Mathf.Infinity;
+    [Header("CharactersInteraction")]
+    public GameObject selectedTarget;
+    public Transform targetTransform;
+    public float distanceFromTarget = Mathf.Infinity;
     private LifebarBehaviour lifeBar;
+
+    [Header("NavMeshAgent")]
+    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
+
+    public LayerMask mask; 
 
     public virtual void Start()
     {
+        agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
+        SetIdle();
     }
 
     public virtual void Update()
     {
+        if (selectedTarget != null) CalculateDistanceFromTarget();  
+
         switch (state)
         {
             case UnitState.Idle:
@@ -73,9 +82,68 @@ public class UnitStats
 
     }
 
-    public virtual void DeadUpdate()
+    void DeadUpdate()
     {
+        SetDead();
+    }
+    #endregion
 
+    #region Sets
+    public virtual void SetIdle()
+    {
+        agent.isStopped = true;
+        //anim.SetBool("IsMoving", false);
+        //anim.SetTrigger("Idle");
+        state = UnitState.Idle;
+    }
+
+    public virtual void SetMovement()
+    {
+        agent.isStopped = false;
+        //anim.SetBool("Attack", false);
+        //anim.SetBool("IsMoving", true);
+        state = UnitState.Movement;
+    }
+
+    public void SetChase()
+    {
+        agent.isStopped = false;
+        //anim.SetBool("Attack", false);
+        //anim.SetBool("IsMoving", true);
+        state = UnitState.Chase;
+    }
+
+    public virtual void SetAttack()
+    {
+        agent.isStopped = true;
+        //anim.SetBool("Attack", true);
+        state = UnitState.Attack;
+    }
+
+    public void SetDead()
+    {
+        isDead = true;
+        hitPoints = 0;
+        agent.isStopped = true;
+        //anim.SetTrigger("Die");
+        state = UnitState.Dead;
+
+        this.gameObject.SetActive(false);
+    }
+    #endregion
+
+    #region CalculationVoids
+    public virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
+    {
+        targetTransform = selectedTarget.transform;
+        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
+    }
+
+    public virtual void LookAtTarget()
+    {
+        Vector3 lookDir = targetTransform.position - transform.position;
+        Quaternion q = Quaternion.LookRotation(lookDir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotateSpeed);
     }
     #endregion
 }
