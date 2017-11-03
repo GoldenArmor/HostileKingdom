@@ -26,15 +26,15 @@ public class PlayableUnitBehaviour : Characters
     private bool isAttacking; 
     private bool canAttack;
 
-    public override void Start()
+    void Start()
     {
         mouse = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseBehaviour>();
-        base.Start();
+        base.MyStart();
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
+        base.MyUpdate();
         screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {

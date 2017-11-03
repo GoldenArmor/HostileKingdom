@@ -30,7 +30,7 @@ public class Characters : MonoBehaviour
 
     public LayerMask mask; 
 
-    public virtual void Start()
+    public virtual void MyStart()
     {
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         hitPoints = startingHitPoints;
@@ -38,7 +38,7 @@ public class Characters : MonoBehaviour
         SetIdle();
     }
 
-    public virtual void Update()
+    public virtual void MyUpdate()
     {
         if (selectedTarget != null) CalculateDistanceFromTarget();  
 

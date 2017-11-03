@@ -15,14 +15,14 @@ public class EnemyBehaviour : Characters
     private GameObject closestObject;
     private bool canAttack;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        base.MyStart();
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
+        base.MyUpdate();
         if (selectedTarget == null && unitsCanAttack.Count > 0)
         {
             if (unitsCanAttack.Count > 1)
@@ -30,7 +30,7 @@ public class EnemyBehaviour : Characters
                 FindClosestObject();
                 return;
             }
-            selectedTarget = unitsCanAttack[0].transform.gameObject;
+            selectedTarget = unitsCanAttack[0].transform.gameObject.Get;
             targetTransform = selectedTarget.transform;
         }
     }
