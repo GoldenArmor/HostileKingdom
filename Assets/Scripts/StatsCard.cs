@@ -16,6 +16,7 @@ public class StatsCard : MonoBehaviour
     public Text scope;
     public Text magicAttackValue;
     public Text magicArmorValue;
+    public GameObject statsCard; 
     private MouseBehaviour mouse;
 
     private float startingHealth;
@@ -33,10 +34,9 @@ public class StatsCard : MonoBehaviour
 
         if (mouse.selectedUnit != null || mouse.selectedUnits.Count > 0)
         {
-            if (maskBar.gameObject.activeInHierarchy == false)
+            if (statsCard.activeInHierarchy == false)
             {
-                maskBar.gameObject.SetActive(true);
-                backgroundBar.gameObject.SetActive(true);
+                statsCard.SetActive(true);
             }
             selectedTarget = mouse.selectedUnit;
             if (mouse.selectedUnit == null) selectedTarget = mouse.selectedUnits[0];
@@ -51,8 +51,7 @@ public class StatsCard : MonoBehaviour
         }
         else
         {
-            maskBar.gameObject.SetActive(false);
-            backgroundBar.gameObject.SetActive(false);
+            statsCard.SetActive(false);
             targetName.text = ("");
             attackValue.text = ("");
             armorValue.text = ("");

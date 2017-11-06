@@ -170,13 +170,13 @@ public class EnemyBehaviour : Characters
     }
 
     void UnitDies()
-    {
-        characters.SetDead(); 
+    {        
         unitsCanAttack.Remove(selectedTarget);
+        distanceFromTarget = Mathf.Infinity;
+        characters.SetDead();
+        characters = null;
         targetTransform = null;
         selectedTarget = null;
-        characters = null; 
-        distanceFromTarget = Mathf.Infinity;
         SetIdle();
         return;
     }
