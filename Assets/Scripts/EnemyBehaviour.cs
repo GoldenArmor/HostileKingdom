@@ -13,6 +13,7 @@ public class EnemyBehaviour : Characters
     [Header("UnitsCanAttack")]
     public List<GameObject> unitsCanAttack = new List<GameObject>();
     private GameObject closestObject;
+    private Characters characters; 
     private bool canAttack;
 
     void Start()
@@ -30,8 +31,10 @@ public class EnemyBehaviour : Characters
                 FindClosestObject();
                 return;
             }
-            selectedTarget = unitsCanAttack[0].transform.gameObject.Get;
+            selectedTarget = unitsCanAttack[0].transform.gameObject.GetComponent<Characters>().gameObject;
             targetTransform = selectedTarget.transform;
+
+            characters = selectedTarget.transform.gameObject.GetComponent<Characters>(); 
         }
     }
 
@@ -46,9 +49,9 @@ public class EnemyBehaviour : Characters
                 return;
             }
 
-            if (selectedTarget.GetComponent<Characters>().hitPoints <= 0)
+            if (characters.hitPoints <= 0)
             {
-                if (selectedTarget.GetComponent<Characters>().isDead == false)
+                if (characters.isDead == false)
                 {
                     UnitDies();
                     return;
@@ -135,6 +138,7 @@ public class EnemyBehaviour : Characters
         }
         selectedTarget = closestObject;
         targetTransform = selectedTarget.transform;
+        characters = selectedTarget.transform.gameObject.GetComponent<Characters>();
     }
     #endregion
 
@@ -154,6 +158,7 @@ public class EnemyBehaviour : Characters
             unitsCanAttack.Remove(other.transform.gameObject);
             targetTransform = null;
             selectedTarget = null;
+            characters = null; 
             distanceFromTarget = Mathf.Infinity;
         }
     }
@@ -166,10 +171,11 @@ public class EnemyBehaviour : Characters
 
     void UnitDies()
     {
-        selectedTarget.GetComponent<Characters>().SetDead(); 
+        characters.SetDead(); 
         unitsCanAttack.Remove(selectedTarget);
         targetTransform = null;
         selectedTarget = null;
+        characters = null; 
         distanceFromTarget = Mathf.Infinity;
         SetIdle();
         return;

@@ -25,6 +25,7 @@ public class PlayableUnitBehaviour : Characters
     [Header("EnemyInteraction")]
     private bool isAttacking; 
     private bool canAttack;
+    private Characters characters;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class PlayableUnitBehaviour : Characters
     {
         if (isAttacking)
         {
-            if (selectedTarget.GetComponent<Characters>().hitPoints <= 0)
+            if (characters.hitPoints <= 0)
             {
                 EnemyDies();
                 return;
@@ -154,6 +155,7 @@ public class PlayableUnitBehaviour : Characters
         if (selectedTarget == null)
         {
             selectedTarget = autoTarget;
+            characters = selectedTarget.GetComponent<Characters>();
             if (!isAttacking)
             {
                 canAttack = true;
@@ -175,6 +177,7 @@ public class PlayableUnitBehaviour : Characters
                 {
                     targetTransform = null;
                     selectedTarget = null;
+                    characters = null; 
                 }
                 newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
                 agent.SetDestination(hit.point + newFormationPosition);
@@ -188,6 +191,7 @@ public class PlayableUnitBehaviour : Characters
                 {
                     targetTransform = null;
                     selectedTarget = null;
+                    characters = null; 
                 }
                 newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts.
                 agent.SetDestination(hit.point + newFormationPosition);
@@ -201,6 +205,7 @@ public class PlayableUnitBehaviour : Characters
                 {
                     selectedTarget = hit.transform.gameObject;
                     targetTransform = selectedTarget.transform;
+                    characters = selectedTarget.GetComponent<Characters>();
 
                     SetChase();
                     return;
@@ -212,9 +217,10 @@ public class PlayableUnitBehaviour : Characters
 
     void EnemyDies()
     {
-        selectedTarget.GetComponent<Characters>().SetDead();
+        characters.SetDead();
         targetTransform = null;
         selectedTarget = null;
+        characters = null; 
         distanceFromTarget = Mathf.Infinity;
         isAttacking = false;
         SetIdle();
