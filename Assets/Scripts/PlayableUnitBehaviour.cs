@@ -218,7 +218,7 @@ public class PlayableUnitBehaviour : Characters
     void EnemyDies()
     {
         distanceFromTarget = Mathf.Infinity;
-        characters.SetDead();
+        if (characters.isDead == false) characters.SetDead();
         characters = null;
         targetTransform = null;
         selectedTarget = null;

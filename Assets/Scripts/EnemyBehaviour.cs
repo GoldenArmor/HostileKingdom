@@ -174,7 +174,7 @@ public class EnemyBehaviour : Characters
         Debug.Log("DEAD"); 
         unitsCanAttack.Remove(selectedTarget);
         distanceFromTarget = Mathf.Infinity;
-        characters.SetDead();
+        if (characters.isDead == false) characters.SetDead();
         characters = null;
         targetTransform = null;
         selectedTarget = null;
