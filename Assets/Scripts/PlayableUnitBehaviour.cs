@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayableUnitBehaviour : Characters
 {
     //public Animator anim;
+    public int cardNumber; 
 
     [Header("Timers")]
     public float cooldownAttack;

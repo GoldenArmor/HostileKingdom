@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 181401457}
   m_Layer: 0
   m_Name: StatsCard
-  m_TagString: Untagged
+  m_TagString: StatsCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,7 +349,8 @@ MonoBehaviour:
   scope: {fileID: 0}
   magicAttackValue: {fileID: 0}
   magicArmorValue: {fileID: 0}
-  statsCard: {fileID: 0}
+  cardNumber: 1
+  statsCard: {fileID: 181401455}
 --- !u!1 &223068700
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +702,7 @@ GameObject:
   - component: {fileID: 432172418}
   m_Layer: 0
   m_Name: StatsCard (2)
-  m_TagString: Untagged
+  m_TagString: StatsCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -740,6 +741,7 @@ MonoBehaviour:
   scope: {fileID: 0}
   magicAttackValue: {fileID: 0}
   magicArmorValue: {fileID: 0}
+  cardNumber: 3
   statsCard: {fileID: 0}
 --- !u!1 &501770453
 GameObject:
@@ -1362,7 +1364,7 @@ GameObject:
   - component: {fileID: 890092872}
   m_Layer: 0
   m_Name: StatsCard (3)
-  m_TagString: Untagged
+  m_TagString: StatsCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1402,6 +1404,7 @@ MonoBehaviour:
   scope: {fileID: 1802774858}
   magicAttackValue: {fileID: 973629022}
   magicArmorValue: {fileID: 1520173047}
+  cardNumber: 4
   statsCard: {fileID: 1453854085}
 --- !u!1 &932095765
 GameObject:
@@ -3082,6 +3085,11 @@ Prefab:
       propertyPath: characterName
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: cardNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -4190,6 +4198,11 @@ Prefab:
       propertyPath: characterName
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: cardNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -4346,6 +4359,11 @@ Prefab:
       propertyPath: characterName
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: cardNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -4434,7 +4452,7 @@ GameObject:
   - component: {fileID: 1958072946}
   m_Layer: 0
   m_Name: StatsCard (1)
-  m_TagString: Untagged
+  m_TagString: StatsCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4473,6 +4491,7 @@ MonoBehaviour:
   scope: {fileID: 0}
   magicAttackValue: {fileID: 0}
   magicArmorValue: {fileID: 0}
+  cardNumber: 2
   statsCard: {fileID: 0}
 --- !u!1 &1985263745
 GameObject:
@@ -4625,6 +4644,11 @@ Prefab:
       propertyPath: characterName
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+        type: 2}
+      propertyPath: cardNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -4738,7 +4762,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b99c8c75680c34fbe2144ea74368a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playableUnitsAwake: []
+  statsCardsAwake: []
   playableUnits: []
+  statsCard: []
 --- !u!1 &2038561375
 GameObject:
   m_ObjectHideFlags: 0

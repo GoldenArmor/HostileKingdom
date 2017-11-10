@@ -16,6 +16,7 @@ public class StatsCard : MonoBehaviour
     public Text scope;
     public Text magicAttackValue;
     public Text magicArmorValue;
+    public int cardNumber; 
     public GameObject statsCard; 
     private MouseBehaviour mouse;
 

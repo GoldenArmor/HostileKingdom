@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class CardsBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject[] playableUnits; 
+    [SerializeField] private GameObject[] playableUnitsAwake;
+    [SerializeField] private GameObject[] statsCardsAwake;
+    [SerializeField] private PlayableUnitBehaviour[] playableUnits;
+    [SerializeField] private StatsCard[] statsCard;
 
-	void Start ()
+    void Start()
     {
-        playableUnits = GameObject.FindGameObjectsWithTag("PlayableUnit");
-	}
-	
-	void Update ()
+        playableUnitsAwake = GameObject.FindGameObjectsWithTag("PlayableUnit");
+        statsCardsAwake = GameObject.FindGameObjectsWithTag("StatsCard");
+        playableUnits = new PlayableUnitBehaviour[4];
+        statsCard = new StatsCard[4];
+
+        for (int i = 0; i < playableUnitsAwake.Length; i++)
+        {
+            playableUnits[i] = playableUnitsAwake[i].GetComponent<PlayableUnitBehaviour>();
+            statsCard[i] = statsCardsAwake[i].GetComponent<StatsCard>();
+
+            if (playableUnits[i].cardNumber != statsCard[i].cardNumber) statsCard[i].selectedTarget = playableUnits[i].gameObject;
+
+            playableUnitsAwake[i] = null;
+            statsCardsAwake[i] = null; 
+        }
+
+        playableUnitsAwake = null;
+        statsCardsAwake = null;
+    }
+
+    void Update ()
     {
-		
+
 	}
 }
