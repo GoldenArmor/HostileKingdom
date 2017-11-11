@@ -21,14 +21,13 @@ public class CardsBehaviour : MonoBehaviour
             playableUnits[i] = playableUnitsAwake[i].GetComponent<PlayableUnitBehaviour>();
             statsCard[i] = statsCardsAwake[i].GetComponent<StatsCard>();
 
-            if (playableUnits[i].cardNumber != statsCard[i].cardNumber) statsCard[i].selectedTarget = playableUnits[i].gameObject;
-
-            playableUnitsAwake[i] = null;
-            statsCardsAwake[i] = null; 
+            statsCard[i].cardNumber = i + 1;
+            //if (playableUnits[i].cardNumber != statsCard[i].cardNumber) statsCard[i].selectedTarget = playableUnits[i].gameObject;
         }
-
-        playableUnitsAwake = null;
-        statsCardsAwake = null;
+        for (int i = 0; i < playableUnits.Length; i++)
+        {
+            
+        }
     }
 
     void Update ()
