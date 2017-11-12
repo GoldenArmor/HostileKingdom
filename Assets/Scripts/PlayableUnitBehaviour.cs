@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayableUnitBehaviour : Characters
 {
     //public Animator anim;
-    public int cardNumber; 
+    public int cardNumber;
+    public CardsBehaviour cards; 
 
     [Header("Timers")]
     public float cooldownAttack;
@@ -32,6 +33,7 @@ public class PlayableUnitBehaviour : Characters
     {
         mouse = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseBehaviour>();
         base.MyStart();
+
     }
 
     void Update()
