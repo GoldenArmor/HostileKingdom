@@ -15,23 +15,23 @@ The project is ambitious, although it's a school subject.
 
 * Alberto Cano **3D & 2D Artist**
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) albertoc6g@hotmail.com
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Email_Icon.png) albertoc6g@hotmail.com
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Artstation_Icon.png) 
 [ArtStation/Canogar](https://www.artstation.com/canogar "ArtStation")
 
 * Ben Xie **3D Artist & Animator**
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) benzai001@gmail.com
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Email_Icon.png) benzai001@gmail.com
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Artstation_Icon.png) 
 [ArtStation/BenXie](https://www.artstation.com/benxie "ArtStation")
 
 * Marc Vallverdú **Programmer**
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) marc.vallverdu.98@gmail.com
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Email_Icon.png) marc.vallverdu.98@gmail.com
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
+  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Artstation_Icon.png) 
 [ArtStation/MarcVallverdu](https://www.artstation.com/quooler "ArtStation")
 
 ------
