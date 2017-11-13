@@ -15,9 +15,9 @@ The project is ambitious, although it's a school subject.
 
 * **3D & 2D Artist:** Alberto Cano
 
-![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) albertoc6g@hotmail.com
+** ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) albertoc6g@hotmail.com
 
-![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
+** ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
 [ArtStation/Canogar](https://www.artstation.com/canogar "ArtStation")
 
 * **3D Artist & Animator:** Ben Xie
