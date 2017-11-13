@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseBehaviour : MonoBehaviour
 {
@@ -15,73 +16,42 @@ public class MouseBehaviour : MonoBehaviour
     [Header("Drag Selection")]
     public List<GameObject> unitsInDrag = new List<GameObject>(); //Lista de GameObjects para una selección de click y arrastrar.
     public bool isDragging; //Comprobar si estamos pulsando y arrastrando el ratón. 
-    private Vector3 originDragPoint; //Punto de origen de la selección rectangular. 
-    private Vector3 currentDragPoint; //El punto en que el ratón se encuentra actualmente.  
-    private Vector2 boxStart; //El punto donde empieza la selección rectangular.
-    private Vector2 boxEnd; //El punto donde termina la selección rectangular.
-    private float boxWidth; //La anchura del rectángulo que generamos.
-    private float boxHeight; //La altura del rectángulo que generamos
-    private float boxLeft; //Posición en X del rectángulo que generamos.
-    private float boxTop; //Posición en Y del rectángulo que generamos. 
-    public RectTransform selectionBox;
-    //private Vector2 selectionBoxOrigin;
-    private int i = 0;
 
-    void OnGUI()
-    {
-        if (isDragging) //Si estamos pulsando y arrastrando el ratón.
-        {
-            GUI.Box(new Rect(boxLeft, boxTop, boxWidth, boxHeight), ""); //Generamos un rectángulo en pantalla con los parámetros establecidos. 
-        }
-    }
-
-    void DrawSelectionBox()
-    {
-        if (i == 0)
-        {
-            selectionBox.anchoredPosition = new Vector2(boxLeft, boxTop);
-            i++;
-        }
-        selectionBox.sizeDelta = new Vector2(Mathf.Abs(boxWidth), Mathf.Abs(boxHeight));
-    }
+    public Image selectionBox;
+    private Vector2 selectionBoxOrigin;
+    private Rect selectionRect;
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //Creamos un rayo que va a la dirección del Mouse desde la cámara y la traducimos a una posición en el mundo.
-
-        if (Physics.Raycast(ray, out hit, maxDistance)) //Si el rayo colisiona con algo.
-        {
-            currentDragPoint = hit.point; //El punto de impacto es la posición actual del ratón. 
-        }
-
         if (isDragging) //Si estamos pulsando y arrastrando el ratón.
         {
-            boxWidth = Camera.main.WorldToScreenPoint(originDragPoint).x - Camera.main.WorldToScreenPoint(currentDragPoint).x; //La anchura de la selección viene dada por el punto de origenX - el finalX.
-            boxHeight = Camera.main.WorldToScreenPoint(originDragPoint).y - Camera.main.WorldToScreenPoint(currentDragPoint).y; //La altura de la selección viene dada por el punto de origenY - el finalY.
-            boxLeft = Input.mousePosition.x; //La posición en X del rectángulo viene dada por la posición en X del ratón.
-            boxTop = (Screen.height - Input.mousePosition.y) - boxHeight; //La posición en X del rectángulo viene dada por la (altura de la pantalla de juego - la posición del ratón en Y) - la altura del rectángulo. 
+            if (Input.mousePosition.x < selectionBoxOrigin.x)
+            {
+                selectionRect.xMin = Input.mousePosition.x;
+                selectionRect.xMax = selectionBoxOrigin.x;
+            }
+            else
+            {
+                selectionRect.xMin = selectionBoxOrigin.x;
+                selectionRect.xMax = Input.mousePosition.x;
+            }
 
-            if (boxWidth > 0f && boxHeight < 0f) //Si la anchura es mayor que 0 y la altura menor de 0.
+            if (Input.mousePosition.y < selectionBoxOrigin.y)
             {
-                boxStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y); //El punto dónde empieza a dibujarse el rectángulo viene dado por la posición en X y en Y del ratón.
+                selectionRect.yMin = Input.mousePosition.y;
+                selectionRect.yMax = selectionBoxOrigin.y;
             }
-            else if (boxWidth > 0f && boxHeight > 0f) //Si la anchura es mayor que 0 y la altura mayor de 0.
+            else
             {
-                boxStart = new Vector2(Input.mousePosition.x, Input.mousePosition.y + boxHeight); //El punto dónde empieza a dibujarse el rectángulo viene dado por la posición en X y en (Y + su altura) del ratón.
+                selectionRect.yMin = selectionBoxOrigin.y;
+                selectionRect.yMax = Input.mousePosition.y;
             }
-            else if (boxWidth < 0f && boxHeight < 0f) //Si la anchura es menor que 0 y la altura menor de 0.
-            {
-                boxStart = new Vector2(Input.mousePosition.x + boxWidth, Input.mousePosition.y); //El punto dónde empieza a dibujarse el rectángulo viene dado por la posición en (X + su anchura) y en Y del ratón.
-            }
-            else if (boxWidth < 0f && boxHeight > 0f) //Si la anchura es menor que 0 y la altura mayor de 0.
-            {
-                boxStart = new Vector2(Input.mousePosition.x + boxWidth, Input.mousePosition.y + boxHeight); //El punto dónde empieza a dibujarse el rectángulo viene dado por la posición en (X + su anchura) y en (Y + su altura) del ratón.
-            }
-            boxEnd = new Vector2(boxStart.x + Mathf.Abs(boxWidth), boxStart.y - Mathf.Abs(boxHeight)); //El punto dónde termina de dibujarse el rectángulo viene dado por (el comienzo en X + el módulo de su anchura) y (el comienzo en Y - el módulo de su altura).
 
-            DrawSelectionBox();
+            selectionBox.rectTransform.offsetMin = selectionRect.min;
+            selectionBox.rectTransform.offsetMax = selectionRect.max;
+
+            selectionBox.gameObject.SetActive(true);
         }
-        else i = 0;
 
         if (selectedUnit != null)
         {
@@ -137,9 +107,8 @@ public class MouseBehaviour : MonoBehaviour
     public void MouseButtonUp() //Función que se ejecuta cuando dejamos de pulsar el ratón (botón derecho).
     {
         SelectUnitsInDrag();
+        selectionBox.gameObject.SetActive(false);
         isDragging = false;
-        selectionBox.sizeDelta = Vector2.zero;
-        selectionBox.anchoredPosition = Vector2.zero;
     }
 
     public bool UnitWithinScreenSpace(Vector2 unitScreenPosition)
@@ -152,7 +121,7 @@ public class MouseBehaviour : MonoBehaviour
 
     public bool UnitWithinDrag(Vector2 unitScreenPosition)
     {
-        if ((unitScreenPosition.x > boxStart.x && unitScreenPosition.y < boxStart.y) && (unitScreenPosition.x < boxEnd.x && unitScreenPosition.y > boxEnd.y))
+        if ((unitScreenPosition.x > selectionBoxOrigin.x && unitScreenPosition.y < selectionBoxOrigin.y) && (unitScreenPosition.x < selectionRect.x && unitScreenPosition.y > selectionRect.y))
             return true;
         else
             return false;
@@ -175,8 +144,8 @@ public class MouseBehaviour : MonoBehaviour
 
     private bool CheckMouseDrag() //Función que determina si estamos arrastrando el ratón o no.
     {
-        if (currentDragPoint.x - 1 >= originDragPoint.x || currentDragPoint.y - 1 >= originDragPoint.y || currentDragPoint.z - 1 >= originDragPoint.z ||
-            currentDragPoint.x < originDragPoint.x - 1 || currentDragPoint.y < originDragPoint.y - 1 || currentDragPoint.z < originDragPoint.z - 1) return true;
+        if (selectionRect.x - 1 >= selectionBoxOrigin.x || selectionRect.y - 1 >= selectionBoxOrigin.y ||
+            selectionRect.x < selectionBoxOrigin.x - 1 || selectionRect.y < selectionBoxOrigin.y - 1) return true;
         else return false;  //Si ninguna de las condiciones anteriores es cierta, el ratón no se está arrastrando y retornamos el valor falso. 
     }
     #endregion
@@ -234,16 +203,10 @@ public class MouseBehaviour : MonoBehaviour
                 }
             }
         }
-        if (Physics.Raycast(ray, out hit, maxDistance)) //Si el rayo colisiona con algo.
-        {
-            originDragPoint = hit.point; //El punto en que se origina el rectángulo es el punto dónde impacta el rayo lanzado por el ratón.
-            //selectionBoxOrigin = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y);    
-        }
-        /*if (i == 0)
-        {
-            selectionBox.anchoredPosition = new Vector2(boxLeft, boxTop);
-            i++;
-        }*/
+        
+        //selectionBoxOrigin = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y);
+        selectionBoxOrigin = Input.mousePosition;
+        selectionRect = new Rect();
     }
 
     public void MultipleUnitSelection() //Función que se ejecuta al hacer Click con el botón izquierdo del Mouse + Shift.
