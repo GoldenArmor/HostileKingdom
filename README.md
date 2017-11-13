@@ -23,7 +23,7 @@ The project is ambitious, although it's a school subject.
 
 ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) benzai001@gmail.com
 
-* **Programmer** Marc Vallverdú
+* **Programmer:** Marc Vallverdú
 
 ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) marc.vallverdu.98@gmail.com
 
