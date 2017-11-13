@@ -11,8 +11,6 @@ Middle town, a small village in the center of the infinite forest, has a new vis
 This little enterprise made by three videogame students belongs to the Superior Schoool of Comunication, Image & Sound CEV.
 The project is ambitious, although it's a school subject. 
 
-------
-
 ## Contact Information
 
 * **3D & 2D Artist:** Alberto Cano
