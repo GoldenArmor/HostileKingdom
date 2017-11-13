@@ -11,17 +11,18 @@ Middle town, a small village in the center of the infinite forest, has a new vis
 This little enterprise made by three videogame students belongs to the Superior Schoool of Comunication, Image & Sound CEV.
 The project is ambitious, although it's a school subject. 
 
-------
-
 ## Contact Information
 
-* *3D & 2D Artist:* Alberto Cano
+* **3D & 2D Artist:** Alberto Cano
+
 ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) albertoc6g@hotmail.com
 
-* *3D Artist & Animator:* Ben Xie
+* **3D Artist & Animator:** Ben Xie
+
 ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) benzai001@gmail.com
 
-* *Programmer* Marc Vallverdú
+* **Programmer:** Marc Vallverdú
+
 ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) marc.vallverdu.98@gmail.com
 
 ------
