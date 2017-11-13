@@ -13,21 +13,21 @@ The project is ambitious, although it's a school subject.
 
 ## Contact Information
 
-* **3D & 2D Artist:** Alberto Cano
+* Alberto Cano **3D & 2D Artist**
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) albertoc6g@hotmail.com
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
 [ArtStation/Canogar](https://www.artstation.com/canogar "ArtStation")
 
-* **3D Artist & Animator:** Ben Xie
+* Ben Xie **3D Artist & Animator**
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) benzai001@gmail.com
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/artstationIcon.png) 
 [ArtStation/BenXie](https://www.artstation.com/benxie "ArtStation")
 
-* **Programmer:** Marc Vallverdú
+* Marc Vallverdú **Programmer**
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/emailIcon.png) marc.vallverdu.98@gmail.com
 
