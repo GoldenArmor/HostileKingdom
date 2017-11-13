@@ -2,7 +2,7 @@
 
 Hostile Kingdom is a 3D Videogame that combines RTS and roleplay in a medieval fantasy cartoon world that will transport the player into a sad land where every leaving creature is unfriendly & the sun never shines. 
 
-The game will follow the adventures of an unkwnown knight and his company. Estrategical & parallel battles, lots of secret areas, treasures & customizable options are the basic stuff you will find, followed of a continous dangerous world, relentless skeletons, sly goblins and evil necromancers. 
+The game will follow the adventures of an unkwnown knight and his company. Estrategical & parallel battles, lots of secret areas, treasures & customizable options are the basic stuff you will find followed of a continous dangerous world, relentless skeletons, sly goblins & evil necromancers. 
 
 ------
 
