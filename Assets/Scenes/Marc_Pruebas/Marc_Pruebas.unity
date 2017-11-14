@@ -1136,6 +1136,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842770280}
+--- !u!114 &843123141 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287733364}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &890092870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,15 +1860,13 @@ Prefab:
       propertyPath: lifeBar
       value: 
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
     - target: {fileID: 1358438155320458, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1984947482344618, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1902,7 +1906,7 @@ Prefab:
     - target: {fileID: 114112121480100020, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_UiScaleMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114112121480100020, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1922,17 +1926,17 @@ Prefab:
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.1978806
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.37629148
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.89705884
       objectReference: {fileID: 0}
     - target: {fileID: 224138978726092054, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1989,7 +1993,6 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -833.4939
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 223726587997523506, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_PixelPerfect
@@ -2000,12 +2003,6 @@ Prefab:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-=======
->>>>>>> parent of eef9351... Changed the selectionbox behaviour
-=======
->>>>>>> parent of ed40971... Changed Selection Box
-=======
->>>>>>> parent of eef9351... Changed the selectionbox behaviour
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
   m_IsPrefabParent: 0
@@ -3119,6 +3116,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1696130419}
+--- !u!1 &1701686037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1701686038}
+  - component: {fileID: 1701686040}
+  - component: {fileID: 1701686039}
+  m_Layer: 5
+  m_Name: DragHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1701686038
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701686037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2002311111}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1701686039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701686037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1701686040
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701686037}
 --- !u!1001 &1872160098
 Prefab:
   m_ObjectHideFlags: 0
@@ -3581,6 +3646,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &2002311111 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224317407185559502, guid: 79afdd13357a05d47b8696bae5139f59,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287733364}
 --- !u!1 &2029020059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,33 +3734,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029020059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_LocalPosition: {x: 392, y: 220.5, z: 0}
-  m_LocalScale: {x: 0.6125, y: 0.6125, z: 0.6125}
-=======
-  m_LocalPosition: {x: 413, y: 232.5, z: 0}
-  m_LocalScale: {x: 0.6453125, y: 0.6453125, z: 0.6453125}
->>>>>>> origin/master
-=======
-  m_LocalPosition: {x: 402, y: 226, z: 0}
-  m_LocalScale: {x: 0.628125, y: 0.628125, z: 0.628125}
->>>>>>> parent of eef9351... Changed the selectionbox behaviour
-=======
-  m_LocalPosition: {x: 402, y: 226, z: 0}
-  m_LocalScale: {x: 0.628125, y: 0.628125, z: 0.628125}
->>>>>>> parent of 26138e9... Change
-=======
-  m_LocalPosition: {x: 402, y: 226, z: 0}
-  m_LocalScale: {x: 0.628125, y: 0.628125, z: 0.628125}
->>>>>>> parent of eef9351... Changed the selectionbox behaviour
-=======
-  m_LocalPosition: {x: 402, y: 226, z: 0}
-  m_LocalScale: {x: 0.628125, y: 0.628125, z: 0.628125}
->>>>>>> parent of 26138e9... Change
+  m_LocalPosition: {x: 354, y: 199, z: 0}
+  m_LocalScale: {x: 0.553125, y: 0.553125, z: 0.553125}
   m_Children:
   - {fileID: 1391003944}
   - {fileID: 181401456}
@@ -3735,6 +3780,7 @@ MonoBehaviour:
   - {fileID: 1654924347}
   - {fileID: 1525673118}
   - {fileID: 2081580991}
+  startingHealth: []
 --- !u!1 &2038561375
 GameObject:
   m_ObjectHideFlags: 0
