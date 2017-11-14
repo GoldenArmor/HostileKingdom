@@ -15,7 +15,7 @@ public class CardsBehaviour : MonoBehaviour
     public RectTransform[] maskBar;
     public RectTransform[] backgroundBar;
 
-    [SerializeField]private float[] startingHealth;
+    [SerializeField] private float[] startingHealth;
     private float maxWidth;
     private float[] newWidth;
 
