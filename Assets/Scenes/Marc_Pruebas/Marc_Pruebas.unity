@@ -1861,7 +1861,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1984947482344618, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1901,7 +1901,7 @@ Prefab:
     - target: {fileID: 114112121480100020, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_UiScaleMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114112121480100020, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1916,7 +1916,7 @@ Prefab:
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_FillCenter
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1926,12 +1926,12 @@ Prefab:
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224138978726092054, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -1988,6 +1988,7 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -833.4939
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 223726587997523506, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_PixelPerfect
@@ -2000,6 +2001,8 @@ Prefab:
       objectReference: {fileID: 0}
 =======
 >>>>>>> parent of eef9351... Changed the selectionbox behaviour
+=======
+>>>>>>> parent of ed40971... Changed Selection Box
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
   m_IsPrefabParent: 0
