@@ -307,7 +307,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 181401456}
-  - component: {fileID: 181401457}
   m_Layer: 0
   m_Name: StatsCard_01
   m_TagString: StatsCard
@@ -329,28 +328,6 @@ Transform:
   m_Father: {fileID: 2029020063}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &181401457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 181401455}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03af1fcb0c535b44b80dea0dab05758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTarget: {fileID: 0}
-  maskBar: {fileID: 0}
-  backgroundBar: {fileID: 0}
-  targetName: {fileID: 0}
-  attackValue: {fileID: 0}
-  armorValue: {fileID: 0}
-  scope: {fileID: 0}
-  magicAttackValue: {fileID: 0}
-  magicArmorValue: {fileID: 0}
-  cardNumber: 1
-  statsCard: {fileID: 181401455}
 --- !u!1 &223068700
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +602,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 432172417}
-  - component: {fileID: 432172418}
   m_Layer: 0
   m_Name: StatsCard_02
   m_TagString: StatsCard
@@ -647,28 +623,6 @@ Transform:
   m_Father: {fileID: 2029020063}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &432172418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 432172416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03af1fcb0c535b44b80dea0dab05758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTarget: {fileID: 0}
-  maskBar: {fileID: 0}
-  backgroundBar: {fileID: 0}
-  targetName: {fileID: 0}
-  attackValue: {fileID: 0}
-  armorValue: {fileID: 0}
-  scope: {fileID: 0}
-  magicAttackValue: {fileID: 0}
-  magicArmorValue: {fileID: 0}
-  cardNumber: 2
-  statsCard: {fileID: 0}
 --- !u!1 &501770453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1104,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 890092871}
-  - component: {fileID: 890092872}
   m_Layer: 0
   m_Name: StatsCard_03
   m_TagString: StatsCard
@@ -1172,28 +1125,6 @@ Transform:
   m_Father: {fileID: 2029020063}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &890092872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 890092870}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03af1fcb0c535b44b80dea0dab05758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTarget: {fileID: 0}
-  maskBar: {fileID: 0}
-  backgroundBar: {fileID: 0}
-  targetName: {fileID: 0}
-  attackValue: {fileID: 0}
-  armorValue: {fileID: 0}
-  scope: {fileID: 0}
-  magicAttackValue: {fileID: 0}
-  magicArmorValue: {fileID: 0}
-  cardNumber: 3
-  statsCard: {fileID: 0}
 --- !u!1 &966889117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,17 +1857,17 @@ Prefab:
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.1978806
+      value: 0.19463669
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.37629148
+      value: 0.24067836
       objectReference: {fileID: 0}
     - target: {fileID: 114056264627372304, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Color.b
-      value: 0.89705884
+      value: 0.33088237
       objectReference: {fileID: 0}
     - target: {fileID: 224138978726092054, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -3443,7 +3374,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1958072945}
-  - component: {fileID: 1958072946}
   m_Layer: 0
   m_Name: StatsCard_04
   m_TagString: StatsCard
@@ -3465,28 +3395,6 @@ Transform:
   m_Father: {fileID: 2029020063}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1958072946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1958072944}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03af1fcb0c535b44b80dea0dab05758, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTarget: {fileID: 0}
-  maskBar: {fileID: 0}
-  backgroundBar: {fileID: 0}
-  targetName: {fileID: 0}
-  attackValue: {fileID: 0}
-  armorValue: {fileID: 0}
-  scope: {fileID: 0}
-  magicAttackValue: {fileID: 0}
-  magicArmorValue: {fileID: 0}
-  cardNumber: 4
-  statsCard: {fileID: 0}
 --- !u!1 &1985263745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3551,10 @@ Prefab:
       propertyPath: cardNumber
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
+      propertyPath: m_TagString
+      value: PlayableUnit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
@@ -3765,21 +3677,9 @@ MonoBehaviour:
   statsCardsAwake: []
   playableUnits: []
   statsCard: []
-  targetName:
-  - {fileID: 337846107}
-  - {fileID: 1664745352}
-  - {fileID: 2038561377}
-  - {fileID: 1055122519}
-  maskBar:
-  - {fileID: 501770454}
-  - {fileID: 223068701}
-  - {fileID: 11587662}
-  - {fileID: 1577267825}
-  backgroundBar:
-  - {fileID: 966889118}
-  - {fileID: 1654924347}
-  - {fileID: 1525673118}
-  - {fileID: 2081580991}
+  targetName: []
+  maskBar: []
+  backgroundBar: []
   startingHealth: []
 --- !u!1 &2038561375
 GameObject:

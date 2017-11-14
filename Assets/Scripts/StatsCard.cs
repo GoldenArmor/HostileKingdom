@@ -23,7 +23,6 @@ public class StatsCard : MonoBehaviour
     private float startingHealth;
 
     private float maxWidth = 125f;
-    private float newWidth;
 
     void Start()
     {
