@@ -1,4 +1,4 @@
-# Hostile Kingdom
+![Logo](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Logo.png "Logo")
 
 Hostile Kingdom is a 3D Videogame that combines RTS and roleplay in a medieval fantasy cartoon world that will transport the player into a sad land where every leaving creature is unfriendly & the sun never shines. 
 
