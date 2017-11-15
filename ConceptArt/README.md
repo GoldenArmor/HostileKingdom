@@ -1,6 +1,6 @@
 ### Cementery Concept
 
-![Environment](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_iglesia.png "Environment")
+![Environment](Concept_iglesia.png "Environment")
 Concept Art of the cementery zone that will appear in the game, first level boss zone.
 
 ### Village Concept
