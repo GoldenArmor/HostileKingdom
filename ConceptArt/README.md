@@ -7,6 +7,7 @@ Concept Art of the cementery zone that will appear in the game, first level boss
 
 ![Environment](Concept_Enviroment.png "Environment")
 Concept Art of the village zone that will appear in the game, origin point.
+
 ------
 
 ### Forge Concept
