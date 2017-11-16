@@ -1,27 +1,22 @@
-### Cementery Concept
+### Menu Screen Mockup
 
-![Environment](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_iglesia.png "Environment")
-
-### Village Concept
-
-![Environment](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_Enviroment.png "Environment")
+![Menu](Mockups_Start.png "Menu")
+First menu screen design, screen position of the elements & look like. 
 
 ------
 
-### Forge Concept
+### Options Screen Mockup
 
-![Prop](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_Herreria_Pozo.png "Forge")
-
-### Bridge Concept
-
-![Prop](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_Puente.png "Bridge")
+![Options](Mockups_Menu.png "Options")
+First options in-game panel design, screen position of the elements & look like. 
 
 ------
 
-### Skeleton Concept
+### First Gameplay Mockup
 
-![Character](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_Esqueleto.png "Skeleton")
+![Gameplay](Mockups_Gameplay_01.png "Gameplay")
 
-### Wolf Concept
+### Second Gameplay Mockup
 
-![Character](https://github.com/GoldenArmor/HostileKingdom/blob/master/ConceptArt/Concept_Lobo.png "Wolf")
+![Gameplay](Mockups_Gameplay_02.png "Gameplay")
+What we expect of our gameplay view. 
