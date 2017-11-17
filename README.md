@@ -13,9 +13,13 @@ The project is ambitious, although it's a school subject.
 
 ## Contact Information
 
+* Adrià Camacho **3D Artist**
+
+  * ![](
+
 * Alberto Cano **3D & 2D Artist**
 
-  * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Email_Icon.png) albertoc6g@hotmail.com
+  * ![](WikiResources/Email_Icon.png) albertoc6g@hotmail.com
 
   * ![](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Artstation_Icon.png) 
 [ArtStation/Canogar](https://www.artstation.com/canogar "ArtStation")
