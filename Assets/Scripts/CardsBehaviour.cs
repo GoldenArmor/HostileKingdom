@@ -26,6 +26,5 @@ public class CardsBehaviour : MonoBehaviour
     {
         newWidth = (maxWidth * newLife) / startingHealth;
         maskBar.sizeDelta = new Vector2(newWidth, maskBar.sizeDelta.y);
-        Debug.Log(maskBar.sizeDelta); 
     }
 }
