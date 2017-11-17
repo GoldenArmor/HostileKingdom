@@ -17,14 +17,14 @@ The project is ambitious, although it's a school subject.
 
   * ![](WikiResources/Email_Icon.png) adricamacho195@gmail.com
 
-  * ![](master/WikiResources/Artstation_Icon.png) 
+  * ![](WikiResources/Artstation_Icon.png) 
 [ArtStation/Camachin](https://www.artstation.com/camachin "ArtStation")
 
 * Alberto Cano **3D & 2D Artist**
 
   * ![](WikiResources/Email_Icon.png) albertoc6g@hotmail.com
 
-  * ![](master/WikiResources/Artstation_Icon.png) 
+  * ![](WikiResources/Artstation_Icon.png) 
 [ArtStation/Canogar](https://www.artstation.com/canogar "ArtStation")
 
 * Ben Xie **3D Artist & Animator**
