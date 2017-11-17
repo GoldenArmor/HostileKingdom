@@ -8,15 +8,7 @@ public class InputManager : MonoBehaviour
     public MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
     private Vector3 formationPosition;
 
-    //public BetaMouseBehaviour mouse;
-    //public Click mouse;
-
     private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
-
-    void Start()
-    {
-        //formationPosition = new Vector3(0, 0, 0); 
-    }
 
     void Update()
     {
@@ -55,22 +47,5 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-
-        #region Pruebas
-        /*
-        mouse.isClicking = false;
-        mouse.isHoldingDown = false;
-
-        
-        if (Input.GetMouseButtonDown(0)) mouse.StartDrag();
-        if (Input.GetMouseButtonUp(0)) mouse.SelectDrag();
-        if (Input.GetMouseButton(0)) mouse.IsHoldingDownMouseButton();
-
-         
-        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) mouse.OneUnitSelection(); //Si pulsamos el botón izquierdo del Mouse y ninguna tecla shift, se ejecuta la función OneUnitSelection() de MouseBehaviour.
-        if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))) mouse.MultipleUnitSelection(); //Si pulsamos el botón izquierdo del Mouse + alguno de los 2 shifts se ejecuta la función MultipleUnitSelection() de MouseBehaviour.
-        if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp(); //Si dejamos de pulsar el botón derecho del mouse ejecutamos la función MouseButtonUp() de MouseBehaviour.
-        */
-        #endregion
     }
 }

@@ -33,26 +33,25 @@ public class PlayableUnitBehaviour : Characters
     {
         mouse = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseBehaviour>();
         base.MyStart();
-
     }
 
     void Update()
     {
         base.MyUpdate();
-        screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
+        screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
             isOnScreen = true;
-            if (!mouse.unitsOnScreenSpace.Contains(this.gameObject))
+            if (!mouse.unitsOnScreenSpace.Contains(gameObject))
             {
-                mouse.unitsOnScreenSpace.Add(this.gameObject);
+                mouse.unitsOnScreenSpace.Add(gameObject);
             }
         }
         else
         {
             if (isOnScreen)
             {
-                mouse.unitsOnScreenSpace.Remove(this.gameObject);
+                mouse.unitsOnScreenSpace.Remove(gameObject);
                 isOnScreen = false;
             }
         }

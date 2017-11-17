@@ -34,10 +34,10 @@ public class StatsCard : MonoBehaviour
 
         if (mouse.selectedUnit != null || mouse.selectedUnits.Count > 0)
         {
-            if (statsCard.activeInHierarchy == false)
+            /*if (statsCard.activeInHierarchy == false)
             {
                 statsCard.SetActive(true);
-            }
+            }*/
             selectedTarget = mouse.selectedUnit;
             if (mouse.selectedUnit == null) selectedTarget = mouse.selectedUnits[0];
             targetName.text = selectedTarget.gameObject.GetComponent<Characters>().characterName;
@@ -51,7 +51,7 @@ public class StatsCard : MonoBehaviour
         }
         else
         {
-            statsCard.SetActive(false);
+            //statsCard.SetActive(false);
             targetName.text = ("");
             attackValue.text = ("");
             armorValue.text = ("");

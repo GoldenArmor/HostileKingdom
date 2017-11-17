@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class CardsBehaviour : MonoBehaviour
 {
     [Header("Arrays")]
-    [SerializeField] private GameObject[] playableUnitsAwake;
-    [SerializeField] private GameObject[] statsCardsAwake;
     [SerializeField] private PlayableUnitBehaviour[] playableUnits;
     [SerializeField] private StatsCard[] statsCard;
 
@@ -21,20 +19,9 @@ public class CardsBehaviour : MonoBehaviour
 
     public void Init()
     {
-        playableUnitsAwake = GameObject.FindGameObjectsWithTag("PlayableUnit");
-        statsCardsAwake = GameObject.FindGameObjectsWithTag("StatsCard");
-        playableUnits = new PlayableUnitBehaviour[4];
-        statsCard = new StatsCard[4];
-
-        startingHealth = new float[4];
-        newWidth = new float[4];
-
-        for (int i = 0; i < playableUnitsAwake.Length; i++)
+        for (int i = 0; i < playableUnits.Length; i++)
         {
-            playableUnits[i] = playableUnitsAwake[i].GetComponent<PlayableUnitBehaviour>();
-            statsCard[i] = statsCardsAwake[i].GetComponent<StatsCard>();
-
-            if (playableUnits[i].cardNumber == statsCard[i].cardNumber) statsCard[i].selectedTarget = playableUnits[i].gameObject;
+            statsCard[i].selectedTarget = playableUnits[i].gameObject;
 
             targetName[i].text = statsCard[i].selectedTarget.gameObject.GetComponent<Characters>().characterName;
             startingHealth[i] = statsCard[i].selectedTarget.gameObject.GetComponent<Characters>().startingHitPoints;

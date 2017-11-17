@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
             {
                 cameraRotationY = (Input.mousePosition.x - mouseX) * easeFactor * Time.deltaTime;
 
-                this.transform.Rotate(0, cameraRotationY, 0, Space.World);
+                transform.Rotate(0, cameraRotationY, 0, Space.World);
             }
         }
     }

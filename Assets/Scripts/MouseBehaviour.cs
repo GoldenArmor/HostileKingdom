@@ -14,9 +14,7 @@ public class MouseBehaviour : MonoBehaviour
     private float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
 
     [Header("Drag Selection")]
-    public List<GameObject> unitsInDrag = new List<GameObject>(); //Lista de GameObjects para una selección de click y arrastrar.
     public bool isDragging; //Comprobar si estamos pulsando y arrastrando el ratón. 
-
     public Image selectionBox;
     private Vector2 selectionBoxOrigin;
     private Rect selectionRect;
@@ -66,27 +64,6 @@ public class MouseBehaviour : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        unitsInDrag.Clear();
-        if (isDragging && unitsOnScreenSpace.Count > 0)
-        {
-            selectedUnit = null;
-            for (int i = 0; i < unitsOnScreenSpace.Count; i++)
-            {
-                GameObject unitObject = unitsOnScreenSpace[i] as GameObject;
-                PlayableUnitBehaviour positionScript = unitObject.transform.GetComponent<PlayableUnitBehaviour>();
-                if (!unitsInDrag.Contains(unitObject))
-                {
-                    if (UnitWithinDrag(positionScript.screenPosition))
-                    {
-                        unitsInDrag.Add(unitObject);
-                    }
-                }
-            }
-        }
-    }
-
     #region DragSelection
     public void MouseButtonPressed() //Función que se ejecuta cuando estamos presionando el ratón (botón derecho).
     {
@@ -106,9 +83,16 @@ public class MouseBehaviour : MonoBehaviour
 
     public void MouseButtonUp() //Función que se ejecuta cuando dejamos de pulsar el ratón (botón derecho).
     {
-        SelectUnitsInDrag();
         selectionBox.gameObject.SetActive(false);
         isDragging = false;
+
+        for (int i = 0; i < unitsOnScreenSpace.Count; i++)
+        {
+            if(selectionRect.Contains(Camera.main.WorldToScreenPoint(unitsOnScreenSpace[i].transform.position)))
+            {
+                selectedUnits.Add(unitsOnScreenSpace[i]);
+            }
+        }
     }
 
     public bool UnitWithinScreenSpace(Vector2 unitScreenPosition)
@@ -117,29 +101,6 @@ public class MouseBehaviour : MonoBehaviour
             return true;
         else
             return false;
-    }
-
-    public bool UnitWithinDrag(Vector2 unitScreenPosition)
-    {
-        if ((unitScreenPosition.x > selectionBoxOrigin.x && unitScreenPosition.y < selectionBoxOrigin.y) && (unitScreenPosition.x < selectionRect.x && unitScreenPosition.y > selectionRect.y))
-            return true;
-        else
-            return false;
-    }
-
-    public void SelectUnitsInDrag()
-    {
-        if (unitsInDrag.Count > 0)
-        {
-            for (int i = 0; i < unitsInDrag.Count; i++)
-            {
-                if (!selectedUnits.Contains(unitsInDrag[i]))
-                {
-                    selectedUnits.Add(unitsInDrag[i]);
-                }
-            }
-        }
-        unitsInDrag.Clear();
     }
 
     private bool CheckMouseDrag() //Función que determina si estamos arrastrando el ratón o no.
@@ -203,8 +164,6 @@ public class MouseBehaviour : MonoBehaviour
                 }
             }
         }
-
-        //selectionBoxOrigin = new Vector2(Camera.main.ScreenToViewportPoint(Input.mousePosition).x, Camera.main.ScreenToViewportPoint(Input.mousePosition).y);
         selectionBoxOrigin = Input.mousePosition;
         selectionRect = new Rect();
     }
