@@ -8,7 +8,7 @@ The game will follow the adventures of an unkwnown knight and his company. Estra
 
 # The Golden Armor Company™
 
-This little enterprise made by three videogame students belongs to the Superior Schoool of Comunication, Image & Sound CEV.
+This little enterprise made by four videogame students belongs to the Superior Schoool of Comunication, Image & Sound CEV.
 The project is ambitious, although it's a school subject. 
 
 ## Contact Information
