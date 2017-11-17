@@ -32,7 +32,7 @@ public class Characters : MonoBehaviour
 
     public virtual void MyStart()
     {
-        agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
         hitPoints = startingHitPoints;
    
         SetIdle();

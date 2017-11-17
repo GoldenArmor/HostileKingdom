@@ -5,34 +5,45 @@ using UnityEngine;
 public class PlayableUnitBehaviour : Characters
 {
     //public Animator anim;
-    public int cardNumber;
-    public CardsBehaviour cards; 
+    [SerializeField]
+    CardsBehaviour cards; 
 
     [Header("Timers")]
-    public float cooldownAttack;
-    public float timeCounter;
+    [SerializeField]
+    float cooldownAttack;
+    [SerializeField]
+    float timeCounter;
 
     [Header("Distances")]
-    public float chaseRange;
-    private Vector3 newFormationPosition;
-    public float newDestinationRadius;
+    [SerializeField]
+    float chaseRange;
+    Vector3 newFormationPosition;
+    [SerializeField]
+    float newDestinationRadius;
 
     [Header("OnScreen")]
     public bool isOnScreen = false;
-    [HideInInspector] public Vector2 screenPosition;
-    private float maxDistance = Mathf.Infinity;
-    private MouseBehaviour mouse;
-    private RaycastHit hit;
+    [HideInInspector]
+    public Vector2 screenPosition;
+    float maxDistance = Mathf.Infinity;
+    [SerializeField]
+    MouseBehaviour mouse;
+    RaycastHit hit;
 
     [Header("EnemyInteraction")]
-    private bool isAttacking; 
-    private bool canAttack;
-    private Characters characters;
+    Characters characters;
+    bool isAttacking; 
+    bool canAttack;
 
     void Start()
     {
-        mouse = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseBehaviour>();
         base.MyStart();
+        if(cards != null)
+        {
+            cards.targetName.text = characterName;
+            cards.startingHealth = startingHitPoints;
+            cards.MyStart();
+        }
     }
 
     void Update()
@@ -153,6 +164,7 @@ public class PlayableUnitBehaviour : Characters
     public void TakeDamage(float damage, GameObject autoTarget)
     {
         hitPoints -= damage;
+        cards.UpdateLifeBar(hitPoints);
 
         if (selectedTarget == null)
         {
