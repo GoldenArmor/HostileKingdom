@@ -70,18 +70,27 @@ public class MouseBehaviour : MonoBehaviour
 
     public void MouseButtonPressed()
     {
-        //TODOisDragging = true;
+        if (Physics.Raycast(Raycast(), out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        {
+            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("PlayableUnit"))
+            {
+                isDragging = true;
+            }
+        }    
     }
 
     public void MouseButtonUp()
     {
         selectionBox.rectTransform.sizeDelta = Vector2.zero;
         isDragging = false;
-
+        
         for (int i = 0; i < unitsOnScreenSpace.Count; i++)
         {
-            if(selectionRect.Contains(Camera.main.WorldToScreenPoint(unitsOnScreenSpace[i].transform.position)))
+            if (selectionRect.Contains(Camera.main.WorldToScreenPoint(unitsOnScreenSpace[i].transform.position)))
             {
+                if (unitsOnScreenSpace[i].GetComponent<PlayableUnitBehaviour>().isSelected)
+                    return;
+
                 selectedUnits.Add(unitsOnScreenSpace[i]);
             }
         }
