@@ -5,8 +5,11 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [Header("MouseInputsManager")]
-    public MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
-    private Vector3 formationPosition;
+    [SerializeField]
+    MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
+    [SerializeField]
+    LevelLogic levelLogic; 
+    Vector3 formationPosition;
 
     private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
 
@@ -53,6 +56,12 @@ public class InputManager : MonoBehaviour
                     mouse.selectedUnits[i].ClickUpdate(formationPosition);
                 }
             }
+        }
+        if (Input.GetKey(KeyCode.AltGr))
+        {
+            if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
+            if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
+            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
         }
     }
 }

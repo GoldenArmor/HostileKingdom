@@ -14,10 +14,10 @@ public class EnemyBehaviour : Characters
 
     [Header("UnitsCanAttack")]
     [SerializeField]
-    List<GameObject> unitsCanAttack = new List<GameObject>();
-    private GameObject closestObject;
-    private Characters characters; 
-    private bool canAttack;
+    List<Transform> unitsCanAttack = new List<Transform>();
+    Transform closestObject;
+    Characters characters; 
+    bool canAttack;
 
     void Start()
     {
@@ -29,15 +29,7 @@ public class EnemyBehaviour : Characters
         base.MyUpdate();
         if (selectedTarget == null && unitsCanAttack.Count > 0)
         {
-            if (unitsCanAttack.Count > 1)
-            {
-                FindClosestObject();
-                return;
-            }
-            selectedTarget = unitsCanAttack[0].gameObject;
-            targetTransform = selectedTarget.transform;
-
-            characters = selectedTarget.GetComponent<Characters>(); 
+            FindClosestObject();
         }
     }
 
@@ -73,10 +65,10 @@ public class EnemyBehaviour : Characters
         }
     }
 
-    public override void MoveUpdate()
+    /*public override void MoveUpdate()
     {
 
-    }
+    }*/
 
     public override void ChaseUpdate()
     {
@@ -101,7 +93,7 @@ public class EnemyBehaviour : Characters
     {
         if (canAttack)
         {        
-            selectedTarget.GetComponent<PlayableUnitBehaviour>().PlayableUnitTakeDamage(attack, this.gameObject);
+            selectedTarget.GetComponent<PlayableUnitBehaviour>().PlayableUnitTakeDamage(attack, gameObject);
 
             SetIdle();
             return;
@@ -130,17 +122,16 @@ public class EnemyBehaviour : Characters
         {
             if (closestObject != null)
             {
-                if (Vector3.Distance(transform.position, unitsCanAttack[i].transform.position) <=
-                Vector3.Distance(transform.position, closestObject.transform.position))
+                if (Vector3.Distance(transform.position, unitsCanAttack[i].position) <=
+                Vector3.Distance(transform.position, closestObject.position))
                 {
                     closestObject = unitsCanAttack[i];
                 }
             }
             else closestObject = unitsCanAttack[i];
-
         }
-        selectedTarget = closestObject;
-        targetTransform = selectedTarget.transform;
+        selectedTarget = closestObject.gameObject;
+        targetTransform = closestObject;
         characters = selectedTarget.GetComponent<Characters>();
     }
     #endregion
@@ -150,7 +141,7 @@ public class EnemyBehaviour : Characters
     {
         if (other.tag == "PlayableUnit")
         {
-            unitsCanAttack.Add(other.gameObject);
+            unitsCanAttack.Add(other.transform);
         }
     }
 
@@ -158,7 +149,7 @@ public class EnemyBehaviour : Characters
     {
         if (other.tag == "PlayableUnit" && unitsCanAttack != null)
         {
-            unitsCanAttack.Remove(other.gameObject);
+            unitsCanAttack.Remove(other.transform);
             targetTransform = null;
             selectedTarget = null;
             characters = null; 
@@ -175,7 +166,7 @@ public class EnemyBehaviour : Characters
     void UnitDies()
     {
         Debug.Log("DEAD"); 
-        unitsCanAttack.Remove(selectedTarget);
+        unitsCanAttack.Remove(selectedTarget.transform);
         distanceFromTarget = Mathf.Infinity;
         if (characters.isDead == false) characters.SetDead();
         characters = null;
