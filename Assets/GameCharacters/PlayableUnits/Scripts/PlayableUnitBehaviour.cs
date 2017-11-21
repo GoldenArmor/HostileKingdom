@@ -54,16 +54,11 @@ public class PlayableUnitBehaviour : Characters
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
             isOnScreen = true;
-            if (!mouse.unitsOnScreenSpace.Contains(this))
-            {
-                mouse.unitsOnScreenSpace.Add(this);
-            }
         }
         else
         {
             if (isOnScreen)
             {
-                mouse.unitsOnScreenSpace.Remove(this);
                 isOnScreen = false;
             }
         }
@@ -157,7 +152,7 @@ public class PlayableUnitBehaviour : Characters
     {
         if (isOnScreen)
         {
-            mouse.unitsOnScreenSpace.Remove(this);
+            mouse.selectableUnits.Remove(this);
             isOnScreen = false;
         }
         if (mouse.selectedUnit == this) mouse.selectedUnit = null;

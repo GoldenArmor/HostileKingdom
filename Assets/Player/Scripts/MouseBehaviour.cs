@@ -8,7 +8,7 @@ public class MouseBehaviour : MonoBehaviour
     [Header("Unit Selection")]
     public PlayableUnitBehaviour selectedUnit; //GameObject seleccionado para actualizar.
     public List<PlayableUnitBehaviour> selectedUnits = new List<PlayableUnitBehaviour>(); //Lista de GameObjects para una selección multiple.
-    public List<PlayableUnitBehaviour> unitsOnScreenSpace = new List<PlayableUnitBehaviour>(); //Lista de GameObjects para saber cuantas hay en pantalla.
+    public List<PlayableUnitBehaviour> selectableUnits = new List<PlayableUnitBehaviour>(); //Lista de GameObjects para saber cuantas hay en pantalla.
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
@@ -75,14 +75,14 @@ public class MouseBehaviour : MonoBehaviour
         isDragging = false;
         multipleUnitSelection = false; 
         
-        for (int i = 0; i < unitsOnScreenSpace.Count; i++)
+        for (int i = 0; i < selectableUnits.Count; i++)
         {
-            if (selectionRect.Contains(Camera.main.WorldToScreenPoint(unitsOnScreenSpace[i].transform.position)))
+            if (selectionRect.Contains(Camera.main.WorldToScreenPoint(selectableUnits[i].transform.position)))
             {
-                if (unitsOnScreenSpace[i].GetComponent<PlayableUnitBehaviour>().isSelected)
+                if (selectableUnits[i].isSelected)
                     return;
 
-                selectedUnits.Add(unitsOnScreenSpace[i]);
+                selectedUnits.Add(selectableUnits[i]);
             }
         }
     }
