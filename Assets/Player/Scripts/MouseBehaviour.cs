@@ -10,17 +10,18 @@ public class MouseBehaviour : MonoBehaviour
     public List<PlayableUnitBehaviour> selectedUnits = new List<PlayableUnitBehaviour>(); //Lista de GameObjects para una selección multiple.
     public List<PlayableUnitBehaviour> unitsOnScreenSpace = new List<PlayableUnitBehaviour>(); //Lista de GameObjects para saber cuantas hay en pantalla.
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
-    private RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
-    private float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
+    RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
+    float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
 
     [Header("Drag Selection")]
     public bool isDragging; //Comprobar si estamos pulsando y arrastrando el ratón. 
     public Image selectionBox;
-    private Vector2 selectionBoxOrigin;
-    private Rect selectionRect;
+    Vector2 selectionBoxOrigin;
+    Rect selectionRect;
+    public bool multipleUnitSelection = false;    
 
     void Update()
-    {
+     {
         if (isDragging) //Si estamos pulsando y arrastrando el ratón.
         {
             DragUpdate();
@@ -37,7 +38,7 @@ public class MouseBehaviour : MonoBehaviour
                 selectedUnits[i].isSelected = true;
             }
         }
-    }
+     }
 
     #region DragSelection
     void DragUpdate()
@@ -68,21 +69,11 @@ public class MouseBehaviour : MonoBehaviour
         selectionBox.rectTransform.offsetMax = selectionRect.max;
     }
 
-    public void MouseButtonPressed()
-    {
-        if (Physics.Raycast(Raycast(), out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.transform.gameObject.layer != LayerMask.NameToLayer("PlayableUnit"))
-            {
-                isDragging = true;
-            }
-        }    
-    }
-
     public void MouseButtonUp()
     {
         selectionBox.rectTransform.sizeDelta = Vector2.zero;
         isDragging = false;
+        multipleUnitSelection = false; 
         
         for (int i = 0; i < unitsOnScreenSpace.Count; i++)
         {
@@ -113,16 +104,24 @@ public class MouseBehaviour : MonoBehaviour
     }
     #endregion
 
-    public void OneUnitSelection() 
+    public void ClickState() 
     {
-        Ray ray = Raycast(); 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
             Debug.Log(hit.transform.name);
+            selectionBoxOrigin = Input.mousePosition;
+            selectionRect = new Rect();
 
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
             {
+                if (multipleUnitSelection)
+                {
+                    MultipleUnitSelection();
+                    return;
+                }
+
                 if (selectedUnit == null)
                 {
                     for (int i = 0; i < selectedUnits.Count; i++)
@@ -138,49 +137,34 @@ public class MouseBehaviour : MonoBehaviour
             }
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
-                if (selectedUnit == null)
+                if (!multipleUnitSelection)
                 {
-                    for (int i = 0; i < selectedUnits.Count; i++)
+                    if (selectedUnit == null)
                     {
-                        selectedUnits[i].isSelected = false;
+                        for (int i = 0; i < selectedUnits.Count; i++)
+                        {
+                            selectedUnits[i].isSelected = false;
+                        }
+                        selectedUnits.Clear();
                     }
-                    selectedUnits.Clear();
+                    else
+                        SelectedUnitClear();
                 }
-                else
-                    SelectedUnitClear();
             }
         }
-        
-        selectionBoxOrigin = Input.mousePosition;
-        selectionRect = new Rect();
     }
 
-    public void MultipleUnitSelection()
+    void MultipleUnitSelection()
     {
-        if (Physics.Raycast(Raycast(), out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        if (selectedUnit != null)
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
-            {
-                if (selectedUnit != null)
-                {
-                    selectedUnits.Add(selectedUnit);
-                    SelectedUnitClear();
-                }
-                if (hit.transform.GetComponent<PlayableUnitBehaviour>().isSelected)
-                    return;
-
-                selectedUnits.Add(hit.transform.GetComponent<PlayableUnitBehaviour>());
-            }
+            selectedUnits.Add(selectedUnit);
+            SelectedUnitClear();
         }
+        if (hit.transform.GetComponent<PlayableUnitBehaviour>().isSelected)
+            return;
 
-        selectionBoxOrigin = Input.mousePosition;
-        selectionRect = new Rect();
-    }
-
-    Ray Raycast()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        return ray;
+        selectedUnits.Add(hit.transform.GetComponent<PlayableUnitBehaviour>());
     }
 
     void SelectedUnitClear()

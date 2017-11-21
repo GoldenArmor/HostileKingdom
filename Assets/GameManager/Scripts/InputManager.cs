@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
     [SerializeField]
-    LevelLogic levelLogic; 
+    //LevelLogic levelLogic; 
     Vector3 formationPosition;
 
     private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
@@ -26,16 +26,15 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if (Input.GetMouseButton(0)) mouse.MouseButtonPressed();
+        if (Input.GetMouseButton(0)) mouse.isDragging = true;
         if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
         if (Input.GetMouseButtonDown(0))
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
-                mouse.MultipleUnitSelection();
-                return;
+                mouse.multipleUnitSelection = true;
             }
-            mouse.OneUnitSelection();
+            mouse.ClickState();
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -57,11 +56,11 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKey(KeyCode.AltGr))
+        /*if (Input.GetKey(KeyCode.AltGr))
         {
             if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
             if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
             if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
-        }
+        }*/
     }
 }
