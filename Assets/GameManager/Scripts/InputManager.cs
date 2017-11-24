@@ -7,9 +7,17 @@ public class InputManager : MonoBehaviour
     [Header("MouseInputsManager")]
     [SerializeField]
     MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
-    [SerializeField]
     //LevelLogic levelLogic; 
     Vector3 formationPosition;
+
+    [Header("CameraInputs")]
+    [SerializeField]
+    CameraController cameraController;
+    [SerializeField]
+    CameraZoom cameraZoom; 
+    float scrollAxis; 
+    Vector2 inputAxis;
+    Vector2 mouseAxis; 
 
     private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
 
@@ -62,5 +70,19 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
             if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
         }*/
+        #region CameraControllerAndZoom
+        cameraController.mousePosition = Input.mousePosition;
+        inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
+        mouseAxis.x = Input.GetAxis("Mouse X");
+        mouseAxis.y = Input.GetAxis("Mouse Y");
+        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+
+        cameraController.SetInputAxis(inputAxis);
+        cameraController.SetMouseAxis(mouseAxis);
+        cameraZoom.SetAxis(scrollAxis); 
+
+        if (Input.GetButton("Fire3")) cameraController.Rotation(); 
+        #endregion
     }
 }

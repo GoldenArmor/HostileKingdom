@@ -1,59 +1,78 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    Transform camTransform; 
+
     [Header("Pan")]
-    public float panSpeed = 20f;
-    public float panBorderThickness = 10f;
-    public Vector2 panLimit;
-    private Vector3 moveForward = Vector3.forward;
-    private Vector3 moveBack = Vector3.back;
-    private Vector3 moveRight = Vector3.right;
-    private Vector3 moveLeft = Vector3.left;
+    [SerializeField]
+    float panSpeed;
+    [SerializeField]
+    float panBorderThickness ;
 
     [Header("Rotation")]
-    //private bool rotationEnabled;
-    private float cameraRotationY;
-    private float easeFactor = 10f;
-    private float mouseX;
+    [SerializeField]
+    float cameraRotationSpeed;
+
+    [Header("Limits")]
+    [SerializeField]
+    Vector2 panLimit;
+
+    [Header("Inputs")]
+    Vector2 inputAxis;
+    Vector2 mouseAxis;
+    [HideInInspector]
+    public Vector2 mousePosition;
+
+    void Start()
+    {
+        camTransform = transform; 
+    }
 
     void Update()
     {
-        if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
-        {
-            this.transform.Translate(moveForward * Time.deltaTime * panSpeed, Space.Self);
-        }
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
-        {
-            this.transform.Translate(moveBack * Time.deltaTime * panSpeed, Space.Self);
-        }
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
-        {
-            this.transform.Translate(moveRight * Time.deltaTime * panSpeed, Space.Self);
-        }
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
-        {
-            this.transform.Translate(moveLeft * Time.deltaTime * panSpeed, Space.Self);
-        }
-
-        //position.x = Mathf.Clamp(position.x, -panLimit.x, panLimit.x);
-        //position.z = Mathf.Clamp(position.z, -panLimit.y, panLimit.y);
-
-        if (Input.GetButton("Fire3"))
-        {
-            if (Input.mousePosition.x != mouseX)
-            {
-                cameraRotationY = (Input.mousePosition.x - mouseX) * easeFactor * Time.deltaTime;
-
-                transform.Rotate(0, cameraRotationY, 0, Space.World);
-            }
-        }
+        MovementUpdate();
+        LimitPosition(); 
     }
 
-    private void LateUpdate()
+    void MovementUpdate()
     {
-        mouseX = Input.mousePosition.x;
+        Vector3 newPosition = new Vector3(inputAxis.x, 0, inputAxis.y);
+
+        if (mousePosition.y >= Screen.height - panBorderThickness) newPosition = Vector3.forward;
+        else if (mousePosition.y <= panBorderThickness) newPosition = Vector3.back;
+        else if (mousePosition.x >= Screen.width - panBorderThickness) newPosition = Vector3.right;
+        else if (mousePosition.x <= panBorderThickness) newPosition = Vector3.left;
+
+        newPosition *= panSpeed * Time.deltaTime;
+        newPosition = Quaternion.Euler(new Vector3(0f, transform.eulerAngles.y, 0f)) * newPosition;
+        newPosition = camTransform.InverseTransformDirection(newPosition);
+
+        camTransform.Translate(newPosition, Space.Self); 
+    }
+
+    void LimitPosition()
+    {
+        camTransform.position = new Vector3(Mathf.Clamp(camTransform.position.x, -panLimit.x, panLimit.x),
+            camTransform.position.y,
+            Mathf.Clamp(camTransform.position.z, -panLimit.y, panLimit.y));
+    }
+
+    public void Rotation()
+    {
+        camTransform.Rotate(Vector3.up, mouseAxis.x * Time.deltaTime * cameraRotationSpeed, Space.World); 
+    }
+
+    public void SetMouseAxis(Vector2 newAxis)
+    {
+        mouseAxis = newAxis; 
+    }
+
+    public void SetInputAxis(Vector2 newAxis)
+    {
+        inputAxis = newAxis;
     }
 }
