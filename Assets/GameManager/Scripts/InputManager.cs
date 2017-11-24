@@ -15,9 +15,10 @@ public class InputManager : MonoBehaviour
     CameraController cameraController;
     [SerializeField]
     CameraZoom cameraZoom; 
-    float scrollAxis; 
+    float scrollAxis;
+    float rotateAxis;
+    TODO Vector2 mouseAxis; 
     Vector2 inputAxis;
-    Vector2 mouseAxis; 
 
     private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
 
@@ -74,15 +75,14 @@ public class InputManager : MonoBehaviour
         cameraController.mousePosition = Input.mousePosition;
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
-        mouseAxis.x = Input.GetAxis("Mouse X");
-        mouseAxis.y = Input.GetAxis("Mouse Y");
+        rotateAxis = Input.GetAxis("Rotation");
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis);
-        cameraController.SetMouseAxis(mouseAxis);
+        cameraController.SetRotationAxis(rotateAxis); 
         cameraZoom.SetAxis(scrollAxis); 
 
-        if (Input.GetButton("Fire3")) cameraController.Rotation(); 
+        //if (Input.GetButton("Fire3")) cameraController.Rotation(); 
         #endregion
     }
 }
