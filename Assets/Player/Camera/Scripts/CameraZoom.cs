@@ -14,7 +14,8 @@ public class CameraZoom : MonoBehaviour
     float scrollAxis;
 
     [SerializeField]
-    LayerMask mask; 
+    LayerMask mask;
+    float maxDistance;
 
     [Header("Limits")]
     [SerializeField]
@@ -26,6 +27,7 @@ public class CameraZoom : MonoBehaviour
     void Start()
     {
         zoomCamTransform = transform;
+        maxDistance = minHeight; 
     }
 
     void Update()
@@ -57,7 +59,7 @@ public class CameraZoom : MonoBehaviour
     {
         Ray ray = new Ray(zoomCamTransform.position, Vector3.down);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, mask))
+        if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
             return (hit.point - zoomCamTransform.position).magnitude;
         }

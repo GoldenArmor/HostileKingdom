@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField]
+    bool gamePause;
+
     [Header("MouseInputsManager")]
     [SerializeField]
     MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
@@ -17,20 +20,27 @@ public class InputManager : MonoBehaviour
     CameraZoom cameraZoom; 
     float scrollAxis;
     float rotateAxis;
-    TODO Vector2 mouseAxis; 
+    float mouseAxis; 
     Vector2 inputAxis;
-
-    private bool pauseBool = false; //Booleano que determina si el juego está en pausa o no. 
 
     void Update()
     {
-        if (pauseBool == false) NoPaused(); //Si el juego no está pausado se ejecuta la función NoPaused().
-        if (pauseBool == true) Paused(); // Si el juego está pausado se ejecuta la función Paused().
+        if (Input.GetKeyDown(KeyCode.Escape)) gamePause = !gamePause;
+        if (gamePause == true)
+        {
+            if (Time.timeScale == 1.0f) Time.timeScale = 0.0f; 
+            Paused();
+        }
+        else
+        {
+            if(Time.timeScale != 1.0f) Time.timeScale = 1.0f;
+            NoPaused();
+        }
     }
 
     void Paused()
     {
-
+        
     }
 
     void NoPaused()
@@ -76,13 +86,17 @@ public class InputManager : MonoBehaviour
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
         rotateAxis = Input.GetAxis("Rotation");
+        mouseAxis = Input.GetAxis("Mouse X");
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis);
         cameraController.SetRotationAxis(rotateAxis); 
-        cameraZoom.SetAxis(scrollAxis); 
+        cameraZoom.SetAxis(scrollAxis);
 
-        //if (Input.GetButton("Fire3")) cameraController.Rotation(); 
+        if (Input.GetButton("Fire3"))
+        {
+            cameraController.SetMouseRotationAxis(mouseAxis);
+        }
         #endregion
     }
 }
