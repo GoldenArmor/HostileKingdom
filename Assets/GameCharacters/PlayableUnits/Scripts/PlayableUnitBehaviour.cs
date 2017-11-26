@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayableUnitBehaviour : Characters
 {
+    [Header("GOD Mode")]
+    public bool godMode;
+
     //public Animator anim;
     [SerializeField]
     CardsBehaviour cards;
@@ -165,9 +168,11 @@ public class PlayableUnitBehaviour : Characters
 
     public void PlayableUnitTakeDamage(float damage, GameObject autoTarget)
     {
-        hitPoints -= damage;
-        cards.UpdateLifeBar(hitPoints);
-
+        if (!godMode)
+        {
+            hitPoints -= damage;
+            cards.UpdateLifeBar(hitPoints);
+        }
         if (selectedTarget == null)
         {
             selectedTarget = autoTarget;
@@ -181,9 +186,9 @@ public class PlayableUnitBehaviour : Characters
         }
     }
 
-    public void ClickUpdate(Vector3 formationPosition) //When I click right button. It's called from the InputManager script.  
+    public void ClickUpdate(Vector3 formationPosition, Vector3 mousePosition) //When I click right button. It's called from the InputManager script.  
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
@@ -245,5 +250,41 @@ public class PlayableUnitBehaviour : Characters
             Gizmos.color = newColor;
             Gizmos.DrawSphere(agent.destination, newDestinationRadius);
        }
+    }
+
+    public void GodUpdate(Vector3 formationPosition, Vector3 mousePosition)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        {
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+                hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
+            {
+                if (selectedTarget != null)
+                {
+                    targetTransform = null;
+                    selectedTarget = null;
+                    characters = null;
+                }
+                newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
+                transform.position = hit.point + newFormationPosition;
+
+                SetMovement();
+                return;
+            }
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                if (hit.transform.gameObject != selectedTarget)
+                {
+                    targetTransform = hit.transform;
+                    selectedTarget = targetTransform.gameObject;
+                    characters = selectedTarget.GetComponent<Characters>();
+
+                    SetChase();
+                    return;
+                }
+            }
+        }
     }
 }

@@ -25,15 +25,13 @@ public class CameraController : MonoBehaviour
     float rotationAxis;
     float mouseRotationAxis; 
     Vector2 inputAxis;
-    [HideInInspector]
-    public Vector2 mousePosition;
 
     void Start()
     {
         camTransform = transform; 
     }
 
-    void MovementUpdate()
+    void MovementUpdate(Vector3 mousePosition)
     {
         Vector3 newPosition = new Vector3(inputAxis.x, 0, inputAxis.y);
 
@@ -65,10 +63,10 @@ public class CameraController : MonoBehaviour
         camTransform.Rotate(Vector3.up, mouseRotationAxis * Time.deltaTime * cameraRotationSpeed, Space.World);
     }
 
-    public void SetInputAxis(Vector2 newAxis)
+    public void SetInputAxis(Vector2 newAxis, Vector3 mousePosition)
     {
         inputAxis = newAxis;
-        MovementUpdate();
+        MovementUpdate(mousePosition);
         LimitPosition();
     }
 

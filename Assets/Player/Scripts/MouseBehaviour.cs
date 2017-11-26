@@ -12,6 +12,7 @@ public class MouseBehaviour : MonoBehaviour
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
+    public Vector3 mousePosition; 
 
     [Header("Drag Selection")]
     public bool isDragging; //Comprobar si estamos pulsando y arrastrando el ratón. 
@@ -43,26 +44,26 @@ public class MouseBehaviour : MonoBehaviour
     #region DragSelection
     void DragUpdate()
     {
-        if (Input.mousePosition.x < selectionBoxOrigin.x)
+        if (mousePosition.x < selectionBoxOrigin.x)
         {
-            selectionRect.xMin = Input.mousePosition.x;
+            selectionRect.xMin = mousePosition.x;
             selectionRect.xMax = selectionBoxOrigin.x;
         }
         else
         {
             selectionRect.xMin = selectionBoxOrigin.x;
-            selectionRect.xMax = Input.mousePosition.x;
+            selectionRect.xMax = mousePosition.x;
         }
 
-        if (Input.mousePosition.y < selectionBoxOrigin.y)
+        if (mousePosition.y < selectionBoxOrigin.y)
         {
-            selectionRect.yMin = Input.mousePosition.y;
+            selectionRect.yMin = mousePosition.y;
             selectionRect.yMax = selectionBoxOrigin.y;
         }
         else
         {
             selectionRect.yMin = selectionBoxOrigin.y;
-            selectionRect.yMax = Input.mousePosition.y;
+            selectionRect.yMax = mousePosition.y;
         }
 
         selectionBox.rectTransform.offsetMin = selectionRect.min;
@@ -106,12 +107,12 @@ public class MouseBehaviour : MonoBehaviour
 
     public void ClickState() 
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
             Debug.Log(hit.transform.name);
-            selectionBoxOrigin = Input.mousePosition;
+            selectionBoxOrigin = mousePosition;
             selectionRect = new Rect();
 
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
