@@ -35,6 +35,10 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     GameObject FogOfWar;
 
+    [Header("Tavern/Map")]
+    [SerializeField]
+    MapButton tavern; 
+
     void Update()
     {
         mousePosition = Input.mousePosition; 
@@ -198,5 +202,7 @@ public class InputManager : MonoBehaviour
             cameraController.SetMouseRotationAxis(mouseAxis);
         }
         #endregion
+
+        if (Input.GetKeyDown(KeyCode.M)) tavern.EnterTavern(); 
     }
 }
