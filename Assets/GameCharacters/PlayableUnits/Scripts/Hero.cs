@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : MonoBehaviour
+public class Hero : PlayableUnitBehaviour
 {
     float selectTarget;
     float currentSelectTarget;

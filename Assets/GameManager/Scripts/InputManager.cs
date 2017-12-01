@@ -37,7 +37,11 @@ public class InputManager : MonoBehaviour
 
     [Header("Tavern/Map")]
     [SerializeField]
-    MapButton tavern; 
+    MapButton tavern;
+
+    [Header("Characters")]
+    Hero hero; 
+
 
     void Update()
     {
