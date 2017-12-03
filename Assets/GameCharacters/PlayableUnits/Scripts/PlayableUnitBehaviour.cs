@@ -41,7 +41,7 @@ public class PlayableUnitBehaviour : Characters
 
     void Start()
     {
-        base.MyStart();
+        MyStart();
         if(cards != null)
         {
             cards.targetName.text = characterName;
@@ -50,9 +50,9 @@ public class PlayableUnitBehaviour : Characters
         }
     }
 
-    void Update()
+    public void UnitUpdate()
     {
-        base.MyUpdate();
+        MyUpdate();
         screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {

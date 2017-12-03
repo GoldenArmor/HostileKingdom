@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
     //LevelLogic levelLogic; 
-    Vector3 mousePosition; 
+    public static Vector3 mousePosition; 
     Vector3 formationPosition;
 
     [Header("CameraInputs")]
