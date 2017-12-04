@@ -12,6 +12,9 @@ public class Hero : PlayableUnitBehaviour
     float skillRadius;
     [SerializeField]
     Transform skillCircle;
+    float maxDistance = Mathf.Infinity;
+
+    LayerMask mask; 
 
     void Update()
     {
@@ -28,6 +31,14 @@ public class Hero : PlayableUnitBehaviour
     {
         Vector3 center = Camera.main.ScreenToWorldPoint(InputManager.mousePosition);
         skillCircle.position = new Vector3 (center.x, skillCircle.position.y, center.y);
+
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.mousePosition);
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, maxDistance, mask))
+        {
+            skillCircle.position = new Vector3(center.x, 0, center.z); 
+        }
     }
 
     void SelectTarget()
