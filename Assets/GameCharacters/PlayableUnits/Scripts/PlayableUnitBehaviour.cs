@@ -39,7 +39,7 @@ public class PlayableUnitBehaviour : Characters
     bool isAttacking; 
     bool canAttack;
 
-    void Start()
+    protected void UnitStart()
     {
         MyStart();
         if(cards != null)
@@ -50,7 +50,7 @@ public class PlayableUnitBehaviour : Characters
         }
     }
 
-    public void UnitUpdate()
+    protected void UnitUpdate()
     {
         MyUpdate();
         screenPosition = Camera.main.WorldToScreenPoint(transform.position);

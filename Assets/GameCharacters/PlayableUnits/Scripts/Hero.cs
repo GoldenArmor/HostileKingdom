@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class Hero : PlayableUnitBehaviour
 {
+    [SerializeField]
     float selectTarget;
     float currentSelectTarget;
     bool isDoingSkill = true;
@@ -12,9 +13,20 @@ public class Hero : PlayableUnitBehaviour
     float skillRadius;
     [SerializeField]
     Transform skillCircle;
-    float maxDistance = Mathf.Infinity;
+    float maxDistanceHero = Mathf.Infinity;
 
-    LayerMask mask; 
+    [SerializeField]
+    LayerMask heroMask;
+    [SerializeField]
+    float skillCircleRadius;
+
+    Collider[] hitColliders;
+
+    void Start()
+    {
+        UnitStart();
+        currentSelectTarget = selectTarget; 
+    }
 
     void Update()
     {
@@ -27,17 +39,14 @@ public class Hero : PlayableUnitBehaviour
         UnitUpdate();
     }
 
-    void SkillUpdate()
+    void CirclePositionUpdate()
     {
-        Vector3 center = Camera.main.ScreenToWorldPoint(InputManager.mousePosition);
-        skillCircle.position = new Vector3 (center.x, skillCircle.position.y, center.y);
-
         Ray ray = Camera.main.ScreenPointToRay(InputManager.mousePosition);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, maxDistance, mask))
+        if (Physics.Raycast(ray, out hit, maxDistanceHero, mask))
         {
-            skillCircle.position = new Vector3(center.x, 0, center.z); 
+            skillCircle.position = new Vector3(hit.point.x, skillCircle.position.y, hit.point.z); 
         }
     }
 
@@ -46,7 +55,19 @@ public class Hero : PlayableUnitBehaviour
         currentSelectTarget -= Time.deltaTime;
         if (currentSelectTarget < 0)
         {
-            AttackUpdate();
+            SkillUpdate();
         }
+    }
+
+    void SkillUpdate()
+    {
+        hitColliders = Physics.OverlapSphere(skillCircle.position, skillCircleRadius, heroMask);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            hitColliders[i].GetComponent<EnemyBehaviour>().TakeDamage(attack*5);
+        }
+        hitColliders = null;
+        currentSelectTarget = selectTarget;
+        isDoingSkill = false; 
     }
 }

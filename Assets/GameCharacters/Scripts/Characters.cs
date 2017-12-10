@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
@@ -25,13 +26,13 @@ public class Characters : MonoBehaviour
     public float distanceFromTarget = Mathf.Infinity;
 
     [Header("NavMeshAgent")]
-    [HideInInspector] public UnityEngine.AI.NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
 
     public LayerMask mask; 
 
     public virtual void MyStart()
     {
-        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
         hitPoints = startingHitPoints;
    
         SetIdle();
