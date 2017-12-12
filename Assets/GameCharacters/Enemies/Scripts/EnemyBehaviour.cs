@@ -21,12 +21,12 @@ public class EnemyBehaviour : Characters
 
     void Start()
     {
-        base.MyStart();
+        MyStart();
     }
 
     void Update()
     {
-        base.MyUpdate();
+        MyUpdate();
         if (selectedTarget == null && unitsCanAttack.Count > 0)
         {
             FindClosestObject();

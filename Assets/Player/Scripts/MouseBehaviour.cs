@@ -19,7 +19,14 @@ public class MouseBehaviour : MonoBehaviour
     public Image selectionBox;
     Vector2 selectionBoxOrigin;
     Rect selectionRect;
-    public bool multipleUnitSelection = false;    
+    public bool multipleUnitSelection = false;
+
+    Camera mainCamera;
+
+    void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     void Update()
      {
@@ -78,7 +85,7 @@ public class MouseBehaviour : MonoBehaviour
         
         for (int i = 0; i < selectableUnits.Count; i++)
         {
-            if (selectionRect.Contains(Camera.main.WorldToScreenPoint(selectableUnits[i].transform.position)))
+            if (selectionRect.Contains(mainCamera.WorldToScreenPoint(selectableUnits[i].transform.position)))
             {
                 if (selectableUnits[i].isSelected)
                     return;
@@ -107,7 +114,7 @@ public class MouseBehaviour : MonoBehaviour
 
     public void ClickState() 
     {
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
