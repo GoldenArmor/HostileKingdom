@@ -33,13 +33,14 @@ public class PlayableUnitBehaviour : Characters
     [SerializeField]
     MouseBehaviour mouse;
     RaycastHit hit;
+    protected Camera mainCamera;
 
     [Header("EnemyInteraction")]
     Characters characters;
     bool isAttacking; 
     bool canAttack;
 
-    protected void UnitStart()
+    protected virtual void UnitStart()
     {
         MyStart();
         if(cards != null)
@@ -48,12 +49,13 @@ public class PlayableUnitBehaviour : Characters
             cards.startingHealth = startingHitPoints;
             cards.MyStart();
         }
+        mainCamera = Camera.main;
     }
 
-    protected void UnitUpdate()
+    protected virtual void UnitUpdate()
     {
         MyUpdate();
-        screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        screenPosition = mainCamera.WorldToScreenPoint(transform.position);
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
             isOnScreen = true;
@@ -188,7 +190,7 @@ public class PlayableUnitBehaviour : Characters
 
     public void ClickUpdate(Vector3 formationPosition, Vector3 mousePosition) //When I click right button. It's called from the InputManager script.  
     {
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {
@@ -223,7 +225,7 @@ public class PlayableUnitBehaviour : Characters
     }
     #endregion
 
-    void EnemyDies()
+    protected void EnemyDies()
     {
         distanceFromTarget = Mathf.Infinity;
         if (characters.isDead == false) characters.SetDead();
@@ -254,7 +256,7 @@ public class PlayableUnitBehaviour : Characters
 
     public void GodUpdate(Vector3 formationPosition, Vector3 mousePosition)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {

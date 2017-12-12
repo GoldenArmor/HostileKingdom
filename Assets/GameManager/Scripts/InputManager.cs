@@ -39,9 +39,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MapButton tavern;
 
-    [Header("Characters")]
-    Hero hero; 
-
+    [Header("Skills")]
+    [SerializeField]
+    Hero hero;
 
     void Update()
     {
@@ -153,7 +153,40 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        mouse.mousePosition = mousePosition; 
+        mouse.mousePosition = mousePosition;
+
+        #region CameraControllerAndZoom
+        inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
+        rotateAxis = Input.GetAxis("Rotation");
+        mouseAxis = Input.GetAxis("Mouse X");
+        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+
+        cameraController.SetInputAxis(inputAxis, mousePosition);
+        cameraController.SetRotationAxis(rotateAxis);
+        cameraZoom.SetAxis(scrollAxis);
+
+        if (Input.GetButton("Fire3"))
+        {
+            cameraController.SetMouseRotationAxis(mouseAxis);
+        }
+        #endregion
+
+        if (hero.isUpdatingCirclePosition)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                hero.isDoingSkill = true;
+                return;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                hero.isUpdatingCirclePosition = false;
+                return; 
+            }
+        }
+
+        #region Selection&MovementBehaviours
         if (Input.GetMouseButton(0)) mouse.isDragging = true;
         if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
         if (Input.GetMouseButtonDown(0))
@@ -184,26 +217,21 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        #region SceneManager
         /*if (Input.GetKey(KeyCode.AltGr))
         {
             if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
             if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
             if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
         }*/
-        #region CameraControllerAndZoom
-        inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
-        rotateAxis = Input.GetAxis("Rotation");
-        mouseAxis = Input.GetAxis("Mouse X");
-        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+        #endregion
 
-        cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraController.SetRotationAxis(rotateAxis); 
-        cameraZoom.SetAxis(scrollAxis);
-
-        if (Input.GetButton("Fire3"))
+        #region PlayableUnitSkills
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
-            cameraController.SetMouseRotationAxis(mouseAxis);
+            hero.isUpdatingCirclePosition = true;
         }
         #endregion
 
