@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : Characters
+public class EnemyBehaviour : Characters, IEnemy
 {
     //public Animator anim;
 

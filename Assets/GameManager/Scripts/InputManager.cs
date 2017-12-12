@@ -153,6 +153,20 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
+        if (hero.isUpdatingCirclePosition && hero.isActiveAndEnabled)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                hero.isDoingSkill = true;
+                return;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                hero.isUpdatingCirclePosition = false;
+                return;
+            }
+        }
+
         mouse.mousePosition = mousePosition;
 
         #region CameraControllerAndZoom
@@ -171,20 +185,6 @@ public class InputManager : MonoBehaviour
             cameraController.SetMouseRotationAxis(mouseAxis);
         }
         #endregion
-
-        if (hero.isUpdatingCirclePosition)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                hero.isDoingSkill = true;
-                return;
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                hero.isUpdatingCirclePosition = false;
-                return; 
-            }
-        }
 
         #region Selection&MovementBehaviours
         if (Input.GetMouseButton(0)) mouse.isDragging = true;

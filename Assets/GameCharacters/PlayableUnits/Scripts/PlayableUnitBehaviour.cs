@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableUnitBehaviour : Characters
+public class PlayableUnitBehaviour : Characters, IPlayableUnit
 {
     [Header("GOD Mode")]
     public bool godMode;
@@ -37,7 +37,7 @@ public class PlayableUnitBehaviour : Characters
 
     [Header("EnemyInteraction")]
     Characters characters;
-    bool isAttacking; 
+    protected bool isAttacking; 
     bool canAttack;
 
     protected virtual void UnitStart()
@@ -225,7 +225,7 @@ public class PlayableUnitBehaviour : Characters
     }
     #endregion
 
-    protected void EnemyDies()
+    void EnemyDies()
     {
         distanceFromTarget = Mathf.Infinity;
         if (characters.isDead == false) characters.SetDead();

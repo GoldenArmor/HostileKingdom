@@ -72,13 +72,14 @@ public class Hero : PlayableUnitBehaviour
 
     void SkillUpdate()
     {
-        hitColliders = Physics.OverlapSphere(skillCircle.position, skillCircleRadius, attackMask);
+        hitColliders = Physics.OverlapSphere(skillCircle.position, skillCircleRadius, attackMask); 
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            hitColliders[i].GetComponent<EnemyBehaviour>().TakeDamage(attack*5);
-            if (hitColliders[i].GetComponent<EnemyBehaviour>().hitPoints <= 0)
+            EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
+            attackedTarget.TakeDamage(attack*5);
+            if (attackedTarget.hitPoints <= 0)
             {
-                EnemyDies();
+                EnemyDies(attackedTarget);
                 return;
             }
         }
@@ -86,7 +87,20 @@ public class Hero : PlayableUnitBehaviour
         currentSelectTarget = selectTarget;
         isDoingSkill = false;
         isUpdatingCirclePosition = false;
-        Debug.Log("Skill Damage!");
+    }
+
+    void EnemyDies(Characters attackedTarget)
+    {
+        if (attackedTarget.isDead == false) attackedTarget.SetDead();
+        attackedTarget = null;
+        isAttacking = false;
+        return;
+    }
+
+    public override void SetDead()
+    {
+        skillCircle.GetComponent<SpriteRenderer>().enabled = false;
+        base.SetDead(); 
     }
 
     void OnDrawGizmos()
