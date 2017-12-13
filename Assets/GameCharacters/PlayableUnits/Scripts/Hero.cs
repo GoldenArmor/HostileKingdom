@@ -5,30 +5,23 @@ using UnityEngine;
 public class Hero : PlayableUnitBehaviour
 {
     [Header("Skills")]
-    [SerializeField]
-    float selectTarget;
-    float currentSelectTarget;
-    public bool isDoingSkill;
+    bool isDoingSkill;
 
     [SerializeField]
     Transform skillCircle;
-    float maxDistanceHero = Mathf.Infinity;
 
     [SerializeField]
     LayerMask attackMask;
     [SerializeField]
-    LayerMask circleMask;
-    [SerializeField]
     float skillCircleRadius;
+    SpriteRenderer circleRenderer;
 
     Collider[] hitColliders;
 
-    public bool isUpdatingCirclePosition;
-
     void Start()
     {
-        UnitStart(); 
-        currentSelectTarget = selectTarget; 
+        UnitStart();
+        circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -38,41 +31,13 @@ public class Hero : PlayableUnitBehaviour
             SkillUpdate();
             return;
         }
-        if (isUpdatingCirclePosition)
-        {
-            skillCircle.GetComponent<SpriteRenderer>().enabled = true;
-            CirclePositionUpdate();
-        }
-        else
-        {
-            skillCircle.GetComponent<SpriteRenderer>().enabled = false;
-        }
         UnitUpdate();
     }
 
-    void CirclePositionUpdate()
+    public void SkillUpdate()
     {
-        Ray ray = mainCamera.ScreenPointToRay(InputManager.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, maxDistanceHero, circleMask))
-        {
-            skillCircle.position = new Vector3(hit.point.x, skillCircle.position.y, hit.point.z); 
-        }
-    }
-
-    void SelectTarget()
-    {
-        currentSelectTarget -= Time.deltaTime;
-        if (currentSelectTarget < 0)
-        {
-            SkillUpdate();
-        }
-    }
-
-    void SkillUpdate()
-    {
-        hitColliders = Physics.OverlapSphere(skillCircle.position, skillCircleRadius, attackMask); 
+        circleRenderer.enabled = true;
+        hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, attackMask); 
         for (int i = 0; i < hitColliders.Length; i++)
         {
             EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
@@ -84,9 +49,8 @@ public class Hero : PlayableUnitBehaviour
             }
         }
         hitColliders = null;
-        currentSelectTarget = selectTarget;
         isDoingSkill = false;
-        isUpdatingCirclePosition = false;
+        circleRenderer.enabled = false; 
     }
 
     void EnemyDies(Characters attackedTarget)
@@ -99,7 +63,7 @@ public class Hero : PlayableUnitBehaviour
 
     public override void SetDead()
     {
-        skillCircle.GetComponent<SpriteRenderer>().enabled = false;
+        circleRenderer.enabled = false;
         base.SetDead(); 
     }
 
@@ -108,6 +72,6 @@ public class Hero : PlayableUnitBehaviour
         Color newColor = Color.magenta;
         newColor.a = 0.2f;
         Gizmos.color = newColor;
-        Gizmos.DrawSphere(skillCircle.position, skillCircleRadius);
+        Gizmos.DrawSphere(transform.position, skillCircleRadius);
     }
 }
