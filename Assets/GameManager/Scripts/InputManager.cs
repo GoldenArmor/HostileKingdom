@@ -42,6 +42,9 @@ public class InputManager : MonoBehaviour
     [Header("Skills")]
     [SerializeField]
     Hero hero;
+    [SerializeField]
+    Mage mage;
+
 
     void Update()
     {
@@ -153,16 +156,16 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if (hero.isUpdatingCirclePosition && hero.isActiveAndEnabled)
+        if (mage.isUpdatingCirclePosition && mage.isActiveAndEnabled)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                hero.isDoingSkill = true;
+                mage.isDoingSkill = true;
                 return;
             }
             if (Input.GetMouseButtonDown(0))
             {
-                hero.isUpdatingCirclePosition = false;
+                mage.isUpdatingCirclePosition = false;
                 return;
             }
         }
@@ -231,7 +234,11 @@ public class InputManager : MonoBehaviour
         #region PlayableUnitSkills
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
-            hero.isUpdatingCirclePosition = true;
+            hero.SkillUpdate();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            mage.isUpdatingCirclePosition = true;
         }
         #endregion
 
