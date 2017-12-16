@@ -50,7 +50,7 @@ public class CameraZoom : MonoBehaviour
             difference = targetHeight - distanceToGround;
         }
 
-        zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward,
+        zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
             new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
             Time.deltaTime * heightDamp);
         /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z * zoomPosition),
