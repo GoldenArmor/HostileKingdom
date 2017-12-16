@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
+    Mouse mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
     //LevelLogic levelLogic; 
     public static Vector3 mousePosition; 
     Vector3 formationPosition;
@@ -166,7 +166,6 @@ public class InputManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 mage.isUpdatingCirclePosition = false;
-                return;
             }
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mage : PlayableUnitBehaviour
 {
-    [Header("Skills")]
+    [Header("Skill")]
     [SerializeField]
     float selectTarget;
     float currentSelectTarget;
@@ -42,6 +42,7 @@ public class Mage : PlayableUnitBehaviour
         }
         if (isUpdatingCirclePosition)
         {
+            mouse.isDoingSkill = true;
             circleRenderer.enabled = true;
             CirclePositionUpdate();
         }

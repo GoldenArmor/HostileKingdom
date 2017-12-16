@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Hero : PlayableUnitBehaviour
 {
-    [Header("Skills")]
-    bool isDoingSkill;
-
+    [Header("Skill")]
     [SerializeField]
     Transform skillCircle;
+
+    bool isDoingSkill;
 
     [SerializeField]
     LayerMask attackMask;

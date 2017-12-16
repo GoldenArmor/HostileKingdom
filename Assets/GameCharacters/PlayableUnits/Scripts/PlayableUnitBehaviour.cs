@@ -31,7 +31,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     public Vector2 screenPosition;
     float maxDistance = Mathf.Infinity;
     [SerializeField]
-    MouseBehaviour mouse;
+    protected Mouse mouse;
     RaycastHit hit;
     protected Camera mainCamera;
 

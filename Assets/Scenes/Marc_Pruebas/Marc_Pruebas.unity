@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1335352971}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3651,7 +3651,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 26158180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 515, y: -295.00003, z: 0}
+  m_LocalPosition: {x: 515, y: -299.4878, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1483078738}
@@ -14673,7 +14673,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 1321214210}
   scalingMode: 0
-  randomSeed: 611024716
+  randomSeed: -1024423397
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21620,12 +21620,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &635769067 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
+--- !u!1 &578210872 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514,
     type: 2}
   m_PrefabInternal: {fileID: 1514331402}
-  m_Script: {fileID: 11500000, guid: b017746b5968ae2418ce4a37a1d293e6, type: 3}
+--- !u!114 &578210873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578210872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ed7a4aa907b8948b7f29fa14ed3482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  startingHitPoints: 100
+  hitPoints: 0
+  armor: 0
+  attack: 5
+  magicAttack: 0
+  magicArmor: 0
+  scope: 4.25
+  characterName: Hero
+  isDead: 0
+  selectedTarget: {fileID: 0}
+  targetTransform: {fileID: 0}
+  distanceFromTarget: Infinity
+  agent: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  godMode: 0
+  cards: {fileID: 1958072947}
+  isSelected: 0
+  cooldownAttack: 1.5
+  timeCounter: 0
+  chaseRange: 23
+  newDestinationRadius: 2
+  isOnScreen: 0
+  screenPosition: {x: 0, y: 0}
+  mouse: {fileID: 144026997}
+  skillCircle: {fileID: 164989476}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  skillCircleRadius: 6
 --- !u!1 &660238419
 GameObject:
   m_ObjectHideFlags: 0
@@ -21797,12 +21839,6 @@ Transform:
   m_Father: {fileID: 1547694631}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &734037680 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514,
-    type: 2}
-  m_PrefabInternal: {fileID: 1872160098}
-  m_Script: {fileID: 11500000, guid: b017746b5968ae2418ce4a37a1d293e6, type: 3}
 --- !u!1 &770037006
 GameObject:
   m_ObjectHideFlags: 0
@@ -21947,7 +21983,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1725652061
+  randomSeed: -669226656
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -28812,6 +28848,60 @@ MonoBehaviour:
   maskBar: {fileID: 11587662}
   backgroundBar: {fileID: 1525673118}
   startingHealth: 0
+--- !u!1 &894671768 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1402791691210402, guid: 9151be58ca5680340b34b75fd5a14514,
+    type: 2}
+  m_PrefabInternal: {fileID: 1872160098}
+--- !u!114 &894671769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894671768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7caa90b6e0342148aa9bae1439c5906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  startingHitPoints: 100
+  hitPoints: 0
+  armor: 0
+  attack: 5
+  magicAttack: 0
+  magicArmor: 0
+  scope: 4.25
+  characterName: Mage
+  isDead: 0
+  selectedTarget: {fileID: 0}
+  targetTransform: {fileID: 0}
+  distanceFromTarget: Infinity
+  agent: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  godMode: 0
+  cards: {fileID: 890092873}
+  isSelected: 0
+  cooldownAttack: 1.5
+  timeCounter: 0
+  chaseRange: 23
+  newDestinationRadius: 2
+  isOnScreen: 0
+  screenPosition: {x: 0, y: 0}
+  mouse: {fileID: 144026997}
+  selectTarget: 6.5
+  isDoingSkill: 0
+  skillCircle: {fileID: 2058464881}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  circleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  skillCircleRadius: 7
+  isUpdatingCirclePosition: 0
 --- !u!1 &945872615
 GameObject:
   m_ObjectHideFlags: 0
@@ -32833,7 +32923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4581878922698626, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4581878922698626, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_LocalPosition.z
@@ -33015,12 +33105,12 @@ Prefab:
         type: 2}
       propertyPath: unitsCanSelect.Array.data[2]
       value: 
-      objectReference: {fileID: 734037680}
+      objectReference: {fileID: 0}
     - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: unitsCanSelect.Array.data[3]
       value: 
-      objectReference: {fileID: 635769067}
+      objectReference: {fileID: 0}
     - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: selectableUnits.Array.data[0]
@@ -33035,12 +33125,12 @@ Prefab:
         type: 2}
       propertyPath: selectableUnits.Array.data[2]
       value: 
-      objectReference: {fileID: 734037680}
+      objectReference: {fileID: 894671769}
     - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: selectableUnits.Array.data[3]
       value: 
-      objectReference: {fileID: 635769067}
+      objectReference: {fileID: 578210873}
     - target: {fileID: 114759064725502444, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: cameraController
@@ -33351,7 +33441,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1137897666
+  randomSeed: -332509546
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -40725,7 +40815,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1514643904
@@ -47809,7 +47900,7 @@ MonoBehaviour:
   isOnScreen: 0
   screenPosition: {x: 0, y: 0}
   mouse: {fileID: 144026997}
-  skillCircle: {fileID: 2058464881}
+  skillCircle: {fileID: 164989476}
   attackMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -48174,7 +48265,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1111894307
+  randomSeed: 1270420605
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -55083,7 +55174,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114903765241562076, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9151be58ca5680340b34b75fd5a14514, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1879783170
@@ -55318,7 +55410,7 @@ MonoBehaviour:
   mouse: {fileID: 144026997}
   selectTarget: 6.5
   isDoingSkill: 0
-  skillCircle: {fileID: 164989476}
+  skillCircle: {fileID: 2058464881}
   attackMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -55802,8 +55894,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029020059}
   m_LocalRotation: {x: -0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 336, y: 108.89445, z: -80.61017}
-  m_LocalScale: {x: 0.525, y: 0.525, z: 0.525}
+  m_LocalPosition: {x: 410, y: 150.9673, z: -122.68303}
+  m_LocalScale: {x: 0.640625, y: 0.640625, z: 0.640625}
   m_Children:
   - {fileID: 1391003944}
   - {fileID: 166212990}

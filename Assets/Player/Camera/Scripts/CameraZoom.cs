@@ -42,7 +42,7 @@ public class CameraZoom : MonoBehaviour
 
         zoomPosition = Mathf.Clamp01(zoomPosition);
 
-        float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomCamTransform.position.y);
+        float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPosition);
         float difference = 0; 
 
         if (distanceToGround != targetHeight)
@@ -50,14 +50,14 @@ public class CameraZoom : MonoBehaviour
             difference = targetHeight - distanceToGround;
         }
 
-        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
+        zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward,
             new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
-            Time.deltaTime * heightDamp);*/
+            Time.deltaTime * heightDamp);
         /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z * zoomPosition),
             Time.deltaTime * heightDamp);*/
 
-        zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomPosition),
-            Time.deltaTime * heightDamp);
+        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward, new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomPosition),
+            Time.deltaTime * heightDamp);*/
     }
 
     float DistanceToGround()
