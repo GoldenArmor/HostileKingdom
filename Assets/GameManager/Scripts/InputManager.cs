@@ -258,6 +258,6 @@ public class InputManager : MonoBehaviour
         }
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.M)) levelLogic.StartLoad(3);  
+        if (Input.GetKeyDown(KeyCode.M)) levelLogic.StartLoad(4);  
     }
 }

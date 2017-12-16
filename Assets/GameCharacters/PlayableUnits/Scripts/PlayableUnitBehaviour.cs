@@ -36,7 +36,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     protected Camera mainCamera;
 
     [Header("EnemyInteraction")]
-    Characters characters;
+    EnemyBehaviour selectedTarget;
     protected bool isAttacking; 
     bool canAttack;
 
@@ -55,6 +55,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     protected virtual void UnitUpdate()
     {
         MyUpdate();
+        if (selectedTarget != null) CalculateDistanceFromTarget();
         screenPosition = mainCamera.WorldToScreenPoint(transform.position);
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
@@ -74,7 +75,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     {
         if (isAttacking)
         {
-            if (characters.hitPoints <= 0)
+            if (selectedTarget.hitPoints <= 0)
             {
                 EnemyDies();
                 return;
@@ -125,7 +126,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         {
             if (!isAttacking) isAttacking = true; 
             canAttack = false;
-            selectedTarget.GetComponent<EnemyBehaviour>().TakeDamage(attack);
+            selectedTarget.TakeDamage(attack);
 
             timeCounter = 0;
             SetIdle();
@@ -168,7 +169,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
 
     #region PublicVoids
 
-    public void PlayableUnitTakeDamage(float damage, GameObject autoTarget)
+    public void PlayableUnitTakeDamage(float damage, EnemyBehaviour autoTarget)
     {
         if (!godMode)
         {
@@ -178,7 +179,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         if (selectedTarget == null)
         {
             selectedTarget = autoTarget;
-            characters = selectedTarget.GetComponent<Characters>();
             if (!isAttacking)
             {
                 canAttack = true;
@@ -201,7 +201,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 {
                     targetTransform = null;
                     selectedTarget = null;
-                    characters = null; 
                 }
                 newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
                 agent.SetDestination(hit.point + newFormationPosition);
@@ -214,8 +213,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 if (hit.transform.gameObject != selectedTarget)
                 {
                     targetTransform = hit.transform;
-                    selectedTarget = targetTransform.gameObject;
-                    characters = selectedTarget.GetComponent<Characters>();
+                    selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
 
                     SetChase();
                     return;
@@ -228,8 +226,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     void EnemyDies()
     {
         distanceFromTarget = Mathf.Infinity;
-        if (characters.isDead == false) characters.SetDead();
-        characters = null;
+        if (selectedTarget.isDead == false) selectedTarget.SetDead();
         targetTransform = null;
         selectedTarget = null;
         isAttacking = false;
@@ -267,7 +264,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 {
                     targetTransform = null;
                     selectedTarget = null;
-                    characters = null;
                 }
                 newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
                 transform.position = hit.point + newFormationPosition;
@@ -280,8 +276,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 if (hit.transform.gameObject != selectedTarget)
                 {
                     targetTransform = hit.transform;
-                    selectedTarget = targetTransform.gameObject;
-                    characters = selectedTarget.GetComponent<Characters>();
+                    selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
 
                     SetChase();
                     return;
@@ -289,4 +284,12 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
             }
         }
     }
+
+    #region CalculationVoids
+    void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
+    {
+        targetTransform = selectedTarget.transform;
+        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
+    }
+    #endregion
 }

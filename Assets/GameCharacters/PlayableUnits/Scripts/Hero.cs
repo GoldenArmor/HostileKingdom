@@ -53,9 +53,13 @@ public class Hero : PlayableUnitBehaviour
         circleRenderer.enabled = false; 
     }
 
-    void EnemyDies(Characters attackedTarget)
+    void EnemyDies(EnemyBehaviour attackedTarget)
     {
-        if (attackedTarget.isDead == false) attackedTarget.SetDead();
+        if (attackedTarget.isDead == false)
+        {
+            attackedTarget.enemiesManager.enemiesCount.Remove(attackedTarget); 
+            attackedTarget.SetDead();
+        }
         attackedTarget = null;
         isAttacking = false;
         return;

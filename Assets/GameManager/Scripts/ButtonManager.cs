@@ -60,4 +60,8 @@ public class ButtonManager : MonoBehaviour
         levelLogic.StartLoad(6); 
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

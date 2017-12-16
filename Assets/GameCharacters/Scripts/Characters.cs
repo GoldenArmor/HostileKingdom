@@ -21,7 +21,6 @@ public class Characters : MonoBehaviour
     [HideInInspector] public bool isDead = false;
 
     [Header("CharactersInteraction")]
-    public GameObject selectedTarget;
     public Transform targetTransform;
     public float distanceFromTarget = Mathf.Infinity;
 
@@ -40,8 +39,6 @@ public class Characters : MonoBehaviour
 
     public virtual void MyUpdate()
     {
-        if (selectedTarget != null) CalculateDistanceFromTarget();  
-
         switch (state)
         {
             case UnitState.Idle:
@@ -136,12 +133,6 @@ public class Characters : MonoBehaviour
     #endregion
 
     #region CalculationVoids
-    public virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
-    {
-        targetTransform = selectedTarget.transform;
-        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
-    }
-
     public virtual void LookAtTarget()
     {
         Vector3 lookDir = targetTransform.position - transform.position;
