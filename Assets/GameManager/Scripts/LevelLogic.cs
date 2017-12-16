@@ -10,17 +10,21 @@ public class LevelLogic : MonoBehaviour
     public int backScene;
     public int currentScene;
     public int nextScene;
-    private int managerScene;
-    private int sceneCountInBuildSettings;
+    int managerScene;
+    int sceneCountInBuildSettings;
+
     [Header("Loader")]
-    private int sceneToLoad;
-    private bool loading = false;
-    private AsyncOperation loadAsync = null;
-    private AsyncOperation unloadAsync = null;
-    private float fadeTime = 1.0f;
+    int sceneToLoad;
+    bool loading = false;
+    AsyncOperation loadAsync = null;
+    AsyncOperation unloadAsync = null;
+    float fadeTime = 1.0f;
+
     [Header("UI")]
-    public Text percentText;
-    public Image blackScreen;
+    [SerializeField]
+    Text percentText;
+    [SerializeField]
+    Image blackScreen;
 
     void Start()
     {
@@ -53,7 +57,7 @@ public class LevelLogic : MonoBehaviour
         if (loading) return;
         loading = true;
         sceneToLoad = index;
-        //FadeOut();
+        FadeOut();
     }
 
     void Load()
@@ -68,32 +72,31 @@ public class LevelLogic : MonoBehaviour
         if (currentScene != managerScene) unloadAsync = SceneManager.UnloadSceneAsync(currentScene);
         loadAsync = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
 
-        StartCoroutine(this.Loading());
+        StartCoroutine(Loading());
     }
 
-    /*void FadeIn()
+    void FadeIn()
     {
         blackScreen.CrossFadeAlpha(0, fadeTime, true);
     }
     void FadeOut()
-    {
+    { 
         blackScreen.CrossFadeAlpha(1.0f, fadeTime, true);
         StartCoroutine(WaitForFade());
-    }*/
+    }
 
     IEnumerator Loading()
     {
         while (loading)
         {
             percentText.text = (loadAsync.progress * 100).ToString() + "%";
-            //Debug.Log(loadAsync.progress * 100);
             if ((unloadAsync == null || unloadAsync.isDone) && loadAsync.isDone)
             {
                 percentText.text = "";
                 unloadAsync = null;
                 loadAsync = null;
 
-                //FadeIn();
+                FadeIn();
 
                 SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(sceneToLoad));
                 UpdateSceneState();

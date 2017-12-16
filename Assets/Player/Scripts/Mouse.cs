@@ -26,6 +26,9 @@ public class Mouse : MonoBehaviour
 
     Camera mainCamera;
 
+    [SerializeField]
+    GameObject looseScreen; 
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -48,6 +51,11 @@ public class Mouse : MonoBehaviour
             {
                 selectedUnits[i].isSelected = true;
             }
+        }
+
+        if (selectableUnits == null)
+        {
+            looseScreen.SetActive(true); 
         }
      }
 

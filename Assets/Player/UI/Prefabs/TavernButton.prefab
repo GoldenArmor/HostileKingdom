@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222948476246230078}
   - component: {fileID: 114476652082059892}
   - component: {fileID: 114117900875919092}
-  - component: {fileID: 114052176472681440}
   m_Layer: 5
   m_Name: TavernButton
   m_TagString: Untagged
@@ -47,17 +46,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114052176472681440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1393258086084292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01fa38c7c26b504419d90cf24f83c798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114117900875919092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,8 +85,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114052176472681440}
-        m_MethodName: ExitTavern
+      - m_Target: {fileID: 11500000, guid: 01fa38c7c26b504419d90cf24f83c798, type: 3}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

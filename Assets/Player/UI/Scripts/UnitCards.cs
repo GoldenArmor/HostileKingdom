@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardsBehaviour : MonoBehaviour
+public class UnitCards : MonoBehaviour
 {
     [Header("Components")]
     public Text targetName;

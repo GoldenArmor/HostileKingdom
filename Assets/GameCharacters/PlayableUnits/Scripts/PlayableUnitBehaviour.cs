@@ -9,7 +9,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
 
     //public Animator anim;
     [SerializeField]
-    CardsBehaviour cards;
+    UnitCards cards;
     public bool isSelected = false;
 
     [Header("Timers")]
