@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
-    Animator anim; 
+    Animator anim;
+    [SerializeField]
+    AudioManager audioManager; 
 
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
     public UnitState state;
@@ -13,13 +15,18 @@ public class Characters : MonoBehaviour
     [Header("Stats")]
     public float startingHitPoints;
     public float hitPoints;
-    public float armor;
+    [SerializeField]
+    float armor;
     public float attack;
-    public float magicAttack;
-    public float magicArmor;
+    [SerializeField]
+    float magicAttack;
+    [SerializeField]
+    float magicArmor;
     public float scope;
     public string characterName;
-    private float rotateSpeed = 125f;
+    float rotateSpeed = 125f;
+    float footstepsCounter;
+    int randomAudioClip; 
     [HideInInspector] public bool isDead = false;
 
     [Header("CharactersInteraction")]
@@ -34,6 +41,7 @@ public class Characters : MonoBehaviour
     public virtual void MyStart()
     {
         anim = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>(); 
         agent = GetComponent<NavMeshAgent>();
         hitPoints = startingHitPoints;
    
@@ -77,7 +85,7 @@ public class Characters : MonoBehaviour
 
     public virtual void ChaseUpdate()
     {
-
+        PlayFootsteps(); 
     }
 
     public virtual void AttackUpdate()
@@ -144,7 +152,15 @@ public class Characters : MonoBehaviour
     }
     #endregion
 
-    #region TakeDamage
-
-    #endregion
+    protected void PlayFootsteps()
+    {
+        footstepsCounter += Time.deltaTime;
+        randomAudioClip = Random.Range(0, 2); 
+        if (footstepsCounter >= audioManager.sounds[randomAudioClip].clip.length) audioManager.sounds[randomAudioClip].playingSound = false;
+        if (audioManager.sounds[randomAudioClip].playingSound == false)
+        {
+            audioManager.Play(randomAudioClip); 
+            footstepsCounter = 0; 
+        }
+    }
 }

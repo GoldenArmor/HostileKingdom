@@ -6,37 +6,32 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds; 
 
-	void Awake ()
-    {
-		foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop; 
-
-            if (s.getRandomValues)
-            {
-                s.source.volume = UnityEngine.Random.Range(s.volume - 0.25f, s.volume + 0.25f);
-                s.source.pitch = UnityEngine.Random.Range(s.pitch - 0.2f, s.pitch + 0.2f);
-            }
-        }
-	}
-
     void Start()
     {
         //Sonidos que quiero playear al principio del juego
     }
 
-    public void Play(string name)
+    public void Play(int index)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        Sound currentSound = sounds[index]; 
+        audioSource.clip = currentSound.clip;
+
+        audioSource.volume = currentSound.volume;
+        audioSource.pitch = currentSound.pitch;
+
+        if (currentSound.getRandomValues)
         {
-            return; 
+            audioSource.volume = UnityEngine.Random.Range(currentSound.volume - 0.25f, currentSound.volume + 0.25f);
+            audioSource.pitch = UnityEngine.Random.Range(currentSound.pitch - 0.2f, currentSound.pitch + 0.2f);
         }
-        s.source.Play(); 
+
+        audioSource.minDistance = currentSound.minRollOff;
+        audioSource.maxDistance = currentSound.maxRollOff;
+        audioSource.loop = currentSound.loop;
+        currentSound.playingSound = true;
+
+        audioSource.Play();
+        Destroy(audioSource, currentSound.clip.length); 
     }
 }

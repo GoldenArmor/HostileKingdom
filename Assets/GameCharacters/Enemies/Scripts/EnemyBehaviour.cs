@@ -80,18 +80,21 @@ public class EnemyBehaviour : Characters, IEnemy
 
     public override void ChaseUpdate()
     {
+        base.ChaseUpdate();
         if (selectedTarget != null)
         {
             agent.SetDestination(targetTransform.position);
 
             if (distanceFromTarget < scope)
             {
+                PlayFootsteps(); 
                 SetAttack();
                 return;
             }
         }
         else
         {
+            PlayFootsteps(); 
             SetIdle();
             return; 
         }

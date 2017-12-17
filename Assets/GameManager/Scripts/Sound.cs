@@ -4,6 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+    [HideInInspector]
+    public int index; 
+
     public string name; 
 
     public AudioClip clip;
@@ -15,8 +18,13 @@ public class Sound
     [Range(0.1f, 3f)]
     public float pitch;
 
-    public bool loop;
+    [HideInInspector]
+    public bool playingSound;
+
+    public float maxRollOff;
+    public float minRollOff; 
 
     [HideInInspector]
     public AudioSource source;
+    public bool loop;
 }

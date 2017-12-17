@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 95738753889881808}
   - component: {fileID: 195648700682767814}
   - component: {fileID: 114279081308468110}
+  - component: {fileID: 114090256964486522}
   m_Layer: 10
   m_Name: Wolf
   m_TagString: Enemy
@@ -892,6 +893,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114090256964486522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1266607945923984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1db2ac13a11bcb4793a3bf800d71092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Run
+    clip: {fileID: 8300000, guid: deb49ca68f39d0d4686975a7e2dfde5d, type: 3}
+    getRandomValues: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playingSound: 0
+    source: {fileID: 0}
 --- !u!114 &114279081308468110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1026,8 +1047,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 5
-  m_Acceleration: 10
+  m_Speed: 15
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 720
   m_StoppingDistance: 0
