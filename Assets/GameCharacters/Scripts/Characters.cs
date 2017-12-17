@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
+    Animator anim; 
+
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
     public UnitState state;
 
@@ -31,7 +33,8 @@ public class Characters : MonoBehaviour
 
     public virtual void MyStart()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
         hitPoints = startingHitPoints;
    
         SetIdle();
@@ -92,31 +95,31 @@ public class Characters : MonoBehaviour
     public virtual void SetIdle()
     {
         agent.isStopped = true;
-        //anim.SetBool("IsMoving", false);
-        //anim.SetTrigger("Idle");
+        anim.SetBool("IsMoving", false);
+        anim.SetTrigger("Idle");
         state = UnitState.Idle;
     }
 
     public virtual void SetMovement()
     {
         agent.isStopped = false;
-        //anim.SetBool("Attack", false);
-        //anim.SetBool("IsMoving", true);
+        anim.SetBool("Attack", false);
+        anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
     }
 
     public void SetChase()
     {
         agent.isStopped = false;
-        //anim.SetBool("Attack", false);
-        //anim.SetBool("IsMoving", true);
+        anim.SetBool("Attack", false);
+        anim.SetBool("IsMoving", true);
         state = UnitState.Chase;
     }
 
     public virtual void SetAttack()
     {
         agent.isStopped = true;
-        //anim.SetBool("Attack", true);
+        anim.SetBool("Attack", true);
         state = UnitState.Attack;
     }
 
@@ -125,7 +128,7 @@ public class Characters : MonoBehaviour
         isDead = true;
         hitPoints = 0;
         agent.isStopped = true;
-        //anim.SetTrigger("Die");
+        anim.SetTrigger("Die");
         state = UnitState.Dead;
 
         gameObject.SetActive(false);

@@ -32,9 +32,10 @@ public class EnemyBehaviour : Characters, IEnemy
         {
             FindClosestObject();
         }
-        else
+        
+        if (selectedTarget != null)
         {
-            CalculateDistanceFromTarget();
+            CalculateDistanceFromTarget(); 
         }
     }
 
