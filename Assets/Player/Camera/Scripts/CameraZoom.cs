@@ -52,7 +52,12 @@ public class CameraZoom : MonoBehaviour
 
         zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
             new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
-            Time.deltaTime * heightDamp); 
+            Time.deltaTime * heightDamp);
+        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z * zoomPosition),
+            Time.deltaTime * heightDamp);*/
+
+        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward, new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomPosition),
+            Time.deltaTime * heightDamp);*/
     }
 
     float DistanceToGround()

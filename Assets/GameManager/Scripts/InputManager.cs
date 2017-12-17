@@ -2,24 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField]
+    LevelLogic levelLogic;
+    LevelLoader levelLoader = null;
+    bool wasLoaded;
+
     [SerializeField]
     bool gamePause;
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    MouseBehaviour mouse; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
-    //LevelLogic levelLogic; 
+    Mouse mouse = null; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
     public static Vector3 mousePosition; 
     Vector3 formationPosition;
 
     [Header("CameraInputs")]
     [SerializeField]
-    CameraController cameraController;
+    CameraController cameraController = null;
     [SerializeField]
-    CameraZoom cameraZoom; 
+    CameraZoom cameraZoom = null; 
     float scrollAxis;
     float rotateAxis;
     float mouseAxis; 
@@ -33,43 +38,64 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     bool isFowEnabled;
     [SerializeField]
-    GameObject FogOfWar;
-
-    [Header("Tavern/Map")]
-    [SerializeField]
-    MapButton tavern;
+    GameObject fogOfWar;
 
     [Header("Skills")]
     [SerializeField]
-    Hero hero;
+    Hero hero = null;
     [SerializeField]
-    Mage mage;
-
+    Mage mage = null;
 
     void Update()
     {
-        mousePosition = Input.mousePosition; 
-        if (Input.GetKeyDown(KeyCode.Escape)) gamePause = !gamePause;
-        if (Input.GetKeyDown(KeyCode.F10))
+        mousePosition = Input.mousePosition;
+        if (GameObject.FindGameObjectWithTag("LevelLoader") != null)
         {
-            isGodModeEnabled = !isGodModeEnabled;
-            Debug.Log("GOD Mode enabled"); 
+            if (!wasLoaded) SetGameValues();
+
+            if (Input.GetKeyDown(KeyCode.Escape)) gamePause = !gamePause;
+            if (Input.GetKeyDown(KeyCode.F10))
+            {
+                isGodModeEnabled = !isGodModeEnabled;
+                Debug.Log("GOD Mode enabled");
+            }
+            if (isGodModeEnabled)
+            {
+                GodModeUpdate();
+                return;
+            }
+            if (gamePause == true)
+            {
+                Time.timeScale = 0.0f;
+                Paused();
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                NoPaused();
+            }
         }
-        if (isGodModeEnabled)
+
+        #region SceneManager
+        if (Input.GetKey(KeyCode.AltGr))
         {
-            GodModeUpdate();
-            return;
+            if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
+            if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
+            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
         }
-        if (gamePause == true)
-        {
-            if (Time.timeScale == 1.0f) Time.timeScale = 0.0f; 
-            Paused();
-        }
-        else
-        {
-            if(Time.timeScale != 1.0f) Time.timeScale = 1.0f;
-            NoPaused();
-        }
+        #endregion
+    }
+
+    void SetGameValues()
+    {
+        levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
+        mouse = levelLoader.mouse;
+        cameraController = levelLoader.cameraController;
+        cameraZoom = levelLoader.cameraZoom;
+        fogOfWar = levelLoader.fogOfWar;
+        hero = levelLoader.hero;
+        mage = levelLoader.mage; 
+        wasLoaded = false;
     }
 
     void GodModeUpdate()
@@ -124,8 +150,8 @@ public class InputManager : MonoBehaviour
         #endregion
 
         #region enableMechanics
-        if (isFowEnabled) FogOfWar.SetActive(true);
-        else FogOfWar.SetActive(false);
+        if (isFowEnabled) fogOfWar.SetActive(true);
+        else fogOfWar.SetActive(false);
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -166,7 +192,6 @@ public class InputManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 mage.isUpdatingCirclePosition = false;
-                return;
             }
         }
 
@@ -222,15 +247,6 @@ public class InputManager : MonoBehaviour
         }
         #endregion
 
-        #region SceneManager
-        /*if (Input.GetKey(KeyCode.AltGr))
-        {
-            if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
-            if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
-            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
-        }*/
-        #endregion
-
         #region PlayableUnitSkills
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
@@ -242,6 +258,6 @@ public class InputManager : MonoBehaviour
         }
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.M)) tavern.EnterTavern(); 
+        if (Input.GetKeyDown(KeyCode.M)) levelLogic.StartLoad(4);  
     }
 }

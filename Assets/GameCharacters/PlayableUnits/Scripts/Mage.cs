@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mage : PlayableUnitBehaviour
 {
-    [Header("Skills")]
+    [Header("Skill")]
     [SerializeField]
     float selectTarget;
     float currentSelectTarget;
@@ -42,6 +42,7 @@ public class Mage : PlayableUnitBehaviour
         }
         if (isUpdatingCirclePosition)
         {
+            mouse.isDoingSkill = true;
             circleRenderer.enabled = true;
             CirclePositionUpdate();
         }
@@ -91,9 +92,13 @@ public class Mage : PlayableUnitBehaviour
         isUpdatingCirclePosition = false;
     }
 
-    void EnemyDies(Characters attackedTarget)
+    void EnemyDies(EnemyBehaviour attackedTarget)
     {
-        if (attackedTarget.isDead == false) attackedTarget.SetDead();
+        if (attackedTarget.isDead == false)
+        {
+            attackedTarget.enemiesManager.enemiesCount.Remove(attackedTarget);
+            attackedTarget.SetDead();
+        }
         attackedTarget = null;
         isAttacking = false;
         return;

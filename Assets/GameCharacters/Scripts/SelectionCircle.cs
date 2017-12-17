@@ -5,12 +5,12 @@ using UnityEngine;
 public class SelectionCircle : MonoBehaviour
 {
     public PlayableUnitBehaviour unit;
-    public SpriteRenderer activeTexture;
+    public ParticleSystem activeTexture;
     private Vector3 maxScale;
 
     void Start()
     {
-        activeTexture = this.gameObject.GetComponent<SpriteRenderer>();
+        activeTexture = this.gameObject.GetComponent<ParticleSystem>();
 
         unit = GetComponentInParent<PlayableUnitBehaviour>();
 
@@ -21,11 +21,12 @@ public class SelectionCircle : MonoBehaviour
     {
         if (unit.isSelected)
         {
-            activeTexture.enabled = true;
+            activeTexture.Play();
         }
         if (unit.isSelected == false)
         {
-            activeTexture.enabled = false;
+            activeTexture.Stop();
+            activeTexture.Clear(); 
         }
     }
 
@@ -33,7 +34,6 @@ public class SelectionCircle : MonoBehaviour
     {
         if (unit.isSelected)
         {
-            activeTexture.transform.Rotate(Vector3.forward);
             if (activeTexture.transform.localScale.x < maxScale.x) activeTexture.transform.localScale += new Vector3(Mathf.Lerp(0, maxScale.x, 0.3f), Mathf.Lerp(0, maxScale.y, 0.3f), maxScale.z);
             if (activeTexture.transform.localScale.x >= maxScale.x) activeTexture.transform.localScale = maxScale;
         }

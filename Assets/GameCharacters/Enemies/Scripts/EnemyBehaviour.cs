@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : Characters, IEnemy
 {
     //public Animator anim;
+    public EnemiesManager enemiesManager; 
 
     [Header("Timers")]
     [SerializeField]
@@ -16,7 +17,7 @@ public class EnemyBehaviour : Characters, IEnemy
     [SerializeField]
     List<Transform> unitsCanAttack = new List<Transform>();
     Transform closestObject;
-    Characters characters; 
+    PlayableUnitBehaviour selectedTarget;  
     bool canAttack;
 
     void Start()
@@ -31,6 +32,11 @@ public class EnemyBehaviour : Characters, IEnemy
         {
             FindClosestObject();
         }
+        
+        if (selectedTarget != null)
+        {
+            CalculateDistanceFromTarget(); 
+        }
     }
 
     #region Updates
@@ -44,13 +50,10 @@ public class EnemyBehaviour : Characters, IEnemy
                 return;
             }
 
-            if (characters.hitPoints <= 0)
+            if (selectedTarget.hitPoints <= 0)
             {
-                if (characters.isDead == false)
-                {
-                    UnitDies();
-                    return;
-                }
+                ClearUnit();
+                return;
             }
             if (timeCounter >= cooldownAttack)
             {
@@ -62,6 +65,11 @@ public class EnemyBehaviour : Characters, IEnemy
                 LookAtTarget(); 
                 timeCounter += Time.deltaTime;
             }
+
+            if (!selectedTarget.isActiveAndEnabled)
+            {
+                ClearUnit();
+            }
         }
     }
 
@@ -72,18 +80,21 @@ public class EnemyBehaviour : Characters, IEnemy
 
     public override void ChaseUpdate()
     {
+        base.ChaseUpdate();
         if (selectedTarget != null)
         {
             agent.SetDestination(targetTransform.position);
 
             if (distanceFromTarget < scope)
             {
+                PlayFootsteps(); 
                 SetAttack();
                 return;
             }
         }
         else
         {
+            PlayFootsteps(); 
             SetIdle();
             return; 
         }
@@ -93,7 +104,7 @@ public class EnemyBehaviour : Characters, IEnemy
     {
         if (canAttack)
         {        
-            selectedTarget.GetComponent<PlayableUnitBehaviour>().PlayableUnitTakeDamage(attack, gameObject);
+            selectedTarget.PlayableUnitTakeDamage(attack, this);
 
             SetIdle();
             return;
@@ -113,6 +124,12 @@ public class EnemyBehaviour : Characters, IEnemy
         canAttack = true;
         base.SetAttack();
     }
+
+    public override void SetDead()
+    {
+        enemiesManager.enemiesCount.Remove(this);
+        base.SetDead();
+    }
     #endregion
 
     #region CalculationVoids
@@ -130,9 +147,14 @@ public class EnemyBehaviour : Characters, IEnemy
             }
             else closestObject = unitsCanAttack[i];
         }
-        selectedTarget = closestObject.gameObject;
+        selectedTarget = closestObject.GetComponent<PlayableUnitBehaviour>();
         targetTransform = closestObject;
-        characters = selectedTarget.GetComponent<Characters>();
+    }
+
+    void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
+    {
+        targetTransform = selectedTarget.transform;
+        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
     }
     #endregion
 
@@ -152,7 +174,6 @@ public class EnemyBehaviour : Characters, IEnemy
             unitsCanAttack.Remove(other.transform);
             targetTransform = null;
             selectedTarget = null;
-            characters = null; 
             distanceFromTarget = Mathf.Infinity;
         }
     }
@@ -163,13 +184,11 @@ public class EnemyBehaviour : Characters, IEnemy
         hitPoints -= damage;
     }
 
-    void UnitDies()
+    void ClearUnit()
     {
-        Debug.Log("DEAD"); 
         unitsCanAttack.Remove(selectedTarget.transform);
         distanceFromTarget = Mathf.Infinity;
-        if (characters.isDead == false) characters.SetDead();
-        characters = null;
+        if (selectedTarget.isDead == false) selectedTarget.SetDead();
         targetTransform = null;
         selectedTarget = null;
         closestObject = null; 

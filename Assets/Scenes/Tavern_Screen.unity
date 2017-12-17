@@ -462,6 +462,10 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: a15251d5ce8704749b72357f8dded20b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: a15251d5ce8704749b72357f8dded20b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: a15251d5ce8704749b72357f8dded20b, type: 3}
@@ -699,6 +703,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1485088146}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1518029290 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1393258086084292, guid: 7dd5989aa5ff6d44ca9c8cd33a553896,
+    type: 2}
+  m_PrefabInternal: {fileID: 1521119860}
+--- !u!114 &1518029291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518029290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7870f22e2a799542b692fa3ddfb4f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1521119860
 Prefab:
   m_ObjectHideFlags: 0
@@ -744,7 +764,7 @@ Prefab:
     - target: {fileID: 224137972862534888, guid: 7dd5989aa5ff6d44ca9c8cd33a553896,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224137972862534888, guid: 7dd5989aa5ff6d44ca9c8cd33a553896,
         type: 2}
@@ -810,6 +830,16 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.z
       value: 1.610063
+      objectReference: {fileID: 0}
+    - target: {fileID: 114117900875919092, guid: 7dd5989aa5ff6d44ca9c8cd33a553896,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1518029291}
+    - target: {fileID: 114117900875919092, guid: 7dd5989aa5ff6d44ca9c8cd33a553896,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangetoBackScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dd5989aa5ff6d44ca9c8cd33a553896, type: 2}
@@ -1193,7 +1223,7 @@ GameObject:
   - component: {fileID: 2063753267}
   - component: {fileID: 2063753266}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,11 +1236,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063753264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 462, y: 260, z: 0}
-  m_LocalScale: {x: 0.721875, y: 0.721875, z: 0.721875}
+  m_LocalPosition: {x: 271, y: 152.5, z: 0}
+  m_LocalScale: {x: 0.4234375, y: 0.4234375, z: 0.4234375}
   m_Children:
-  - {fileID: 1924306369}
   - {fileID: 2070165445}
+  - {fileID: 1924306369}
   m_Father: {fileID: 534410185}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1304,7 +1334,7 @@ Transform:
   m_LocalScale: {x: 1.610063, y: 1.610063, z: 1.610063}
   m_Children: []
   m_Father: {fileID: 2063753265}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2070165446
 MonoBehaviour:

@@ -5,23 +5,31 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
+    Animator anim;
+    [SerializeField]
+    AudioManager audioManager; 
+
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
     public UnitState state;
 
     [Header("Stats")]
     public float startingHitPoints;
     public float hitPoints;
-    public float armor;
+    [SerializeField]
+    float armor;
     public float attack;
-    public float magicAttack;
-    public float magicArmor;
+    [SerializeField]
+    float magicAttack;
+    [SerializeField]
+    float magicArmor;
     public float scope;
     public string characterName;
-    private float rotateSpeed = 125f;
+    float rotateSpeed = 125f;
+    float footstepsCounter;
+    int randomAudioClip; 
     [HideInInspector] public bool isDead = false;
 
     [Header("CharactersInteraction")]
-    public GameObject selectedTarget;
     public Transform targetTransform;
     public float distanceFromTarget = Mathf.Infinity;
 
@@ -32,7 +40,9 @@ public class Characters : MonoBehaviour
 
     public virtual void MyStart()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>(); 
+        agent = GetComponent<NavMeshAgent>();
         hitPoints = startingHitPoints;
    
         SetIdle();
@@ -40,8 +50,6 @@ public class Characters : MonoBehaviour
 
     public virtual void MyUpdate()
     {
-        if (selectedTarget != null) CalculateDistanceFromTarget();  
-
         switch (state)
         {
             case UnitState.Idle:
@@ -77,7 +85,7 @@ public class Characters : MonoBehaviour
 
     public virtual void ChaseUpdate()
     {
-
+        PlayFootsteps(); 
     }
 
     public virtual void AttackUpdate()
@@ -95,31 +103,31 @@ public class Characters : MonoBehaviour
     public virtual void SetIdle()
     {
         agent.isStopped = true;
-        //anim.SetBool("IsMoving", false);
-        //anim.SetTrigger("Idle");
+        anim.SetBool("IsMoving", false);
+        anim.SetTrigger("Idle");
         state = UnitState.Idle;
     }
 
     public virtual void SetMovement()
     {
         agent.isStopped = false;
-        //anim.SetBool("Attack", false);
-        //anim.SetBool("IsMoving", true);
+        anim.SetBool("Attack", false);
+        anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
     }
 
     public void SetChase()
     {
         agent.isStopped = false;
-        //anim.SetBool("Attack", false);
-        //anim.SetBool("IsMoving", true);
+        anim.SetBool("Attack", false);
+        anim.SetBool("IsMoving", true);
         state = UnitState.Chase;
     }
 
     public virtual void SetAttack()
     {
         agent.isStopped = true;
-        //anim.SetBool("Attack", true);
+        anim.SetBool("Attack", true);
         state = UnitState.Attack;
     }
 
@@ -128,7 +136,7 @@ public class Characters : MonoBehaviour
         isDead = true;
         hitPoints = 0;
         agent.isStopped = true;
-        //anim.SetTrigger("Die");
+        anim.SetTrigger("Die");
         state = UnitState.Dead;
 
         gameObject.SetActive(false);
@@ -136,12 +144,6 @@ public class Characters : MonoBehaviour
     #endregion
 
     #region CalculationVoids
-    public virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
-    {
-        targetTransform = selectedTarget.transform;
-        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
-    }
-
     public virtual void LookAtTarget()
     {
         Vector3 lookDir = targetTransform.position - transform.position;
@@ -150,7 +152,15 @@ public class Characters : MonoBehaviour
     }
     #endregion
 
-    #region TakeDamage
-
-    #endregion
+    protected void PlayFootsteps()
+    {
+        footstepsCounter += Time.deltaTime;
+        randomAudioClip = Random.Range(0, 2); 
+        if (footstepsCounter >= audioManager.sounds[randomAudioClip].clip.length) audioManager.sounds[randomAudioClip].playingSound = false;
+        if (audioManager.sounds[randomAudioClip].playingSound == false)
+        {
+            audioManager.Play(randomAudioClip); 
+            footstepsCounter = 0; 
+        }
+    }
 }
