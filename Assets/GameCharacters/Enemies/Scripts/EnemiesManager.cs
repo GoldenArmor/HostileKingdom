@@ -12,6 +12,7 @@ public class EnemiesManager : MonoBehaviour
 
     void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)) enemiesCount.Clear(); 
 		if (enemiesCount.Count == 0)
         {
             buttonManager.ChangeToWin(); 
