@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class Characters : MonoBehaviour
 {
     Animator anim;
-    [SerializeField]
     AudioManager audioManager; 
 
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
@@ -38,7 +37,7 @@ public class Characters : MonoBehaviour
 
     public LayerMask mask; 
 
-    public virtual void MyStart()
+    protected virtual void MyStart()
     {
         anim = GetComponent<Animator>();
         audioManager = GetComponent<AudioManager>(); 
@@ -48,7 +47,7 @@ public class Characters : MonoBehaviour
         SetIdle();
     }
 
-    public virtual void MyUpdate()
+    protected virtual void MyUpdate()
     {
         switch (state)
         {
@@ -73,22 +72,22 @@ public class Characters : MonoBehaviour
     }
 
     #region Updates
-    public virtual void IdleUpdate()
+    protected virtual void IdleUpdate()
     {
 
     }
 
-    public virtual void MoveUpdate()
+    protected virtual void MoveUpdate()
     {
 
     }
 
-    public virtual void ChaseUpdate()
+    protected virtual void ChaseUpdate()
     {
         PlayFootsteps(); 
     }
 
-    public virtual void AttackUpdate()
+    protected virtual void AttackUpdate()
     {
 
     }
@@ -100,7 +99,7 @@ public class Characters : MonoBehaviour
     #endregion
 
     #region Sets
-    public virtual void SetIdle()
+    protected virtual void SetIdle()
     {
         agent.isStopped = true;
         anim.SetBool("IsMoving", false);
@@ -108,7 +107,7 @@ public class Characters : MonoBehaviour
         state = UnitState.Idle;
     }
 
-    public virtual void SetMovement()
+    protected virtual void SetMovement()
     {
         agent.isStopped = false;
         anim.SetBool("Attack", false);
@@ -116,7 +115,7 @@ public class Characters : MonoBehaviour
         state = UnitState.Movement;
     }
 
-    public void SetChase()
+    protected void SetChase()
     {
         agent.isStopped = false;
         anim.SetBool("Attack", false);
@@ -124,7 +123,7 @@ public class Characters : MonoBehaviour
         state = UnitState.Chase;
     }
 
-    public virtual void SetAttack()
+    protected virtual void SetAttack()
     {
         agent.isStopped = true;
         anim.SetBool("Attack", true);
@@ -144,7 +143,7 @@ public class Characters : MonoBehaviour
     #endregion
 
     #region CalculationVoids
-    public virtual void LookAtTarget()
+    protected virtual void LookAtTarget()
     {
         Vector3 lookDir = targetTransform.position - transform.position;
         Quaternion q = Quaternion.LookRotation(lookDir);

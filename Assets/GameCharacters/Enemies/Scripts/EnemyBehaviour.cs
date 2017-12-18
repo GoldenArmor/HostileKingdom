@@ -5,7 +5,16 @@ using UnityEngine;
 public class EnemyBehaviour : Characters, IEnemy
 {
     //public Animator anim;
-    public EnemiesManager enemiesManager; 
+    public EnemiesManager enemiesManager;
+
+    [Header("Path")]
+    [SerializeField]
+    float idleTime;
+    [SerializeField]
+    Transform[] path;
+    int pathIndex = 0;
+    float patrolCounter;
+    int idlePercent = 40;
 
     [Header("Timers")]
     [SerializeField]
@@ -17,30 +26,39 @@ public class EnemyBehaviour : Characters, IEnemy
     [SerializeField]
     List<Transform> unitsCanAttack = new List<Transform>();
     Transform closestObject;
-    PlayableUnitBehaviour selectedTarget;  
+    protected PlayableUnitBehaviour selectedTarget;  
     bool canAttack;
 
-    void Start()
+    protected virtual void Start()
     {
         MyStart();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         MyUpdate();
-        if (selectedTarget == null && unitsCanAttack.Count > 0)
+        if (selectedTarget == null)
         {
-            FindClosestObject();
+            if (path.Length > 0)
+            {
+                patrolCounter += Time.deltaTime;
+                if (patrolCounter >= idleTime)
+                {
+                    SetMovement();
+                }
+            }
+
+            if (unitsCanAttack.Count > 0) FindClosestObject();
         }
-        
+
         if (selectedTarget != null)
         {
-            CalculateDistanceFromTarget(); 
+            CalculateDistanceFromTarget();
         }
     }
 
     #region Updates
-    public override void IdleUpdate()
+    protected override void IdleUpdate()
     {
         if (selectedTarget != null)
         {
@@ -50,6 +68,8 @@ public class EnemyBehaviour : Characters, IEnemy
                 return;
             }
 
+            LookAtTarget();
+            timeCounter += Time.deltaTime;
             if (selectedTarget.hitPoints <= 0)
             {
                 ClearUnit();
@@ -60,11 +80,6 @@ public class EnemyBehaviour : Characters, IEnemy
                 SetAttack();
                 return;
             }
-            else
-            {
-                LookAtTarget(); 
-                timeCounter += Time.deltaTime;
-            }
 
             if (!selectedTarget.isActiveAndEnabled)
             {
@@ -73,12 +88,18 @@ public class EnemyBehaviour : Characters, IEnemy
         }
     }
 
-    /*public override void MoveUpdate()
-    {
+    protected override void MoveUpdate()
+    {        
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            pathIndex++;
+            if (pathIndex >= path.Length) pathIndex = 0;
+            if (RandomIdle()) SetIdle();
+            else SetMovement();
+        }
+    }
 
-    }*/
-
-    public override void ChaseUpdate()
+    protected override void ChaseUpdate()
     {
         base.ChaseUpdate();
         if (selectedTarget != null)
@@ -100,7 +121,7 @@ public class EnemyBehaviour : Characters, IEnemy
         }
     }
 
-    public override void AttackUpdate()
+    protected override void AttackUpdate()
     {
         if (canAttack)
         {        
@@ -113,13 +134,13 @@ public class EnemyBehaviour : Characters, IEnemy
     #endregion
 
     #region Sets
-    public override void SetIdle()
+    protected override void SetIdle()
     {
         timeCounter = 0;
         base.SetIdle(); 
     }
 
-    public override void SetAttack()
+    protected override void SetAttack()
     {
         canAttack = true;
         base.SetAttack();
@@ -129,6 +150,13 @@ public class EnemyBehaviour : Characters, IEnemy
     {
         enemiesManager.enemiesCount.Remove(this);
         base.SetDead();
+    }
+
+    protected override void SetMovement()
+    {
+        agent.isStopped = false;
+        agent.SetDestination(path[pathIndex].position);
+        base.SetMovement();
     }
     #endregion
 
@@ -194,6 +222,13 @@ public class EnemyBehaviour : Characters, IEnemy
         closestObject = null; 
         SetIdle();
         return;
+    }
+
+    bool RandomIdle()
+    {
+        int random = Random.Range(0, 101); 
+        if (random <= idlePercent) return true;
+        return false;
     }
 
     void OnDrawGizmos()

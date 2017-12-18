@@ -22,8 +22,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     [SerializeField]
     float chaseRange;
     Vector3 newFormationPosition;
-    [SerializeField]
-    float newDestinationRadius;
 
     [Header("OnScreen")]
     public bool isOnScreen = false;
@@ -71,7 +69,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     }
 
     #region Updates
-    public override void IdleUpdate()
+    protected override void IdleUpdate()
     {
         if (isAttacking)
         {
@@ -92,16 +90,16 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         }
     }
 
-    public override void MoveUpdate()
+    protected override void MoveUpdate()
     {
-        if (Vector3.Distance(transform.position, agent.destination) <= newDestinationRadius)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             SetIdle();
             return; 
         }
     }
 
-    public override void ChaseUpdate()
+    protected override void ChaseUpdate()
     {
         if (distanceFromTarget < scope)
         {
@@ -120,7 +118,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         else agent.SetDestination(targetTransform.position);
     }
 
-    public override void AttackUpdate()
+    protected override void AttackUpdate()
     {
         if (canAttack)
         {
@@ -142,13 +140,13 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     #endregion
 
     #region Sets
-    public override void SetMovement()
+    protected override void SetMovement()
     {
         isAttacking = false;
         base.SetMovement();
     }
 
-    public override void SetAttack()
+    protected override void SetAttack()
     {
         isAttacking = true;
         base.SetAttack();
@@ -247,7 +245,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
        if (state == UnitState.Movement)
        {
             Gizmos.color = newColor;
-            Gizmos.DrawSphere(agent.destination, newDestinationRadius);
+            Gizmos.DrawSphere(agent.destination, agent.stoppingDistance);
        }
     }
 

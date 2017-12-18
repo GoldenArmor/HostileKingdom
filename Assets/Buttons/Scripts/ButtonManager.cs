@@ -9,12 +9,12 @@ public class ButtonManager : MonoBehaviour
     AudioManager audioManager; 
 
     [Header("Scenes")]
-    const int titleScene = 1;
-    const int gameplayScene = 2;
-    const int optionsScene = 3;
-    const int tavernScene = 4;
-    const int lostScene = 5;
-    const int winScene = 6;
+    const int titleScene = 2;
+    const int gameplayScene = 3;
+    const int optionsScene = 4;
+    const int tavernScene = 5;
+    const int lostScene = 6;
+    const int wonScene = 7;
 
     void Start()
     {
@@ -34,32 +34,32 @@ public class ButtonManager : MonoBehaviour
 
     public void ChangeToMenu()
     {
-        levelLogic.StartLoad(1);
+        levelLogic.StartLoad(titleScene);
     }
 
     public void ChangeToGameplay()
     {
-        levelLogic.StartLoad(2);
+        levelLogic.StartLoad(gameplayScene);
     }
 
     public void ChangeToOptions()
     {
-        levelLogic.StartLoad(3);
+        levelLogic.StartLoad(optionsScene);
     }
 
     public void ChangeToTavern()
     {
-        levelLogic.StartLoad(4);
+        levelLogic.StartLoad(tavernScene);
     }
 
     public void ChangeToLost()
     {
-        levelLogic.StartLoad(5);
+        levelLogic.StartLoad(lostScene);
     }
 
     public void ChangeToWin()
     {
-        levelLogic.StartLoad(6); 
+        levelLogic.StartLoad(wonScene); 
     }
 
     public void QuitGame()

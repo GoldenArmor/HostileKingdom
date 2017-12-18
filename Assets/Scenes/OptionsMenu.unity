@@ -317,6 +317,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 610077303}
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Dropdown+DropdownEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &72249708
@@ -797,6 +808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610077304}
   - component: {fileID: 610077303}
+  - component: {fileID: 610077305}
   m_Layer: 0
   m_Name: ButtonManager
   m_TagString: Untagged
@@ -829,6 +841,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610077305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 610077302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1db2ac13a11bcb4793a3bf800d71092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - index: 0
+    name: Button01
+    clip: {fileID: 8300000, guid: 7fbb5145ca96387458f8201f6cc8df26, type: 3}
+    getRandomValues: 1
+    volume: 1
+    pitch: 1
+    playingSound: 0
+    maxRollOff: 0
+    minRollOff: 0
+    source: {fileID: 0}
+    loop: 0
+  - index: 0
+    name: Button02
+    clip: {fileID: 8300000, guid: 42aa6b6060be3dd48b4a5ac02da87329, type: 3}
+    getRandomValues: 1
+    volume: 1
+    pitch: 1
+    playingSound: 0
+    maxRollOff: 0
+    minRollOff: 0
+    source: {fileID: 0}
+    loop: 0
 --- !u!1 &618054980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1192,7 @@ GameObject:
   - component: {fileID: 733084848}
   - component: {fileID: 733084847}
   - component: {fileID: 733084846}
+  - component: {fileID: 733084845}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1153,6 +1200,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &733084845
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 733084844}
+  m_Enabled: 1
 --- !u!124 &733084846
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1478,12 +1532,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 610077303}
-        m_MethodName: ChangeToMenu
+        m_MethodName: ClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 610077303}
+        m_MethodName: ChangeToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1795,8 +1860,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1026284662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 459, y: 258, z: 0}
-  m_LocalScale: {x: 0.7171875, y: 0.7171875, z: 0.7171875}
+  m_LocalPosition: {x: 422, y: 237.5, z: 0}
+  m_LocalScale: {x: 0.659375, y: 0.659375, z: 0.659375}
   m_Children:
   - {fileID: 1033906029}
   - {fileID: 1586202792}
@@ -2208,6 +2273,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1641572365}
         m_MethodName: SetFullscreen
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 610077303}
+        m_MethodName: ClickSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2656,6 +2732,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1641572365}
         m_MethodName: SetQuality
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 610077303}
+        m_MethodName: ClickSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
