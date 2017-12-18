@@ -71,11 +71,11 @@ public class Hero : PlayableUnitBehaviour
         base.SetDead(); 
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         Color newColor = Color.magenta;
         newColor.a = 0.2f;
         Gizmos.color = newColor;
         Gizmos.DrawSphere(transform.position, skillCircleRadius);
-    }
+    }*/
 }

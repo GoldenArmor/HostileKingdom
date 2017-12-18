@@ -9,7 +9,7 @@ public class LevelLogic : MonoBehaviour
 {
     [Header("Scene state")]
     public int backScene;
-    public int currentScene;
+    public static int currentScene;
     public int nextScene;
     int managerScene;
     int sceneCountInBuildSettings;

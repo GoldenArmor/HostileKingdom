@@ -22,6 +22,8 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     [SerializeField]
     float chaseRange;
     Vector3 newFormationPosition;
+    [SerializeField]
+    float newDestinationRadius;
 
     [Header("OnScreen")]
     public bool isOnScreen = false;
@@ -34,6 +36,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     protected Camera mainCamera;
 
     [Header("EnemyInteraction")]
+    [SerializeField]
     EnemyBehaviour selectedTarget;
     protected bool isAttacking; 
     bool canAttack;
@@ -66,6 +69,10 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 isOnScreen = false;
             }
         }
+        if (selectedTarget != null && !selectedTarget.isActiveAndEnabled)
+        {
+            ClearEnemy();
+        }
     }
 
     #region Updates
@@ -75,7 +82,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         {
             if (selectedTarget.hitPoints <= 0)
             {
-                EnemyDies();
+                ClearEnemy();
                 return;
             }
             if (timeCounter >= cooldownAttack)
@@ -92,7 +99,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
 
     protected override void MoveUpdate()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, agent.destination) <= newDestinationRadius)
         {
             SetIdle();
             return; 
@@ -103,6 +110,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     {
         if (distanceFromTarget < scope)
         {
+            agent.avoidancePriority = 99;
             if (!isAttacking)
             {
                 canAttack = true;
@@ -112,10 +120,14 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
             else
             {
                 SetIdle();
-                return; 
+                return;
             }
         }
-        else agent.SetDestination(targetTransform.position);
+        else
+        {
+            agent.avoidancePriority = 0; 
+            agent.SetDestination(targetTransform.position);
+        }
     }
 
     protected override void AttackUpdate()
@@ -221,13 +233,14 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     }
     #endregion
 
-    void EnemyDies()
+    void ClearEnemy()
     {
         distanceFromTarget = Mathf.Infinity;
         if (selectedTarget.isDead == false) selectedTarget.SetDead();
         targetTransform = null;
         selectedTarget = null;
         isAttacking = false;
+        anim.SetBool("Attack", false);
         SetIdle();
         return;
     }
@@ -245,7 +258,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
        if (state == UnitState.Movement)
        {
             Gizmos.color = newColor;
-            Gizmos.DrawSphere(agent.destination, agent.stoppingDistance);
+            Gizmos.DrawSphere(agent.destination, newDestinationRadius);
        }
     }
 
@@ -263,8 +276,10 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                     targetTransform = null;
                     selectedTarget = null;
                 }
+                agent.enabled = false;
                 newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
                 transform.position = hit.point + newFormationPosition;
+                agent.enabled = true; 
 
                 SetMovement();
                 return;

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
-    Animator anim;
+    protected Animator anim;
     AudioManager audioManager; 
 
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
@@ -102,7 +102,7 @@ public class Characters : MonoBehaviour
     protected virtual void SetIdle()
     {
         agent.isStopped = true;
-        anim.SetBool("IsMoving", false);
+        anim.SetBool("IsMoving", false); 
         anim.SetTrigger("Idle");
         state = UnitState.Idle;
     }

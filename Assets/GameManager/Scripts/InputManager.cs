@@ -81,7 +81,7 @@ public class InputManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
             if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
-            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(levelLogic.currentScene);
+            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(LevelLogic.currentScene);
         }
         #endregion
     }
@@ -94,12 +94,13 @@ public class InputManager : MonoBehaviour
         cameraZoom = levelLoader.cameraZoom;
         fogOfWar = levelLoader.fogOfWar;
         hero = levelLoader.hero;
-        mage = levelLoader.mage; 
+        //mage = levelLoader.mage; 
         wasLoaded = false;
     }
 
     void GodModeUpdate()
     {
+        mouse.mousePosition = mousePosition;
         if (Input.GetMouseButton(0)) mouse.isDragging = true;
         if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
         if (Input.GetMouseButtonDown(0))
@@ -182,16 +183,19 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if (mage.isUpdatingCirclePosition && mage.isActiveAndEnabled)
+        if (mage != null)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (mage.isUpdatingCirclePosition && mage.isActiveAndEnabled)
             {
-                mage.isDoingSkill = true;
-                return;
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                mage.isUpdatingCirclePosition = false;
+                if (Input.GetMouseButtonDown(1))
+                {
+                    mage.isDoingSkill = true;
+                    return;
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    mage.isUpdatingCirclePosition = false;
+                }
             }
         }
 

@@ -28,6 +28,7 @@ public class BossLogic : EnemyBehaviour
 
     protected override void Update()
     {
+        base.Update();
         skillCooldown -= Time.deltaTime; 
 
         if (selectedTarget != null && skillCooldown > 25)
@@ -38,9 +39,9 @@ public class BossLogic : EnemyBehaviour
         if (isDoingSkill)
         {
             SkillUpdate();
-            return;
         }
-        base.Update();
+        agent.isStopped = true;
+        SetIdle();
     }
 
     public void SkillUpdate()

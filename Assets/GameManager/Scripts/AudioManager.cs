@@ -9,6 +9,10 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         //Sonidos que quiero playear al principio del juego
+        if (LevelLogic.currentScene == 0)
+        {
+            Play(1); 
+        }
     }
 
     public void Play(int index)
