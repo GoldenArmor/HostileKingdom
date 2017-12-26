@@ -18,12 +18,10 @@ public class LevelLogic : MonoBehaviour
     int sceneToLoad;
     bool loading = false;
     AsyncOperation loadAsync = null;
-    AsyncOperation unloadAsync = null;
+    AsyncOperation unloadAsync = null; 
     float fadeTime = 1.0f;
 
     [Header("UI")]
-    [SerializeField]
-    Text percentText;
     [SerializeField]
     Image blackScreen;
 
@@ -68,7 +66,6 @@ public class LevelLogic : MonoBehaviour
             Application.Quit();
             return;
         }
-        Debug.Log("Unload current scene: " + currentScene);
 
         if (currentScene != managerScene) unloadAsync = SceneManager.UnloadSceneAsync(currentScene);
         loadAsync = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
@@ -90,10 +87,8 @@ public class LevelLogic : MonoBehaviour
     {
         while (loading)
         {
-            percentText.text = (loadAsync.progress * 100).ToString() + "%";
             if ((unloadAsync == null || unloadAsync.isDone) && loadAsync.isDone)
             {
-                percentText.text = "";
                 unloadAsync = null;
                 loadAsync = null;
 

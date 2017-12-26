@@ -57,7 +57,6 @@ public class Hero : PlayableUnitBehaviour
     {
         if (attackedTarget.isDead == false)
         {
-            attackedTarget.enemiesManager.enemiesCount.Remove(attackedTarget); 
             attackedTarget.SetDead();
         }
         attackedTarget = null;

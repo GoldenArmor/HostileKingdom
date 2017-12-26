@@ -2,31 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableUnitBehaviour : Characters, IPlayableUnit
+public class PlayableUnitBehaviour : Characters
 {
-    [Header("GOD Mode")]
-    public bool godMode;
-
-    //public Animator anim;
+    [Header("Cards")]
     [SerializeField]
     UnitCards cards;
-    public bool isSelected = false;
+    public bool isSelected;
 
     [Header("Timers")]
     [SerializeField]
     float cooldownAttack;
-    [SerializeField]
     float timeCounter;
 
     [Header("Distances")]
     [SerializeField]
     float chaseRange;
     Vector3 newFormationPosition;
-    [SerializeField]
-    float newDestinationRadius;
+    //[SerializeField]
+    //float newDestinationRadius;
 
     [Header("OnScreen")]
-    public bool isOnScreen = false;
+    public bool isOnScreen;
     [HideInInspector]
     public Vector2 screenPosition;
     float maxDistance = Mathf.Infinity;
@@ -36,10 +32,11 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     protected Camera mainCamera;
 
     [Header("EnemyInteraction")]
-    [SerializeField]
     EnemyBehaviour selectedTarget;
-    protected bool isAttacking; 
-    bool canAttack;
+    protected bool isAttacking;
+
+    [Header("GOD Mode")]
+    public bool godMode;
 
     protected virtual void UnitStart()
     {
@@ -55,24 +52,21 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
 
     protected virtual void UnitUpdate()
     {
-        MyUpdate();
-        if (selectedTarget != null) CalculateDistanceFromTarget();
+        if (selectedTarget != null)
+        {
+            CalculateDistanceFromTarget();
+            if (!selectedTarget.isActiveAndEnabled)
+            {
+                ClearEnemy();
+            }
+        } 
         screenPosition = mainCamera.WorldToScreenPoint(transform.position);
+        isOnScreen = false; 
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
             isOnScreen = true;
         }
-        else
-        {
-            if (isOnScreen)
-            {
-                isOnScreen = false;
-            }
-        }
-        if (selectedTarget != null && !selectedTarget.isActiveAndEnabled)
-        {
-            ClearEnemy();
-        }
+        MyUpdate();
     }
 
     #region Updates
@@ -80,74 +74,51 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     {
         if (isAttacking)
         {
-            if (selectedTarget.hitPoints <= 0)
+            if (distanceFromTarget > attackRange)
             {
-                ClearEnemy();
+                isAttacking = false;
+                SetChase();
                 return;
             }
-            if (timeCounter >= cooldownAttack)
-            {
-                canAttack = true;
-                SetAttack();
-                return;
-            }
-            else timeCounter += Time.deltaTime;
 
+            timeCounter += Time.deltaTime;
             LookAtTarget();
+
+            if (timeCounter > cooldownAttack)
+            {
+                SetAttack();
+            }
         }
     }
 
     protected override void MoveUpdate()
     {
-        if (Vector3.Distance(transform.position, agent.destination) <= newDestinationRadius)
+        if (agent.remainingDistance < agent.stoppingDistance)
         {
             SetIdle();
-            return; 
         }
     }
 
     protected override void ChaseUpdate()
     {
-        if (distanceFromTarget < scope)
+        if (distanceFromTarget < chaseRange)
         {
-            agent.avoidancePriority = 99;
-            if (!isAttacking)
-            {
-                canAttack = true;
-                SetAttack();
-                return;
-            }
-            else
-            {
-                SetIdle();
-                return;
-            }
-        }
-        else
-        {
-            agent.avoidancePriority = 0; 
             agent.SetDestination(targetTransform.position);
+            if (distanceFromTarget < attackRange)
+            {
+                SetAttack();
+            }
         }
+        else SetIdle();
     }
 
     protected override void AttackUpdate()
-    {
-        if (canAttack)
-        {
-            if (!isAttacking) isAttacking = true; 
-            canAttack = false;
-            selectedTarget.TakeDamage(attack);
+    { 
+        selectedTarget.TakeDamage(attack);
+        if (selectedTarget.hitPoints <= 0) ClearEnemy();
 
-            timeCounter = 0;
-            SetIdle();
-            return;
-        }
-        else if (distanceFromTarget >= scope)
-        {
-            isAttacking = false; 
-            SetChase();
-            return;
-        }
+        timeCounter = 0;
+        SetIdle();
     }
     #endregion
 
@@ -178,7 +149,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
     #endregion
 
     #region PublicVoids
-
     public void PlayableUnitTakeDamage(float damage, EnemyBehaviour autoTarget)
     {
         if (!godMode)
@@ -191,7 +161,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
             selectedTarget = autoTarget;
             if (!isAttacking)
             {
-                canAttack = true;
                 SetAttack();
                 return;
             }
@@ -216,18 +185,13 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                 agent.SetDestination(hit.point + newFormationPosition);
 
                 SetMovement();
-                return;
             }
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                if (hit.transform.gameObject != selectedTarget)
-                {
-                    targetTransform = hit.transform;
-                    selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
+                targetTransform = hit.transform;
+                selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
 
-                    SetChase();
-                    return;
-                }
+                SetChase();
             }
         }
     }
@@ -240,9 +204,7 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         targetTransform = null;
         selectedTarget = null;
         isAttacking = false;
-        anim.SetBool("Attack", false);
         SetIdle();
-        return;
     }
 
     void OnDrawGizmos()
@@ -253,12 +215,12 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
         Color newColor = Color.green;
         newColor.a = 0.2f;
         Gizmos.color = newColor;
-        Gizmos.DrawSphere(transform.position, scope);
+        Gizmos.DrawSphere(transform.position, attackRange);
 
        if (state == UnitState.Movement)
        {
             Gizmos.color = newColor;
-            Gizmos.DrawSphere(agent.destination, newDestinationRadius);
+            Gizmos.DrawSphere(agent.destination, agent.stoppingDistance);
        }
     }
 
@@ -277,12 +239,11 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                     selectedTarget = null;
                 }
                 agent.enabled = false;
-                newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
+                newFormationPosition = formationPosition; 
                 transform.position = hit.point + newFormationPosition;
                 agent.enabled = true; 
 
                 SetMovement();
-                return;
             }
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
@@ -292,7 +253,6 @@ public class PlayableUnitBehaviour : Characters, IPlayableUnit
                     selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
 
                     SetChase();
-                    return;
                 }
             }
         }

@@ -6,15 +6,6 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds; 
 
-    void Start()
-    {
-        //Sonidos que quiero playear al principio del juego
-        if (LevelLogic.currentScene == 0)
-        {
-            Play(1); 
-        }
-    }
-
     public void Play(int index)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();

@@ -8,40 +8,19 @@ public class SettingsManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
-    public Dropdown resolutionDropdown; 
+    bool isFullScreen;
 
-    Resolution[] resolutions; 
-
-    void Start()
+    public void SetFirstResolution()
     {
-        resolutions = Screen.resolutions;
-
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        int currentResolutionIndex = 0; 
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option); 
-
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i; 
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue(); 
+        Screen.SetResolution(1280, 720, isFullScreen);
     }
-
-    public void SetResolution(int resolutionIndex)
+    public void SetSecondResolution()
     {
-        Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen); 
+        Screen.SetResolution(1600, 1200, isFullScreen);
+    }
+    public void SetThirdResolution()
+    {
+        Screen.SetResolution(1920, 1080, isFullScreen);
     }
 
     public void SetVolume(float volume)
@@ -54,16 +33,9 @@ public class SettingsManager : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex); 
     }
 
-    public void SetFullscreen(bool isFullScreen)
+    public void SetFullscreen()
     {
         Screen.fullScreen = isFullScreen; 
     }
 }
 
-public class GameSettings
-{
-    public bool fullscreen;
-    public int textureQuality;
-    public int resolutionIndex;
-    public float musicVolume;
-}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,7 +9,7 @@ public class Characters : MonoBehaviour
     protected Animator anim;
     AudioManager audioManager; 
 
-    [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Dead }
+    [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Stun, Dead }
     public UnitState state;
 
     [Header("Stats")]
@@ -21,19 +22,19 @@ public class Characters : MonoBehaviour
     float magicAttack;
     [SerializeField]
     float magicArmor;
-    public float scope;
+    public float attackRange;
     public string characterName;
     float rotateSpeed = 125f;
     float footstepsCounter;
     int randomAudioClip; 
-    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool isDead;
 
     [Header("CharactersInteraction")]
     public Transform targetTransform;
     public float distanceFromTarget = Mathf.Infinity;
 
     [Header("NavMeshAgent")]
-    [HideInInspector] public NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
     public LayerMask mask; 
 
@@ -62,6 +63,9 @@ public class Characters : MonoBehaviour
                 break;
             case UnitState.Attack:
                 AttackUpdate();
+                break;
+            case UnitState.Stun:
+                StunUpdate();
                 break;
             case UnitState.Dead:
                 DeadUpdate();
@@ -92,6 +96,11 @@ public class Characters : MonoBehaviour
 
     }
 
+    protected virtual void StunUpdate()
+    {
+
+    }
+
     void DeadUpdate()
     {
         //SetDead();
@@ -110,7 +119,6 @@ public class Characters : MonoBehaviour
     protected virtual void SetMovement()
     {
         agent.isStopped = false;
-        anim.SetBool("Attack", false);
         anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
     }
@@ -118,7 +126,6 @@ public class Characters : MonoBehaviour
     protected void SetChase()
     {
         agent.isStopped = false;
-        anim.SetBool("Attack", false);
         anim.SetBool("IsMoving", true);
         state = UnitState.Chase;
     }
@@ -126,8 +133,16 @@ public class Characters : MonoBehaviour
     protected virtual void SetAttack()
     {
         agent.isStopped = true;
-        anim.SetBool("Attack", true);
+        anim.SetBool("IsMoving", true);
+        anim.SetTrigger("Attack");
         state = UnitState.Attack;
+    }
+
+    protected virtual void SetStun()
+    {
+        agent.isStopped = true;
+        anim.SetTrigger("Stun");
+        state = UnitState.Stun;
     }
 
     public virtual void SetDead()
@@ -154,7 +169,7 @@ public class Characters : MonoBehaviour
     protected void PlayFootsteps()
     {
         footstepsCounter += Time.deltaTime;
-        randomAudioClip = Random.Range(0, 2); 
+        randomAudioClip = UnityEngine.Random.Range(0, 2); 
         if (footstepsCounter >= audioManager.sounds[randomAudioClip].clip.length) audioManager.sounds[randomAudioClip].playingSound = false;
         if (audioManager.sounds[randomAudioClip].playingSound == false)
         {

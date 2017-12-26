@@ -120,7 +120,7 @@ ModelImporter:
     400110: Particle View01
     400112: //RootNode
     4300000: Object01
-    7400000: Take 001
+    7400000: Run
     9500000: //RootNode
     10800000: Omni001
     13700000: Object01
@@ -162,7 +162,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Run
       takeName: Take 001
       firstFrame: -32
       lastFrame: 64
@@ -216,7 +216,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -233,7 +233,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 46d138f683a76ce46b318c029dc794d6,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    Mouse mouse = null; //Coje el Script de MouseBehaviour para actualizar su comportamiento.
+    Mouse mouse = null;
     public static Vector3 mousePosition; 
     Vector3 formationPosition;
 
@@ -35,10 +35,6 @@ public class InputManager : MonoBehaviour
     bool isGodModeEnabled;
     [SerializeField]
     bool immunityEnabled;
-    [SerializeField]
-    bool isFowEnabled;
-    [SerializeField]
-    GameObject fogOfWar;
 
     [Header("Skills")]
     [SerializeField]
@@ -75,15 +71,6 @@ public class InputManager : MonoBehaviour
                 NoPaused();
             }
         }
-
-        #region SceneManager
-        if (Input.GetKey(KeyCode.AltGr))
-        {
-            if (Input.GetKeyDown(KeyCode.N)) levelLogic.StartLoad(levelLogic.nextScene);
-            if (Input.GetKeyDown(KeyCode.B)) levelLogic.StartLoad(levelLogic.backScene);
-            if (Input.GetKeyDown(KeyCode.R)) levelLogic.StartLoad(LevelLogic.currentScene);
-        }
-        #endregion
     }
 
     void SetGameValues()
@@ -92,88 +79,9 @@ public class InputManager : MonoBehaviour
         mouse = levelLoader.mouse;
         cameraController = levelLoader.cameraController;
         cameraZoom = levelLoader.cameraZoom;
-        fogOfWar = levelLoader.fogOfWar;
         hero = levelLoader.hero;
         //mage = levelLoader.mage; 
         wasLoaded = false;
-    }
-
-    void GodModeUpdate()
-    {
-        mouse.mousePosition = mousePosition;
-        if (Input.GetMouseButton(0)) mouse.isDragging = true;
-        if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                mouse.multipleUnitSelection = true;
-            }
-            mouse.ClickState();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (mouse.selectedUnit != null)
-            {
-                formationPosition = Vector3.zero;
-                mouse.selectedUnit.GodUpdate(formationPosition, mousePosition);
-            }
-            if (mouse.selectedUnits != null)
-            {
-                for (int i = 0; i < mouse.selectedUnits.Count; i++)
-                {
-                    if (i == 0) formationPosition = Vector3.zero;
-                    if (i == 1) formationPosition = new Vector3(-4, 0, 0);
-                    if (i == 2) formationPosition = new Vector3(4, 0, 0);
-                    if (i == 3) formationPosition = new Vector3(0, 0, 4);
-
-                    mouse.selectedUnits[i].GodUpdate(formationPosition, mousePosition);
-                }
-            }
-        }
-
-        #region CameraControllerAndZoom
-        inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
-        rotateAxis = Input.GetAxis("Rotation");
-        mouseAxis = Input.GetAxis("Mouse X");
-        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
-
-        cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraController.SetRotationAxis(rotateAxis);
-        cameraZoom.SetAxis(scrollAxis);
-
-        if (Input.GetButton("Fire3"))
-        {
-            cameraController.SetMouseRotationAxis(mouseAxis);
-        }
-        #endregion
-
-        #region enableMechanics
-        if (isFowEnabled) fogOfWar.SetActive(true);
-        else fogOfWar.SetActive(false);
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            isFowEnabled = !isFowEnabled;
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            immunityEnabled = !immunityEnabled;
-            if (mouse.selectedUnit != null)
-            {
-                mouse.selectedUnit.godMode = immunityEnabled;
-            }
-            if (mouse.selectedUnits != null)
-            {
-                for (int i = 0; i < mouse.selectedUnits.Count; i++)
-                { 
-                    mouse.selectedUnits[i].godMode = immunityEnabled;
-                }
-            }
-        }
-        #endregion
     }
 
     void Paused()
@@ -263,5 +171,77 @@ public class InputManager : MonoBehaviour
         #endregion
 
         if (Input.GetKeyDown(KeyCode.M)) levelLogic.StartLoad(4);  
+    }
+
+    void GodModeUpdate()
+    {
+        mouse.mousePosition = mousePosition;
+        if (Input.GetMouseButton(0)) mouse.isDragging = true;
+        if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                mouse.multipleUnitSelection = true;
+            }
+            mouse.ClickState();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (mouse.selectedUnit != null)
+            {
+                formationPosition = Vector3.zero;
+                mouse.selectedUnit.GodUpdate(formationPosition, mousePosition);
+            }
+            if (mouse.selectedUnits != null)
+            {
+                for (int i = 0; i < mouse.selectedUnits.Count; i++)
+                {
+                    if (i == 0) formationPosition = Vector3.zero;
+                    if (i == 1) formationPosition = new Vector3(-4, 0, 0);
+                    if (i == 2) formationPosition = new Vector3(4, 0, 0);
+                    if (i == 3) formationPosition = new Vector3(0, 0, 4);
+
+                    mouse.selectedUnits[i].GodUpdate(formationPosition, mousePosition);
+                }
+            }
+        }
+
+        #region CameraControllerAndZoom
+        inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
+        rotateAxis = Input.GetAxis("Rotation");
+        mouseAxis = Input.GetAxis("Mouse X");
+        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+
+        cameraController.SetInputAxis(inputAxis, mousePosition);
+        cameraController.SetRotationAxis(rotateAxis);
+        cameraZoom.SetAxis(scrollAxis);
+
+        if (Input.GetButton("Fire3"))
+        {
+            cameraController.SetMouseRotationAxis(mouseAxis);
+        }
+        #endregion
+
+        #region enableMechanics
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            immunityEnabled = !immunityEnabled;
+            if (mouse.selectedUnit != null)
+            {
+                mouse.selectedUnit.godMode = immunityEnabled;
+            }
+            if (mouse.selectedUnits != null)
+            {
+                for (int i = 0; i < mouse.selectedUnits.Count; i++)
+                {
+                    mouse.selectedUnits[i].godMode = immunityEnabled;
+                }
+            }
+        }
+        #endregion
     }
 }

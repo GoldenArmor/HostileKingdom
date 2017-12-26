@@ -22,6 +22,17 @@ public class ButtonManager : MonoBehaviour
         audioManager = GetComponent<AudioManager>();
     }
 
+    public void ClickRandomSound()
+    {
+        audioManager.Play(Random.Range(0, audioManager.sounds.Length));
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    #region SceneLoad
     public void ChangetoNextScene()
     {
         levelLogic.StartLoad(levelLogic.nextScene);
@@ -59,16 +70,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ChangeToWin()
     {
-        levelLogic.StartLoad(wonScene); 
+        levelLogic.StartLoad(wonScene);
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-    public void ClickSound()
-    {
-        audioManager.Play(Random.Range(0, audioManager.sounds.Length));
-    }
+    #endregion
 }
