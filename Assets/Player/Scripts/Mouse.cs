@@ -31,6 +31,7 @@ public class Mouse : MonoBehaviour
 
     void Start()
     {
+        selectableUnits = new List<PlayableUnitBehaviour>(FindObjectsOfType<PlayableUnitBehaviour>());
         mainCamera = Camera.main;
     }
 
