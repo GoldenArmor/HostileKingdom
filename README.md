@@ -1,4 +1,4 @@
-![Logo](https://github.com/GoldenArmor/HostileKingdom/blob/master/WikiResources/Logo.png "Logo")
+![Logo](WikiResources/Logo.png "Logo")
 
 Hostile Kingdom is a 3D Videogame that combines RTS and roleplay in a medieval fantasy cartoon world that will transport the player into a sad land where every leaving creature is unfriendly & the sun never shines. 
 
@@ -7,6 +7,8 @@ The game will follow the adventures of an unkwnown knight and his company. Estra
 ------
 
 # The Golden Armor Company™
+![Logo](WikiResources/CompanyLogo.png "Logo")
+
 
 This little enterprise made by four videogame students belongs to the Superior Schoool of Comunication, Image & Sound CEV.
 The project is ambitious, although it's a school subject. 
