@@ -32,6 +32,10 @@ public class Mouse : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        for (int i = 0; i < selectableUnits.Count; i++)
+        {
+            selectableUnits[i].mouse = this;
+        }
     }
 
     void Update()

@@ -26,8 +26,7 @@ public class PlayableUnitBehaviour : Characters
     [HideInInspector]
     public Vector2 screenPosition;
     float maxDistance = Mathf.Infinity;
-    [SerializeField]
-    protected Mouse mouse;
+    public Mouse mouse;
     RaycastHit hit;
     protected Camera mainCamera;
 
@@ -93,7 +92,7 @@ public class PlayableUnitBehaviour : Characters
 
     protected override void MoveUpdate()
     {
-        if (agent.remainingDistance < agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
         {
             SetIdle();
         }
