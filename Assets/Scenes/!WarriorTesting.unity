@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 60039768}
   m_LocalRotation: {x: -0.23943055, y: 0.6280317, z: 0.6948207, w: 0.2558778}
   m_LocalPosition: {x: -0.017694023, y: 1.6488347, z: 0.15495169}
-  m_LocalScale: {x: 24.561777, y: 24.56178, z: 24.56178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 938015260}
   - {fileID: 1466892704}
@@ -448,9 +448,10 @@ GameObject:
   m_Component:
   - component: {fileID: 112764876}
   - component: {fileID: 112764875}
+  - component: {fileID: 112764877}
   m_Layer: 0
   m_Name: mjtr
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,7 +462,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 112764874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f0372dca721eec468f66d6230a62cfc, type: 3}
   m_Name: 
@@ -488,6 +489,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112764877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 112764874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f7f659aff9b604883e9cb414348536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePause: 0
+  mouse: {fileID: 973731657}
+  cameraController: {fileID: 504389057}
+  cameraZoom: {fileID: 234305529}
+  isGodModeEnabled: 0
+  immunityEnabled: 0
+  hero: {fileID: 204141487}
+  mage: {fileID: 0}
 --- !u!1 &119092204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1191,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 672239725
+  randomSeed: 18954272
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4469,12 +4489,12 @@ Prefab:
     - target: {fileID: 224241176950578324, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 148.91669
+      value: 82.448654
       objectReference: {fileID: 0}
     - target: {fileID: 224241176950578324, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 61.6592
+      value: 61.659584
       objectReference: {fileID: 0}
     - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4511,7 +4531,7 @@ Prefab:
     - target: {fileID: 224241176950578324, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 368
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 224381542479440610, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
@@ -4548,6 +4568,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114817782569474222, guid: 79afdd13357a05d47b8696bae5139f59,
+        type: 2}
+      propertyPath: selectableUnits.Array.data[0]
+      value: 
+      objectReference: {fileID: 204141487}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
   m_IsPrefabParent: 0
@@ -4816,7 +4841,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 707729148
+  randomSeed: -1906261128
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8144,7 +8169,7 @@ GameObject:
   - component: {fileID: 460762275}
   - component: {fileID: 460762274}
   - component: {fileID: 460762273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8301,7 +8326,7 @@ Transform:
   m_GameObject: {fileID: 468475763}
   m_LocalRotation: {x: 0.3940659, y: -0.11403987, z: 0.6662173, w: 0.6227852}
   m_LocalPosition: {x: -0.02, y: 1.67, z: 0.15}
-  m_LocalScale: {x: 14.693934, y: 14.693938, z: 14.693938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1558057937}
   m_Father: {fileID: 1286122255}
@@ -8790,7 +8815,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 376965555}
   scalingMode: 0
-  randomSeed: 682178117
+  randomSeed: -528318382
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12472,7 +12497,7 @@ MonoBehaviour:
   screenPosition: {x: 0, y: 0}
   mouse: {fileID: 973731657}
   godMode: 0
-  skillCircle: {fileID: 0}
+  skillCircle: {fileID: 1556486105}
   attackMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -13054,7 +13079,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1002376678
+  randomSeed: -136163173
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16364,9 +16389,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556486104}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.028571434, y: 0.028571434, z: 0.028571434}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.010000001, z: 0}
+  m_LocalScale: {x: 0.02857143, y: 0.028571444, z: 0.028571444}
   m_Children: []
   m_Father: {fileID: 204141493}
   m_RootOrder: 4
@@ -16377,7 +16402,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556486104}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
