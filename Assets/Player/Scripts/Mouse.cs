@@ -33,10 +33,6 @@ public class Mouse : MonoBehaviour
     {
         selectableUnits = new List<PlayableUnitBehaviour>(FindObjectsOfType<PlayableUnitBehaviour>());
         mainCamera = Camera.main;
-        for (int i = 0; i < selectableUnits.Count; i++)
-        {
-            selectableUnits[i].mouse = this;
-        }
     }
 
     void Update()
