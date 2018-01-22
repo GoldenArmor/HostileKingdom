@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField]
     Transform camTransform; 
 
     [Header("Pan")]
@@ -26,11 +27,6 @@ public class CameraController : MonoBehaviour
     float mouseRotationAxis; 
     Vector2 inputAxis;
 
-    void Start()
-    {
-        camTransform = transform; 
-    }
-
     void MovementUpdate(Vector3 mousePosition)
     {
         Vector3 newPosition = new Vector3(inputAxis.x, 0, inputAxis.y);
@@ -50,7 +46,7 @@ public class CameraController : MonoBehaviour
     void LimitPosition()
     {
         camTransform.position = new Vector3(Mathf.Clamp(camTransform.position.x, -panLimit.x, panLimit.x),
-            camTransform.position.y,
+                                            camTransform.position.y,
             Mathf.Clamp(camTransform.position.z, -panLimit.y, panLimit.y));
     }
 

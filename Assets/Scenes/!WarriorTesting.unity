@@ -1191,7 +1191,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 18954272
+  randomSeed: -867745191
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4489,12 +4489,12 @@ Prefab:
     - target: {fileID: 224241176950578324, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 82.448654
+      value: 78.91312
       objectReference: {fileID: 0}
     - target: {fileID: 224241176950578324, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 61.659584
+      value: 47.628056
       objectReference: {fileID: 0}
     - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4573,6 +4573,32 @@ Prefab:
       propertyPath: selectableUnits.Array.data[0]
       value: 
       objectReference: {fileID: 204141487}
+    - target: {fileID: 4360394269063150, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224317407185559502, guid: 79afdd13357a05d47b8696bae5139f59,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360394269063150, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581878922698626, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581878922698626, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647227522025176, guid: 79afdd13357a05d47b8696bae5139f59,
+        type: 2}
+      propertyPath: camTransform
+      value: 
+      objectReference: {fileID: 443952124}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
   m_IsPrefabParent: 0
@@ -4841,7 +4867,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1906261128
+  randomSeed: -1541414160
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8158,6 +8184,11 @@ Transform:
   m_Father: {fileID: 531464025}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &443952124 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4581878922698626, guid: 79afdd13357a05d47b8696bae5139f59,
+    type: 2}
+  m_PrefabInternal: {fileID: 358491879}
 --- !u!1 &460762272
 GameObject:
   m_ObjectHideFlags: 0
@@ -8815,7 +8846,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 376965555}
   scalingMode: 0
-  randomSeed: -528318382
+  randomSeed: -234933594
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13079,7 +13110,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -136163173
+  randomSeed: -379389638
   InitialModule:
     serializedVersion: 3
     enabled: 1
