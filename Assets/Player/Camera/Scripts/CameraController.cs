@@ -6,7 +6,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    Transform camTransform; 
+    Transform mainCameraTransform; 
+    Transform camTransform;
 
     [Header("Pan")]
     [SerializeField]
@@ -26,6 +27,12 @@ public class CameraController : MonoBehaviour
     float rotationAxis;
     float mouseRotationAxis; 
     Vector2 inputAxis;
+
+    void Start()
+    {
+        camTransform = transform;
+        mainCameraTransform.LookAt(transform);
+    }
 
     void MovementUpdate(Vector3 mousePosition)
     {
