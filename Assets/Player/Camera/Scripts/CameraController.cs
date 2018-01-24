@@ -32,6 +32,14 @@ public class CameraController : MonoBehaviour
     {
         camTransform = transform;
         mainCameraTransform.LookAt(transform);
+
+        //Ray ray = Camera.main.ScreenPointToRay(new Vector3 (Screen.width / 2, Screen.height / 2, 0));
+        //RaycastHit hit;
+
+        //if(Physics.Raycast(ray, out hit))
+        //{
+        //    transform.position = hit.point; 
+        //}
     }
 
     void MovementUpdate(Vector3 mousePosition)
