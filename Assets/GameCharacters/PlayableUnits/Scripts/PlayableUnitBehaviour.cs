@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,9 @@ public class PlayableUnitBehaviour : Characters
     [Header("GOD Mode")]
     public bool godMode;
 
+    float baseArmor;
+    float armorCooldown; 
+
     protected virtual void UnitStart()
     {
         MyStart();
@@ -47,6 +51,8 @@ public class PlayableUnitBehaviour : Characters
             cards.MyStart();
         }
         mainCamera = Camera.main;
+        baseArmor = armor; 
+        armorCooldown = 5;
     }
 
     protected virtual void UnitUpdate()
@@ -66,6 +72,21 @@ public class PlayableUnitBehaviour : Characters
             isOnScreen = true;
         }
         MyUpdate();
+
+        if (armor != baseArmor)
+        {
+            ArmorRestore();
+        }
+    }
+
+    void ArmorRestore()
+    {
+        armorCooldown -= Time.deltaTime; 
+        if (armorCooldown <= 0)
+        {
+            armor = baseArmor; 
+            armorCooldown = 5f; 
+        }
     }
 
     #region Updates

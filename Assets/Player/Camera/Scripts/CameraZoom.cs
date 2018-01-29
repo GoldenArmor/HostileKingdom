@@ -60,6 +60,12 @@ public class CameraZoom : MonoBehaviour
             Time.deltaTime * heightDamp);*/
     }
 
+    //public void ZoomUpdatePublic()
+    //{
+    //    zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
+    //        new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z), Time.deltaTime * heightDamp); 
+    //}
+    
     float DistanceToGround()
     {
         Ray ray = new Ray(zoomCamTransform.position, Vector3.down);

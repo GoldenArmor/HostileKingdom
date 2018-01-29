@@ -114,7 +114,7 @@ public class DEBUGInputManager : MonoBehaviour
 
         cameraController.SetInputAxis(inputAxis, mousePosition);
         cameraController.SetRotationAxis(rotateAxis);
-        cameraZoom.SetAxis(scrollAxis);
+        cameraZoom.SetAxis(scrollAxis); 
 
         if (Input.GetButton("Fire3"))
         {
