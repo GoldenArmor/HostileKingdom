@@ -7,6 +7,7 @@ public class LevelLoader : MonoBehaviour
     public Mouse mouse;
 
     public CameraController cameraController;
+    public CameraRotation cameraRotation; 
     public CameraZoom cameraZoom;
 
     public GameObject fogOfWar;
