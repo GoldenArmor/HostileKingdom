@@ -15,8 +15,7 @@ public class Characters : MonoBehaviour
     [Header("Stats")]
     public float startingHitPoints;
     public float hitPoints;
-    [SerializeField]
-    float armor;
+    public float armor;
     public float attack;
     [SerializeField]
     float magicAttack;

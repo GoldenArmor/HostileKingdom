@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     CameraController cameraController = null;
     [SerializeField]
+    CameraRotation cameraRotation = null;
+    [SerializeField]
     CameraZoom cameraZoom = null; 
     float scrollAxis;
     float rotateAxis;
@@ -78,6 +80,7 @@ public class InputManager : MonoBehaviour
         levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
         mouse = levelLoader.mouse;
         cameraController = levelLoader.cameraController;
+        cameraRotation = levelLoader.cameraRotation;
         cameraZoom = levelLoader.cameraZoom;
         hero = levelLoader.hero;
         //mage = levelLoader.mage; 
@@ -117,12 +120,12 @@ public class InputManager : MonoBehaviour
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraController.SetRotationAxis(rotateAxis);
+        cameraRotation.SetRotationAxis(rotateAxis);
         cameraZoom.SetAxis(scrollAxis);
 
         if (Input.GetButton("Fire3"))
         {
-            cameraController.SetMouseRotationAxis(mouseAxis);
+            cameraRotation.SetMouseRotationAxis(mouseAxis);
         }
         #endregion
 
@@ -216,12 +219,12 @@ public class InputManager : MonoBehaviour
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraController.SetRotationAxis(rotateAxis);
+        cameraRotation.SetRotationAxis(rotateAxis);
         cameraZoom.SetAxis(scrollAxis);
 
         if (Input.GetButton("Fire3"))
         {
-            cameraController.SetMouseRotationAxis(mouseAxis);
+            cameraRotation.SetMouseRotationAxis(mouseAxis);
         }
         #endregion
 

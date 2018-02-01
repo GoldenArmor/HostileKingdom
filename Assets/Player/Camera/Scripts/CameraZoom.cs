@@ -42,22 +42,32 @@ public class CameraZoom : MonoBehaviour
 
         zoomPosition = Mathf.Clamp01(zoomPosition);
 
-        float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPosition);
-        float difference = 0; 
+        //ZoomUpdatePublic(); 
 
-        if (distanceToGround != targetHeight)
-        {
-            difference = targetHeight - distanceToGround;
-        }
+        //float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPosition);
+        //float difference = 0; 
 
-        zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
-            new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
-            Time.deltaTime * heightDamp);
+        //if (distanceToGround != targetHeight)
+        //{
+        //    difference = targetHeight - distanceToGround;
+        //}
+
+        //zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
+        //    new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
+        //    Time.deltaTime * heightDamp);
         /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z * zoomPosition),
             Time.deltaTime * heightDamp);*/
 
         /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward, new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomPosition),
             Time.deltaTime * heightDamp);*/
+    }
+
+    public void ZoomUpdatePublic()
+    {
+        //zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
+        //    new Vector3(, zoomCamTransform.for), Time.deltaTime * heightDamp);
+
+        zoomCamTransform.Translate(zoomCamTransform.forward * zoomPosition, Space.Self); 
     }
 
     float DistanceToGround()
