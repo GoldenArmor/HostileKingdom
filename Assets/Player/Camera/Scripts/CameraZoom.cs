@@ -42,7 +42,7 @@ public class CameraZoom : MonoBehaviour
 
         zoomPosition = Mathf.Clamp01(zoomPosition);
 
-        //ZoomUpdatePublic(); 
+        ZoomUpdatePublic(); 
 
         //float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPosition);
         //float difference = 0; 
@@ -66,8 +66,8 @@ public class CameraZoom : MonoBehaviour
     {
         //zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
         //    new Vector3(, zoomCamTransform.for), Time.deltaTime * heightDamp);
-
-        zoomCamTransform.Translate(zoomCamTransform.forward * zoomPosition, Space.Self); 
+        zoomCamTransform.localPosition += localForward * scrollAxis * scrollSensitivity;
+        //zoomCamTransform.Translate(new Vector3(0,0,1) * zoomPosition, Space.Self); 
     }
 
     float DistanceToGround()
