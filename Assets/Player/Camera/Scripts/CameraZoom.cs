@@ -1,88 +1,73 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class CameraZoom : MonoBehaviour
 {
-    Transform zoomCamTransform; 
+    Transform selfTransform; 
 
-    [Header("Zoom")]
-    [SerializeField]
-    float scrollSensitivity;
-    [SerializeField]
-    float zoomPosition;
-    float scrollAxis;
+    Transform m_focalPoint;
+    Vector3 m_iniPosition;
+    Quaternion m_iniRotation;
 
+    Vector3 m_cameraForward;
+    Vector3 m_mouseOrigin;
+    
+    [Header("Scrolling")]
     [SerializeField]
-    LayerMask mask;
-    float maxDistance;
-
-    [Header("Limits")]
+    float ZoomSpeed;
     [SerializeField]
-    float maxHeight = 20f;
+    float minY;
     [SerializeField]
-    float minHeight = 120f;
-    float heightDamp = 5f; 
-
+    float maxY;
+    float m_scrollAxis;
+    float mouseAxis; 
+    
     void Start()
     {
-        zoomCamTransform = transform;
-        maxDistance = minHeight; 
+        selfTransform = transform; 
+        m_focalPoint = transform.parent;
+
+        m_iniPosition = m_focalPoint.position;
+        m_iniRotation = m_focalPoint.rotation;
     }
-
-    void Update()
+	void Update ()
     {
-        ZoomUpdate();
-    }
-
-    void ZoomUpdate()
-    {
-        float distanceToGround = DistanceToGround();
-        zoomPosition += scrollAxis * Time.deltaTime * scrollSensitivity;
-
-        zoomPosition = Mathf.Clamp01(zoomPosition);
-
-        ZoomUpdatePublic(); 
-
-        //float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPosition);
-        //float difference = 0; 
-
-        //if (distanceToGround != targetHeight)
-        //{
-        //    difference = targetHeight - distanceToGround;
-        //}
-
-        //zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
-        //    new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomCamTransform.position.z),
-        //    Time.deltaTime * heightDamp);
-        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position, new Vector3(zoomCamTransform.position.x, zoomCamTransform.position.y, zoomCamTransform.forward.z * zoomPosition),
-            Time.deltaTime * heightDamp);*/
-
-        /*zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.forward, new Vector3(zoomCamTransform.position.x, targetHeight + difference, zoomPosition),
-            Time.deltaTime * heightDamp);*/
-    }
-
-    public void ZoomUpdatePublic()
-    {
-        //zoomCamTransform.position = Vector3.Lerp(zoomCamTransform.position,
-        //    new Vector3(, zoomCamTransform.for), Time.deltaTime * heightDamp);
-        zoomCamTransform.localPosition += localForward * scrollAxis * scrollSensitivity;
-        //zoomCamTransform.Translate(new Vector3(0,0,1) * zoomPosition, Space.Self); 
-    }
-
-    float DistanceToGround()
-    {
-        Ray ray = new Ray(zoomCamTransform.position, Vector3.down);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        if(selfTransform.position.y <= 18)
         {
-            return (hit.point - zoomCamTransform.position).magnitude;
+            //selfTransform.position = new Vector3(selfTransform.position.x, 18, selfTransform.position.z);
+            //selfTransform.position = selfTransform.position;
         }
-        else return 0;
+
+        m_cameraForward = transform.forward;
+
+        m_scrollAxis = mouseAxis * ZoomSpeed;
+        if(m_scrollAxis != 0)
+        {
+            if(selfTransform.position.y > minY && selfTransform.position.y < maxY)
+            {
+                Scrolling();
+                return; 
+            }
+
+            if(selfTransform.position.y <= minY && m_scrollAxis < 0)
+            {
+                Scrolling();
+            }
+
+            if(selfTransform.position.y >= maxY && m_scrollAxis > 0)
+            {
+                Scrolling();
+            }
+        }
+    }
+
+    void Scrolling()
+    {
+        transform.Translate(m_cameraForward.x * m_scrollAxis, m_cameraForward.y * m_scrollAxis, m_cameraForward.z * m_scrollAxis, Space.World);
     }
 
     public void SetAxis(float axis)
     {
-        scrollAxis = axis; 
+        mouseAxis = axis; 
     }
 }

@@ -472,7 +472,7 @@ MonoBehaviour:
   mouse: {fileID: 973731657}
   cameraController: {fileID: 504389057}
   cameraRotation: {fileID: 0}
-  cameraZoom: {fileID: 234305529}
+  cameraZoom: {fileID: 0}
   isGodModeEnabled: 0
   immunityEnabled: 0
   hero: {fileID: 204141487}
@@ -505,7 +505,7 @@ MonoBehaviour:
   mouse: {fileID: 973731657}
   cameraController: {fileID: 504389057}
   cameraRotation: {fileID: 0}
-  cameraZoom: {fileID: 234305529}
+  cameraZoom: {fileID: 0}
   isGodModeEnabled: 0
   immunityEnabled: 0
   hero: {fileID: 204141487}
@@ -1139,7 +1139,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 204141484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.192}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 35, y: 35, z: 35}
   m_Children:
   - {fileID: 1097768732}
@@ -1314,25 +1314,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &234305529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114134397958373192, guid: 79afdd13357a05d47b8696bae5139f59,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1672549575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8814e81cb43b77a478023934328a7412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollSensitivity: 2
-  zoomPosition: 0.8
-  mask:
-    serializedVersion: 2
-    m_Bits: 256
-  maxHeight: 20
-  minHeight: 120
 --- !u!1 &268292543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,8 +4959,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 366077423}
   m_LocalRotation: {x: -0, y: -0.92387956, z: 0.38268343, w: 0}
-  m_LocalPosition: {x: -391.00012, y: 152.02795, z: -96.16651}
-  m_LocalScale: {x: 0.6109377, y: 0.6109375, z: 0.6109376}
+  m_LocalPosition: {x: -354.00006, y: 137.17871, z: -81.31727}
+  m_LocalScale: {x: 0.55312526, y: 0.553125, z: 0.55312514}
   m_Children:
   - {fileID: 1960464787}
   - {fileID: 233247293}
@@ -9739,7 +9720,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 823221128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 80.0625, z: 0}
+  m_LocalPosition: {x: 71, y: 100.875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1489488205}
@@ -13385,7 +13366,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939291621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 515, y: -295.10233, z: 0}
+  m_LocalPosition: {x: 515, y: -294.774, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1551909791}
@@ -14960,7 +14941,7 @@ MonoBehaviour:
   mouse: {fileID: 973731657}
   cameraController: {fileID: 504389057}
   cameraRotation: {fileID: 1804879345}
-  cameraZoom: {fileID: 234305529}
+  cameraZoom: {fileID: 1672549579}
   fogOfWar: {fileID: 0}
   hero: {fileID: 204141487}
   mage: {fileID: 0}
@@ -15412,7 +15393,7 @@ RectTransform:
   m_GameObject: {fileID: 1489488204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.0016548804, y: 0.0016548804, z: 0.0016548804}
+  m_LocalScale: {x: 0.001827848, y: 0.001827848, z: 0.001827848}
   m_Children:
   - {fileID: 1300071314}
   - {fileID: 767212316}
@@ -19359,8 +19340,8 @@ GameObject:
   - component: {fileID: 443952124}
   - component: {fileID: 1672549576}
   - component: {fileID: 1672549578}
-  - component: {fileID: 234305529}
   - component: {fileID: 1672549577}
+  - component: {fileID: 1672549579}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19420,6 +19401,20 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1672549575}
   m_Enabled: 1
+--- !u!114 &1672549579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672549575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cd195df506aa544897e3ad4a0c40f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZoomSpeed: 50
+  minY: 18
+  maxY: 75
 --- !u!1 &1672893938
 GameObject:
   m_ObjectHideFlags: 0
