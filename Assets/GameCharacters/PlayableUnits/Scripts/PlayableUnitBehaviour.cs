@@ -169,6 +169,12 @@ public class PlayableUnitBehaviour : Characters
     #endregion
 
     #region PublicVoids
+    public void Heal(float heal)
+    {
+        hitPoints += heal;
+        cards.UpdateLifeBar(hitPoints); 
+    }
+
     public void PlayableUnitTakeDamage(float damage, EnemyBehaviour autoTarget)
     {
         if (!godMode)

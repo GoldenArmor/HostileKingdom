@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     Hero hero = null;
     [SerializeField]
-    Mage mage = null;
+    Archer archer = null;
 
     void Update()
     {
@@ -94,18 +94,18 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if (mage != null)
+        if (archer != null)
         {
-            if (mage.isUpdatingCirclePosition && mage.isActiveAndEnabled)
+            if (archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    mage.isDoingSkill = true;
+                    archer.isDoingSkill = true;
                     return;
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
-                    mage.isUpdatingCirclePosition = false;
+                    archer.isUpdatingCirclePosition = false;
                 }
             }
         }
@@ -169,7 +169,7 @@ public class InputManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
         {
-            mage.isUpdatingCirclePosition = true;
+            archer.isUpdatingCirclePosition = true;
         }
         #endregion
 

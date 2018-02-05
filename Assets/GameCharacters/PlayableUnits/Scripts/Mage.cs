@@ -2,119 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mage : PlayableUnitBehaviour
+public class Mage : MonoBehaviour
 {
     [Header("Skill")]
     [SerializeField]
-    float selectTarget;
-    float currentSelectTarget;
-    public bool isDoingSkill;
-
-    [SerializeField]
-    Transform skillCircle;
-    float maxDistanceHero = Mathf.Infinity;
-
-    [SerializeField]
-    LayerMask attackMask;
-    [SerializeField]
-    LayerMask circleMask; 
+    LayerMask skillMask;
     [SerializeField]
     float skillCircleRadius;
-    SpriteRenderer circleRenderer; 
 
     Collider[] hitColliders;
 
-    public bool isUpdatingCirclePosition;
+    public bool canDoSkill;
 
-    void Start()
-    {
-        UnitStart();
-        currentSelectTarget = selectTarget;
-        circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
-    }
+    float cooldown = 10;
 
     void Update()
     {
-        if (isDoingSkill)
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0)
         {
-            SkillUpdate();
-            return;
-        }
-        if (isUpdatingCirclePosition)
-        {
-            mouse.isDoingSkill = true;
-            circleRenderer.enabled = true;
-            CirclePositionUpdate();
-        }
-        else
-        {
-            circleRenderer.enabled = false;
-        }
-        UnitUpdate();
-    }
-
-    void CirclePositionUpdate()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(InputManager.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, maxDistanceHero, circleMask))
-        {
-            skillCircle.position = new Vector3(hit.point.x, skillCircle.position.y, hit.point.z);
+            canDoSkill = true;
         }
     }
 
-    void SelectTarget()
+    public void SkillUpdate()
     {
-        currentSelectTarget -= Time.deltaTime;
-        if (currentSelectTarget < 0)
+        if (canDoSkill)
         {
-            SkillUpdate();
-        }
-    }
-
-    void SkillUpdate()
-    {
-        hitColliders = Physics.OverlapSphere(skillCircle.position, skillCircleRadius, attackMask);
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
-            attackedTarget.TakeDamage(attack * 5);
-            if (attackedTarget.hitPoints <= 0)
+            hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, skillMask);
+            for (int i = 0; i < hitColliders.Length; i++)
             {
-                EnemyDies(attackedTarget);
-                return;
+                PlayableUnitBehaviour allyTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
+                allyTarget.Heal(allyTarget.hitPoints * 0.1f);
             }
+            hitColliders = null;
+            canDoSkill = false;
+            cooldown = 10;
         }
-        hitColliders = null;
-        currentSelectTarget = selectTarget;
-        isDoingSkill = false;
-        isUpdatingCirclePosition = false;
-    }
-
-    void EnemyDies(EnemyBehaviour attackedTarget)
-    {
-        if (attackedTarget.isDead == false)
-        {
-            attackedTarget.enemiesManager.enemiesCount.Remove(attackedTarget);
-            attackedTarget.SetDead();
-        }
-        attackedTarget = null;
-        isAttacking = false;
-        return;
-    }
-
-    public override void SetDead()
-    {
-        circleRenderer.enabled = false;
-        base.SetDead();
-    }
-
-    void OnDrawGizmos()
-    {
-        Color newColor = Color.magenta;
-        newColor.a = 0.2f;
-        Gizmos.color = newColor;
-        Gizmos.DrawSphere(skillCircle.position, skillCircleRadius);
     }
 }
