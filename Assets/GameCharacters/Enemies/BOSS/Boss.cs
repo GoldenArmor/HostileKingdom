@@ -6,19 +6,18 @@ public class Boss : EnemyBehaviour
 {
     [Header("Stats")]
     [SerializeField]
-    float startingLife;
-    public float attack; 
+    float startingLife; 
     float currentLife;
 
     [Header("Boss Phases")]
     BossPhase currentBossPhase;
 
-    void Start()
+    protected override void MyStart()
     {
         currentBossPhase.InternalStart();
     }
 
-    void Update()
+    protected override void MyUpdate()
     {
         UpdatePhase(currentBossPhase);
     }
