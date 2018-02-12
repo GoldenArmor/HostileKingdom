@@ -4,12 +4,32 @@ using UnityEngine;
 
 public class BossPhase : MonoBehaviour
 {
+    [SerializeField]
+    protected Boss boss; 
+    
+    protected bool canAttack;
+
     public virtual void InternalStart()
     {
     }
 
     public virtual void InternalUpdate()
     {
+        if (canAttack)
+        {
+            if (RandomBehaviour() == 0)
+            {
+                Firstbehaviour();
+            }
+            else if (RandomBehaviour() == 1)
+            {
+                SecondBehaviour();
+            }
+            else
+            {
+                ThirdBehaviour();
+            }
+        }
     }
 
     protected virtual void Firstbehaviour()
@@ -29,7 +49,13 @@ public class BossPhase : MonoBehaviour
 
     protected virtual void ThirdBehaviour()
     {
+        // 1/4 barrido de fuego
         // 2/4 ataque de garras
         // 3/4 caen bolas del aire
+    }
+
+    protected virtual int RandomBehaviour()
+    {
+        return Random.Range(0,3); 
     }
 }

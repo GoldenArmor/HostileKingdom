@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : EnemyBehaviour
 {
     [Header("Stats")]
     [SerializeField]
     float startingLife;
+    public float attack; 
     float currentLife;
 
     [Header("Boss Phases")]
