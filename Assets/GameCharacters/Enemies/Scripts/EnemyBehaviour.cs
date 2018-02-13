@@ -36,6 +36,11 @@ public class EnemyBehaviour : Characters
 
     protected virtual void Update()
     {
+        MyUpdate();
+    }
+
+    protected override void MyUpdate()
+    {
         if (selectedTarget != null)
         {
             CalculateDistanceFromTarget();
@@ -57,8 +62,6 @@ public class EnemyBehaviour : Characters
 
             if (unitsCanAttack.Count > 0) FindClosestObject();
         }
-
-        MyUpdate();
     }
 
     #region Updates

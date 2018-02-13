@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Boss : EnemyBehaviour
 {
     [Header("Stats")]
     [SerializeField]
-    float startingLife;
+    float startingLife; 
     float currentLife;
 
     [Header("Boss Phases")]
     BossPhase currentBossPhase;
 
-    void Start()
+    protected override void MyStart()
     {
         currentBossPhase.InternalStart();
     }
 
-    void Update()
+    protected override void MyUpdate()
     {
         UpdatePhase(currentBossPhase);
     }
