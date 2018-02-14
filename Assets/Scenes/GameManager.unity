@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -190,9 +191,8 @@ GameObject:
   - component: {fileID: 242680713}
   - component: {fileID: 242680712}
   - component: {fileID: 242680711}
-  - component: {fileID: 242680714}
   - component: {fileID: 242680716}
-  - component: {fileID: 242680715}
+  - component: {fileID: 242680714}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Manager
@@ -215,13 +215,12 @@ MonoBehaviour:
   gamePause: 0
   mouse: {fileID: 0}
   cameraController: {fileID: 0}
+  cameraRotation: {fileID: 0}
   cameraZoom: {fileID: 0}
   isGodModeEnabled: 0
   immunityEnabled: 0
-  isFowEnabled: 0
-  fogOfWar: {fileID: 0}
   hero: {fileID: 0}
-  mage: {fileID: 0}
+  archer: {fileID: 0}
 --- !u!114 &242680712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backScene: 0
   nextScene: 0
-  percentText: {fileID: 439822455}
   blackScreen: {fileID: 73675946}
 --- !u!4 &242680713
 Transform:
@@ -258,54 +256,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 242680710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1db2ac13a11bcb4793a3bf800d71092, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - index: 0
-    name: Track01
-    clip: {fileID: 8300000, guid: 4398b9d5f677914459b818053832f832, type: 3}
-    getRandomValues: 0
-    volume: 1
-    pitch: 1
-    playingSound: 0
-    maxRollOff: 0
-    minRollOff: 0
-    source: {fileID: 0}
-    loop: 0
-  - index: 0
-    name: Track02
-    clip: {fileID: 8300000, guid: 21a3aaaa9b3448e40ada0a519d240fdb, type: 3}
-    getRandomValues: 0
-    volume: 1
-    pitch: 1
-    playingSound: 0
-    maxRollOff: 0
-    minRollOff: 0
-    source: {fileID: 0}
-    loop: 0
-  - index: 0
-    name: Ambient
-    clip: {fileID: 8300000, guid: b8fc94ba696cb4e4fbaea361184936a6, type: 3}
-    getRandomValues: 0
-    volume: 0.36
-    pitch: 1
-    playingSound: 0
-    maxRollOff: 0
-    minRollOff: 0
-    source: {fileID: 0}
-    loop: 0
---- !u!114 &242680715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 242680710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f7cab341d827f42a40dcf11f39b3b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  mixerGroup: 0
+  sfxClips: []
+  ambientClips: []
+  musicClips: []
 --- !u!81 &242680716
 AudioListener:
   m_ObjectHideFlags: 0
@@ -337,7 +294,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439822453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -550, y: 325, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2129514292}
@@ -532,8 +489,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2129514288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 273.5, y: 154, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 635133708}
   - {fileID: 439822454}
@@ -541,11 +498,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!225 &2129514293
 CanvasGroup:
   m_ObjectHideFlags: 0
