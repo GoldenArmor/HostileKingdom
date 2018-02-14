@@ -6,7 +6,6 @@ public class ButtonManager : MonoBehaviour
 {
     [SerializeField]
     LevelLogic levelLogic;
-    AudioManager audioManager; 
 
     [Header("Scenes")]
     const int titleScene = 2;
@@ -19,12 +18,11 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         levelLogic = GameObject.FindGameObjectWithTag("Manager").GetComponent<LevelLogic>();
-        audioManager = GetComponent<AudioManager>();
     }
 
     public void ClickRandomSound()
     {
-        audioManager.Play(Random.Range(0, audioManager.sounds.Length));
+        //audioManager.Play(Random.Range(0, audioManager.sounds.Length));
     }
 
     public void QuitGame()

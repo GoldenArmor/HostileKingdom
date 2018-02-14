@@ -6,8 +6,7 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour
 {
-    protected Animator anim;
-    AudioManager audioManager; 
+    protected Animator anim; 
 
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Stun, Dead }
     public UnitState state;
@@ -33,14 +32,14 @@ public class Characters : MonoBehaviour
     public float distanceFromTarget = Mathf.Infinity;
 
     [Header("NavMeshAgent")]
-    protected NavMeshAgent agent;
+    [HideInInspector]
+    public NavMeshAgent agent;
 
     public LayerMask mask; 
 
     protected virtual void MyStart()
     {
         anim = GetComponent<Animator>();
-        audioManager = GetComponent<AudioManager>(); 
         agent = GetComponent<NavMeshAgent>();
         hitPoints = startingHitPoints;
    
@@ -167,13 +166,13 @@ public class Characters : MonoBehaviour
 
     protected void PlayFootsteps()
     {
-        footstepsCounter += Time.deltaTime;
-        randomAudioClip = UnityEngine.Random.Range(0, 2); 
-        if (footstepsCounter >= audioManager.sounds[randomAudioClip].clip.length) audioManager.sounds[randomAudioClip].playingSound = false;
-        if (audioManager.sounds[randomAudioClip].playingSound == false)
-        {
-            audioManager.Play(randomAudioClip); 
-            footstepsCounter = 0; 
-        }
+        //footstepsCounter += Time.deltaTime;
+        //randomAudioClip = UnityEngine.Random.Range(0, 2); 
+        //if (footstepsCounter >= AudioManager.Play() audioManager.sounds[randomAudioClip].playingSound = false;
+        //if (audioManager.sounds[randomAudioClip].playingSound == false)
+        //{
+        //    audioManager.Play(randomAudioClip); 
+        //    footstepsCounter = 0; 
+        //}
     }
 }
