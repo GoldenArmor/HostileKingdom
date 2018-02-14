@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    float oldMasterVolume = AudioManager.GetMasterVolume(); 
+    //float oldMasterVolume = AudioManager.GetMasterVolume(); 
 
     bool isFullScreen;
 
@@ -38,11 +38,11 @@ public class SettingsManager : MonoBehaviour
     {
         if (isEnabled)
         {
-            AudioManager.SetMasterVolume(oldMasterVolume);
+            //AudioManager.SetMasterVolume(oldMasterVolume);
         }
         else
         {          
-            oldMasterVolume = AudioManager.GetMasterVolume();
+            //oldMasterVolume = AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume(0);
         }
     }

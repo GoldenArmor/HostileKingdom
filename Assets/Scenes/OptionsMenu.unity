@@ -809,7 +809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 610077304}
   - component: {fileID: 610077303}
-  - component: {fileID: 610077305}
   m_Layer: 0
   m_Name: ButtonManager
   m_TagString: Untagged
@@ -842,40 +841,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &610077305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 610077302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1db2ac13a11bcb4793a3bf800d71092, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - index: 0
-    name: Button01
-    clip: {fileID: 8300000, guid: 7fbb5145ca96387458f8201f6cc8df26, type: 3}
-    getRandomValues: 1
-    volume: 1
-    pitch: 1
-    playingSound: 0
-    maxRollOff: 0
-    minRollOff: 0
-    source: {fileID: 0}
-    loop: 0
-  - index: 0
-    name: Button02
-    clip: {fileID: 8300000, guid: 42aa6b6060be3dd48b4a5ac02da87329, type: 3}
-    getRandomValues: 1
-    volume: 1
-    pitch: 1
-    playingSound: 0
-    maxRollOff: 0
-    minRollOff: 0
-    source: {fileID: 0}
-    loop: 0
 --- !u!1 &618054980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1565,7 @@ GameObject:
   - component: {fileID: 907772270}
   - component: {fileID: 907772271}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: On/Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3801,7 +3766,7 @@ GameObject:
   - component: {fileID: 1975200985}
   - component: {fileID: 1975200986}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Music&Ambient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3875,7 +3840,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1641572365}
-        m_MethodName: SetVolume
+        m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3972,7 +3937,7 @@ GameObject:
   - component: {fileID: 1976990042}
   - component: {fileID: 1976990043}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4046,7 +4011,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1641572365}
-        m_MethodName: SetVolume
+        m_MethodName: SetFXVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

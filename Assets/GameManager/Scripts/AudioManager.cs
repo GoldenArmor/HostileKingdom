@@ -19,7 +19,7 @@ public static class AudioManager
     {
         try
         {
-            mainMixer.SetFloat("Master", v);
+            mainMixer.SetFloat("MasterVolume", v);
         }
         catch(System.Exception e)
         {
@@ -30,7 +30,7 @@ public static class AudioManager
     {
         try
         {
-            mainMixer.SetFloat("Music", v);
+            mainMixer.SetFloat("MusicVolume", v);
         }
         catch(System.Exception e)
         {
@@ -41,7 +41,7 @@ public static class AudioManager
     {
         try
         {
-            mainMixer.SetFloat("SFX", v);
+            mainMixer.SetFloat("SFXVolume", v);
         }
         catch(System.Exception e)
         {
@@ -52,7 +52,7 @@ public static class AudioManager
     {
         try
         {
-            mainMixer.SetFloat("Ambient", v);
+            mainMixer.SetFloat("AmbientVolume", v);
         }
         catch(System.Exception e)
         {
@@ -65,7 +65,7 @@ public static class AudioManager
         float v = 0;
         try
         {
-            mainMixer.GetFloat("Master", out v);
+            mainMixer.GetFloat("MasterVolume", out v);
         }
         catch(System.Exception e)
         {
@@ -78,7 +78,7 @@ public static class AudioManager
         float v = 0;
         try
         {
-            mainMixer.GetFloat("Music", out v);
+            mainMixer.GetFloat("MusicVolume", out v);
         }
         catch(System.Exception e)
         {
@@ -91,7 +91,7 @@ public static class AudioManager
         float v = 0;
         try
         {
-            mainMixer.GetFloat("SFX", out v);
+            mainMixer.GetFloat("SFXVolume", out v);
         }
         catch(System.Exception e)
         {
@@ -104,7 +104,7 @@ public static class AudioManager
         float v = 0;
         try
         {
-            mainMixer.GetFloat("Ambient", out v);
+            mainMixer.GetFloat("AmbientVolume", out v);
         }
         catch(System.Exception e)
         {
