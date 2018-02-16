@@ -231,6 +231,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1238171455168020
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4586889105912930}
+  - component: {fileID: 114861649772017640}
+  - component: {fileID: 114341882709182666}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1311120062072776
 GameObject:
   m_ObjectHideFlags: 1
@@ -243,22 +260,6 @@ GameObject:
   m_Layer: 0
   m_Name: StatsCard_03
   m_TagString: StatsCard
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1316980660668928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4521497463706496}
-  - component: {fileID: 114019885707003780}
-  m_Layer: 0
-  m_Name: LevelLoader
-  m_TagString: LevelLoader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,7 +941,6 @@ Transform:
   m_LocalPosition: {x: 328.72754, y: 15.5533905, z: 105.61503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4521497463706496}
   - {fileID: 4360394269063150}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -957,19 +957,6 @@ Transform:
   m_Children:
   - {fileID: 4835080319638350}
   m_Father: {fileID: 4266418368264412}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4521497463706496
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1316980660668928}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4266418368264412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4581878922698626
@@ -982,11 +969,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 44.5, z: 39.499992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4586889105912930}
   - {fileID: 224241176950578324}
   - {fileID: 224317407185559502}
   m_Father: {fileID: 4835080319638350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+--- !u!4 &4586889105912930
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238171455168020}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4581878922698626}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4717089566002548
 Transform:
   m_ObjectHideFlags: 1
@@ -1148,26 +1149,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798365880848924}
   m_Enabled: 1
---- !u!114 &114019885707003780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1316980660668928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f079cf372cf574a9663967fec85679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouse: {fileID: 114817782569474222}
-  cameraController: {fileID: 114647227522025176}
-  cameraRotation: {fileID: 114569277669009432}
-  cameraZoom: {fileID: 114331939706931832}
-  fogOfWar: {fileID: 0}
-  hero: {fileID: 0}
-  mage: {fileID: 0}
-  archer: {fileID: 0}
-  paladin: {fileID: 0}
 --- !u!114 &114056264627372304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1713,6 +1694,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114341882709182666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238171455168020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: 1
+  sfxClips: []
+  ambientClips: []
+  musicClips:
+  - {fileID: 8300000, guid: b8fc94ba696cb4e4fbaea361184936a6, type: 3}
 --- !u!114 &114368239628557144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2262,6 +2259,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &114861649772017640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238171455168020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f079cf372cf574a9663967fec85679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayer: {fileID: 114341882709182666}
+  mouse: {fileID: 114817782569474222}
+  cameraController: {fileID: 114647227522025176}
+  cameraRotation: {fileID: 114569277669009432}
+  cameraZoom: {fileID: 114331939706931832}
+  fogOfWar: {fileID: 0}
+  hero: {fileID: 0}
+  mage: {fileID: 0}
+  archer: {fileID: 0}
+  paladin: {fileID: 0}
 --- !u!114 &114883075905938728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2904,7 +2922,7 @@ RectTransform:
   - {fileID: 224381542479440610}
   - {fileID: 224835003220151212}
   m_Father: {fileID: 4581878922698626}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2964,7 +2982,7 @@ RectTransform:
   - {fileID: 224385868107742636}
   - {fileID: 224138978726092054}
   m_Father: {fileID: 4581878922698626}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

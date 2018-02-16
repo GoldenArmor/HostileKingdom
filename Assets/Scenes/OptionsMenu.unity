@@ -308,7 +308,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1641572365}
-        m_MethodName: SetResolution
+        m_MethodName: SetQuality
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -319,7 +319,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 610077303}
-        m_MethodName: ClickSound
+        m_MethodName: ClickRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1499,7 +1499,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 610077303}
-        m_MethodName: ClickSound
+        m_MethodName: ClickRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2433,7 +2433,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1641572365}
         m_MethodName: SetFullscreen
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2443,7 +2443,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 610077303}
-        m_MethodName: ClickSound
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3113,7 +3113,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 610077303}
-        m_MethodName: ClickSound
+        m_MethodName: ClickRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

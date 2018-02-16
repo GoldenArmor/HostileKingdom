@@ -8,7 +8,7 @@ public class SettingsManager : MonoBehaviour
 {
     //float oldMasterVolume = AudioManager.GetMasterVolume(); 
 
-    bool isFullScreen;
+    bool isFullScreen = true;
 
     public void SetFirstResolution()
     {

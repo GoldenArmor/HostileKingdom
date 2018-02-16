@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -124,6 +125,7 @@ GameObject:
   - component: {fileID: 2142951572}
   - component: {fileID: 2142951568}
   - component: {fileID: 2142951569}
+  - component: {fileID: 2142951573}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -253,6 +255,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -279,6 +282,7 @@ VideoPlayer:
   m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 77242f0d3cce1204ebf97225f28ee827, type: 3}
   m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 2142951570}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
@@ -302,3 +306,10 @@ VideoPlayer:
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
+--- !u!81 &2142951573
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142951567}
+  m_Enabled: 1

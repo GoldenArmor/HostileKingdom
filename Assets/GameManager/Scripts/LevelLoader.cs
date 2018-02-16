@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
+    [SerializeField]
+    AudioPlayer audioPlayer; 
+
     public Mouse mouse;
 
     public CameraController cameraController;
@@ -16,5 +19,11 @@ public class LevelLoader : MonoBehaviour
     public Hero hero;
     public Mage mage;
     public Archer archer;
-    public Paladin paladin; 
+    public Paladin paladin;
+
+    private void Start()
+    {
+        AudioManager.Initialize();
+        audioPlayer.PlayMusic(0);
+    }
 }

@@ -191,8 +191,6 @@ GameObject:
   - component: {fileID: 242680713}
   - component: {fileID: 242680712}
   - component: {fileID: 242680711}
-  - component: {fileID: 242680716}
-  - component: {fileID: 242680714}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Manager
@@ -221,6 +219,8 @@ MonoBehaviour:
   immunityEnabled: 0
   hero: {fileID: 0}
   archer: {fileID: 0}
+  mage: {fileID: 0}
+  paladin: {fileID: 0}
 --- !u!114 &242680712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,28 +248,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &242680714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 242680710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: 0
-  sfxClips: []
-  ambientClips: []
-  musicClips: []
---- !u!81 &242680716
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 242680710}
-  m_Enabled: 1
 --- !u!1 &439822453
 GameObject:
   m_ObjectHideFlags: 0

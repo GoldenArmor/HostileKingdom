@@ -19129,6 +19129,8 @@ GameObject:
   - component: {fileID: 1026284665}
   - component: {fileID: 1026284664}
   - component: {fileID: 1026284663}
+  - component: {fileID: 1026284668}
+  - component: {fileID: 1026284667}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -19214,6 +19216,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1026284667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026284662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: 0
+  sfxClips: []
+  ambientClips: []
+  musicClips:
+  - {fileID: 8300000, guid: 4398b9d5f677914459b818053832f832, type: 3}
+--- !u!114 &1026284668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026284662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23440782ccc8b8144a72f6fc8e750e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPlayer: {fileID: 1026284667}
 --- !u!1 &1027462466
 GameObject:
   m_ObjectHideFlags: 0

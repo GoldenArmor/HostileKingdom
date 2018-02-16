@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171597207097752}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -46.848186, y: 0.21853036, z: 221.6515}
+  m_LocalPosition: {x: 269.9, y: 6.9950523, z: 484.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4198082377330392}
@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1041447896577598}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 35, y: 35, z: 35}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4058377387247496}
   m_RootOrder: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   enemiesManager: {fileID: 0}
   idleTime: 0
   path: []
+  maxDistanceAttack: 23
   cooldownAttack: 10
   timeCounter: 0
   unitsCanAttack: []
@@ -224,7 +225,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1171597207097752}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 57.52
+  m_Radius: 6.95
   m_Speed: 10
   m_Acceleration: 20
   avoidancePriority: 50
@@ -233,7 +234,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 103.55
+  m_Height: 19.6
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

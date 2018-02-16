@@ -11,9 +11,9 @@ public class ButtonManager : MonoBehaviour
     const int titleScene = 2;
     const int gameplayScene = 3;
     const int optionsScene = 4;
-    const int tavernScene = 5;
-    const int lostScene = 6;
-    const int wonScene = 7;
+    const int tavernScene = 8;
+    const int lostScene = 5;
+    const int wonScene = 6;
 
     void Start()
     {

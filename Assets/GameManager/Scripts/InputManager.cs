@@ -48,6 +48,11 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     Paladin paladin = null;
 
+    void Start()
+    {
+        AudioManager.Initialize();     
+    }
+
     void Update()
     {
         mousePosition = Input.mousePosition;
