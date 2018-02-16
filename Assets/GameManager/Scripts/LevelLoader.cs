@@ -14,5 +14,7 @@ public class LevelLoader : MonoBehaviour
 
     [Header("Skills")]
     public Hero hero;
-    public Mage mage;   
+    public Mage mage;
+    public Archer archer;
+    public Paladin paladin; 
 }
