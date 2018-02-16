@@ -15,6 +15,8 @@ public class EnemyBehaviour : Characters
     int pathIndex = 0;
     float patrolCounter;
     int idlePercent = 40;
+    [SerializeField]
+    float maxDistanceAttack; 
 
     [Header("Timers")]
     [SerializeField]
@@ -69,9 +71,9 @@ public class EnemyBehaviour : Characters
     #region Updates
     protected override void IdleUpdate()
     {
-        if (selectedTarget != null)
+        if (selectedTarget != null && distanceFromTarget < maxDistanceAttack)
         {
-            if (distanceFromTarget > attackRange)
+            if (distanceFromTarget > attackRange && distanceFromTarget < maxDistanceAttack)
             {
                 SetChase();
                 return;
@@ -149,7 +151,11 @@ public class EnemyBehaviour : Characters
     protected override void SetMovement()
     {
         agent.isStopped = false;
-        agent.SetDestination(path[pathIndex].position);
+        if (path.Length > 0)
+        {
+            agent.SetDestination(path[pathIndex].position);
+        }
+        else SetIdle();
         base.SetMovement();
     }
     #endregion
