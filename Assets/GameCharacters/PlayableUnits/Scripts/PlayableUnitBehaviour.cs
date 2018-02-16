@@ -19,6 +19,7 @@ public class PlayableUnitBehaviour : Characters
     [SerializeField]
     float chaseRange;
     Vector3 newFormationPosition;
+    float angle = 10; 
     //[SerializeField]
     //float newDestinationRadius;
 
@@ -65,7 +66,7 @@ public class PlayableUnitBehaviour : Characters
                 ClearEnemy();
             }
         } 
-        screenPosition = mainCamera.WorldToScreenPoint(transform.position);
+        screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         isOnScreen = false; 
         if (mouse.UnitWithinScreenSpace(screenPosition)) //This function lets the player know if the Unit is in the screenview to do a drag selection. 
         {
@@ -133,9 +134,20 @@ public class PlayableUnitBehaviour : Characters
     }
 
     protected override void AttackUpdate()
-    { 
+    {
+        //if(Vector3.Angle(transform.forward, selectedTarget.transform.position - transform.position) < angle)
+        //{
+        //    selectedTarget.TakeDamage(attack);
+        //    if(selectedTarget.hitPoints <= 0) ClearEnemy();
+
+        //    timeCounter = 0;
+        //    SetIdle();
+        //}
+        //else
+        //    LookAtTarget(); 
+
         selectedTarget.TakeDamage(attack);
-        if (selectedTarget.hitPoints <= 0) ClearEnemy();
+        if(selectedTarget.hitPoints <= 0) ClearEnemy();
 
         timeCounter = 0;
         SetIdle();
@@ -153,7 +165,7 @@ public class PlayableUnitBehaviour : Characters
     {
         isAttacking = true;
         base.SetAttack();
-    }
+    } 
 
     public override void SetDead()
     {
@@ -195,7 +207,7 @@ public class PlayableUnitBehaviour : Characters
 
     public void ClickUpdate(Vector3 formationPosition, Vector3 mousePosition) //When I click right button. It's called from the InputManager script.  
     {
-        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
         {

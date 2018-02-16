@@ -14,10 +14,16 @@ public class Paladin : PlayableUnitBehaviour
 
     public bool canDoSkill; 
 
-    float cooldown = 10; 
+    float cooldown = 10;
+
+    void Start()
+    {
+        MyStart(); 
+    }
 
     void Update()
     {
+        UnitUpdate();
         cooldown -= Time.deltaTime; 
         if (cooldown <= 0)
         {

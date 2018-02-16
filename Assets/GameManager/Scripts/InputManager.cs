@@ -43,6 +43,10 @@ public class InputManager : MonoBehaviour
     Hero hero = null;
     [SerializeField]
     Archer archer = null;
+    [SerializeField]
+    Mage mage = null;
+    [SerializeField]
+    Paladin paladin = null;
 
     void Update()
     {
@@ -83,7 +87,9 @@ public class InputManager : MonoBehaviour
         cameraRotation = levelLoader.cameraRotation;
         cameraZoom = levelLoader.cameraZoom;
         hero = levelLoader.hero;
-        //mage = levelLoader.mage; 
+        mage = levelLoader.mage;
+        archer = levelLoader.archer;
+        paladin = levelLoader.paladin; 
         wasLoaded = false;
     }
 
@@ -170,6 +176,14 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
         {
             archer.isUpdatingCirclePosition = true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            mage.SkillUpdate();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            paladin.SkillUpdate();
         }
         #endregion
 

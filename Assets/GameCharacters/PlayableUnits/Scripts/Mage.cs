@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mage : MonoBehaviour
+public class Mage : PlayableUnitBehaviour
 {
     [Header("Skill")]
     [SerializeField]
@@ -15,9 +15,15 @@ public class Mage : MonoBehaviour
     public bool canDoSkill;
 
     float cooldown = 10;
-
+    void Start()
+    {
+        UnitStart();
+        //currentSelectTarget = selectTarget;
+        //circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
+        UnitUpdate();
         cooldown -= Time.deltaTime;
         if (cooldown <= 0)
         {

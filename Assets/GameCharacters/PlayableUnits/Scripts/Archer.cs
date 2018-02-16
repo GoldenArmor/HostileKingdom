@@ -35,6 +35,8 @@ public class Archer : PlayableUnitBehaviour
 
     void Update()
     {
+        UnitUpdate();
+
         if (isDoingSkill)
         {
             SkillUpdate();
@@ -50,7 +52,6 @@ public class Archer : PlayableUnitBehaviour
         {
             circleRenderer.enabled = false;
         }
-        UnitUpdate();
     }
 
     void CirclePositionUpdate()

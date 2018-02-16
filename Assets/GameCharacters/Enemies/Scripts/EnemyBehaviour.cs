@@ -41,6 +41,8 @@ public class EnemyBehaviour : Characters
 
     protected override void MyUpdate()
     {
+        base.MyUpdate(); 
+
         if (selectedTarget != null)
         {
             CalculateDistanceFromTarget();
@@ -69,7 +71,7 @@ public class EnemyBehaviour : Characters
     {
         if (selectedTarget != null)
         {
-            if (distanceFromTarget >= attackRange)
+            if (distanceFromTarget > attackRange)
             {
                 SetChase();
                 return;
@@ -91,7 +93,7 @@ public class EnemyBehaviour : Characters
 
     protected override void MoveUpdate()
     {        
-        if (agent.remainingDistance < agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
         {
             pathIndex++;
             if (pathIndex >= path.Length) pathIndex = 0;
@@ -107,7 +109,7 @@ public class EnemyBehaviour : Characters
         {
             agent.SetDestination(targetTransform.position);
 
-            if (distanceFromTarget < attackRange)
+            if (distanceFromTarget <= attackRange)
             {
                 SetAttack();
             }

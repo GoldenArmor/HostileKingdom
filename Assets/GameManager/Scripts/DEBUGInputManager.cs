@@ -39,6 +39,10 @@ public class DEBUGInputManager : MonoBehaviour
     Hero hero = null;
     [SerializeField]
     Archer archer = null;
+    [SerializeField]
+    Mage mage = null;
+    [SerializeField]
+    Paladin paladin = null;
 
     void Update()
     {
@@ -79,7 +83,9 @@ public class DEBUGInputManager : MonoBehaviour
         cameraRotation = levelLoader.cameraRotation; 
         cameraZoom = levelLoader.cameraZoom;
         hero = levelLoader.hero;
-        //mage = levelLoader.mage; 
+        mage = levelLoader.mage;
+        archer = levelLoader.archer;
+        paladin = levelLoader.paladin;
         wasLoaded = false;
     }
 
@@ -90,16 +96,16 @@ public class DEBUGInputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if (archer != null)
+        if(archer != null)
         {
-            if (archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
+            if(archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
             {
-                if (Input.GetMouseButtonDown(1))
+                if(Input.GetMouseButtonDown(1))
                 {
                     archer.isDoingSkill = true;
                     return;
                 }
-                if (Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0))
                 {
                     archer.isUpdatingCirclePosition = false;
                 }
@@ -159,13 +165,21 @@ public class DEBUGInputManager : MonoBehaviour
         #endregion
 
         #region PlayableUnitSkills
-        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
             hero.SkillUpdate();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
         {
             archer.isUpdatingCirclePosition = true;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            mage.SkillUpdate();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            paladin.SkillUpdate();
         }
         #endregion
     }
