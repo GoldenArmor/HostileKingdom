@@ -22,6 +22,7 @@ public class BossPhase : MonoBehaviour
 
     public virtual void InternalUpdate()
     {
+        if (cooldown <= 0) canAttack = true; 
         if (canAttack)
         {
             if (RandomBehaviour() == 0)
@@ -36,6 +37,7 @@ public class BossPhase : MonoBehaviour
             {
                 SetThird();
             }
+            //cooldown = setCooldown; 
         }
         else if (!canAttack)
         {

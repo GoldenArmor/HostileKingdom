@@ -10,6 +10,7 @@ public class Boss : EnemyBehaviour
     float currentLife;
 
     [Header("Boss Phases")]
+    [SerializeField]
     BossPhase currentBossPhase;
 
     protected override void MyStart()

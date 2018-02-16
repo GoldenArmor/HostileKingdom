@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FirstPhase : BossPhase
 {
@@ -29,6 +30,7 @@ public class FirstPhase : BossPhase
     public override void InternalStart()
     {
         base.InternalStart();
+        boss.agent = GetComponent<NavMeshAgent>();
         circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
         iniAttackDuration = attackDuration; 
     }
@@ -56,13 +58,15 @@ public class FirstPhase : BossPhase
         }
 
         hitColliders = null;
-        canAttack = true;
+        //canAttack = true;
         circleRenderer.enabled = false;
     }
 
     protected override void SecondBehaviour()
     {
         base.SecondBehaviour();
+        cooldown = 10;
+        boss.agent.SetDestination(attackPosition.position);
 
         if (Vector3.Distance(boss.transform.position, boss.agent.destination) < boss.agent.stoppingDistance)
         {
@@ -73,10 +77,10 @@ public class FirstPhase : BossPhase
                 Quaternion.Euler(boss.transform.localRotation.x, 90, boss.transform.localRotation.z), attackDuration); 
 
         }
-        else
-        {
-            boss.agent.SetDestination(attackPosition.position);
-        }
+        //else
+        //{
+        //    boss.agent.SetDestination(attackPosition.position);
+        //}
 
         if (attackDuration <= 0)
         {
@@ -117,13 +121,15 @@ public class FirstPhase : BossPhase
         }
 
         hitColliders = null;
-        canAttack = true;
+        //canAttack = true;
         circleRenderer.enabled = false;
     }
 
     protected override void SetSecond()
     {
         base.SetSecond();
+        //boss.agent.SetDestination(attackPosition.position);
+        //boss.agent.destination = attackPosition.position;
         boss.transform.localRotation = Quaternion.Euler(boss.transform.localRotation.x, -90, boss.transform.localRotation.z);
     }
 
