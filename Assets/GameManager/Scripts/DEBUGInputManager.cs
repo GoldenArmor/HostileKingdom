@@ -24,7 +24,7 @@ public class DEBUGInputManager : MonoBehaviour
     [SerializeField]
     CameraZoom cameraZoom = null;
     float scrollAxis;
-    float rotateAxis;
+    float rotationAxis;
     float mouseAxis;
     Vector2 inputAxis;
 
@@ -96,38 +96,38 @@ public class DEBUGInputManager : MonoBehaviour
 
     void NoPaused()
     {
-        if(archer != null)
-        {
-            if(archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
-            {
-                if(Input.GetMouseButtonDown(1))
-                {
-                    archer.isDoingSkill = true;
-                    return;
-                }
-                if(Input.GetMouseButtonDown(0))
-                {
-                    archer.isUpdatingCirclePosition = false;
-                }
-            }
-        }
+        //if(archer != null)
+        //{
+        //    if(archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
+        //    {
+        //        if(Input.GetMouseButtonDown(1))
+        //        {
+        //            archer.isDoingSkill = true;
+        //            return;
+        //        }
+        //        if(Input.GetMouseButtonDown(0))
+        //        {
+        //            archer.isUpdatingCirclePosition = false;
+        //        }
+        //    }
+        //}
 
         mouse.mousePosition = mousePosition;
 
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
-        rotateAxis = Input.GetAxis("Rotation");
+        rotationAxis = Input.GetAxis("Rotation");
         mouseAxis = Input.GetAxis("Mouse X");
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraRotation.SetRotationAxis(rotateAxis);
-        cameraZoom.SetAxis(scrollAxis); 
+        cameraRotation.SetRotationAxis(rotationAxis);
+        cameraZoom.SetAxis(scrollAxis);
 
         if (Input.GetButton("Fire3"))
         {
-            cameraRotation.SetMouseRotationAxis(mouseAxis);
+            cameraRotation.SetMouseRotationAxis(mouseAxis); 
         }
         #endregion
 
@@ -165,22 +165,22 @@ public class DEBUGInputManager : MonoBehaviour
         #endregion
 
         #region PlayableUnitSkills
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            hero.SkillUpdate();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            archer.isUpdatingCirclePosition = true;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            mage.SkillUpdate();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            paladin.SkillUpdate();
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        //{
+        //    hero.SkillUpdate();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        //{
+        //    archer.isUpdatingCirclePosition = true;
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        //{
+        //    mage.SkillUpdate();
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        //{
+        //    paladin.SkillUpdate();
+        //}
         #endregion
     }
 
@@ -222,12 +222,12 @@ public class DEBUGInputManager : MonoBehaviour
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
-        rotateAxis = Input.GetAxis("Rotation");
+        rotationAxis = Input.GetAxis("Rotation");
         mouseAxis = Input.GetAxis("Mouse X");
         scrollAxis = Input.GetAxis("Mouse ScrollWheel");
 
         cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraRotation.SetRotationAxis(rotateAxis);
+        cameraRotation.SetRotationAxis(rotationAxis);
         cameraZoom.SetAxis(scrollAxis);
 
         if (Input.GetButton("Fire3"))

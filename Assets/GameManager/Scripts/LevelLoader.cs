@@ -21,9 +21,9 @@ public class LevelLoader : MonoBehaviour
     public Archer archer;
     public Paladin paladin;
 
-    private void Start()
-    {
-        AudioManager.Initialize();
-        audioPlayer.PlayMusic(0);
-    }
+    //private void Start()
+    //{
+    //    AudioManager.Initialize();
+    //    //audioPlayer.PlayMusic(0);
+    //}
 }

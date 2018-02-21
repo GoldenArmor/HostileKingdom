@@ -59,10 +59,10 @@ public class Mouse : MonoBehaviour
             }
         }
 
-        if (selectableUnits.Count == 0)
-        {
-            buttonManager.ChangeToLost();
-        }
+        //if (selectableUnits.Count == 0)
+        //{
+        //    buttonManager.ChangeToLost();
+        //}
      }
 
     #region DragSelection

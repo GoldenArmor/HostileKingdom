@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraRotation : MonoBehaviour
 {
     [SerializeField]
-    Transform mainCameraTransform;
+    Transform mainCameraTransform; 
+
     Transform camTransform;
 
     [Header("Rotation")]
@@ -20,7 +21,7 @@ public class CameraRotation : MonoBehaviour
     void Start()
     {
         camTransform = transform;
-        mainCameraTransform.LookAt(transform);
+        mainCameraTransform.LookAt(camTransform); 
     }
 
     void Rotation()

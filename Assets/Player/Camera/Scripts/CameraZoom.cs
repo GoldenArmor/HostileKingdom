@@ -5,12 +5,12 @@ public class CameraZoom : MonoBehaviour
 {
     Transform selfTransform; 
 
-    Transform m_focalPoint;
-    Vector3 m_iniPosition;
-    Quaternion m_iniRotation;
+    Transform focalPoint;
+    Vector3 initialPosition;
+    Quaternion initialRotation;
 
-    Vector3 m_cameraForward;
-    Vector3 m_mouseOrigin;
+    Vector3 cameraForward;
+    Vector3 mouseOrigin;
     
     [Header("Scrolling")]
     [SerializeField]
@@ -19,29 +19,23 @@ public class CameraZoom : MonoBehaviour
     float minY;
     [SerializeField]
     float maxY;
-    float m_scrollAxis;
+    float scrollAxis;
     float mouseAxis; 
     
     void Start()
     {
         selfTransform = transform; 
-        m_focalPoint = transform.parent;
+        focalPoint = transform.parent;
 
-        m_iniPosition = m_focalPoint.position;
-        m_iniRotation = m_focalPoint.rotation;
+        initialPosition = focalPoint.position;
+        initialRotation = focalPoint.rotation;
     }
 	void Update ()
     {
-        if(selfTransform.position.y <= 18)
-        {
-            //selfTransform.position = new Vector3(selfTransform.position.x, 18, selfTransform.position.z);
-            //selfTransform.position = selfTransform.position;
-        }
+        cameraForward = transform.forward;
 
-        m_cameraForward = transform.forward;
-
-        m_scrollAxis = mouseAxis * ZoomSpeed;
-        if(m_scrollAxis != 0)
+        scrollAxis = mouseAxis * ZoomSpeed;
+        if(scrollAxis != 0)
         {
             if(selfTransform.position.y > minY && selfTransform.position.y < maxY)
             {
@@ -49,12 +43,12 @@ public class CameraZoom : MonoBehaviour
                 return; 
             }
 
-            if(selfTransform.position.y <= minY && m_scrollAxis < 0)
+            if(selfTransform.position.y <= minY && scrollAxis < 0)
             {
                 Scrolling();
             }
 
-            if(selfTransform.position.y >= maxY && m_scrollAxis > 0)
+            if(selfTransform.position.y >= maxY && scrollAxis > 0)
             {
                 Scrolling();
             }
@@ -63,7 +57,7 @@ public class CameraZoom : MonoBehaviour
 
     void Scrolling()
     {
-        transform.Translate(m_cameraForward.x * m_scrollAxis, m_cameraForward.y * m_scrollAxis, m_cameraForward.z * m_scrollAxis, Space.World);
+        transform.Translate(cameraForward.x * scrollAxis, cameraForward.y * scrollAxis, cameraForward.z * scrollAxis, Space.World);
     }
 
     public void SetAxis(float axis)
