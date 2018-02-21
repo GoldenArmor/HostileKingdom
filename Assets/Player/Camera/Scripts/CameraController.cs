@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    Transform camRotation; 
+    Transform cameraRotationTransform; 
 
     Transform camTransform;
 
@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
         newPosition = Quaternion.Euler(new Vector3(0f, transform.eulerAngles.y, 0f)) * newPosition;
         newPosition = camTransform.InverseTransformDirection(newPosition);
 
-        camTransform.Translate(newPosition, camRotation);
+        camTransform.Translate(newPosition, cameraRotationTransform);
     }
 
     void LimitPosition()

@@ -1869,7 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a6269315280d4448fa1295c3f4f86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camRotation: {fileID: 4835080319638350}
+  cameraRotationTransform: {fileID: 4835080319638350}
   panSpeed: 150
   panBorderThickness: 10
   panLimit: {x: 500, y: 500}
@@ -2129,12 +2129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f079cf372cf574a9663967fec85679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioPlayer: {fileID: 0}
   mouse: {fileID: 114817782569474222}
   cameraController: {fileID: 114647227522025176}
   cameraRotation: {fileID: 114569277669009432}
   cameraZoom: {fileID: 114331939706931832}
-  fogOfWar: {fileID: 0}
   hero: {fileID: 0}
   mage: {fileID: 0}
   archer: {fileID: 0}
