@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 22aa950295e33b14ca5f094576e4fd1c
-timeCreated: 1519221283
+guid: 02599f7172e6b5e4db8fd13ea89b1322
+timeCreated: 1519160880
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,13 +10,9 @@ ModelImporter:
     2100000: 'Material #25'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Farol
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #25'
-    second: {fileID: 2100000, guid: 45121ca93949e8742950353b40a37f7f, type: 2}
+    4300000: Box002
+    9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,13 +42,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.06
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -71,7 +67,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -90,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
