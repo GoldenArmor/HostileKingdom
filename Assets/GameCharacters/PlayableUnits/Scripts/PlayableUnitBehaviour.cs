@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayableUnitBehaviour : Characters
 {
-    [Header("Cards")]
-    [SerializeField]
-    UnitCards cards;
-    public bool isSelected;
+    //[Header("Cards")]
+    //[SerializeField]
+    //UnitCards cards;
+    //public bool isSelected;
 
     [Header("Timers")]
     [SerializeField]
@@ -18,10 +18,7 @@ public class PlayableUnitBehaviour : Characters
     [Header("Distances")]
     [SerializeField]
     float chaseRange;
-    Vector3 newFormationPosition;
-    float angle = 10; 
-    //[SerializeField]
-    //float newDestinationRadius;
+    Vector3 newFormationPosition; 
 
     [Header("OnScreen")]
     public bool isOnScreen;
@@ -33,7 +30,6 @@ public class PlayableUnitBehaviour : Characters
     protected Camera mainCamera;
 
     [Header("EnemyInteraction")]
-    EnemyBehaviour selectedTarget;
     protected bool isAttacking;
 
     [Header("GOD Mode")]
@@ -42,21 +38,20 @@ public class PlayableUnitBehaviour : Characters
     float baseArmor;
     float armorCooldown; 
 
-    protected virtual void UnitStart()
+    protected override void MyStart()
     {
-        MyStart();
-        if(cards != null)
-        {
-            cards.targetName.text = characterName;
-            cards.startingHealth = startingHitPoints;
-            cards.MyStart();
-        }
+        //if(cards != null)
+        //{
+        //    cards.targetName.text = characterName;
+        //    cards.startingHealth = startingHitPoints;
+        //    cards.MyStart();
+        //}
         mainCamera = Camera.main;
         baseArmor = armor; 
         armorCooldown = 5;
     }
 
-    protected virtual void UnitUpdate()
+    protected override void MyUpdate()
     {
         if (selectedTarget != null)
         {
@@ -72,7 +67,6 @@ public class PlayableUnitBehaviour : Characters
         {
             isOnScreen = true;
         }
-        MyUpdate();
 
         if (armor != baseArmor)
         {
@@ -146,7 +140,7 @@ public class PlayableUnitBehaviour : Characters
         //else
         //    LookAtTarget(); 
 
-        selectedTarget.TakeDamage(attack);
+        selectedTarget.TakeDamage(attack, this);
         if(selectedTarget.hitPoints <= 0) ClearEnemy();
 
         timeCounter = 0;
@@ -184,24 +178,16 @@ public class PlayableUnitBehaviour : Characters
     public void Heal(float heal)
     {
         hitPoints += heal;
-        cards.UpdateLifeBar(hitPoints); 
+        //cards.UpdateLifeBar(hitPoints); 
     }
 
-    public void PlayableUnitTakeDamage(float damage, EnemyBehaviour autoTarget)
+    public override void TakeDamage(float damage, Characters attacker)
     {
         if (!godMode)
         {
-            hitPoints -= damage;
-            cards.UpdateLifeBar(hitPoints);
-        }
-        if (selectedTarget == null)
-        {
-            selectedTarget = autoTarget;
-            if (!isAttacking)
-            {
-                SetAttack();
-                return;
-            }
+            base.TakeDamage(damage, attacker); 
+
+            //cards.UpdateLifeBar(hitPoints);
         }
     }
 
@@ -227,7 +213,7 @@ public class PlayableUnitBehaviour : Characters
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 targetTransform = hit.transform;
-                selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
+                selectedTarget = targetTransform.GetComponent<Characters>();
 
                 SetChase();
             }
@@ -288,19 +274,11 @@ public class PlayableUnitBehaviour : Characters
                 if (hit.transform.gameObject != selectedTarget)
                 {
                     targetTransform = hit.transform;
-                    selectedTarget = targetTransform.GetComponent<EnemyBehaviour>();
+                    selectedTarget = targetTransform.GetComponent<Characters>();
 
                     SetChase();
                 }
             }
         }
     }
-
-    #region CalculationVoids
-    void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
-    {
-        targetTransform = selectedTarget.transform;
-        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
-    }
-    #endregion
 }

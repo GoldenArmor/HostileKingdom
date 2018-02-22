@@ -22,20 +22,36 @@ public class Characters : MonoBehaviour
     float magicArmor;
     public float attackRange;
     public string characterName;
+    [HideInInspector] public bool isDead;
     float rotateSpeed = 125f;
+
+    [Header("Sounds")]
     float footstepsCounter;
     int randomAudioClip; 
-    [HideInInspector] public bool isDead;
 
     [Header("CharactersInteraction")]
-    public Transform targetTransform;
-    public float distanceFromTarget = Mathf.Infinity;
+    [SerializeField]
+    protected List<Transform> unitsCanAttack = new List<Transform>();
+    protected Transform closestObject;
+    protected Characters selectedTarget;
+    protected Transform targetTransform;
+    protected float distanceFromTarget = Mathf.Infinity;
 
     [Header("NavMeshAgent")]
     [HideInInspector]
     public NavMeshAgent agent;
 
-    public LayerMask mask; 
+    public LayerMask mask;
+
+    void Start()
+    {
+        MyStart();    
+    }
+
+    void Update()
+    {
+        MyUpdate();     
+    }
 
     protected virtual void MyStart()
     {
@@ -86,7 +102,7 @@ public class Characters : MonoBehaviour
 
     protected virtual void ChaseUpdate()
     {
-        PlayFootsteps(); 
+        //PlayFootsteps(); 
     }
 
     protected virtual void AttackUpdate()
@@ -99,7 +115,7 @@ public class Characters : MonoBehaviour
 
     }
 
-    void DeadUpdate()
+    protected virtual void DeadUpdate()
     {
         //SetDead();
     }
@@ -162,9 +178,57 @@ public class Characters : MonoBehaviour
         Quaternion q = Quaternion.LookRotation(lookDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotateSpeed);
     }
+
+    protected virtual void FindClosestObject()
+    {
+        for (int i = 0; i < unitsCanAttack.Count; i++)
+        {
+            if (closestObject != null)
+            {
+                if (Vector3.Distance(transform.position, unitsCanAttack[i].position) <=
+                Vector3.Distance(transform.position, closestObject.position))
+                {
+                    closestObject = unitsCanAttack[i];
+                }
+            }
+            else closestObject = unitsCanAttack[i];
+        }
+        selectedTarget = closestObject.GetComponent<PlayableUnitBehaviour>();
+        targetTransform = closestObject;
+    }
+
+    protected virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
+    {
+        targetTransform = selectedTarget.transform;
+        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
+    }
     #endregion
 
-    protected void PlayFootsteps()
+    #region PublicVoids
+    public virtual void TakeDamage(float damage, Characters attacker)
+    {
+        hitPoints -= damage; 
+
+        if (hitPoints <= 0)
+        {
+            attacker.ClearTarget();
+           if (!isDead) SetDead(); 
+        }
+    }
+
+    public virtual void ClearTarget()
+    {
+        unitsCanAttack.Remove(selectedTarget.transform);
+        distanceFromTarget = Mathf.Infinity;
+        //if (selectedTarget.isDead == false) selectedTarget.SetDead();
+        targetTransform = null;
+        selectedTarget = null;
+        closestObject = null;
+        SetIdle();
+    }
+    #endregion
+
+    protected virtual void PlayFootsteps()
     {
         //footstepsCounter += Time.deltaTime;
         //randomAudioClip = UnityEngine.Random.Range(0, 2); 
