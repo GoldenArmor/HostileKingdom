@@ -196,7 +196,7 @@ public class Mouse : MonoBehaviour
 
     void SelectedUnitClear()
     {
-        selectedUnit.isSelected = false;
+       // selectedUnit.isSelected = false;
         selectedUnit = null;
     }
 }

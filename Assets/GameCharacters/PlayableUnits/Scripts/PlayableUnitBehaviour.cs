@@ -193,31 +193,31 @@ public class PlayableUnitBehaviour : Characters
 
     public void ClickUpdate(Vector3 formationPosition, Vector3 mousePosition) //When I click right button. It's called from the InputManager script.  
     {
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        //Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || 
-                hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
-            {
-                if (selectedTarget != null)
-                {
-                    targetTransform = null;
-                    selectedTarget = null;
-                }
-                newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
-                agent.SetDestination(hit.point + newFormationPosition);
+        //if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        //{
+        //    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") || 
+        //        hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
+        //    {
+        //        if (selectedTarget != null)
+        //        {
+        //            targetTransform = null;
+        //            selectedTarget = null;
+        //        }
+        //        newFormationPosition = formationPosition; //If I have more than 1 unit selected it will change the value to avoid conflicts. 
+        //        agent.SetDestination(hit.point + newFormationPosition);
 
-                SetMovement();
-            }
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            {
-                targetTransform = hit.transform;
-                selectedTarget = targetTransform.GetComponent<Characters>();
+        //        SetMovement();
+        //    }
+        //    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //    {
+        //        targetTransform = hit.transform;
+        //        selectedTarget = targetTransform.GetComponent<Characters>();
 
-                SetChase();
-            }
-        }
+        //        SetChase();
+        //    }
+        //}
     }
     #endregion
 
@@ -250,35 +250,35 @@ public class PlayableUnitBehaviour : Characters
 
     public void GodUpdate(Vector3 formationPosition, Vector3 mousePosition)
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") ||
-                hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
-            {
-                if (selectedTarget != null)
-                {
-                    targetTransform = null;
-                    selectedTarget = null;
-                }
-                agent.enabled = false;
-                newFormationPosition = formationPosition; 
-                transform.position = hit.point + newFormationPosition;
-                agent.enabled = true; 
+        //if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.Ignore))
+        //{
+        //    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+        //        hit.transform.gameObject.layer == LayerMask.NameToLayer("PlayableUnit"))
+        //    {
+        //        if (selectedTarget != null)
+        //        {
+        //            targetTransform = null;
+        //            selectedTarget = null;
+        //        }
+        //        agent.enabled = false;
+        //        newFormationPosition = formationPosition; 
+        //        transform.position = hit.point + newFormationPosition;
+        //        agent.enabled = true; 
 
-                SetMovement();
-            }
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            {
-                if (hit.transform.gameObject != selectedTarget)
-                {
-                    targetTransform = hit.transform;
-                    selectedTarget = targetTransform.GetComponent<Characters>();
+        //        SetMovement();
+        //    }
+        //    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //    {
+        //        if (hit.transform.gameObject != selectedTarget)
+        //        {
+        //            targetTransform = hit.transform;
+        //            selectedTarget = targetTransform.GetComponent<Characters>();
 
-                    SetChase();
-                }
-            }
-        }
+        //            SetChase();
+        //        }
+        //    }
+        //}
     }
 }
