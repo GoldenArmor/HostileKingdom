@@ -7,14 +7,10 @@ public class EnemyBehaviour : Characters
     //public Animator anim;
     public EnemiesManager enemiesManager;
 
-    [Header("Path")]
+    [Header("Movement")]
     [SerializeField]
-    float idleTime;
-    [SerializeField]
-    Transform[] path;
-    int pathIndex = 0;
-    float patrolCounter;
-    int idlePercent = 40;
+    Transform objective;
+
     [SerializeField]
     float maxDistanceAttack; 
 
@@ -24,56 +20,37 @@ public class EnemyBehaviour : Characters
     [SerializeField]
     float timeCounter;
 
-    [Header("UnitsCanAttack")]
-    [SerializeField]
-    List<Transform> unitsCanAttack = new List<Transform>();
-    Transform closestObject;
-    protected PlayableUnitBehaviour selectedTarget;  
+    [Header("UnitsCanAttack")]  
     bool canAttack;
-
-    protected virtual void Start()
-    {
-        MyStart();
-    }
-
-    protected virtual void Update()
-    {
-        MyUpdate();
-    }
 
     protected override void MyUpdate()
     {
-        base.MyUpdate(); 
-
         if (selectedTarget != null)
         {
             CalculateDistanceFromTarget();
-            if (!selectedTarget.isActiveAndEnabled)
-            {
-                ClearUnit();
-            }
+            //if (!selectedTarget.isActiveAndEnabled)
+            //{
+            //    ClearUnit();
+            //}
         }
         else
         {
-            if (path.Length > 0)
+            if (unitsCanAttack.Count > 0)
             {
-                patrolCounter += Time.deltaTime;
-                if (patrolCounter >= idleTime)
-                {
-                    SetMovement();
-                }
+                FindClosestObject();
+                return; 
             }
 
-            if (unitsCanAttack.Count > 0) FindClosestObject();
+            SetMovement(); 
         }
     }
 
     #region Updates
     protected override void IdleUpdate()
     {
-        if (selectedTarget != null && distanceFromTarget < maxDistanceAttack)
+        if (selectedTarget != null)
         {
-            if (distanceFromTarget > attackRange && distanceFromTarget < maxDistanceAttack)
+            if (distanceFromTarget > attackRange)
             {
                 SetChase();
                 return;
@@ -81,7 +58,7 @@ public class EnemyBehaviour : Characters
 
             LookAtTarget();
             timeCounter += Time.deltaTime;
-            if (selectedTarget.hitPoints <= 0)
+            if (selectedTarget.isDead)
             {
                 ClearUnit();
                 return;
@@ -97,34 +74,27 @@ public class EnemyBehaviour : Characters
     {        
         if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
         {
-            pathIndex++;
-            if (pathIndex >= path.Length) pathIndex = 0;
-            if (RandomIdle()) SetIdle();
-            else SetMovement();
+            SetMovement();
         }
     }
 
     protected override void ChaseUpdate()
     {
-        base.ChaseUpdate();
-        if (selectedTarget != null)
-        {
-            agent.SetDestination(targetTransform.position);
+        agent.SetDestination(targetTransform.position);
 
-            if (distanceFromTarget <= attackRange)
-            {
-                SetAttack();
-            }
-        }
-        else
+        if (distanceFromTarget <= attackRange)
         {
-            SetIdle();
+            SetAttack();
         }
+        //else
+        //{
+        //    SetIdle();
+        //}
     }
 
     protected override void AttackUpdate()
     {
-        selectedTarget.PlayableUnitTakeDamage(attack, this);
+        selectedTarget.TakeDamage(attack, this);
 
         SetIdle();
     }
@@ -144,18 +114,13 @@ public class EnemyBehaviour : Characters
 
     public override void SetDead()
     {
-        enemiesManager.enemiesCount.Remove(this);
+        //enemiesManager.enemiesCount.Remove(this);
         base.SetDead();
     }
 
     protected override void SetMovement()
     {
-        agent.isStopped = false;
-        if (path.Length > 0)
-        {
-            agent.SetDestination(path[pathIndex].position);
-        }
-        else SetIdle();
+        agent.SetDestination(objective.position);
         base.SetMovement();
     }
     #endregion
@@ -181,27 +146,20 @@ public class EnemyBehaviour : Characters
     }
     #endregion
 
-    public void TakeDamage(float damage)
-    {
-        hitPoints -= damage;
-    }
+    //public override void TakeDamage(float damage, Characters attacker)
+    //{
+    //    base.TakeDamage(damage, attacker);
+    //}
 
     void ClearUnit()
     {
         unitsCanAttack.Remove(selectedTarget.transform);
         distanceFromTarget = Mathf.Infinity;
-        if (selectedTarget.isDead == false) selectedTarget.SetDead();
+        //if (selectedTarget.isDead == false) selectedTarget.SetDead();
         targetTransform = null;
         selectedTarget = null;
         closestObject = null; 
         SetIdle();
-    }
-
-    bool RandomIdle()
-    {
-        int random = Random.Range(0, 101); 
-        if (random <= idlePercent) return true;
-        return false;
     }
 
     void OnDrawGizmos()
@@ -211,30 +169,4 @@ public class EnemyBehaviour : Characters
         Gizmos.color = newColor;
         Gizmos.DrawSphere(transform.position, attackRange);
     }
-
-    #region CalculationVoids
-    void FindClosestObject()
-    {
-        for (int i = 0; i < unitsCanAttack.Count; i++)
-        {
-            if (closestObject != null)
-            {
-                if (Vector3.Distance(transform.position, unitsCanAttack[i].position) <=
-                Vector3.Distance(transform.position, closestObject.position))
-                {
-                    closestObject = unitsCanAttack[i];
-                }
-            }
-            else closestObject = unitsCanAttack[i];
-        }
-        selectedTarget = closestObject.GetComponent<PlayableUnitBehaviour>();
-        targetTransform = closestObject;
-    }
-
-    void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
-    {
-        targetTransform = selectedTarget.transform;
-        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
-    }
-    #endregion
 }
