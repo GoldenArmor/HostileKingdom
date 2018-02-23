@@ -8,21 +8,13 @@ public class Enemy : Characters
     //[SerializeField]
     public Transform objective;
 
-    //[SerializeField]
-    //float maxDistanceAttack;
-
-    [Header("Timers")]
-    [SerializeField]
-    float cooldownAttack;
-    float timeCounter;
-
     [Header("UnitsCanAttack")]
     bool canAttack;
 
     protected override void MyStart()
     {
         base.MyStart();
-        objective = Objective.enemiesObjective; 
+        objective = GameObject.; 
     }
 
     protected override void MyUpdate()
@@ -60,13 +52,13 @@ public class Enemy : Characters
             }
 
             LookAtTarget();
-            timeCounter += Time.deltaTime;
+            timeCounter -= Time.deltaTime;
             if (selectedTarget.isDead)
             {
                 ClearUnit();
                 return;
             }
-            if (timeCounter > cooldownAttack)
+            if (timeCounter <= 0)
             {
                 SetAttack();
             }
@@ -102,7 +94,7 @@ public class Enemy : Characters
     #region Sets
     protected override void SetIdle()
     {
-        timeCounter = 0;
+        timeCounter = attackCooldown;
         base.SetIdle();
     }
 

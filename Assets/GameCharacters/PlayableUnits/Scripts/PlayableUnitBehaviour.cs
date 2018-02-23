@@ -141,7 +141,7 @@ public class PlayableUnitBehaviour : Characters
         //    LookAtTarget(); 
 
         selectedTarget.TakeDamage(attack, this);
-        if(selectedTarget.hitPoints <= 0) ClearEnemy();
+        if(selectedTarget.currentHitPoints <= 0) ClearEnemy();
 
         timeCounter = 0;
         SetIdle();
@@ -177,7 +177,7 @@ public class PlayableUnitBehaviour : Characters
     #region PublicVoids
     public void Heal(float heal)
     {
-        hitPoints += heal;
+        currentHitPoints += heal;
         //cards.UpdateLifeBar(hitPoints); 
     }
 

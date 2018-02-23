@@ -14,12 +14,6 @@ public class EnemyBehaviour : Characters
     [SerializeField]
     float maxDistanceAttack; 
 
-    [Header("Timers")]
-    [SerializeField]
-    float cooldownAttack;
-    [SerializeField]
-    float timeCounter;
-
     [Header("UnitsCanAttack")]  
     bool canAttack;
 
@@ -63,7 +57,7 @@ public class EnemyBehaviour : Characters
                 ClearUnit();
                 return;
             }
-            if (timeCounter > cooldownAttack)
+            if (timeCounter > attackCooldown)
             {
                 SetAttack();
             }

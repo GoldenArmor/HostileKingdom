@@ -39,7 +39,7 @@ public class Mage : PlayableUnitBehaviour
             for (int i = 0; i < hitColliders.Length; i++)
             {
                 PlayableUnitBehaviour allyTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
-                allyTarget.Heal(allyTarget.hitPoints * 0.1f);
+                allyTarget.Heal(allyTarget.currentHitPoints * 0.1f);
             }
             hitColliders = null;
             canDoSkill = false;

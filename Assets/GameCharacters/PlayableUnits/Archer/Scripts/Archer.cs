@@ -81,7 +81,7 @@ public class Archer : PlayableUnitBehaviour
         {
             EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
             attackedTarget.TakeDamage(attack * 5, this);
-            if (attackedTarget.hitPoints <= 0)
+            if (attackedTarget.currentHitPoints <= 0)
             {
                 EnemyDies(attackedTarget);
                 return;

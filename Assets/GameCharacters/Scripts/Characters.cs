@@ -13,7 +13,7 @@ public class Characters : MonoBehaviour
 
     [Header("Stats")]
     public float startingHitPoints;
-    public float hitPoints;
+    public float currentHitPoints;
     public float armor;
     public float attack;
     [SerializeField]
@@ -21,9 +21,14 @@ public class Characters : MonoBehaviour
     [SerializeField]
     float magicArmor;
     public float attackRange;
+    [SerializeField]
+    protected float attackCooldown;
     public string characterName;
+
     [HideInInspector] public bool isDead;
-    float rotateSpeed = 125f;
+
+    [Header("Timers")]
+    protected float timeCounter;
 
     [Header("Sounds")]
     float footstepsCounter;
@@ -36,6 +41,7 @@ public class Characters : MonoBehaviour
     protected Characters selectedTarget;
     protected Transform targetTransform;
     protected float distanceFromTarget = Mathf.Infinity;
+    float rotateSpeed = 125f;
 
     [Header("NavMeshAgent")]
     [HideInInspector]
@@ -57,7 +63,7 @@ public class Characters : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        hitPoints = startingHitPoints;
+        currentHitPoints = startingHitPoints;
    
         SetIdle();
     }
@@ -162,7 +168,7 @@ public class Characters : MonoBehaviour
     public virtual void SetDead()
     {
         isDead = true;
-        hitPoints = 0;
+        currentHitPoints = 0;
         agent.isStopped = true;
         anim.SetTrigger("Die");
         state = UnitState.Dead;
@@ -207,9 +213,9 @@ public class Characters : MonoBehaviour
     #region PublicVoids
     public virtual void TakeDamage(float damage, Characters attacker)
     {
-        hitPoints -= damage; 
+        currentHitPoints -= damage; 
 
-        if (hitPoints <= 0)
+        if (currentHitPoints <= 0)
         {
             attacker.ClearTarget();
            if (!isDead) SetDead(); 

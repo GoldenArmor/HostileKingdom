@@ -8,18 +8,6 @@ public class Ally : Characters
     [SerializeField]
     Transform objective;
 
-    [SerializeField]
-    float maxDistanceAttack;
-
-    [Header("Timers")]
-    [SerializeField]
-    float cooldownAttack;
-    [SerializeField]
-    float timeCounter;
-
-    [Header("UnitsCanAttack")]
-    bool canAttack;
-
     protected override void MyUpdate()
     {
         if (selectedTarget != null)
@@ -53,13 +41,13 @@ public class Ally : Characters
             }
 
             LookAtTarget();
-            timeCounter += Time.deltaTime;
+            timeCounter -= Time.deltaTime;
             if (selectedTarget.isDead)
             {
                 ClearUnit();
                 return;
             }
-            if (timeCounter > cooldownAttack)
+            if (timeCounter <= 0)
             {
                 SetAttack();
             }
@@ -99,7 +87,7 @@ public class Ally : Characters
     #region Sets
     protected override void SetIdle()
     {
-        timeCounter = 0;
+        timeCounter = attackCooldown;
         base.SetIdle();
     }
 
