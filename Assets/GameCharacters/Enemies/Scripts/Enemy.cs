@@ -14,7 +14,11 @@ public class Enemy : Characters
     protected override void MyStart()
     {
         base.MyStart();
+<<<<<<< HEAD
         objective = GameObject.; 
+=======
+        objective = GameObject.FindGameObjectWithTag("Objective").transform; 
+>>>>>>> d811b41dc89b68d56f2cd6837eb0b7b2ff66e09c
     }
 
     protected override void MyUpdate()
