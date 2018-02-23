@@ -22,7 +22,7 @@ public class Enemy : Characters
     protected override void MyStart()
     {
         base.MyStart();
-        objective = Objective.enemiesObjective; 
+        objective = GameObject.FindGameObjectWithTag("Objective").transform; 
     }
 
     protected override void MyUpdate()
