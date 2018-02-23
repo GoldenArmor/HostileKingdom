@@ -17,13 +17,13 @@ public class Mage : PlayableUnitBehaviour
     float cooldown = 10;
     void Start()
     {
-        UnitStart();
+        MyStart();
         //currentSelectTarget = selectTarget;
         //circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
     }
     void Update()
     {
-        UnitUpdate();
+        MyUpdate();
         cooldown -= Time.deltaTime;
         if (cooldown <= 0)
         {

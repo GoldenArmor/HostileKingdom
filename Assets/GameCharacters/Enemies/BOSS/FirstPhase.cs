@@ -49,7 +49,7 @@ public class FirstPhase : BossPhase
         for (int i = 0; i < hitColliders.Length; i++)
         {
             PlayableUnitBehaviour attackedTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
-            attackedTarget.PlayableUnitTakeDamage(boss.attack * 5, boss);
+            attackedTarget.TakeDamage(boss.attack * 5, boss);
             if (attackedTarget.hitPoints <= 0)
             {
                 TargetDies(attackedTarget);
@@ -94,7 +94,7 @@ public class FirstPhase : BossPhase
         for (int i = 0; i < hitColliders.Length; i++)
         {
             PlayableUnitBehaviour attackedTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
-            attackedTarget.PlayableUnitTakeDamage(boss.attack * 5, boss);
+            attackedTarget.TakeDamage(boss.attack * 5, boss);
             if (attackedTarget.hitPoints <= 0)
             {
                 TargetDies(attackedTarget);
@@ -112,7 +112,7 @@ public class FirstPhase : BossPhase
         for (int i = 0; i < hitColliders.Length; i++)
         {
             PlayableUnitBehaviour attackedTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
-            attackedTarget.PlayableUnitTakeDamage(boss.attack * 5, boss);
+            attackedTarget.TakeDamage(boss.attack * 5, boss);
             if (attackedTarget.hitPoints <= 0)
             {
                 TargetDies(attackedTarget);

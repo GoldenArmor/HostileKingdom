@@ -20,7 +20,7 @@ public class Hero : PlayableUnitBehaviour
 
     void Start()
     {
-        UnitStart();
+        MyStart();
         circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
     }
 
@@ -31,7 +31,7 @@ public class Hero : PlayableUnitBehaviour
             SkillUpdate();
             return;
         }
-        UnitUpdate();
+        MyUpdate();
     }
 
     public void SkillUpdate()
@@ -41,7 +41,7 @@ public class Hero : PlayableUnitBehaviour
         for (int i = 0; i < hitColliders.Length; i++)
         {
             EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
-            attackedTarget.TakeDamage(attack*5);
+            attackedTarget.TakeDamage(attack*5, this);
             if (attackedTarget.hitPoints <= 0)
             {
                 EnemyDies(attackedTarget);

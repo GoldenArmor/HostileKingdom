@@ -23,7 +23,7 @@ public class Paladin : PlayableUnitBehaviour
 
     void Update()
     {
-        UnitUpdate();
+        MyUpdate();
         cooldown -= Time.deltaTime; 
         if (cooldown <= 0)
         {

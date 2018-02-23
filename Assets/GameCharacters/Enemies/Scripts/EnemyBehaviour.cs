@@ -118,7 +118,7 @@ public class EnemyBehaviour : Characters
         base.SetDead();
     }
 
-    protected override void SetMovement()
+    public override void SetMovement()
     {
         agent.SetDestination(objective.position);
         base.SetMovement();

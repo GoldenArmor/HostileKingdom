@@ -149,7 +149,7 @@ public class PlayableUnitBehaviour : Characters
     #endregion
 
     #region Sets
-    protected override void SetMovement()
+    public override void SetMovement()
     {
         isAttacking = false;
         base.SetMovement();

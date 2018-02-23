@@ -130,7 +130,7 @@ public class Characters : MonoBehaviour
         state = UnitState.Idle;
     }
 
-    protected virtual void SetMovement()
+    public virtual void SetMovement()
     {
         agent.isStopped = false;
         anim.SetBool("IsMoving", true);

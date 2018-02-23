@@ -230,6 +230,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4803004703313344}
   - component: {fileID: 95629307215375648}
+  - component: {fileID: 195791557636569374}
+  - component: {fileID: 114244119372582952}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -1340,6 +1342,34 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114244119372582952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434536841559238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a8506507c0eb443aea50dec8230f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  startingHitPoints: 100
+  hitPoints: 0
+  armor: 0
+  attack: 5
+  magicAttack: 0
+  magicArmor: 0
+  attackRange: 3
+  characterName: Goblin
+  isDead: 0
+  unitsCanAttack: []
+  agent: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  objective: {fileID: 0}
+  cooldownAttack: 3
 --- !u!137 &137177769622361436
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1417,3 +1447,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.22287911, y: 0.08158672, z: -0.040986806}
     m_Extent: {x: 1.2650635, y: 1.1032784, z: 0.67312264}
   m_DirtyAABB: 0
+--- !u!195 &195791557636569374
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434536841559238}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.25
+  m_Speed: 3.5
+  m_Acceleration: 12
+  avoidancePriority: 50
+  m_AngularSpeed: 760
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

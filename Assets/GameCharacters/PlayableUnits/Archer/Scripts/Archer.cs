@@ -28,14 +28,14 @@ public class Archer : PlayableUnitBehaviour
 
     void Start()
     {
-        UnitStart();
+        MyStart();
         currentSelectTarget = selectTarget;
         circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        UnitUpdate();
+        MyUpdate();
 
         if (isDoingSkill)
         {
@@ -80,7 +80,7 @@ public class Archer : PlayableUnitBehaviour
         for (int i = 0; i < hitColliders.Length; i++)
         {
             EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
-            attackedTarget.TakeDamage(attack * 5);
+            attackedTarget.TakeDamage(attack * 5, this);
             if (attackedTarget.hitPoints <= 0)
             {
                 EnemyDies(attackedTarget);

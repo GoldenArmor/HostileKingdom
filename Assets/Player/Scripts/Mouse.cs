@@ -49,13 +49,13 @@ public class Mouse : MonoBehaviour
 
         if (selectedUnit != null)
         {
-            selectedUnit.isSelected = true;
+            //selectedUnit.isSelected = true;
         }
         if (selectedUnits.Count > 0)
         {
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].isSelected = true;
+                //selectedUnits[i].isSelected = true;
             }
         }
 
@@ -104,8 +104,8 @@ public class Mouse : MonoBehaviour
         {
             if (selectionRect.Contains(mainCamera.WorldToScreenPoint(selectableUnits[i].transform.position)))
             {
-                if (selectableUnits[i].isSelected)
-                    return;
+                //if (selectableUnits[i].isSelected)
+                //    return;
 
                 selectedUnits.Add(selectableUnits[i]);
             }
@@ -151,7 +151,7 @@ public class Mouse : MonoBehaviour
                     {
                         for (int i = 0; i < selectedUnits.Count; i++)
                         {
-                            selectedUnits[i].isSelected = false;
+                            //selectedUnits[i].isSelected = false;
                         }
                         selectedUnits.Clear();
                         selectedUnit = hit.transform.GetComponent<PlayableUnitBehaviour>();
@@ -169,7 +169,7 @@ public class Mouse : MonoBehaviour
                     {
                         for (int i = 0; i < selectedUnits.Count; i++)
                         {
-                            selectedUnits[i].isSelected = false;
+                            //selectedUnits[i].isSelected = false;
                         }
                         selectedUnits.Clear();
                     }
@@ -188,8 +188,8 @@ public class Mouse : MonoBehaviour
             selectedUnits.Add(selectedUnit);
             SelectedUnitClear();
         }
-        if (hit.transform.GetComponent<PlayableUnitBehaviour>().isSelected)
-            return;
+        //if (hit.transform.GetComponent<PlayableUnitBehaviour>().isSelected)
+        //    return;
 
         selectedUnits.Add(hit.transform.GetComponent<PlayableUnitBehaviour>());
     }
