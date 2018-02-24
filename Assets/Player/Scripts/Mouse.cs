@@ -36,7 +36,7 @@ public class Mouse : MonoBehaviour
 
         for (int i = 0; i < selectableUnits.Count; i++)
         {
-            selectableUnits[i].mouse = this;
+            //selectableUnits[i].mouse = this;
         }
     }
 

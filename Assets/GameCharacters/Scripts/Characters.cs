@@ -24,6 +24,7 @@ public class Characters : MonoBehaviour
     [SerializeField]
     protected float attackCooldown;
     public string characterName;
+    public bool isBeingAttacked; 
 
     [HideInInspector] public bool isDead;
 
@@ -198,9 +199,9 @@ public class Characters : MonoBehaviour
                 }
             }
             else closestObject = unitsCanAttack[i];
+            selectedTarget = closestObject.GetComponent<Characters>();
+            targetTransform = closestObject;
         }
-        selectedTarget = closestObject.GetComponent<PlayableUnitBehaviour>();
-        targetTransform = closestObject;
     }
 
     protected virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
@@ -211,7 +212,7 @@ public class Characters : MonoBehaviour
     #endregion
 
     #region PublicVoids
-    public virtual void TakeDamage(float damage, Characters attacker)
+    public virtual void TakeDamage(float damage, Characters attacker, bool isAttacked)
     {
         currentHitPoints -= damage; 
 
@@ -220,6 +221,8 @@ public class Characters : MonoBehaviour
             attacker.ClearTarget();
            if (!isDead) SetDead(); 
         }
+
+        //isBeingAttacked = isAttacked; 
     }
 
     public virtual void ClearTarget()

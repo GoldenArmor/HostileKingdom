@@ -38,16 +38,6 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     bool immunityEnabled;
 
-    [Header("Skills")]
-    [SerializeField]
-    Hero hero = null;
-    [SerializeField]
-    Archer archer = null;
-    [SerializeField]
-    Mage mage = null;
-    [SerializeField]
-    Paladin paladin = null;
-
     void Start()
     {
         AudioManager.Initialize();     
@@ -91,10 +81,6 @@ public class InputManager : MonoBehaviour
         cameraController = levelLoader.cameraController;
         cameraRotation = levelLoader.cameraRotation;
         cameraZoom = levelLoader.cameraZoom;
-        hero = levelLoader.hero;
-        mage = levelLoader.mage;
-        archer = levelLoader.archer;
-        paladin = levelLoader.paladin; 
         wasLoaded = false;
     }
 
@@ -156,7 +142,7 @@ public class InputManager : MonoBehaviour
             if (mouse.selectedUnit != null)
             {
                 formationPosition = Vector3.zero;
-                mouse.selectedUnit.ClickUpdate(formationPosition, mousePosition);
+                //mouse.selectedUnit.ClickUpdate(formationPosition, mousePosition);
             }
             if (mouse.selectedUnits != null)
             {
@@ -167,7 +153,7 @@ public class InputManager : MonoBehaviour
                     if (i == 2) formationPosition = new Vector3(4, 0, 0);
                     if (i == 3) formationPosition = new Vector3(0, 0, 4);
 
-                    mouse.selectedUnits[i].ClickUpdate(formationPosition, mousePosition);
+                    //mouse.selectedUnits[i].ClickUpdate(formationPosition, mousePosition);
                 }
             }
         }
@@ -214,7 +200,7 @@ public class InputManager : MonoBehaviour
             if (mouse.selectedUnit != null)
             {
                 formationPosition = Vector3.zero;
-                mouse.selectedUnit.GodUpdate(formationPosition, mousePosition);
+                //mouse.selectedUnit.GodUpdate(formationPosition, mousePosition);
             }
             if (mouse.selectedUnits != null)
             {
@@ -225,7 +211,7 @@ public class InputManager : MonoBehaviour
                     if (i == 2) formationPosition = new Vector3(4, 0, 0);
                     if (i == 3) formationPosition = new Vector3(0, 0, 4);
 
-                    mouse.selectedUnits[i].GodUpdate(formationPosition, mousePosition);
+                    //mouse.selectedUnits[i].GodUpdate(formationPosition, mousePosition);
                 }
             }
         }
@@ -254,13 +240,13 @@ public class InputManager : MonoBehaviour
             immunityEnabled = !immunityEnabled;
             if (mouse.selectedUnit != null)
             {
-                mouse.selectedUnit.godMode = immunityEnabled;
+                //mouse.selectedUnit.godMode = immunityEnabled;
             }
             if (mouse.selectedUnits != null)
             {
                 for (int i = 0; i < mouse.selectedUnits.Count; i++)
                 {
-                    mouse.selectedUnits[i].godMode = immunityEnabled;
+                    //mouse.selectedUnits[i].godMode = immunityEnabled;
                 }
             }
         }

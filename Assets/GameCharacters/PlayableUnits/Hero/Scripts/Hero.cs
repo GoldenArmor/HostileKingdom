@@ -4,77 +4,77 @@ using UnityEngine;
 
 public class Hero : PlayableUnitBehaviour
 {
-    [Header("Skill")]
-    [SerializeField]
-    Transform skillCircle;
+    //[Header("Skill")]
+    //[SerializeField]
+    //Transform skillCircle;
 
-    bool isDoingSkill;
+    //bool isDoingSkill;
 
-    [SerializeField]
-    LayerMask attackMask;
-    [SerializeField]
-    float skillCircleRadius;
-    SpriteRenderer circleRenderer;
+    //[SerializeField]
+    //LayerMask attackMask;
+    //[SerializeField]
+    //float skillCircleRadius;
+    //SpriteRenderer circleRenderer;
 
-    Collider[] hitColliders;
+    //Collider[] hitColliders;
 
-    void Start()
-    {
-        MyStart();
-        circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
-    }
+    //void Start()
+    //{
+    //    MyStart();
+    //    circleRenderer = skillCircle.GetComponent<SpriteRenderer>();
+    //}
 
-    void Update()
-    {
-        if (isDoingSkill)
-        {
-            SkillUpdate();
-            return;
-        }
-        MyUpdate();
-    }
+    //void Update()
+    //{
+    //    if (isDoingSkill)
+    //    {
+    //        SkillUpdate();
+    //        return;
+    //    }
+    //    MyUpdate();
+    //}
 
-    public void SkillUpdate()
-    {
-        circleRenderer.enabled = true;
-        hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, attackMask); 
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
-            attackedTarget.TakeDamage(attack*5, this);
-            if (attackedTarget.currentHitPoints <= 0)
-            {
-                EnemyDies(attackedTarget);
-                return;
-            }
-        }
-        hitColliders = null;
-        isDoingSkill = false;
-        circleRenderer.enabled = false; 
-    }
+    //public void SkillUpdate()
+    //{
+    //    circleRenderer.enabled = true;
+    //    hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, attackMask); 
+    //    for (int i = 0; i < hitColliders.Length; i++)
+    //    {
+    //        EnemyBehaviour attackedTarget = hitColliders[i].GetComponent<EnemyBehaviour>();
+    //        attackedTarget.TakeDamage(attack*5, this);
+    //        if (attackedTarget.currentHitPoints <= 0)
+    //        {
+    //            EnemyDies(attackedTarget);
+    //            return;
+    //        }
+    //    }
+    //    hitColliders = null;
+    //    isDoingSkill = false;
+    //    circleRenderer.enabled = false; 
+    //}
 
-    void EnemyDies(EnemyBehaviour attackedTarget)
-    {
-        if (attackedTarget.isDead == false)
-        {
-            attackedTarget.SetDead();
-        }
-        attackedTarget = null;
-        isAttacking = false;
-        return;
-    }
+    //void EnemyDies(EnemyBehaviour attackedTarget)
+    //{
+    //    if (attackedTarget.isDead == false)
+    //    {
+    //        attackedTarget.SetDead();
+    //    }
+    //    attackedTarget = null;
+    //    isAttacking = false;
+    //    return;
+    //}
 
-    public override void SetDead()
-    {
-        circleRenderer.enabled = false;
-        base.SetDead(); 
-    }
+    //public override void SetDead()
+    //{
+    //    circleRenderer.enabled = false;
+    //    base.SetDead(); 
+    //}
 
-    /*void OnDrawGizmos()
-    {
-        Color newColor = Color.magenta;
-        newColor.a = 0.2f;
-        Gizmos.color = newColor;
-        Gizmos.DrawSphere(transform.position, skillCircleRadius);
-    }*/
+    //void OnDrawGizmos()
+    //{
+    //    Color newColor = Color.magenta;
+    //    newColor.a = 0.2f;
+    //    Gizmos.color = newColor;
+    //    Gizmos.DrawSphere(transform.position, skillCircleRadius);
+    //}
 }

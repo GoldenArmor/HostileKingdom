@@ -12,18 +12,19 @@ public class Ally : Characters
     {
         if (selectedTarget != null)
         {
-            CalculateDistanceFromTarget();
-            //if (!selectedTarget.isActiveAndEnabled)
+            //if(selectedTarget.isBeingAttacked)
             //{
-            //    ClearUnit();
+            //    Debug.Log("Change Target");
+            //    ClearTarget();
+            //    return; 
             //}
+            CalculateDistanceFromTarget();
         }
         else
         {
             if (unitsCanAttack.Count > 0)
             {
                 FindClosestObject();
-                //return;
             }
         }
         base.MyUpdate(); 
@@ -78,7 +79,7 @@ public class Ally : Characters
 
     protected override void AttackUpdate()
     {
-        selectedTarget.TakeDamage(attack, this);
+        selectedTarget.TakeDamage(attack, this, true);
 
         SetIdle();
     }

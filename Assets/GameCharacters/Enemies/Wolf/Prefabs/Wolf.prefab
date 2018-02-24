@@ -905,27 +905,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   startingHitPoints: 100
-  hitPoints: 0
+  currentHitPoints: 0
   armor: 0
   attack: 5
   magicAttack: 0
   magicArmor: 0
   attackRange: 0
+  attackCooldown: 0
   characterName: Wolf
   isDead: 0
-  targetTransform: {fileID: 0}
-  distanceFromTarget: Infinity
+  unitsCanAttack: []
   agent: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
   enemiesManager: {fileID: 0}
-  idleTime: 0
-  path: []
+  objective: {fileID: 0}
   maxDistanceAttack: 0
-  cooldownAttack: 2
-  timeCounter: 0
-  unitsCanAttack: []
 --- !u!135 &135373420977060302
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -13,6 +13,8 @@ public class WavesManager : MonoBehaviour
 
     [Header("Wave Control")]
     [SerializeField]
+    Transform spawnPoint; 
+    [SerializeField]
     float waveDelay;
     [SerializeField]
     Text waveDelayText; 
@@ -48,7 +50,7 @@ public class WavesManager : MonoBehaviour
 
         for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy(wave.enemy, wave.spawnPoint);
+            SpawnEnemy(wave.enemy, spawnPoint);
             yield return new WaitForSeconds(1f / wave.rate); 
         }
             
