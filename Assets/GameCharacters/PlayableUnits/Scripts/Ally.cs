@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Ally : Characters
 {
-    [Header("Movement")]
-    [SerializeField]
-    Transform objective;
-
     protected override void MyUpdate()
     {
         if (selectedTarget != null)

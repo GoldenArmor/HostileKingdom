@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WavesManager : MonoBehaviour
 {
-    public static int EnemiesAlive = 0; 
+    public static int enemiesAlive = 0; 
 
     [Header("Wave Properties")]
     [SerializeField]
@@ -23,7 +23,7 @@ public class WavesManager : MonoBehaviour
 
     void Update()
     {
-        if (EnemiesAlive > 0)
+        if (enemiesAlive > 0)
         {
             return; 
         }
@@ -50,20 +50,18 @@ public class WavesManager : MonoBehaviour
 
         for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy(wave.enemy, spawnPoint);
+            SpawnUnit(wave.character, spawnPoint);
             yield return new WaitForSeconds(1f / wave.rate); 
         }
             
         waveIndex++;
     }
 
-    void SpawnEnemy (GameObject enemy, Transform spawnPoint)
+    void SpawnUnit (GameObject unitPrefab, Transform spawnPoint)
     {
-        Instantiate(enemy, 
-            spawnPoint.position, 
-            spawnPoint.rotation);
+        Characters character = ObjectPoolingManager.Instance.CharacterPool.GetObject(unitPrefab, spawnPoint);
 
-        EnemiesAlive++; 
+        enemiesAlive++; 
 
         //Cuando un enemigo muere tengo que restarle EnemiesAlive--; 
     }

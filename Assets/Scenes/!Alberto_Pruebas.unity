@@ -486,6 +486,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4513933573884252, guid: 2e09decbb7804874a8197e7e14fbb4b2,
     type: 2}
   m_PrefabInternal: {fileID: 187258624}
+--- !u!1001 &213416161
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -20.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 337.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803004703313344, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &252462679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,12 +1280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemy: {fileID: 1434536841559238, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
+  - character: {fileID: 684968153}
     count: 2
     rate: 2
-  - enemy: {fileID: 1434536841559238, guid: a6e593a35d3b05147910cd22b1f858ac, type: 2}
-    count: 25
-    rate: 3
   spawnPoint: {fileID: 540983777}
   waveDelay: 10
   waveDelayText: {fileID: 0}
@@ -1572,6 +1611,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: d91b9d21d0f53b44da4ddfb898a0523b, type: 3}
   m_PrefabInternal: {fileID: 669281884}
+--- !u!1 &684968153 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1434536841559238, guid: a6e593a35d3b05147910cd22b1f858ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 213416161}
 --- !u!1 &747539406
 GameObject:
   m_ObjectHideFlags: 0

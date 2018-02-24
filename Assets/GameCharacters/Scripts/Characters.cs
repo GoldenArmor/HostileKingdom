@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Characters : MonoBehaviour
+public class Characters : MonoBehaviour, IPooledObject
 {
     protected Animator anim; 
 
@@ -47,6 +47,10 @@ public class Characters : MonoBehaviour
     [Header("NavMeshAgent")]
     [HideInInspector]
     public NavMeshAgent agent;
+
+    [Header("Movement")]
+    [SerializeField]
+    protected Transform objective;
 
     public LayerMask mask;
 
@@ -234,6 +238,21 @@ public class Characters : MonoBehaviour
         selectedTarget = null;
         closestObject = null;
         SetIdle();
+    }
+
+    public void PooledAwake()
+    {
+        gameObject.SetActive(true); 
+    }
+
+    public void PooledStart()
+    {
+
+    }
+
+    public bool IsActive()
+    {
+        return gameObject.activeSelf; 
     }
     #endregion
 

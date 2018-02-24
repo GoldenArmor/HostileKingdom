@@ -4,48 +4,48 @@ using UnityEngine;
 
 public class Paladin : PlayableUnitBehaviour
 {
-    [Header("Skill")]
-    [SerializeField]
-    LayerMask skillMask;
-    [SerializeField]
-    float skillCircleRadius;
+    //[Header("Skill")]
+    //[SerializeField]
+    //LayerMask skillMask;
+    //[SerializeField]
+    //float skillCircleRadius;
 
-    Collider[] hitColliders;
+    //Collider[] hitColliders;
 
-    public bool canDoSkill; 
+    //public bool canDoSkill; 
 
-    float cooldown = 10;
+    //float cooldown = 10;
 
-    void Start()
-    {
-        MyStart(); 
-    }
+    //void Start()
+    //{
+    //    MyStart(); 
+    //}
 
-    void Update()
-    {
-        MyUpdate();
-        cooldown -= Time.deltaTime; 
-        if (cooldown <= 0)
-        {
-            canDoSkill = true;  
-        }
-    }
+    //void Update()
+    //{
+    //    MyUpdate();
+    //    cooldown -= Time.deltaTime; 
+    //    if (cooldown <= 0)
+    //    {
+    //        canDoSkill = true;  
+    //    }
+    //}
 
-    public void SkillUpdate()
-    {
-        if (canDoSkill)
-        {
-            hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, skillMask);
-            for(int i = 0; i < hitColliders.Length; i++)
-            {
-                PlayableUnitBehaviour allyTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
-                allyTarget.armor += (allyTarget.armor * 0.1f);
-            }
-            hitColliders = null;
-            canDoSkill = false;
-            cooldown = 10;
-        }
-    }
+    //public void SkillUpdate()
+    //{
+    //    if (canDoSkill)
+    //    {
+    //        hitColliders = Physics.OverlapSphere(transform.position, skillCircleRadius, skillMask);
+    //        for(int i = 0; i < hitColliders.Length; i++)
+    //        {
+    //            PlayableUnitBehaviour allyTarget = hitColliders[i].GetComponent<PlayableUnitBehaviour>();
+    //            allyTarget.armor += (allyTarget.armor * 0.1f);
+    //        }
+    //        hitColliders = null;
+    //        canDoSkill = false;
+    //        cooldown = 10;
+    //    }
+    //}
 
     /*void OnDrawGizmos()
     {

@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Enemy : Characters
 {
-    [Header("Movement")]
-    //[SerializeField]
-    public Transform objective;
-
-    [Header("UnitsCanAttack")]
-    bool canAttack;
-
     protected override void MyStart()
     {
         base.MyStart();
@@ -111,7 +104,7 @@ public class Enemy : Characters
     public override void SetDead()
     {
         //enemiesManager.enemiesCount.Remove(this);
-        WavesManager.EnemiesAlive--; 
+        WavesManager.enemiesAlive--; 
         base.SetDead();
     }
 
