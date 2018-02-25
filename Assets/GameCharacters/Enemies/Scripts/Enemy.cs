@@ -104,7 +104,7 @@ public class Enemy : Characters
     public override void SetDead()
     {
         //enemiesManager.enemiesCount.Remove(this);
-        WavesManager.enemiesAlive--; 
+        EnemyWaveManager.enemiesAlive--; 
         base.SetDead();
     }
 

@@ -4,39 +4,41 @@ using UnityEngine;
 
 public class ObjectPoolingManager : MonoBehaviour
 {
-        static ObjectPoolingManager instance;
-        public static ObjectPoolingManager Instance
+    static ObjectPoolingManager instance;
+    public static ObjectPoolingManager Instance
+    {
+        get
         {
-            get
+            if (!instance)
             {
-                if (!instance)
-                {
-                    instance = new GameObject("ObjectPoolingManager").AddComponent<ObjectPoolingManager>();
-                }
-                return instance;
+                instance = new GameObject("ObjectPoolingManager").AddComponent<ObjectPoolingManager>();
             }
+            return instance;
         }
+    }
 
-        GenericPooling<Characters> characterPool;
-        public GenericPooling<Characters> CharacterPool
-        {
-            get
-            {
-                return characterPool;
-            }
-        }
 
-        void Awake()
+    GenericPooling<Characters> characterPool;
+    public GenericPooling<Characters> CharacterPool
+    {
+        get
         {
-            if (instance != null && instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                instance = this;
-            }
+            return characterPool;
         }
+    }
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+            characterPool = new GenericPooling<Characters>();
+        }
+    }
 }
 
 public class GenericPooling<T> where T : MonoBehaviour, IPooledObject
@@ -90,13 +92,13 @@ public class GenericPooling<T> where T : MonoBehaviour, IPooledObject
         newObject.transform.position = spawnPoint.position;
         newObject.transform.rotation = spawnPoint.rotation;
         newObject.PooledAwake();
-        newObject.PooledStart();
+        newObject.PooledStart(); 
     }
 }
 
 public interface IPooledObject
 {
+    bool IsActive();
     void PooledAwake();
     void PooledStart();
-    bool IsActive();
 }

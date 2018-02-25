@@ -1380,13 +1380,15 @@ MonoBehaviour:
   attackRange: 3
   attackCooldown: 2
   characterName: Goblin
+  isBeingAttacked: 0
   isDead: 0
   unitsCanAttack: []
-  agent: {fileID: 0}
+  agent: {fileID: 195791557636569374}
+  anim: {fileID: 95629307215375648}
+  objective: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
-  objective: {fileID: 0}
 --- !u!135 &135452731844989302
 SphereCollider:
   m_ObjectHideFlags: 1

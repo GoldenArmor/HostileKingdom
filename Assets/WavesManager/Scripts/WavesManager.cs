@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class WavesManager : MonoBehaviour
 {
-    public static int enemiesAlive = 0; 
-
     [Header("Wave Properties")]
     [SerializeField]
     Wave[] waves;
@@ -21,16 +19,28 @@ public class WavesManager : MonoBehaviour
     float timer;
     int waveIndex;
 
+    Wave currentWave; 
+    bool isSpawning;
+    float spawnCounter;
+    int spawnedEnemyIndex; 
+
     void Update()
     {
-        if (enemiesAlive > 0)
+        if (EnemyWaveManager.enemiesAlive > 0)
         {
             return; 
         }
 
+        if (isSpawning)
+        {
+            SpawnWave();
+        }
+
         if (timer <= 0)
         {
-            StartCoroutine(SpawnWave());
+            isSpawning = true;
+            currentWave = waves[waveIndex];
+            spawnedEnemyIndex = currentWave.count;
             timer = waveDelay;
             return; 
         }
@@ -42,26 +52,44 @@ public class WavesManager : MonoBehaviour
         //waveDelayText.text = string.Format("{0:00.00}", timer); 
     }
 
-    IEnumerator SpawnWave()
+    void SpawnWave()
     {
-        //PlayerStats.Rounds++; 
+        //PlayerStats.Rounds++;  
 
-        Wave wave = waves[waveIndex];
+        spawnCounter -= Time.deltaTime; 
 
-        for (int i = 0; i < wave.count; i++)
+        if (spawnCounter <= 0)
         {
-            SpawnUnit(wave.character, spawnPoint);
-            yield return new WaitForSeconds(1f / wave.rate); 
+            SpawnUnit(currentWave.character, spawnPoint);
+            spawnedEnemyIndex--; 
+
+            spawnCounter = 1f / currentWave.rate; 
+            if (spawnedEnemyIndex <= 0)
+            {
+                Debug.Log("Fin"); 
+                isSpawning = false; 
+                waveIndex++;
+                if (waveIndex > waves.Length)
+                {
+                    Debug.Log("LEVEL WON!");
+                    enabled = false; 
+                }
+            }
         }
-            
-        waveIndex++;
+
+
+        //for (int i = 0; i < wave.count; i++)
+        //{
+        //    SpawnUnit(wave.characterTag, spawnPoint);
+        //    yield return new WaitForSeconds(1f / wave.rate);
+        //}
     }
 
-    void SpawnUnit (GameObject unitPrefab, Transform spawnPoint)
+    void SpawnUnit (GameObject character, Transform spawnPoint)
     {
-        Characters character = ObjectPoolingManager.Instance.CharacterPool.GetObject(unitPrefab, spawnPoint);
+        ObjectPoolingManager.Instance.CharacterPool.GetObject(character, spawnPoint); 
 
-        enemiesAlive++; 
+        EnemyWaveManager.enemiesAlive++; 
 
         //Cuando un enemigo muere tengo que restarle EnemiesAlive--; 
     }

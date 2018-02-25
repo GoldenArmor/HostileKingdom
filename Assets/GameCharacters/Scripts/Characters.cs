@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public class Characters : MonoBehaviour, IPooledObject
 {
-    protected Animator anim; 
-
     [HideInInspector] public enum UnitState { Idle, Movement, Chase, Attack, Stun, Dead }
     public UnitState state;
 
@@ -45,8 +43,11 @@ public class Characters : MonoBehaviour, IPooledObject
     float rotateSpeed = 125f;
 
     [Header("NavMeshAgent")]
-    [HideInInspector]
     public NavMeshAgent agent;
+
+    [Header("Animator")]
+    [SerializeField]
+    protected Animator anim;
 
     [Header("Movement")]
     [SerializeField]
@@ -66,8 +67,6 @@ public class Characters : MonoBehaviour, IPooledObject
 
     protected virtual void MyStart()
     {
-        anim = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
         currentHitPoints = startingHitPoints;
    
         SetIdle();
@@ -242,14 +241,14 @@ public class Characters : MonoBehaviour, IPooledObject
 
     public void PooledAwake()
     {
-        gameObject.SetActive(true); 
+        gameObject.SetActive(true);
     }
 
     public void PooledStart()
     {
-
+         
     }
-
+    
     public bool IsActive()
     {
         return gameObject.activeSelf; 
