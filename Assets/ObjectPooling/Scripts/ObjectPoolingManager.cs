@@ -75,6 +75,7 @@ public class GenericPooling<T> where T : MonoBehaviour, IPooledObject
 
         if (objectPrefab.GetComponent<T>() != null)
         {
+            Debug.Log("HOLA");
             T newObject = Object.Instantiate(objectPrefab).GetComponent<T>();
             newObject.name = objectPrefab.name;
             InitializeObject(newObject, spawnPoint);

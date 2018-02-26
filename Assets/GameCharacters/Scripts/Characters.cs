@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Characters : MonoBehaviour, IPooledObject
 {
@@ -11,7 +12,7 @@ public class Characters : MonoBehaviour, IPooledObject
 
     [Header("Stats")]
     public float startingHitPoints;
-    public float currentHitPoints;
+    float currentHitPoints;
     public float armor;
     public float attack;
     [SerializeField]
@@ -22,7 +23,11 @@ public class Characters : MonoBehaviour, IPooledObject
     [SerializeField]
     protected float attackCooldown;
     public string characterName;
-    public bool isBeingAttacked; 
+    public bool isBeingAttacked;
+
+    [Header("LifeBar")]
+    [SerializeField]
+    Image lifeBar; 
 
     [HideInInspector] public bool isDead;
 
@@ -212,12 +217,19 @@ public class Characters : MonoBehaviour, IPooledObject
         targetTransform = selectedTarget.transform;
         distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
     }
+
+    void UpdateLifebar()
+    {
+        lifeBar.fillAmount = currentHitPoints / startingHitPoints;
+    }
     #endregion
 
     #region PublicVoids
     public virtual void TakeDamage(float damage, Characters attacker, bool isAttacked)
     {
-        currentHitPoints -= damage; 
+        currentHitPoints -= damage;
+
+        UpdateLifebar();
 
         if (currentHitPoints <= 0)
         {
@@ -246,7 +258,8 @@ public class Characters : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
-         
+        MyStart();
+        UpdateLifebar();
     }
     
     public bool IsActive()
