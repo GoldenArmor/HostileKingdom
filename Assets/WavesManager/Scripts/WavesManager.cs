@@ -26,15 +26,15 @@ public class WavesManager : MonoBehaviour
 
     void Update()
     {
-        if (EnemyWaveManager.enemiesAlive > 0)
-        {
-            Debug.Log(EnemyWaveManager.enemiesAlive); 
-            return; 
+        if (isSpawning)
+        { 
+            SpawnWave();
         }
 
-        if (isSpawning)
+        if (EnemyWaveManager.enemiesAlive > 0)
         {
-            SpawnWave();
+            Debug.Log(EnemyWaveManager.enemiesAlive);
+            return;
         }
 
         if (timer <= 0)
@@ -67,10 +67,9 @@ public class WavesManager : MonoBehaviour
             spawnCounter = 1f / currentWave.rate; 
             if (spawnedEnemyIndex <= 0)
             {
-                Debug.Log("Fin"); 
                 isSpawning = false; 
                 waveIndex++;
-                if (waveIndex > waves.Length)
+                if (waveIndex > waves.Length - 1)
                 {
                     Debug.Log("LEVEL WON!");
                     enabled = false; 

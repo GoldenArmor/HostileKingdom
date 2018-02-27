@@ -60,11 +60,6 @@ public class Characters : MonoBehaviour, IPooledObject
 
     public LayerMask mask;
 
-    void Start()
-    {
-        MyStart();    
-    }
-
     void Update()
     {
         MyUpdate();     

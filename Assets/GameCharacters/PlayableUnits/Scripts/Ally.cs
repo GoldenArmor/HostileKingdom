@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Ally : Characters
 {
+    #region Debug, borrar cuando se pueda
+    void Start()
+    {
+        MyStart();
+    }
+    #endregion
     protected override void MyUpdate()
     {
         if (selectedTarget != null)
