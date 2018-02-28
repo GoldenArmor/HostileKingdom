@@ -27,6 +27,15 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
+    GenericPooling<Turret> turretPool;
+    public GenericPooling<Turret> TurretPool
+    {
+        get
+        {
+            return turretPool;
+        }
+    }
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -37,6 +46,7 @@ public class ObjectPoolingManager : MonoBehaviour
         {
             instance = this;
             characterPool = new GenericPooling<Characters>();
+            turretPool = new GenericPooling<Turret>(); 
         }
     }
 }

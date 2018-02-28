@@ -33,7 +33,7 @@ public class WavesManager : MonoBehaviour
 
         if (EnemyWaveManager.enemiesAlive > 0)
         {
-            Debug.Log(EnemyWaveManager.enemiesAlive);
+            //Debug.Log(EnemyWaveManager.enemiesAlive);
             return;
         }
 
