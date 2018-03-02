@@ -6,13 +6,8 @@ public class LevelLoader : MonoBehaviour
 {
     public Mouse mouse;
 
+    [Header("Camera")]
     public CameraController cameraController;
     public CameraRotation cameraRotation; 
     public CameraZoom cameraZoom;
-
-    [Header("Skills")]
-    public Hero hero;
-    public Mage mage;
-    public Archer archer;
-    public Paladin paladin;
 }

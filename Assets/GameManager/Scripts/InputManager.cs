@@ -8,49 +8,40 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField]
     LevelLogic levelLogic;
-    LevelLoader levelLoader = null;
-    bool wasLoaded;
+    LevelLoader levelLoader;
+    bool wasLoaded = true;
 
     [SerializeField]
     bool gamePause;
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    Mouse mouse = null;
-    public static Vector3 mousePosition; 
-    Vector3 formationPosition;
+    Mouse mouse;
+    public static Vector3 mousePosition;
 
     [Header("CameraInputs")]
     [SerializeField]
-    CameraController cameraController = null;
+    CameraController cameraController;
     [SerializeField]
-    CameraRotation cameraRotation = null;
+    CameraRotation cameraRotation;
     [SerializeField]
-    CameraZoom cameraZoom = null;
+    CameraZoom cameraZoom;
     float scrollAxis;
     float rotationAxis;
-    float mouseAxis; 
+    float mouseAxis;
     Vector2 inputAxis;
 
     [Header("GodMode")]
     [SerializeField]
     bool isGodModeEnabled;
-    [SerializeField]
-    bool immunityEnabled;
-
-    void Start()
-    {
-        AudioManager.Initialize();     
-    }
 
     void Update()
     {
         mousePosition = Input.mousePosition;
-        if (GameObject.FindGameObjectWithTag("LevelLoader") != null)
+        if (wasLoaded)
         {
-            if (!wasLoaded) SetGameValues();
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) gamePause = !gamePause;
 
-            if (Input.GetKeyDown(KeyCode.Escape)) gamePause = !gamePause;
             if (Input.GetKeyDown(KeyCode.F10))
             {
                 isGodModeEnabled = !isGodModeEnabled;
@@ -61,6 +52,7 @@ public class InputManager : MonoBehaviour
                 GodModeUpdate();
                 return;
             }
+
             if (gamePause == true)
             {
                 Time.timeScale = 0.0f;
@@ -71,6 +63,14 @@ public class InputManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 NoPaused();
             }
+        }
+    }
+
+    public void SearchLevelLoader()
+    {
+        if (GameObject.FindGameObjectWithTag("LevelLoader") != null)
+        {
+            if (!wasLoaded) SetGameValues();
         }
     }
 
@@ -86,135 +86,12 @@ public class InputManager : MonoBehaviour
 
     void Paused()
     {
-        
+
     }
 
     void NoPaused()
     {
-        //if (archer != null)
-        //{
-        //    if (archer.isUpdatingCirclePosition && archer.isActiveAndEnabled)
-        //    {
-        //        if (Input.GetMouseButtonDown(1))
-        //        {
-        //            archer.isDoingSkill = true;
-        //            return;
-        //        }
-        //        if (Input.GetMouseButtonDown(0))
-        //        {
-        //            archer.isUpdatingCirclePosition = false;
-        //        }
-        //    }
-        //}
-
         mouse.mousePosition = mousePosition;
-
-        #region CameraControllerAndZoom
-        inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
-        rotationAxis = Input.GetAxis("Rotation");
-        mouseAxis = Input.GetAxis("Mouse X");
-        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
-
-        cameraController.SetInputAxis(inputAxis, mousePosition);
-        cameraRotation.SetRotationAxis(rotationAxis);
-        cameraZoom.SetAxis(scrollAxis); 
-
-        if (Input.GetButton("Fire3"))
-        {
-            cameraRotation.SetRotationAxis(mouseAxis);
-        }
-        #endregion
-
-        #region Selection&MovementBehaviours
-        if (Input.GetMouseButton(0)) mouse.isDragging = true;
-        if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                mouse.multipleUnitSelection = true;
-            }
-            mouse.ClickState();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (mouse.selectedUnit != null)
-            {
-                formationPosition = Vector3.zero;
-                //mouse.selectedUnit.ClickUpdate(formationPosition, mousePosition);
-            }
-            if (mouse.selectedUnits != null)
-            {
-                for (int i = 0; i < mouse.selectedUnits.Count; i++)
-                {
-                    if (i == 0) formationPosition = Vector3.zero;
-                    if (i == 1) formationPosition = new Vector3(-4, 0, 0);
-                    if (i == 2) formationPosition = new Vector3(4, 0, 0);
-                    if (i == 3) formationPosition = new Vector3(0, 0, 4);
-
-                    //mouse.selectedUnits[i].ClickUpdate(formationPosition, mousePosition);
-                }
-            }
-        }
-        #endregion
-
-        #region PlayableUnitSkills
-        //if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-        //{
-        //    hero.SkillUpdate();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-        //{
-        //    archer.isUpdatingCirclePosition = true;
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-        //{
-        //    mage.SkillUpdate();
-        //}
-        //if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-        //{
-        //    paladin.SkillUpdate();
-        //}
-        #endregion
-
-        //if (Input.GetKeyDown(KeyCode.M)) levelLogic.StartLoad(4);  
-    }
-
-    void GodModeUpdate()
-    {
-        mouse.mousePosition = mousePosition;
-        if (Input.GetMouseButton(0)) mouse.isDragging = true;
-        if (Input.GetMouseButtonUp(0)) mouse.MouseButtonUp();
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                mouse.multipleUnitSelection = true;
-            }
-            mouse.ClickState();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (mouse.selectedUnit != null)
-            {
-                formationPosition = Vector3.zero;
-                //mouse.selectedUnit.GodUpdate(formationPosition, mousePosition);
-            }
-            if (mouse.selectedUnits != null)
-            {
-                for (int i = 0; i < mouse.selectedUnits.Count; i++)
-                {
-                    if (i == 0) formationPosition = Vector3.zero;
-                    if (i == 1) formationPosition = new Vector3(-4, 0, 0);
-                    if (i == 2) formationPosition = new Vector3(4, 0, 0);
-                    if (i == 3) formationPosition = new Vector3(0, 0, 4);
-
-                    //mouse.selectedUnits[i].GodUpdate(formationPosition, mousePosition);
-                }
-            }
-        }
 
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
@@ -233,22 +110,37 @@ public class InputManager : MonoBehaviour
         }
         #endregion
 
-        #region enableMechanics
-
-        if (Input.GetKeyDown(KeyCode.I))
+        #region Selection&MovementBehaviours
+        if (Input.GetMouseButtonDown(0))
         {
-            immunityEnabled = !immunityEnabled;
-            if (mouse.selectedUnit != null)
-            {
-                //mouse.selectedUnit.godMode = immunityEnabled;
-            }
-            if (mouse.selectedUnits != null)
-            {
-                for (int i = 0; i < mouse.selectedUnits.Count; i++)
-                {
-                    //mouse.selectedUnits[i].godMode = immunityEnabled;
-                }
-            }
+            mouse.ClickState();
+        }
+        #endregion
+    }
+
+    void GodModeUpdate()
+    {
+        mouse.mousePosition = mousePosition;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouse.ClickState();
+        }
+
+        #region CameraControllerAndZoom
+        inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
+        rotationAxis = Input.GetAxis("Rotation");
+        mouseAxis = Input.GetAxis("Mouse X");
+        scrollAxis = Input.GetAxis("Mouse ScrollWheel");
+
+        cameraController.SetInputAxis(inputAxis, mousePosition);
+        cameraRotation.SetRotationAxis(rotationAxis);
+        cameraZoom.SetAxis(scrollAxis);
+
+        if (Input.GetButton("Fire3"))
+        {
+            cameraRotation.SetMouseRotationAxis(mouseAxis);
         }
         #endregion
     }

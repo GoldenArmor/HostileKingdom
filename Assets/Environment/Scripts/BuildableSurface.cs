@@ -5,54 +5,54 @@ using UnityEngine;
 public class BuildableSurface : MonoBehaviour
 {
     [SerializeField]
-    Renderer rend;
-
-    [Header("Color")]
-    [SerializeField]
-    Color hoverColor;
-    Color startColor;
+    Renderer meshRenderer;
 
     [Header("Building")]
-    //[SerializeField]
-    //GameObject buildingUI; 
-    [SerializeField]
-    GameObject turret;
-    [SerializeField]
-    Transform buildingPoint;
-    bool hasBeenBuilded; 
+    public Transform buildingPoint;
+    bool canBuild;
 
-    void Start()
+    [Header("Color")]
+    [HideInInspector]
+    public Color hoverColor;
+    Color startColor; 
+
+    public bool isSelected;
+
+    public Color MyStart()
     {
-        startColor = rend.material.color; 
+        canBuild = true; 
+        startColor = meshRenderer.material.color;
+        return startColor; 
     }
 
-    void OnMouseDown()
+    public bool CanBuild()
     {
-        //if (turret != null)
-        //{
-        //    Debug.Log("Can't build here");
-        //    return; 
-        //}
-        if (hasBeenBuilded == true)
+        if (canBuild)
         {
-            Debug.Log("Can't build here");
-            return;
+            canBuild = false; 
+            return true; 
         }
-
-        //buildingUI.SetActive(true);
-
-        ObjectPoolingManager.Instance.TurretPool.GetObject(turret, buildingPoint);
-        hasBeenBuilded = true; 
+        return canBuild; 
     }
 
     void OnMouseEnter()
     {
-        Debug.Log("Mouse Enter"); 
-        rend.material.color = hoverColor;   
+        if (!isSelected)
+        {
+            ChangeColor(hoverColor); 
+        }
     }
 
     void OnMouseExit()
     {
-        rend.material.color = startColor;     
+        if (!isSelected)
+        {
+            ChangeColor(startColor);
+        }
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        meshRenderer.material.color = newColor; 
     }
 }

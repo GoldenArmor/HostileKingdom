@@ -19,16 +19,17 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4792300700853628}
+  - component: {fileID: 54706387738425318}
   - component: {fileID: 33183267115051204}
   - component: {fileID: 65424066436679928}
   - component: {fileID: 23728691170414416}
   - component: {fileID: 114648948721390616}
   m_Layer: 0
   m_Name: BuildableSurface
-  m_TagString: Untagged
+  m_TagString: BuildableSurface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1585456119958934
 GameObject:
@@ -43,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4792300700853628
 Transform:
@@ -113,6 +114,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444771758939788}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54706387738425318
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444771758939788}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &65424066436679928
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -120,7 +136,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444771758939788}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -136,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af53e527a8ddb5b44bf19db2937f3764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rend: {fileID: 23728691170414416}
-  hoverColor: {r: 0.5514706, g: 0.5514706, b: 0.5514706, a: 0}
+  meshRenderer: {fileID: 23728691170414416}
   turret: {fileID: 1943878875167286, guid: 1e1c1f99b5db61845a6f9d8ff5dfd781, type: 2}
   buildingPoint: {fileID: 4861706112917406}
+  hoverColor: {r: 0, g: 0, b: 0, a: 0}
+  isSelected: 0
