@@ -18,6 +18,7 @@ public class Mouse : MonoBehaviour
     Color hoverColor;
     [SerializeField]
     Color startColor;
+    BuildableSurface colorizedSurface; 
 
     [Header("Construction")]
     [SerializeField]
@@ -36,6 +37,29 @@ public class Mouse : MonoBehaviour
             selectableSurfaces.Add(selectableList[i].gameObject);
         }
         mainCamera = Camera.main;
+    }
+
+    void Update()
+    {
+        //Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+        //if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+        //{
+        //    if (hit.transform.CompareTag("BuildableSurface"))
+        //    {
+        //        colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
+        //        colorizedSurface.ChangeColor(hoverColor);
+        //    }
+
+        //    else
+        //    {
+        //        if (colorizedSurface != null && !colorizedSurface.isSelected)
+        //        {
+        //            colorizedSurface.ChangeColor(startColor);
+        //            colorizedSurface = null; 
+        //        }
+        //    }
+
+        //}
     }
 
     public void ClickState() 
@@ -73,7 +97,10 @@ public class Mouse : MonoBehaviour
         selectedSurface.isSelected = true;
         selectedSurface.ChangeColor(hoverColor);
 
-        constructionCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 15, selectedSurface.transform.position.z));
+        if (!selectedSurface.isBuilding)
+        {
+            constructionCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
+        }
     }
 
     void ClearSelectedSurface()
@@ -84,14 +111,9 @@ public class Mouse : MonoBehaviour
         constructionCanvas.Hide();
     }
 
-    public void Construct(GameObject turret)
+    public void ConstructionCooldown(GameObject turret) 
     {
-        if (!selectedSurface.CanBuild())
-        {
-            Debug.Log("Can't build here");
-            return;
-        }
-
-        ObjectPoolingManager.Instance.TurretPool.GetObject(turret, selectedSurface.buildingPoint);
+        constructionCanvas.Hide();
+        selectedSurface.ConstructionCooldown(turret); 
     }
 }
