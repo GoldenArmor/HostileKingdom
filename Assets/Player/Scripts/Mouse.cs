@@ -113,7 +113,7 @@ public class Mouse : MonoBehaviour
 
     public void ConstructionCooldown(GameObject turret) 
     {
-        constructionCanvas.Hide();
-        selectedSurface.ConstructionCooldown(turret); 
+        selectedSurface.ConstructionCooldown(turret);
+        ClearSelectedSurface();        
     }
 }
