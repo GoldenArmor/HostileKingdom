@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructionCanvasManager : MonoBehaviour
+public class CanvasManager : MonoBehaviour
 {
     [SerializeField]
     SpawnScalePingPong spawnEasing;
     [SerializeField]
     public Transform myTransform;
-    [SerializeField]
-    Billboard billboard;
 
     public void Initialize(Vector3 spawnPosition)
     {

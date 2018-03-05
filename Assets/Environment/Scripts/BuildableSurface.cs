@@ -8,6 +8,8 @@ public class BuildableSurface : MonoBehaviour
     [SerializeField]
     Renderer meshRenderer;
 
+    public CanvasManager canvasManager; 
+
     [Header("Building")]
     public Transform buildingPoint;
     bool canBuild;
@@ -39,7 +41,7 @@ public class BuildableSurface : MonoBehaviour
     {
         if (isBuilding)
         {
-            ConstructionCooldown(turretToConstruct); 
+            UpdateConstruct(turretToConstruct); 
         }
     }
 
@@ -85,24 +87,28 @@ public class BuildableSurface : MonoBehaviour
         ObjectPoolingManager.Instance.TurretPool.GetObject(turret, buildingPoint);
     }
 
-    public void ConstructionCooldown(GameObject turret)
+    public void UpdateConstruct(GameObject turret)
     {
-        isBuilding = true;
-        constructionBar.enabled = true;
-
         currentConstructionCooldown += Time.deltaTime;
 
         UpdateConstructionBar();
 
-        turretToConstruct = turret;
-
         if (currentConstructionCooldown > constructionCooldown)
-        { 
+        {
+            canvasManager.Hide(); 
             isBuilding = false;
             currentConstructionCooldown = 0;
             constructionBar.enabled = false; 
             Construct(turretToConstruct);
         }
+    }
+
+    public void BeginConstruct(GameObject turret)
+    {
+        isBuilding = true;
+        constructionBar.enabled = true;
+        turretToConstruct = turret; 
+        canvasManager.Initialize(canvasManager.myTransform.position);
     }
 
     void UpdateConstructionBar()

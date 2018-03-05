@@ -22,7 +22,7 @@ public class Mouse : MonoBehaviour
 
     [Header("Construction")]
     [SerializeField]
-    ConstructionCanvasManager constructionCanvas;
+    CanvasManager constructionCanvas;
 
     Camera mainCamera;
 
@@ -113,7 +113,7 @@ public class Mouse : MonoBehaviour
 
     public void ConstructionCooldown(GameObject turret) 
     {
-        selectedSurface.ConstructionCooldown(turret);
+        selectedSurface.BeginConstruct(turret);
         ClearSelectedSurface();        
     }
 }
