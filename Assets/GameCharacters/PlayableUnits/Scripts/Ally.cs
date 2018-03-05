@@ -10,6 +10,7 @@ public class Ally : Characters
         MyStart();
     }
     #endregion
+
     protected override void MyUpdate()
     {
         if (selectedTarget != null)
