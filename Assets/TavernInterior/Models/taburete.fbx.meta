@@ -1,81 +1,24 @@
 fileFormatVersion: 2
-guid: 451a2b74323974543ba7d0ed3c6d3355
-timeCreated: 1519986607
+guid: 0805bea9a878c3b459f2e416f458f666
+timeCreated: 1520240095
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: pCube166
-    100002: pCube170
-    100004: pCube171
-    100006: pCube172
-    100008: pCube173
-    100010: pCube174
-    100012: pCube175
-    100014: pCube176
-    100016: pCube233
-    100018: pCube234
-    100020: pCube235
-    100022: pCube236
-    100024: pCylinder20
-    100026: Sala_abajo
-    100028: //RootNode
-    100030: taburete_UVSOPEN
-    100032: taburete_UVSOPEN_pCube176
-    100034: transform10
-    100036: transform11
-    100038: transform12
-    100040: transform13
-    100042: transform14
-    100044: transform15
-    100046: transform16
-    100048: transform17
-    100050: transform18
-    100052: transform19
-    100054: transform20
-    100056: transform21
-    100058: transform9
-    400000: pCube166
-    400002: pCube170
-    400004: pCube171
-    400006: pCube172
-    400008: pCube173
-    400010: pCube174
-    400012: pCube175
-    400014: pCube176
-    400016: pCube233
-    400018: pCube234
-    400020: pCube235
-    400022: pCube236
-    400024: pCylinder20
-    400026: Sala_abajo
-    400028: //RootNode
-    400030: taburete_UVSOPEN
-    400032: taburete_UVSOPEN_pCube176
-    400034: transform10
-    400036: transform11
-    400038: transform12
-    400040: transform13
-    400042: transform14
-    400044: transform15
-    400046: transform16
-    400048: transform17
-    400050: transform18
-    400052: transform19
-    400054: transform20
-    400056: transform21
-    400058: transform9
-    2100000: lambert28
+    100000: BARRILES_OPENUVS
+    100002: group60
+    100004: //RootNode
+    100006: taburete_UVSOPEN_pCube176
+    400000: BARRILES_OPENUVS
+    400002: group60
+    400004: //RootNode
+    400006: taburete_UVSOPEN_pCube176
+    2100000: lambert31
     2300000: taburete_UVSOPEN_pCube176
     3300000: taburete_UVSOPEN_pCube176
     4300000: taburete_UVSOPEN_pCube176
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert28
-    second: {fileID: 2100000, guid: 74fecabed92c1cd40a76b771ee7016f3, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -105,13 +48,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50000
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -128,9 +71,9 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -146,10 +89,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
