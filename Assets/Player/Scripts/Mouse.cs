@@ -23,6 +23,8 @@ public class Mouse : MonoBehaviour
     [Header("Construction")]
     [SerializeField]
     CanvasManager constructionCanvas;
+    [SerializeField]
+    CanvasManager sellingCanvas; 
 
     Camera mainCamera;
 
@@ -94,26 +96,51 @@ public class Mouse : MonoBehaviour
     void SelectBuildableSurface()
     {
         selectedSurface = hit.transform.GetComponent<BuildableSurface>();
+        if (selectedSurface.isBuilding)
+        {
+            selectedSurface = null;
+            return; 
+        }
         selectedSurface.isSelected = true;
         selectedSurface.ChangeColor(hoverColor);
 
-        if (!selectedSurface.isBuilding)
+        if (selectedSurface.CanBuild())
         {
             constructionCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
+        }
+        else
+        {
+            sellingCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
         }
     }
 
     void ClearSelectedSurface()
     {
+        if (selectedSurface.CanBuild())
+        {
+            constructionCanvas.Hide();
+        }
+        else
+        { 
+            sellingCanvas.Hide(); 
+        }
         selectedSurface.isSelected = false;
         selectedSurface.ChangeColor(startColor);  
         selectedSurface = null;
-        constructionCanvas.Hide();
     }
 
-    public void ConstructionCooldown(GameObject turret) 
+    public void Construct(GameObject turret) 
     {
         selectedSurface.BeginConstruct(turret);
-        ClearSelectedSurface();        
+        constructionCanvas.Hide();
+        selectedSurface.isSelected = false;
+        selectedSurface.ChangeColor(startColor);
+        selectedSurface = null; 
+    }
+
+    public void Sell()
+    {
+        selectedSurface.SellTurret();
+        selectedSurface.currentTurret = null; 
     }
 }

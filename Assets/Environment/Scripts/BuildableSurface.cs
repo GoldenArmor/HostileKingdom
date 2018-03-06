@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class BuildableSurface : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BuildableSurface : MonoBehaviour
     float constructionCooldown; 
     float currentConstructionCooldown;
     GameObject turretToConstruct;
+    public Turret currentTurret; 
     [SerializeField]
     Image constructionBar; 
 
@@ -47,11 +49,6 @@ public class BuildableSurface : MonoBehaviour
 
     public bool CanBuild()
     {
-        if (canBuild)
-        {
-            canBuild = false; 
-            return true; 
-        }
         return canBuild; 
     }
 
@@ -84,7 +81,8 @@ public class BuildableSurface : MonoBehaviour
             return;
         }
 
-        ObjectPoolingManager.Instance.TurretPool.GetObject(turret, buildingPoint);
+        currentTurret = ObjectPoolingManager.Instance.TurretPool.GetObject(turret, buildingPoint);
+        canBuild = false;
     }
 
     public void UpdateConstruct(GameObject turret)
@@ -116,4 +114,11 @@ public class BuildableSurface : MonoBehaviour
         constructionBar.fillAmount = currentConstructionCooldown / constructionCooldown;
     }
 
+    public void SellTurret()
+    {
+        currentTurret.Sell();
+        currentTurret = null;
+        canBuild = true;
+        UpdateConstructionBar(); 
+    }
 }

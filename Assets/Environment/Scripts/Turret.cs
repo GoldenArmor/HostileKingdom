@@ -18,4 +18,9 @@ public class Turret : MonoBehaviour, IPooledObject
     {
         return gameObject.activeSelf; 
     }
+
+    public void Sell()
+    {
+        gameObject.SetActive(false); 
+    }
 }
