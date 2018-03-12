@@ -22,7 +22,9 @@ public class BuildableSurface : MonoBehaviour
     GameObject turretToConstruct;
     public Turret currentTurret; 
     [SerializeField]
-    Image constructionBar; 
+    Image constructionBar;
+
+    bool warriorTurret; 
 
     [Header("Color")]
     [HideInInspector]
@@ -81,7 +83,14 @@ public class BuildableSurface : MonoBehaviour
             return;
         }
 
-        currentTurret = ObjectPoolingManager.Instance.TurretPool.GetObject(turret, buildingPoint);
+        if(warriorTurret)
+        {
+            currentTurret = ObjectPoolingManager.WarriorTurretPool.GetObject(turret, buildingPoint);
+        }
+        else
+        {
+            currentTurret = ObjectPoolingManager.ArcherTurretPool.GetObject(turret, buildingPoint);
+        }
         canBuild = false;
     }
 
@@ -96,17 +105,25 @@ public class BuildableSurface : MonoBehaviour
             canvasManager.Hide(); 
             isBuilding = false;
             currentConstructionCooldown = 0;
-            constructionBar.enabled = false; 
-            Construct(turretToConstruct);
+            constructionBar.enabled = false;
+            if (warriorTurret)
+            {
+                Construct(turretToConstruct);
+            }
+            else
+            {
+                Construct(turretToConstruct);
+            }         
         }
     }
 
-    public void BeginConstruct(GameObject turret)
+    public void BeginConstruct(GameObject turret, bool isWarriorTurret)
     {
         isBuilding = true;
         constructionBar.enabled = true;
         turretToConstruct = turret; 
         canvasManager.Initialize(canvasManager.myTransform.position);
+        warriorTurret = isWarriorTurret; 
     }
 
     void UpdateConstructionBar()

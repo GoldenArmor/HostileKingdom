@@ -129,13 +129,24 @@ public class Mouse : MonoBehaviour
         selectedSurface = null;
     }
 
-    public void Construct(GameObject turret) 
+    public void ConstructArcherTurret(GameObject turret)
     {
-        selectedSurface.BeginConstruct(turret);
+        selectedSurface.BeginConstruct(turret, false);
+        Construct();
+    }
+
+    public void ConstructWarriorTurret(GameObject turret)
+    {
+        selectedSurface.BeginConstruct(turret, true);
+        Construct();
+    }
+
+    void Construct()
+    {
         constructionCanvas.Hide();
         selectedSurface.isSelected = false;
         selectedSurface.ChangeColor(startColor);
-        selectedSurface = null; 
+        selectedSurface = null;
     }
 
     public void Sell()

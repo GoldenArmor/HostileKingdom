@@ -14,7 +14,15 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
+    }
 
+    void Update()
+    {
+        MyUpdate();     
+    }
+
+    protected virtual void MyUpdate()
+    {
     }
 
     public bool IsActive()
@@ -24,7 +32,8 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public void Sell()
     {
-        gameObject.SetActive(false);
         spawnScale.ResetEasing();
+        transform.localScale = Vector3.zero; 
+        gameObject.SetActive(false);
     }
 }

@@ -4,50 +4,48 @@ using UnityEngine;
 
 public class ObjectPoolingManager : MonoBehaviour
 {
-    static ObjectPoolingManager instance;
-    public static ObjectPoolingManager Instance
+    static GenericPooling<Enemy> enemyPool;
+    public static GenericPooling<Enemy> EnemyPool
     {
         get
         {
-            if (!instance)
-            {
-                instance = new GameObject("ObjectPoolingManager").AddComponent<ObjectPoolingManager>();
-            }
-            return instance;
+            return enemyPool;
         }
     }
 
-
-    GenericPooling<Characters> characterPool;
-    public GenericPooling<Characters> CharacterPool
+    static GenericPooling<Ally> allyPool;
+    public static GenericPooling<Ally> AllyPool
     {
         get
         {
-            return characterPool;
+            return allyPool;
         }
     }
 
-    GenericPooling<Turret> turretPool;
-    public GenericPooling<Turret> TurretPool
+    static GenericPooling<ArcherTurret> archerTurretPool;
+    public static GenericPooling<ArcherTurret> ArcherTurretPool
     {
         get
         {
-            return turretPool;
+            return archerTurretPool;
+        }
+    }
+
+    static GenericPooling<WarriorTurret> warriorTurretPool;
+    public static GenericPooling<WarriorTurret> WarriorTurretPool
+    {
+        get
+        {
+            return warriorTurretPool;
         }
     }
 
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-            characterPool = new GenericPooling<Characters>();
-            turretPool = new GenericPooling<Turret>(); 
-        }
+        enemyPool = new GenericPooling<Enemy>();
+        allyPool = new GenericPooling<Ally>(); 
+        archerTurretPool = new GenericPooling<ArcherTurret>();
+        warriorTurretPool = new GenericPooling<WarriorTurret>(); 
     }
 }
 

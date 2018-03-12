@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Ally : Characters
 {
-    #region Debug, borrar cuando se pueda
-    void Start()
+    [HideInInspector]
+    public WarriorGroup myGroup;
+
+    Transform spawnPoint; 
+    [SerializeField]
+    float maxDistanceFromSpawnPoint;
+
+    protected override void MyStart()
     {
-        MyStart();
+        base.MyStart();
+
+        spawnPoint = myGroup.spawnPoint; 
     }
-    #endregion
 
     protected override void MyUpdate()
     {
@@ -54,6 +61,14 @@ public class Ally : Characters
             if (timeCounter <= 0)
             {
                 SetAttack();
+            }
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, (spawnPoint.position)) > maxDistanceFromSpawnPoint)
+            {
+                objective = spawnPoint; 
+                SetMovement();
             }
         }
     }
@@ -104,6 +119,8 @@ public class Ally : Characters
     {
         //enemiesManager.enemiesCount.Remove(this);
         base.SetDead();
+        myGroup.ClearUnit(this);
+        myGroup = null; 
     }
 
     public override void SetMovement()
