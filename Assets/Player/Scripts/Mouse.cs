@@ -140,7 +140,10 @@ public class Mouse : MonoBehaviour
 
     public void Sell()
     {
+        selectedSurface.isSelected = false;
+        selectedSurface.ChangeColor(startColor);
         selectedSurface.SellTurret();
-        selectedSurface.currentTurret = null; 
+        selectedSurface = null; 
+        sellingCanvas.Hide(); 
     }
 }

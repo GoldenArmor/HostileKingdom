@@ -118,6 +118,7 @@ public class BuildableSurface : MonoBehaviour
     {
         currentTurret.Sell();
         currentTurret = null;
+        turretToConstruct = null; 
         canBuild = true;
         UpdateConstructionBar(); 
     }

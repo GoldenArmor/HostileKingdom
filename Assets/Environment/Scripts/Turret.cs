@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour, IPooledObject
 {
+    [SerializeField]
+    SpawnScale spawnScale; 
+
     public void PooledAwake()
     {
         gameObject.SetActive(true); 
@@ -21,6 +24,7 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public void Sell()
     {
-        gameObject.SetActive(false); 
+        gameObject.SetActive(false);
+        spawnScale.ResetEasing();
     }
 }
