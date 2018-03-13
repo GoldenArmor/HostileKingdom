@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour, IPooledObject
         gameObject.SetActive(true); 
     }
 
-    public void PooledStart()
+    public virtual void PooledStart()
     {
     }
 
@@ -30,10 +30,9 @@ public class Turret : MonoBehaviour, IPooledObject
         return gameObject.activeSelf; 
     }
 
-    public void Sell()
+    public virtual void Sell()
     {
         spawnScale.ResetEasing();
-        transform.localScale = Vector3.zero; 
         gameObject.SetActive(false);
     }
 }

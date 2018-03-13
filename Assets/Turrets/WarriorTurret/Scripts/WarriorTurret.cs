@@ -4,5 +4,22 @@ using UnityEngine;
 
 public class WarriorTurret : Turret
 {
-    //DefendersGroup 
+    [SerializeField]
+    WarriorGroup myGroup;
+
+    public override void PooledStart()
+    {
+        base.PooledStart();
+        myGroup.PooledStart(); 
+    }
+
+    public override void Sell()
+    {
+        myGroup.Sell(); 
+    }
+
+    public void EndSell()
+    {
+        base.Sell(); 
+    }
 }

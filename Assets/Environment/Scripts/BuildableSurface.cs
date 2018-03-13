@@ -96,6 +96,9 @@ public class BuildableSurface : MonoBehaviour
 
     public void UpdateConstruct(GameObject turret)
     {
+        ChangeColor(startColor);
+        isSelected = false; 
+
         currentConstructionCooldown += Time.deltaTime;
 
         UpdateConstructionBar();

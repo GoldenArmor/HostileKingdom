@@ -7,15 +7,20 @@ public class Ally : Characters
     [HideInInspector]
     public WarriorGroup myGroup;
 
+    [SerializeField]
+    SpawnScalePingPong spawnScale; 
+
     Transform spawnPoint; 
     [SerializeField]
     float maxDistanceFromSpawnPoint;
 
-    protected override void MyStart()
+    public void TurretStart(WarriorGroup newGroup)
     {
-        base.MyStart();
-
-        spawnPoint = myGroup.spawnPoint; 
+        myGroup = newGroup; 
+        spawnPoint = myGroup.patrolPoint;
+        objective = spawnPoint; 
+        spawnScale.ResetEasing();
+        SetMovement(); 
     }
 
     protected override void MyUpdate()
@@ -117,10 +122,10 @@ public class Ally : Characters
 
     public override void SetDead()
     {
-        //enemiesManager.enemiesCount.Remove(this);
-        base.SetDead();
         myGroup.ClearUnit(this);
-        myGroup = null; 
+        myGroup = null;
+        spawnScale.ResetEasing();
+        base.SetDead();
     }
 
     public override void SetMovement()
@@ -141,6 +146,8 @@ public class Ally : Characters
         if (other.CompareTag("Enemy"))
         {
             unitsCanAttack.Add(other.transform);
+            objective = transform; 
+            SetIdle(); 
         }
     }
 
