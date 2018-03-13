@@ -93,6 +93,27 @@ public class Mouse : MonoBehaviour
         }
     }
 
+    public void ChangePatrolPoint()
+    {
+        if (selectedSurface != null)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+
+            if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+            {
+                if (hit.transform.CompareTag("Ground"))
+                {
+                    WarriorGroup warriorGroup = selectedSurface.currentTurret.GetComponent<WarriorGroup>();
+
+                    if (warriorGroup != null)
+                    {
+                        warriorGroup.ChangePatrolPoint(hit.point);
+                    }
+                }
+            }
+        }   
+    }
+
     void SelectBuildableSurface()
     {
         selectedSurface = hit.transform.GetComponent<BuildableSurface>();

@@ -32,6 +32,10 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public virtual void Sell()
     {
+    }
+
+    public virtual void EndSell() 
+    {
         spawnScale.ResetEasing();
         gameObject.SetActive(false);
     }

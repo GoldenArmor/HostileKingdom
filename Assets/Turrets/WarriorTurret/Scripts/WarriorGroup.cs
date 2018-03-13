@@ -27,6 +27,7 @@ public class WarriorGroup : MonoBehaviour
         CreateUnit();
         CreateUnit();
         CreateUnit();
+        lessThanThree = false; 
     }
 
     void Update()
@@ -61,8 +62,24 @@ public class WarriorGroup : MonoBehaviour
         for (int i = 0; i < warriors.Count; i++)
         {
             warriors[i].SetDead();
-            Debug.Log(warriors[i]); 
+        }
+        if (warriors.Count > 0)
+        {
+            for (int i = 0; i < warriors.Count; i++)
+            {
+                warriors[i].SetDead(); 
+            }
         }
         myTurret.EndSell(); 
+    }
+
+    public void ChangePatrolPoint(Vector3 newPosition)
+    {
+        patrolPoint.position = newPosition; 
+        for (int i = 0; i < warriors.Count; i++)
+        {
+            warriors[i].objective = patrolPoint; 
+            warriors[i].SetMovement();
+        }
     }
 }

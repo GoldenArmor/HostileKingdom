@@ -115,6 +115,10 @@ public class InputManager : MonoBehaviour
         {
             mouse.ClickState();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            mouse.ChangePatrolPoint(); 
+        }
         #endregion
     }
 

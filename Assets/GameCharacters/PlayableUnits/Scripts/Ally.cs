@@ -13,6 +13,7 @@ public class Ally : Characters
     Transform spawnPoint; 
     [SerializeField]
     float maxDistanceFromSpawnPoint;
+    bool isMoving;
 
     public void TurretStart(WarriorGroup newGroup)
     {
@@ -70,9 +71,9 @@ public class Ally : Characters
         }
         else
         {
-            if (Vector3.Distance(transform.position, (spawnPoint.position)) > maxDistanceFromSpawnPoint)
+            if (Vector3.Distance(transform.position, agent.destination) > agent.stoppingDistance)
             {
-                objective = spawnPoint; 
+                objective = spawnPoint;
                 SetMovement();
             }
         }
@@ -80,9 +81,9 @@ public class Ally : Characters
 
     protected override void MoveUpdate()
     {
-        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance || selectedTarget != null)
         {
-            SetMovement();
+            SetIdle();  
         }
     }
 
@@ -180,5 +181,9 @@ public class Ally : Characters
         newColor.a = 0.2f;
         Gizmos.color = newColor;
         Gizmos.DrawSphere(transform.position, attackRange);
+
+        Color seconDoclor = Color.blue;
+        Gizmos.color = newColor;
+        Gizmos.DrawWireSphere(spawnPoint.position, maxDistanceFromSpawnPoint); 
     }
 }

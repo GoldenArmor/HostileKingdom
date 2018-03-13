@@ -15,11 +15,7 @@ public class WarriorTurret : Turret
 
     public override void Sell()
     {
-        myGroup.Sell(); 
-    }
-
-    public void EndSell()
-    {
         base.Sell(); 
+        myGroup.Sell(); 
     }
 }
