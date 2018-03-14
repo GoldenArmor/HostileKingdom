@@ -131,6 +131,7 @@ public class Mouse : MonoBehaviour
         }
         else
         {
+            selectedSurface.SelectTurret(); 
             sellingCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
         }
     }
@@ -142,7 +143,8 @@ public class Mouse : MonoBehaviour
             constructionCanvas.Hide();
         }
         else
-        { 
+        {
+            selectedSurface.UnselectTurret(); 
             sellingCanvas.Hide(); 
         }
         selectedSurface.isSelected = false;

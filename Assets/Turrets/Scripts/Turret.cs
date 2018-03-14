@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour, IPooledObject
 {
     [SerializeField]
-    SpawnScale spawnScale; 
+    SpawnScale spawnScale;
+
+    [HideInInspector]
+    public bool isSelected;
 
     public void PooledAwake()
     {
@@ -23,6 +27,10 @@ public class Turret : MonoBehaviour, IPooledObject
 
     protected virtual void MyUpdate()
     {
+        if (isSelected)
+        {
+            SelectedUpdate(); 
+        }
     }
 
     public bool IsActive()
@@ -34,9 +42,23 @@ public class Turret : MonoBehaviour, IPooledObject
     {
     }
 
+    protected virtual void SelectedUpdate()
+    {
+    }
+
     public virtual void EndSell() 
     {
         spawnScale.ResetEasing();
         gameObject.SetActive(false);
+    }
+
+    public virtual void Select()
+    {
+        isSelected = true; 
+    }
+
+    public virtual void Unselect()
+    {
+        isSelected = false; 
     }
 }

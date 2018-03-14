@@ -22,40 +22,25 @@ GameObject:
   - component: {fileID: 33620846204362458}
   - component: {fileID: 23633272689806998}
   - component: {fileID: 114737471546681376}
-  - component: {fileID: 114381445576766726}
-  - component: {fileID: 114493239486742230}
+  - component: {fileID: 114051166692793382}
+  - component: {fileID: 135154872432161438}
   m_Layer: 0
-  m_Name: RED
+  m_Name: ArcherTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1700593519644504
+--- !u!1 &1720298227972208
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4446791186206222}
+  - component: {fileID: 4966816604833716}
   m_Layer: 0
-  m_Name: PatrolPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1884794142785806
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4618232293206838}
-  m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: ArrowSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,32 +56,18 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4618232293206838}
-  - {fileID: 4446791186206222}
+  - {fileID: 4966816604833716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4446791186206222
+--- !u!4 &4966816604833716
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1700593519644504}
+  m_GameObject: {fileID: 1720298227972208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: 0, z: 23.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4060285178044884}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4618232293206838
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1884794142785806}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 6.4}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4060285178044884}
@@ -116,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 964adf30db8a42a47b31cdaf67978120, type: 2}
+  - {fileID: 2100000, guid: c080f993e088563488179076716911ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,7 +114,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388240122698682}
   m_Mesh: {fileID: 4300000, guid: 4f89a4a7398f3574b8ac5cbebc54bab0, type: 3}
---- !u!114 &114381445576766726
+--- !u!114 &114051166692793382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -151,29 +122,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1388240122698682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa9bb9b88edb794eb390d058f0f903a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myTurret: {fileID: 114493239486742230}
-  warriorPrefab: {fileID: 1422736715950422, guid: 2e09decbb7804874a8197e7e14fbb4b2,
-    type: 2}
-  warriors: []
-  spawnPoint: {fileID: 4618232293206838}
-  patrolPoint: {fileID: 4446791186206222}
-  spawnCooldown: 3
---- !u!114 &114493239486742230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1388240122698682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f58bb4e73ef0a4684486bbbc1346f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 701e92c590263334582338d72c55d0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnScale: {fileID: 114737471546681376}
-  myGroup: {fileID: 114381445576766726}
+  isSelected: 0
+  arrowPrefab: {fileID: 1686372433819692, guid: 519f438570960704ab5fedbe3788bfb8,
+    type: 2}
+  arrowSpawnPoint: {fileID: 4966816604833716}
+  range: 40
+  attackCooldown: 3
+  enemiesCanAttack: []
 --- !u!114 &114737471546681376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,3 +147,15 @@ MonoBehaviour:
   initialValue: {x: 0, y: 0, z: 0}
   finalValue: {x: 1, y: 1, z: 1}
   durationTime: 0.85
+--- !u!135 &135154872432161438
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388240122698682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: 0, y: 0, z: 0}

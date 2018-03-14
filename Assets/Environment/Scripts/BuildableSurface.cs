@@ -9,7 +9,7 @@ public class BuildableSurface : MonoBehaviour
     [SerializeField]
     Renderer meshRenderer;
 
-    public CanvasManager canvasManager; 
+    public CanvasManager constructionBarCanvas; 
 
     [Header("Building")]
     public Transform buildingPoint;
@@ -49,6 +49,16 @@ public class BuildableSurface : MonoBehaviour
         }
     }
 
+    public void SelectTurret()
+    {
+        if (currentTurret != null) currentTurret.Select(); 
+    }
+
+    public void UnselectTurret()
+    {
+        if (currentTurret != null) currentTurret.Unselect();
+    }
+
     public bool CanBuild()
     {
         return canBuild; 
@@ -79,7 +89,7 @@ public class BuildableSurface : MonoBehaviour
     {
         if (!CanBuild())
         {
-            Debug.Log("Can't build here");
+            //Debug.Log("Can't build here");
             return;
         }
 
@@ -105,27 +115,20 @@ public class BuildableSurface : MonoBehaviour
 
         if (currentConstructionCooldown > constructionCooldown)
         {
-            canvasManager.Hide(); 
+            constructionBarCanvas.Hide(); 
             isBuilding = false;
             currentConstructionCooldown = 0;
-            constructionBar.enabled = false;
-            if (warriorTurret)
-            {
-                Construct(turretToConstruct);
-            }
-            else
-            {
-                Construct(turretToConstruct);
-            }         
+            //constructionBar.enabled = false;
+            Construct(turretToConstruct);         
         }
     }
 
     public void BeginConstruct(GameObject turret, bool isWarriorTurret)
     {
         isBuilding = true;
-        constructionBar.enabled = true;
+        //constructionBar.enabled = true;
         turretToConstruct = turret; 
-        canvasManager.Initialize(canvasManager.myTransform.position);
+        constructionBarCanvas.Initialize(constructionBarCanvas.myTransform.position);
         warriorTurret = isWarriorTurret; 
     }
 

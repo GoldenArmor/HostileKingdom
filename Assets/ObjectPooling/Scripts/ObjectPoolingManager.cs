@@ -40,12 +40,22 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
+    static GenericPooling<Arrow> arrowPool;
+    public static GenericPooling<Arrow> ArrowPool
+    {
+        get
+        {
+            return arrowPool;
+        }
+    }
+
     void Awake()
     {
         enemyPool = new GenericPooling<Enemy>();
         allyPool = new GenericPooling<Ally>(); 
         archerTurretPool = new GenericPooling<ArcherTurret>();
-        warriorTurretPool = new GenericPooling<WarriorTurret>(); 
+        warriorTurretPool = new GenericPooling<WarriorTurret>();
+        arrowPool = new GenericPooling<Arrow>(); 
     }
 }
 

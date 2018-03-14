@@ -22,6 +22,9 @@ public class WarriorGroup : MonoBehaviour
 
     bool lessThanThree;
 
+    [SerializeField]
+    float range;
+
     public void PooledStart()
     {
         CreateUnit();
@@ -75,11 +78,22 @@ public class WarriorGroup : MonoBehaviour
 
     public void ChangePatrolPoint(Vector3 newPosition)
     {
-        patrolPoint.position = newPosition; 
-        for (int i = 0; i < warriors.Count; i++)
+        if (Vector3.Distance(newPosition, transform.position) < range)
         {
-            warriors[i].objective = patrolPoint; 
-            warriors[i].SetMovement();
+            patrolPoint.position = newPosition;
+            for (int i = 0; i < warriors.Count; i++)
+            {
+                warriors[i].objective = patrolPoint;
+                warriors[i].SetMovement();
+            }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Color color = Color.blue;
+        Gizmos.color = color; 
+
+        Gizmos.DrawWireSphere(transform.position, range); 
     }
 }
