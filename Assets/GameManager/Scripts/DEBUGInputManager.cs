@@ -87,8 +87,6 @@ public class DEBUGInputManager : MonoBehaviour
 
     void NoPaused()
     {
-        mouse.mousePosition = mousePosition;
-
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
@@ -109,7 +107,7 @@ public class DEBUGInputManager : MonoBehaviour
         #region Selection&MovementBehaviours
         if (Input.GetMouseButtonDown(0))
         {
-            mouse.ClickState();
+            mouse.ClickState(mousePosition);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -120,11 +118,9 @@ public class DEBUGInputManager : MonoBehaviour
 
     void GodModeUpdate()
     {
-        mouse.mousePosition = mousePosition;
-
         if (Input.GetMouseButtonDown(0))
         {
-            mouse.ClickState();
+            mouse.ClickState(mousePosition);
         }
 
         #region CameraControllerAndZoom

@@ -64,21 +64,21 @@ public class BuildableSurface : MonoBehaviour
         return canBuild; 
     }
 
-    void OnMouseEnter()
-    {
-        if (!isSelected)
-        {
-            ChangeColor(hoverColor);
-        }
-    }
+    //void OnMouseEnter()
+    //{
+    //    if (!isSelected)
+    //    {
+    //        ChangeColor(hoverColor);
+    //    }
+    //}
 
-    void OnMouseExit()
-    {
-        if (!isSelected)
-        {
-            ChangeColor(startColor);
-        }
-    }
+    //void OnMouseExit()
+    //{
+    //    if (!isSelected)
+    //    {
+    //        ChangeColor(startColor);
+    //    }
+    //}
 
     public void ChangeColor(Color newColor)
     {

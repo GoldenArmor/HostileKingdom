@@ -11,7 +11,6 @@ public class Mouse : MonoBehaviour
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
-    public Vector3 mousePosition;
 
     [Header("Color")]
     [SerializeField]
@@ -43,28 +42,31 @@ public class Mouse : MonoBehaviour
 
     void Update()
     {
-        //Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        //if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
-        //{
-        //    if (hit.transform.CompareTag("BuildableSurface"))
-        //    {
-        //        colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
-        //        colorizedSurface.ChangeColor(hoverColor);
-        //    }
+        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+        if(Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+        {
+            if(hit.transform.CompareTag("BuildableSurface"))
+            {
+                colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
+                if(!colorizedSurface.isSelected)
+                {
+                    colorizedSurface.ChangeColor(hoverColor);
+                }
+            }
 
-        //    else
-        //    {
-        //        if (colorizedSurface != null && !colorizedSurface.isSelected)
-        //        {
-        //            colorizedSurface.ChangeColor(startColor);
-        //            colorizedSurface = null; 
-        //        }
-        //    }
+            else
+            {
+                if(colorizedSurface != null && !colorizedSurface.isSelected)
+                {
+                    colorizedSurface.ChangeColor(startColor);
+                    colorizedSurface = null;
+                }
+            }
 
-        //}
+        }
     }
 
-    public void ClickState() 
+    public void ClickState(Vector3 mousePosition) 
     {
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 

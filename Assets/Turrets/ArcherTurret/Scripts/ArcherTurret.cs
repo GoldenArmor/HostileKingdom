@@ -69,6 +69,12 @@ public class ArcherTurret : Turret
         }
     }
 
+    public override void Sell()
+    {
+        base.Sell();
+        EndSell(); 
+    }
+
     void OnDrawGizmos()
     {
         Color color = Color.blue;
