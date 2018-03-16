@@ -11,6 +11,7 @@ public class Mouse : MonoBehaviour
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
+    Vector3 mousePosition; 
 
     [Header("Color")]
     [SerializeField]
@@ -66,7 +67,12 @@ public class Mouse : MonoBehaviour
         }
     }
 
-    public void ClickState(Vector3 mousePosition) 
+    public void SetMousePosition(Vector3 newMousePosition)
+    {
+        mousePosition = newMousePosition; 
+    }
+
+    public void ClickState() 
     {
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
 

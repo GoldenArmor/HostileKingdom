@@ -91,6 +91,8 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
+        mouse.SetMousePosition(mousePosition); 
+
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
@@ -111,7 +113,7 @@ public class InputManager : MonoBehaviour
         #region Selection&MovementBehaviours
         if (Input.GetMouseButtonDown(0))
         {
-            mouse.ClickState(mousePosition);
+            mouse.ClickState();
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -122,9 +124,11 @@ public class InputManager : MonoBehaviour
 
     void GodModeUpdate()
     {
+        mouse.SetMousePosition(mousePosition); 
+
         if (Input.GetMouseButtonDown(0))
         {
-            mouse.ClickState(mousePosition);
+            mouse.ClickState();
         }
 
         #region CameraControllerAndZoom
