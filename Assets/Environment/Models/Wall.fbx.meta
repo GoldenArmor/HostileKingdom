@@ -1,24 +1,22 @@
 fileFormatVersion: 2
-guid: d91b9d21d0f53b44da4ddfb898a0523b
-timeCreated: 1519254412
+guid: 7f05f5f784c66ba448590ba229c6f487
+timeCreated: 1521534362
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Wall
-    100002: //RootNode
-    400000: Wall
-    400002: //RootNode
-    2100000: lambert1
-    2300000: Wall
-    3300000: Wall
-    4300000: Wall
+    100000: //RootNode
+    400000: //RootNode
+    2100000: 'Material #42'
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Object003
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 796792344f0f3334883403f8bb964a91, type: 2}
+      name: 'Material #42'
+    second: {fileID: 2100000, guid: a9497d644208fda45b6bc0e988baa016, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -48,10 +46,10 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 60
+    globalScale: 2.4
     meshCompression: 0
     addColliders: 0
-    importVisibility: 1
+    importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
@@ -69,7 +67,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 48
     normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
