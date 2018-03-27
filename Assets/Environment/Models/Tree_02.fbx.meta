@@ -1,22 +1,44 @@
 fileFormatVersion: 2
-guid: 13f3130f823718e4d9561f9b579ec107
-timeCreated: 1519681161
+guid: 845050ea951c3334889f7bbef7cbaab0
+timeCreated: 1522178832
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: 'Material #22'
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Casa_01
+    100000: Hojas_01
+    100002: Hojas_02
+    100004: Hojas_03
+    100006: Hojas_04
+    100008: //RootNode
+    100010: Tronco
+    400000: Hojas_01
+    400002: Hojas_02
+    400004: Hojas_03
+    400006: Hojas_04
+    400008: //RootNode
+    400010: Tronco
+    2100000: lambert4
+    2300000: Hojas_01
+    2300002: Hojas_02
+    2300004: Hojas_03
+    2300006: Hojas_04
+    2300008: Tronco
+    3300000: Hojas_01
+    3300002: Hojas_02
+    3300004: Hojas_03
+    3300006: Hojas_04
+    3300008: Tronco
+    4300000: Hojas_04
+    4300002: Hojas_03
+    4300004: Hojas_02
+    4300006: Hojas_01
+    4300008: Tronco
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 'Material #22'
-    second: {fileID: 2100000, guid: 3f9dcc92c3f4455498f1fd27adc6a712, type: 2}
+      name: lambert4
+    second: {fileID: 2100000, guid: 1134b07c33ece0e4c988e16c27a52ec6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +68,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.75
+    globalScale: 85
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -68,8 +90,8 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalImportMode: 0
+    tangentImportMode: 0
     normalCalculationMode: 4
   importAnimation: 0
   copyAvatar: 0
