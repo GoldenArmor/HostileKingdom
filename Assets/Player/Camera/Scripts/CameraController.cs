@@ -12,6 +12,9 @@ public class CameraController : MonoBehaviour
 
     [Header("Pan")]
     [SerializeField]
+    float panShiftSpeed;
+    [SerializeField]
+    float panNormalSpeed; 
     float panSpeed;
     [SerializeField]
     float panBorderThickness ;
@@ -32,6 +35,15 @@ public class CameraController : MonoBehaviour
 
     void MovementUpdate(Vector3 mousePosition)
     {
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            panSpeed = panShiftSpeed;
+        }
+        else
+        {
+            panSpeed = panNormalSpeed; 
+        }
+
         Vector3 newPosition = new Vector3(inputAxis.x, 0, inputAxis.y);
 
         if (mousePosition.y >= Screen.height - panBorderThickness) newPosition = Vector3.back;

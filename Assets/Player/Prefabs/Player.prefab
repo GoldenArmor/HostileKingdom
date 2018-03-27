@@ -333,8 +333,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580005614829204}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13, y: 0, z: 253}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -73, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4586889105912930}
@@ -343,7 +343,7 @@ Transform:
   - {fileID: 4948283404975264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4340594695825352
 Transform:
   m_ObjectHideFlags: 1
@@ -379,7 +379,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798365880848924}
   m_LocalRotation: {x: -0, y: 0.92387956, z: -0.38268343, w: 0}
-  m_LocalPosition: {x: 0, y: 44.5, z: 40}
+  m_LocalPosition: {x: 0, y: 150, z: 145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4835080319638350}
@@ -612,7 +612,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 4294965215
-  mousePosition: {x: 0, y: 0, z: 0}
   hoverColor: {r: 0.20588237, g: 0.20588237, b: 0.20588237, a: 0.497}
   startColor: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
   constructionCanvas: {fileID: 114735421609742494}
@@ -763,7 +762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZoomSpeed: 50
   minY: 35
-  maxY: 150
+  maxY: 300
 --- !u!114 &114357608686680922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -995,9 +994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraRotationTransform: {fileID: 4835080319638350}
-  panSpeed: 150
+  panShiftSpeed: 350
+  panNormalSpeed: 150
   panBorderThickness: 10
-  panLimit: {x: 500, y: 500}
+  panLimit: {x: 250, y: 350}
 --- !u!114 &114735421609742494
 MonoBehaviour:
   m_ObjectHideFlags: 1

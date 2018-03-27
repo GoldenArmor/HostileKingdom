@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162543550087870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.15, y: 2.35, z: 0}
+  m_LocalPosition: {x: 7.19, y: 8.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752664626045314}
@@ -155,8 +155,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.56159973, y: 0.86691475, z: 0.61587805}
-  m_Center: {x: 2.152059, y: 2.4635563, z: 0.010886639}
+  m_Size: {x: 2.067768, y: 2.3477135, z: 2.0589619}
+  m_Center: {x: 7.1650944, y: 8.065056, z: -0.044157982}
 --- !u!65 &65448149541620850
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -167,8 +167,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0241532, y: 0.5771527, z: 0.5833398}
-  m_Center: {x: 0.9093926, y: 3.7795966, z: 0.0048496127}
+  m_Size: {x: 8.389683, y: 1.6325359, z: 1.9522247}
+  m_Center: {x: 4.4869137, y: 12.41924, z: -0.038763046}
 --- !u!65 &65584677101432300
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -179,8 +179,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1980933, y: 4.1793485, z: 1.1865232}
-  m_Center: {x: -0.0036373734, y: 2.0896742, z: 0.00000023841858}
+  m_Size: {x: 4.0215607, y: 14.206743, z: 3.9037037}
+  m_Center: {x: -0.029907227, y: 7.1033716, z: 0.0035772324}
 --- !u!198 &198525266074193522
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -248,7 +248,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -393,7 +393,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.75
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -706,7 +706,7 @@ ParticleSystem:
     sphericalDirectionAmount: 1
     randomPositionAmount: 1
     radius:
-      value: 0.05
+      value: 0.75
       mode: 0
       spread: 0
       speed:

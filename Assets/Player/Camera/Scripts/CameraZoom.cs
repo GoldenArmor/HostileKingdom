@@ -32,33 +32,47 @@ public class CameraZoom : MonoBehaviour
     }
 	void Update ()
     {
-        cameraForward = transform.forward;
+        cameraForward = selfTransform.forward;
 
         scrollAxis = mouseAxis * ZoomSpeed;
-        if(scrollAxis != 0)
+
+        if (scrollAxis != 0)
         {
-            if(selfTransform.position.y > minY && selfTransform.position.y < maxY)
+            if (selfTransform.position.y >= minY && selfTransform.position.y <= maxY)
             {
                 Scrolling();
-                return; 
+                return;
             }
 
-            if(selfTransform.position.y <= minY && scrollAxis < 0)
+            if (selfTransform.position.y <= minY && scrollAxis < 0)
             {
                 Scrolling();
             }
 
-            if(selfTransform.position.y >= maxY && scrollAxis > 0)
+            if (selfTransform.position.y >= maxY && scrollAxis > 0)
             {
                 Scrolling();
             }
         }
+        //LimitPosition();
     }
 
     void Scrolling()
     {
-        transform.Translate(cameraForward.x * scrollAxis, cameraForward.y * scrollAxis, cameraForward.z * scrollAxis, Space.World);
+        selfTransform.Translate(cameraForward.x * scrollAxis, cameraForward.y * scrollAxis, cameraForward.z * scrollAxis, Space.World);
+
+        //selfTransform.Translate(0, cameraForward.y * scrollAxis, cameraForward.z * scrollAxis, Space.World);
     }
+
+    //void LimitPosition()
+    //{
+    //    if (selfTransform.position.y < minY || selfTransform.position.y > maxY)
+    //    {
+    //        selfTransform.position = new Vector3(selfTransform.position.x,
+    //                                        Mathf.Clamp(selfTransform.position.y, minPosition.y, maxPosition.y),
+    //                                            selfTransform.position.z);
+    //    }     
+    //}
 
     public void SetAxis(float axis)
     {
