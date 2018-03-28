@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: a6698b03e81a85f4f8f80852f61eb2ea
-timeCreated: 1519252159
+guid: 1a88c15f8fda11f49b1674336eef6ea3
+timeCreated: 1522254067
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #47'
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Church
+    4300000: WaterDisc
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 'Material #47'
-    second: {fileID: 2100000, guid: ba64767245d8c6742ae8c222a3e5a2e5, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: dba33a2bf8b23400bacf323fc2816a51, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +46,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.2
+    globalScale: 72
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -69,7 +69,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 0
   copyAvatar: 0
