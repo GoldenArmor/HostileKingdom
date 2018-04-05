@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
     [Header("MouseInputsManager")]
     [SerializeField]
     Mouse mouse;
-    public static Vector3 mousePosition;
+    Vector3 mousePosition;
 
     [Header("CameraInputs")]
     [SerializeField]
@@ -91,7 +91,7 @@ public class InputManager : MonoBehaviour
 
     void NoPaused()
     {
-        mouse.mousePosition = mousePosition;
+        mouse.SetMousePosition(mousePosition); 
 
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
@@ -115,12 +115,16 @@ public class InputManager : MonoBehaviour
         {
             mouse.ClickState();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            mouse.ChangePatrolPoint(); 
+        }
         #endregion
     }
 
     void GodModeUpdate()
     {
-        mouse.mousePosition = mousePosition;
+        mouse.SetMousePosition(mousePosition); 
 
         if (Input.GetMouseButtonDown(0))
         {

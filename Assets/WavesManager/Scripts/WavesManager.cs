@@ -87,7 +87,7 @@ public class WavesManager : MonoBehaviour
 
     void SpawnUnit (GameObject character, Transform spawnPoint)
     {
-        ObjectPoolingManager.Instance.CharacterPool.GetObject(character, spawnPoint); 
+        ObjectPoolingManager.EnemyPool.GetObject(character, spawnPoint); 
 
         EnemyWaveManager.enemiesAlive++; 
 

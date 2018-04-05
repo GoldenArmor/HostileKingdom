@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4327921268081756}
   - component: {fileID: 33218772327869308}
   - component: {fileID: 23616196012387052}
+  - component: {fileID: 65008803583977946}
   m_Layer: 0
   m_Name: Stump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1572153528062142
 GameObject:
@@ -43,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1678486278725550
 GameObject:
@@ -58,7 +59,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4124238912646390
 Transform:
@@ -66,13 +67,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572153528062142}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.0727929, z: -0}
+  m_LocalRotation: {x: -0, y: 0.7217781, z: -0, w: 0.6921246}
+  m_LocalPosition: {x: -0.54, y: 3.62, z: 1.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4398035908953440}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 92.40301, z: 0}
 --- !u!4 &4327921268081756
 Transform:
   m_ObjectHideFlags: 1
@@ -183,3 +184,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572153528062142}
   m_Mesh: {fileID: 4300002, guid: 83f1446feb4daad41be8b5d5c518eae1, type: 3}
+--- !u!65 &65008803583977946
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1253065714026120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.107214, y: 4.7326994, z: 12.294997}
+  m_Center: {x: 0.00000023841858, y: 2.2818222, z: 0}

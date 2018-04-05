@@ -55,8 +55,7 @@ public class Characters : MonoBehaviour, IPooledObject
     protected Animator anim;
 
     [Header("Movement")]
-    [SerializeField]
-    protected Transform objective;
+    public Transform objective;
 
     public LayerMask mask;
 

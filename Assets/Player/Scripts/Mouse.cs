@@ -11,7 +11,7 @@ public class Mouse : MonoBehaviour
     public LayerMask mask; //Máscara que se aplica al rayo para detectar una capa determinada de objetos. 
     RaycastHit hit; //Creamos un RaycastHit que nos devolverá la información del objeto con el que el rayo colisiona.
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
-    public Vector3 mousePosition;
+    Vector3 mousePosition; 
 
     [Header("Color")]
     [SerializeField]
@@ -23,6 +23,8 @@ public class Mouse : MonoBehaviour
     [Header("Construction")]
     [SerializeField]
     CanvasManager constructionCanvas;
+    [SerializeField]
+    CanvasManager sellingCanvas; 
 
     Camera mainCamera;
 
@@ -41,25 +43,33 @@ public class Mouse : MonoBehaviour
 
     void Update()
     {
-        //Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        //if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
-        //{
-        //    if (hit.transform.CompareTag("BuildableSurface"))
-        //    {
-        //        colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
-        //        colorizedSurface.ChangeColor(hoverColor);
-        //    }
+        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+        if(Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+        {
+            if(hit.transform.CompareTag("BuildableSurface"))
+            {
+                colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
+                if(!colorizedSurface.isSelected)
+                {
+                    colorizedSurface.ChangeColor(hoverColor);
+                }
+            }
 
-        //    else
-        //    {
-        //        if (colorizedSurface != null && !colorizedSurface.isSelected)
-        //        {
-        //            colorizedSurface.ChangeColor(startColor);
-        //            colorizedSurface = null; 
-        //        }
-        //    }
+            else
+            {
+                if(colorizedSurface != null && !colorizedSurface.isSelected)
+                {
+                    colorizedSurface.ChangeColor(startColor);
+                    colorizedSurface = null;
+                }
+            }
 
-        //}
+        }
+    }
+
+    public void SetMousePosition(Vector3 newMousePosition)
+    {
+        mousePosition = newMousePosition; 
     }
 
     public void ClickState() 
@@ -91,29 +101,91 @@ public class Mouse : MonoBehaviour
         }
     }
 
+    public void ChangePatrolPoint()
+    {
+        if (selectedSurface != null)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(mousePosition);
+
+            if (Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+            {
+                if (hit.transform.CompareTag("Ground"))
+                {
+                    WarriorGroup warriorGroup = selectedSurface.currentTurret.GetComponent<WarriorGroup>();
+
+                    if (warriorGroup != null)
+                    {
+                        warriorGroup.ChangePatrolPoint(hit.point);
+                    }
+                }
+            }
+        }   
+    }
+
     void SelectBuildableSurface()
     {
         selectedSurface = hit.transform.GetComponent<BuildableSurface>();
+        if (selectedSurface.isBuilding)
+        {
+            selectedSurface = null;
+            return; 
+        }
         selectedSurface.isSelected = true;
         selectedSurface.ChangeColor(hoverColor);
 
-        if (!selectedSurface.isBuilding)
+        if (selectedSurface.CanBuild())
         {
             constructionCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
+        }
+        else
+        {
+            selectedSurface.SelectTurret(); 
+            sellingCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
         }
     }
 
     void ClearSelectedSurface()
     {
+        if (selectedSurface.CanBuild())
+        {
+            constructionCanvas.Hide();
+        }
+        else
+        {
+            selectedSurface.UnselectTurret(); 
+            sellingCanvas.Hide(); 
+        }
         selectedSurface.isSelected = false;
         selectedSurface.ChangeColor(startColor);  
         selectedSurface = null;
-        constructionCanvas.Hide();
     }
 
-    public void ConstructionCooldown(GameObject turret) 
+    public void ConstructArcherTurret(GameObject turret)
     {
-        selectedSurface.BeginConstruct(turret);
-        ClearSelectedSurface();        
+        selectedSurface.BeginConstruct(turret, false);
+        Construct();
+    }
+
+    public void ConstructWarriorTurret(GameObject turret)
+    {
+        selectedSurface.BeginConstruct(turret, true);
+        Construct();
+    }
+
+    void Construct()
+    {
+        constructionCanvas.Hide();
+        selectedSurface.isSelected = false;
+        selectedSurface.ChangeColor(startColor);
+        selectedSurface = null;
+    }
+
+    public void Sell()
+    {
+        selectedSurface.isSelected = false;
+        selectedSurface.ChangeColor(startColor);
+        selectedSurface.SellTurret();
+        selectedSurface = null; 
+        sellingCanvas.Hide(); 
     }
 }

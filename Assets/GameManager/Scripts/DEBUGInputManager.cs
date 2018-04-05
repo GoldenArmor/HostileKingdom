@@ -87,7 +87,7 @@ public class DEBUGInputManager : MonoBehaviour
 
     void NoPaused()
     {
-        mouse.mousePosition = mousePosition;
+        mouse.SetMousePosition(mousePosition); 
 
         #region CameraControllerAndZoom
         inputAxis.x = Input.GetAxis("Horizontal");
@@ -111,12 +111,16 @@ public class DEBUGInputManager : MonoBehaviour
         {
             mouse.ClickState();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            mouse.ChangePatrolPoint();
+        }
         #endregion
     }
 
     void GodModeUpdate()
     {
-        mouse.mousePosition = mousePosition;
+        mouse.SetMousePosition(mousePosition); 
 
         if (Input.GetMouseButtonDown(0))
         {

@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Ally : Characters
 {
-    #region Debug, borrar cuando se pueda
-    void Start()
+    [HideInInspector]
+    public WarriorGroup myGroup;
+
+    [SerializeField]
+    SpawnScalePingPong spawnScale; 
+
+    Transform spawnPoint; 
+    [SerializeField]
+    float maxDistanceFromSpawnPoint;
+    bool isMoving;
+
+    public void TurretStart(WarriorGroup newGroup)
     {
-        MyStart();
+        myGroup = newGroup; 
+        spawnPoint = myGroup.patrolPoint;
+        objective = spawnPoint; 
+        spawnScale.ResetEasing();
+        SetMovement(); 
     }
-    #endregion
 
     protected override void MyUpdate()
     {
@@ -56,13 +69,21 @@ public class Ally : Characters
                 SetAttack();
             }
         }
+        else
+        {
+            if (Vector3.Distance(transform.position, agent.destination) > agent.stoppingDistance)
+            {
+                objective = spawnPoint;
+                SetMovement();
+            }
+        }
     }
 
     protected override void MoveUpdate()
     {
-        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance || selectedTarget != null)
         {
-            SetMovement();
+            SetIdle();  
         }
     }
 
@@ -102,7 +123,9 @@ public class Ally : Characters
 
     public override void SetDead()
     {
-        //enemiesManager.enemiesCount.Remove(this);
+        myGroup.ClearUnit(this);
+        myGroup = null;
+        spawnScale.ResetEasing();
         base.SetDead();
     }
 
@@ -124,6 +147,8 @@ public class Ally : Characters
         if (other.CompareTag("Enemy"))
         {
             unitsCanAttack.Add(other.transform);
+            objective = transform; 
+            SetIdle(); 
         }
     }
 
@@ -156,5 +181,9 @@ public class Ally : Characters
         newColor.a = 0.2f;
         Gizmos.color = newColor;
         Gizmos.DrawSphere(transform.position, attackRange);
+
+        Color seconDoclor = Color.blue;
+        Gizmos.color = newColor;
+        Gizmos.DrawWireSphere(spawnPoint.position, maxDistanceFromSpawnPoint); 
     }
 }

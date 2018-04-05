@@ -16,6 +16,7 @@ public class SpawnScale : MonoBehaviour
 
     public virtual void ResetEasing()
     {
+        transform.localScale = Vector3.zero; 
         currentTime = 0;
     }
 

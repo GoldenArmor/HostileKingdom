@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 95691154905946894}
   - component: {fileID: 195999737775722312}
   - component: {fileID: 114989450928661838}
+  - component: {fileID: 114802168395207608}
   m_Layer: 9
   m_Name: TestAlly
   m_TagString: Ally
@@ -1540,6 +1541,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114802168395207608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422736715950422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4618e9ccfc56064188e9e4435370be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialValue: {x: 0, y: 0, z: 0}
+  finalValue: {x: 1, y: 1, z: 1}
+  durationTime: 5
 --- !u!114 &114864868490016368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1591,6 +1606,9 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+  myGroup: {fileID: 0}
+  spawnScale: {fileID: 114802168395207608}
+  maxDistanceFromSpawnPoint: 7
 --- !u!135 &135497524137598202
 SphereCollider:
   m_ObjectHideFlags: 1
