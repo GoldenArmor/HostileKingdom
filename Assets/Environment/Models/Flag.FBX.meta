@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cc9f2122c4b607544bfd61cd39b7e671
-timeCreated: 1519325626
+guid: c8249b49e9c870e478c708e6e40c5dac
+timeCreated: 1522943492
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,13 +10,14 @@ ModelImporter:
     2100000: 'Material #25'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: DartBoard
+    4300000: Object004
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 'Material #25'
-    second: {fileID: 2100000, guid: 5be16627674664149a63dc1038b26895, type: 2}
+    second: {fileID: 2100000, guid: 875bae4b9d25d6c43988f51f0fa852ae, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 0.5
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -68,7 +69,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 0
