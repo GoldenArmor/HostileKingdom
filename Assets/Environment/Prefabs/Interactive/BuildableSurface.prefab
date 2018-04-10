@@ -510,7 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4361417369629938}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4244083297934686
 Transform:
@@ -550,9 +550,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4731726600371926}
   - {fileID: 224279776772448156}
   - {fileID: 4209185531970772}
-  - {fileID: 4731726600371926}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -655,7 +655,7 @@ Transform:
   - {fileID: 4564164928399226}
   - {fileID: 4356302169509938}
   m_Father: {fileID: 4361417369629938}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4866260064382432
 Transform:
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialValue: {x: 0, y: 0, z: 0}
-  finalValue: {x: 0.0025, y: 0.0025, z: 0.0025}
+  finalValue: {x: 0.03, y: 0.03, z: 0.03}
   durationTime: 0.15
 --- !u!114 &114047689869983234
 MonoBehaviour:
@@ -1385,14 +1385,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af53e527a8ddb5b44bf19db2937f3764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
-  constructionBarCanvas: {fileID: 0}
+  meshRenderers:
+  - {fileID: 23080785891273576}
+  - {fileID: 23872966013860912}
+  - {fileID: 23685953293955882}
+  - {fileID: 23859607017818886}
+  - {fileID: 23352247141501362}
+  - {fileID: 23936850303287624}
+  - {fileID: 23899519312705914}
+  - {fileID: 23738237086538608}
+  constructionBarCanvas: {fileID: 114236480444543672}
   buildingPoint: {fileID: 4209185531970772}
   isBuilding: 0
   constructionCooldown: 2
   currentTurret: {fileID: 0}
   constructionBar: {fileID: 114139296339976078}
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
   isSelected: 0
 --- !u!114 &114888558198365142
 MonoBehaviour:
@@ -1475,7 +1484,7 @@ RectTransform:
   m_Children:
   - {fileID: 224648118775544200}
   m_Father: {fileID: 4361417369629938}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

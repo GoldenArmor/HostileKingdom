@@ -33,7 +33,7 @@ public class Mouse : MonoBehaviour
         BuildableSurface[] selectableList = FindObjectsOfType<BuildableSurface>();
         for (int i = 0; i < selectableList.Length; i++)
         {
-            startColor = selectableList[i].MyStart(); 
+            selectableList[i].MyStart();
             selectableList[i].ChangeColor(startColor);
             selectableList[i].hoverColor = hoverColor; 
             selectableSurfaces.Add(selectableList[i].gameObject);
@@ -63,7 +63,6 @@ public class Mouse : MonoBehaviour
                     colorizedSurface = null;
                 }
             }
-
         }
     }
 

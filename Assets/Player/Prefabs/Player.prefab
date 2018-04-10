@@ -333,8 +333,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580005614829204}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -73, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4586889105912930}
@@ -343,7 +343,7 @@ Transform:
   - {fileID: 4948283404975264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4340594695825352
 Transform:
   m_ObjectHideFlags: 1
@@ -608,12 +608,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedSurface: {fileID: 0}
-  selectableSurfaces: []
+  selectableSurfaces:
+  - {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 4294965215
-  hoverColor: {r: 0.20588237, g: 0.20588237, b: 0.20588237, a: 0.497}
-  startColor: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
+  hoverColor: {r: 0.8161765, g: 0.8161765, b: 0.8161765, a: 1}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
   constructionCanvas: {fileID: 114735421609742494}
   sellingCanvas: {fileID: 114820515379430730}
 --- !u!114 &114107087110453492
