@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BuildableSurface : MonoBehaviour
 {
     [SerializeField]
-    Renderer meshRenderer;
+    Renderer[] meshRenderers;
 
     public CanvasManager constructionBarCanvas; 
 
@@ -29,16 +29,15 @@ public class BuildableSurface : MonoBehaviour
     [Header("Color")]
     [HideInInspector]
     public Color hoverColor;
+    [SerializeField]
     Color startColor; 
 
     public bool isSelected;
 
-    public Color MyStart()
+    public void MyStart()
     {
-        canBuild = true; 
-        startColor = meshRenderer.material.color;
+        canBuild = true;
         UpdateConstructionBar(); 
-        return startColor; 
     }
 
     void Update()
@@ -82,7 +81,10 @@ public class BuildableSurface : MonoBehaviour
 
     public void ChangeColor(Color newColor)
     {
-        meshRenderer.material.color = newColor; 
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = newColor;
+        }
     }
 
     void Construct(GameObject turret)
