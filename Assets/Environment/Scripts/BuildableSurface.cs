@@ -9,6 +9,9 @@ public class BuildableSurface : MonoBehaviour
     [SerializeField]
     Renderer[] meshRenderers;
 
+    [SerializeField]
+    GameObject meshesGameObject; 
+
     public CanvasManager constructionBarCanvas; 
 
     [Header("Building")]
@@ -103,6 +106,7 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret = ObjectPoolingManager.ArcherTurretPool.GetObject(turret, buildingPoint);
         }
+        meshesGameObject.SetActive(false);
         canBuild = false;
     }
 
@@ -143,7 +147,8 @@ public class BuildableSurface : MonoBehaviour
     {
         currentTurret.Sell();
         currentTurret = null;
-        turretToConstruct = null; 
+        turretToConstruct = null;
+        meshesGameObject.SetActive(true);
         canBuild = true;
         UpdateConstructionBar(); 
     }
