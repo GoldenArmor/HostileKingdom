@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Lightbeam_Fog
+  m_Shader: {fileID: 4800000, guid: 4b3a931b4a161c349a30d0a31d1a92e0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DetailTex:
+        m_Texture: {fileID: 2800000, guid: e592912ae4f92ac4c8766142fc1488f1, type: 3}
+        m_Scale: {x: 0.5, y: 0.8}
+        m_Offset: {x: 0, y: 0}
+    - _DustTex:
+        m_Texture: {fileID: 2800000, guid: e592912ae4f92ac4c8766142fc1488f1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 2ddf1bf6534b3cf44863491fac922ed3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex2:
+        m_Texture: {fileID: 2800000, guid: 8ff2a79fd69e5ff46acd2a6c44740cf9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMultiplier: 1
+    - _DetailContrast: 0.67164177
+    - _DustContrast: 0.6119403
+    - _SoftEdge: 0.1
+    - _Tweak: 0.65
+    - _Width: 8.71
+    m_Colors:
+    - _Color: {r: 1, g: 0.96100277, b: 0.88235295, a: 1}
+    - _DetailAnim: {r: 0.5, g: 1, b: 0, a: 0}
+    - _DustAnim: {r: 0.3, g: 0.81, b: 0, a: 0}
