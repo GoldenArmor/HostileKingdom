@@ -139,7 +139,7 @@ public class Mouse : MonoBehaviour
         else
         {
             selectedSurface.SelectTurret(); 
-            sellingCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 25, selectedSurface.transform.position.z));
+            sellingCanvas.Initialize(new Vector3(selectedSurface.transform.position.x, 55, selectedSurface.transform.position.z));
         }
     }
 

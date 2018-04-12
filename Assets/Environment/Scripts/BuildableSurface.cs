@@ -37,8 +37,10 @@ public class BuildableSurface : MonoBehaviour
 
     [Header("TurretPhases")]
     [SerializeField]
-    GameObject[] turretPhases; 
-    
+    GameObject[] archerTurretPhases;
+    [SerializeField]
+    GameObject[] warriorTurretPhases;
+
     public bool isSelected;
 
     public void MyStart()
@@ -113,7 +115,8 @@ public class BuildableSurface : MonoBehaviour
         meshRenderers.Add(currentTurret.gameObject.GetComponent<MeshRenderer>());
         canBuild = false;
 
-        turretPhases[2].SetActive(false);
+        archerTurretPhases[2].SetActive(false);
+        warriorTurretPhases[2].SetActive(false); 
     }
 
     public void UpdateConstruct(GameObject turret)
@@ -125,20 +128,41 @@ public class BuildableSurface : MonoBehaviour
 
         UpdateConstructionBar();
 
-        if (currentConstructionCooldown >= constructionCooldown/3 && currentConstructionCooldown < constructionCooldown / 2)
-        { 
-            turretPhases[0].SetActive(true);
-            meshesGameObject.SetActive(false);
-        }
-        if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
+        if (warriorTurret)
         {
-            turretPhases[0].SetActive(false); 
-            turretPhases[1].SetActive(true);
+            if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
+            {
+                warriorTurretPhases[0].SetActive(true);
+                meshesGameObject.SetActive(false);
+            }
+            if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
+            {
+                warriorTurretPhases[0].SetActive(false);
+                warriorTurretPhases[1].SetActive(true);
+            }
+            if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
+            {
+                warriorTurretPhases[1].SetActive(false);
+                warriorTurretPhases[2].SetActive(true);
+            }
         }
-        if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
+        else
         {
-            turretPhases[1].SetActive(false);
-            turretPhases[2].SetActive(true);
+            if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
+            {
+                archerTurretPhases[0].SetActive(true);
+                meshesGameObject.SetActive(false);
+            }
+            if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
+            {
+                archerTurretPhases[0].SetActive(false);
+                archerTurretPhases[1].SetActive(true);
+            }
+            if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
+            {
+                archerTurretPhases[1].SetActive(false);
+                archerTurretPhases[2].SetActive(true);
+            }
         }
 
         if (currentConstructionCooldown > constructionCooldown)

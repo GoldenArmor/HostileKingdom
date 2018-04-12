@@ -15,6 +15,10 @@ public class WarriorTurret : Turret
     {
         base.PooledStart();
         myGroup.PooledStart();
+        for (int i = 0; i < selectionCirclePart.Length; i++)
+        {
+            selectionCirclePart[i].Stop();
+        }
         //selectionCircleAnim.ResetEasing(); 
     }
 
@@ -42,10 +46,6 @@ public class WarriorTurret : Turret
     {
         selectionCircleAnim.ResetEasing();
         selectionCircleAnim.InstantEnd();
-        for (int i = 0; i < selectionCirclePart.Length; i++)
-        {
-            selectionCirclePart[i].Stop();
-        }
         base.Sell();
         myGroup.Sell(); 
     }
