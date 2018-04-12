@@ -7,7 +7,7 @@ public class WarriorTurret : Turret
     [SerializeField]
     WarriorGroup myGroup;
     [SerializeField]
-    SpawnScalePingPong selectionCircleAnim;
+    RangeCircleScale selectionCircleAnim;
     [SerializeField]
     ParticleSystem[] selectionCirclePart;
 
@@ -20,7 +20,7 @@ public class WarriorTurret : Turret
 
     public override void Select()
     {
-        if(!isSelected) selectionCircleAnim.ResetEasing();
+        selectionCircleAnim.ResetEasing();
         for (int i = 0; i < selectionCirclePart.Length; i++)
         {
             selectionCirclePart[i].Play(); 
@@ -30,7 +30,7 @@ public class WarriorTurret : Turret
 
     public override void Unselect()
     {
-        if (isSelected) selectionCircleAnim.ResetEasing();
+        selectionCircleAnim.ResetEasing();
         for (int i = 0; i < selectionCirclePart.Length; i++)
         {
             selectionCirclePart[i].Stop();
@@ -40,7 +40,13 @@ public class WarriorTurret : Turret
 
     public override void Sell()
     {
-        base.Sell(); 
+        selectionCircleAnim.ResetEasing();
+        selectionCircleAnim.InstantEnd();
+        for (int i = 0; i < selectionCirclePart.Length; i++)
+        {
+            selectionCirclePart[i].Stop();
+        }
+        base.Sell();
         myGroup.Sell(); 
     }
 }

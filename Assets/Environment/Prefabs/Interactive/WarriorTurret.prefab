@@ -153,7 +153,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4127139921020504}
-  - component: {fileID: 114127230617880468}
+  - component: {fileID: 114458279309354328}
   m_Layer: 0
   m_Name: SelectionCircle
   m_TagString: Untagged
@@ -358,7 +358,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 817e5a18894288a408018f4d75132ebc, type: 2}
+  - {fileID: 2100000, guid: 0b9a2cd13caa6a74986874104b2cfdb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -384,7 +384,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187273303664900}
-  m_Mesh: {fileID: 4300000, guid: 7e4463ba68e2c5549abdbbb961760107, type: 3}
+  m_Mesh: {fileID: 4300000, guid: f7c0e1f63f840ed47b70090240fe2ede, type: 3}
 --- !u!65 &65119805231643350
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -411,24 +411,10 @@ MonoBehaviour:
   isSelected: 0
   rangeCircle: {fileID: 114233493764461122}
   myGroup: {fileID: 114738943348066386}
-  selectionCircleAnim: {fileID: 114127230617880468}
+  selectionCircleAnim: {fileID: 114458279309354328}
   selectionCirclePart:
   - {fileID: 198045401398307336}
   - {fileID: 198108704391385048}
---- !u!114 &114127230617880468
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1869262443936306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4618e9ccfc56064188e9e4435370be2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialValue: {x: 0, y: 0, z: 0}
-  finalValue: {x: 1, y: 1, z: 1}
-  durationTime: 0.3
 --- !u!114 &114214100741974426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +442,20 @@ MonoBehaviour:
   initialValue: {x: 0, y: 0, z: 0}
   finalValue: {x: 7.25, y: 7.25, z: 7.25}
   durationTime: 0.35
+--- !u!114 &114458279309354328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869262443936306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37da46b9ca6d73449dac78449d3f2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialValue: {x: 0, y: 0, z: 0}
+  finalValue: {x: 1, y: 1, z: 1}
+  durationTime: 0.3
 --- !u!114 &114738943348066386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTurret: {fileID: 114007701146594678}
-  warriorPrefab: {fileID: 1019607799236746, guid: 2c843b61a9739ff42877458e8743f18c,
+  warriorPrefab: {fileID: 1849329833231610, guid: daf34cd356bad53418dde26b2ffc8495,
     type: 2}
   warriors: []
   spawnPoint: {fileID: 4918201763832928}
