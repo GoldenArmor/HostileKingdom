@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4972129851660232}
   - component: {fileID: 33795153956159988}
   - component: {fileID: 23434766405168856}
+  - component: {fileID: 65054960857474560}
   m_Layer: 0
   m_Name: barrera
   m_TagString: Untagged
@@ -49,14 +50,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559727345224438}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.37, y: 0, z: -36.94}
+  m_LocalRotation: {x: -0, y: 0.43513626, z: -0, w: 0.90036464}
+  m_LocalPosition: {x: 106.74, y: 0, z: -139.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4972129851660232}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 51.588, z: 0}
 --- !u!4 &4972129851660232
 Transform:
   m_ObjectHideFlags: 1
@@ -111,3 +112,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133231036516916}
   m_Mesh: {fileID: 4300000, guid: 3fe46ae92d2a82f4f9f6bc0f9fbd24c6, type: 3}
+--- !u!65 &65054960857474560
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1133231036516916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.3512, y: 6.39315, z: 1.7541001}
+  m_Center: {x: 0, y: 2.6705248, z: 0}
