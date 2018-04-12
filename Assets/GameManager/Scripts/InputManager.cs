@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    Mouse mouse;
+    Player mouse;
     Vector3 mousePosition;
 
     [Header("CameraInputs")]
