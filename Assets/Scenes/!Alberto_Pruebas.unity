@@ -748,71 +748,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b176d5a76fb2bc247bafdc1c6d938a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &240510140
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
-  m_IsPrefabParent: 0
 --- !u!114 &240510141 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114088130478145562, guid: 79afdd13357a05d47b8696bae5139f59,
     type: 2}
-  m_PrefabInternal: {fileID: 240510140}
+  m_PrefabInternal: {fileID: 1592879740}
   m_Script: {fileID: 11500000, guid: 90222806708d7cb4db03964f49428134, type: 3}
 --- !u!114 &240510142 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114647227522025176, guid: 79afdd13357a05d47b8696bae5139f59,
     type: 2}
-  m_PrefabInternal: {fileID: 240510140}
+  m_PrefabInternal: {fileID: 1592879740}
   m_Script: {fileID: 11500000, guid: 64a6269315280d4448fa1295c3f4f86e, type: 3}
 --- !u!114 &240510143 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114569277669009432, guid: 79afdd13357a05d47b8696bae5139f59,
     type: 2}
-  m_PrefabInternal: {fileID: 240510140}
+  m_PrefabInternal: {fileID: 1592879740}
   m_Script: {fileID: 11500000, guid: b55512519e55bde4f822c2f640f4e821, type: 3}
 --- !u!114 &240510144 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114331939706931832, guid: 79afdd13357a05d47b8696bae5139f59,
     type: 2}
-  m_PrefabInternal: {fileID: 240510140}
+  m_PrefabInternal: {fileID: 1592879740}
   m_Script: {fileID: 11500000, guid: 21cd195df506aa544897e3ad4a0c40f8, type: 3}
 --- !u!1 &274116973
 GameObject:
@@ -4300,7 +4258,8 @@ MonoBehaviour:
   constructionBar: {fileID: 980209680}
   hoverColor: {r: 0, g: 0, b: 0, a: 0.453}
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  turretPhases: []
+  archerTurretPhases: []
+  warriorTurretPhases: []
   isSelected: 0
 --- !u!65 &1272665045
 BoxCollider:
@@ -4559,7 +4518,8 @@ MonoBehaviour:
   constructionBar: {fileID: 806483936}
   hoverColor: {r: 0, g: 0, b: 0, a: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  turretPhases: []
+  archerTurretPhases: []
+  warriorTurretPhases: []
   isSelected: 0
 --- !u!23 &1347718047
 MeshRenderer:
@@ -5535,6 +5495,48 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &1592879740
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266418368264412, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1599969025
 GameObject:
   m_ObjectHideFlags: 0
@@ -7086,7 +7088,8 @@ MonoBehaviour:
   constructionBar: {fileID: 945114239}
   hoverColor: {r: 0, g: 0, b: 0, a: 0.453}
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  turretPhases: []
+  archerTurretPhases: []
+  warriorTurretPhases: []
   isSelected: 0
 --- !u!65 &1931473419
 BoxCollider:
