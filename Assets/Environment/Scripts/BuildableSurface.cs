@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BuildableSurface : MonoBehaviour
 {
     [SerializeField]
-    Renderer[] meshRenderers;
+    List<Renderer> meshRenderers = new List<Renderer>();
 
     [SerializeField]
     GameObject meshesGameObject; 
@@ -84,7 +84,7 @@ public class BuildableSurface : MonoBehaviour
 
     public void ChangeColor(Color newColor)
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
+        for (int i = 0; i < meshRenderers.Count; i++)
         {
             meshRenderers[i].material.color = newColor;
         }
@@ -106,6 +106,7 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret = ObjectPoolingManager.ArcherTurretPool.GetObject(turret, buildingPoint);
         }
+        meshRenderers.Add(currentTurret.gameObject.GetComponent<MeshRenderer>());
         meshesGameObject.SetActive(false);
         canBuild = false;
     }
@@ -146,6 +147,7 @@ public class BuildableSurface : MonoBehaviour
     public void SellTurret()
     {
         currentTurret.Sell();
+        meshRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
         currentTurret = null;
         turretToConstruct = null;
         meshesGameObject.SetActive(true);

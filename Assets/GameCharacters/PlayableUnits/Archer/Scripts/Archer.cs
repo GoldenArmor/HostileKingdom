@@ -2,8 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Archer : PlayableUnitBehaviour
+public class Archer : MonoBehaviour
 {
+    public Animator anim;
+    public Transform arrowSpawnPoint;
+
+    [SerializeField]
+    float animatorDelay;
+
+    void Update()
+    {
+        animatorDelay -= Time.deltaTime;
+        if (animatorDelay < 0)
+        {
+            anim.enabled = true;
+            enabled = false; 
+        }
+    }
+
     //[Header("Skill")]
     //[SerializeField]
     //float selectTarget;

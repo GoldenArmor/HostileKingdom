@@ -11,6 +11,9 @@ public class Turret : MonoBehaviour, IPooledObject
     [HideInInspector]
     public bool isSelected;
 
+    [SerializeField]
+    RangeCircleScale rangeCircle;
+
     public void PooledAwake()
     {
         gameObject.SetActive(true); 
@@ -40,6 +43,8 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public virtual void Sell()
     {
+        rangeCircle.ResetEasing();
+        rangeCircle.InstantEnd(); 
     }
 
     protected virtual void SelectedUpdate()
@@ -54,11 +59,13 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public virtual void Select()
     {
-        isSelected = true; 
+        isSelected = true;
+        rangeCircle.ResetEasing(); 
     }
 
     public virtual void Unselect()
     {
-        isSelected = false; 
+        isSelected = false;
+        rangeCircle.ResetEasing();
     }
 }
