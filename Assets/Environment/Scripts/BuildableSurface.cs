@@ -33,8 +33,12 @@ public class BuildableSurface : MonoBehaviour
     [HideInInspector]
     public Color hoverColor;
     [SerializeField]
-    Color startColor; 
+    Color startColor;
 
+    [Header("TurretPhases")]
+    [SerializeField]
+    GameObject[] turretPhases; 
+    
     public bool isSelected;
 
     public void MyStart()
@@ -107,8 +111,9 @@ public class BuildableSurface : MonoBehaviour
             currentTurret = ObjectPoolingManager.ArcherTurretPool.GetObject(turret, buildingPoint);
         }
         meshRenderers.Add(currentTurret.gameObject.GetComponent<MeshRenderer>());
-        meshesGameObject.SetActive(false);
         canBuild = false;
+
+        turretPhases[2].SetActive(false);
     }
 
     public void UpdateConstruct(GameObject turret)
@@ -119,6 +124,22 @@ public class BuildableSurface : MonoBehaviour
         currentConstructionCooldown += Time.deltaTime;
 
         UpdateConstructionBar();
+
+        if (currentConstructionCooldown >= constructionCooldown/3 && currentConstructionCooldown < constructionCooldown / 2)
+        { 
+            turretPhases[0].SetActive(true);
+            meshesGameObject.SetActive(false);
+        }
+        if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
+        {
+            turretPhases[0].SetActive(false); 
+            turretPhases[1].SetActive(true);
+        }
+        if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
+        {
+            turretPhases[1].SetActive(false);
+            turretPhases[2].SetActive(true);
+        }
 
         if (currentConstructionCooldown > constructionCooldown)
         {

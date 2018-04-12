@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour, IPooledObject
 {
-    [SerializeField]
-    SpawnScale spawnScale;
-
     [HideInInspector]
     public bool isSelected;
 
@@ -53,7 +50,6 @@ public class Turret : MonoBehaviour, IPooledObject
 
     public virtual void EndSell() 
     {
-        spawnScale.ResetEasing();
         gameObject.SetActive(false);
     }
 

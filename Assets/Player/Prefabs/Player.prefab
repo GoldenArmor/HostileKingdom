@@ -469,7 +469,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 500
+  far clip plane: 1000
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -608,8 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedSurface: {fileID: 0}
-  selectableSurfaces:
-  - {fileID: 0}
+  selectableSurfaces: []
   mask:
     serializedVersion: 2
     m_Bits: 4294965215
@@ -762,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomSpeed: 50
-  minY: 35
+  minY: 125
   maxY: 300
 --- !u!114 &114357608686680922
 MonoBehaviour:
@@ -842,7 +841,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 25182c4b694b9cb4c8484307f13791cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 825aec513cef1f749a243eb9757be102, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1069,7 +1068,7 @@ MonoBehaviour:
         m_MethodName: ConstructArcherTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1388240122698682, guid: d4e266631f580684f8687289775ffed1,
+          m_ObjectArgument: {fileID: 1228650181904830, guid: dd79be43892315546a0b7973461a3529,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -1147,7 +1146,7 @@ MonoBehaviour:
         m_MethodName: ConstructWarriorTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1388240122698682, guid: d76859c0aed4a5f42a3bcf99fac683b1,
+          m_ObjectArgument: {fileID: 1187273303664900, guid: 847862f21f26bb4458ce4d347840bac2,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0

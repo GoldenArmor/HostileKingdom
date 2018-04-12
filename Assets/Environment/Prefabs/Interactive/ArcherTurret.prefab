@@ -568,7 +568,6 @@ GameObject:
   - component: {fileID: 33226546844180080}
   - component: {fileID: 23356128497180512}
   - component: {fileID: 114694529434836544}
-  - component: {fileID: 114796630176262158}
   m_Layer: 11
   m_Name: ArcherTurret
   m_TagString: BuildableSurface
@@ -5070,7 +5069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701e92c590263334582338d72c55d0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnScale: {fileID: 114796630176262158}
   isSelected: 0
   rangeCircle: {fileID: 114709575162596232}
   arrowPrefab: {fileID: 1686372433819692, guid: 519f438570960704ab5fedbe3788bfb8,
@@ -5094,20 +5092,6 @@ MonoBehaviour:
   initialValue: {x: 0, y: 0, z: 0}
   finalValue: {x: 7.25, y: 7.25, z: 7.25}
   durationTime: 0.35
---- !u!114 &114796630176262158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1228650181904830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09022eaf6f07d24290befc8af08977a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialValue: {x: 0, y: 0, z: 0}
-  finalValue: {x: 1, y: 1, z: 1}
-  durationTime: 0.85
 --- !u!137 &137283830985220106
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
