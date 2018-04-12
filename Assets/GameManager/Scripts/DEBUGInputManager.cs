@@ -12,7 +12,7 @@ public class DEBUGInputManager : MonoBehaviour
 
     [Header("MouseInputsManager")]
     [SerializeField]
-    Mouse mouse;
+    Player mouse;
     public static Vector3 mousePosition;
 
     [Header("CameraInputs")]

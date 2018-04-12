@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
 
     Camera mainCamera;
 
-    public static int money; 
+    public static int money;
+    public static int lives; 
 
     void Start()
     {

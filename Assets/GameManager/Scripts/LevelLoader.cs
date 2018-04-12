@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Mouse mouse;
+    public Player mouse;
 
     [Header("Camera")]
     public CameraController cameraController;

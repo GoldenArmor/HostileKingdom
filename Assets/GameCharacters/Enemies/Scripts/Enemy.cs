@@ -127,6 +127,12 @@ public class Enemy : Characters
             unitsCanAttack.Add(other.transform);
             SetChase();
         }
+        if (other.CompareTag("Objective"))
+        {
+            Player.lives -= 1;
+            SetDead();
+            Player.money -= moneyValue; 
+        }
     }
 
     void OnTriggerExit(Collider other) //Units which leave the collider are deleted from the interactive units list. 
