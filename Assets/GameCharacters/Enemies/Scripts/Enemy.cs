@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : Characters
 {
+    [SerializeField]
+    int moneyValue; 
+
     protected override void MyStart()
     {
         base.MyStart();
@@ -104,7 +107,8 @@ public class Enemy : Characters
     public override void SetDead()
     {
         //enemiesManager.enemiesCount.Remove(this);
-        EnemyWaveManager.enemiesAlive--; 
+        EnemyWaveManager.enemiesAlive--;
+        Player.money += moneyValue; 
         base.SetDead();
     }
 
