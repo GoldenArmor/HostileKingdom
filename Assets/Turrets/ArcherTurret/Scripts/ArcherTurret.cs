@@ -18,6 +18,9 @@ public class ArcherTurret : Turret
     float currentCooldown;
 
     [SerializeField]
+    Archer[] archers; 
+
+    [SerializeField]
     List<GameObject> enemiesCanAttack;
 
     void Start()
@@ -40,6 +43,8 @@ public class ArcherTurret : Turret
 
     void Attack()
     {
+        arrowSpawnPoint = RandomArcher().arrowSpawnPoint; 
+        RandomArcher().anim.SetTrigger("Attack"); 
         Arrow newArrow = ObjectPoolingManager.ArrowPool.GetObject(arrowPrefab, arrowSpawnPoint);
         if (enemiesCanAttack.Count > 1)
         {
@@ -73,6 +78,11 @@ public class ArcherTurret : Turret
     {
         base.Sell();
         EndSell(); 
+    }
+
+    Archer RandomArcher()
+    {
+        return archers[Random.Range(0, archers.Length)];
     }
 
     void OnDrawGizmos()
