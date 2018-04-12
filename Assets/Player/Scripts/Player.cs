@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Mouse : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("Buildable Surface Selection")]
     public BuildableSurface selectedSurface; //GameObject seleccionado para actualizar.
@@ -27,6 +27,8 @@ public class Mouse : MonoBehaviour
     CanvasManager sellingCanvas; 
 
     Camera mainCamera;
+
+    public static int money; 
 
     void Start()
     {
@@ -161,14 +163,22 @@ public class Mouse : MonoBehaviour
 
     public void ConstructArcherTurret(GameObject turret)
     {
-        selectedSurface.BeginConstruct(turret, false);
-        Construct();
+        if (money >= 100)
+        {
+            money -= 100; 
+            selectedSurface.BeginConstruct(turret, false);
+            Construct();
+        }
     }
 
     public void ConstructWarriorTurret(GameObject turret)
     {
-        selectedSurface.BeginConstruct(turret, true);
-        Construct();
+        if (money >= 150)
+        {
+            money -= 150; 
+            selectedSurface.BeginConstruct(turret, true);
+            Construct();
+        }
     }
 
     void Construct()

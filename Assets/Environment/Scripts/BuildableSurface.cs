@@ -192,6 +192,12 @@ public class BuildableSurface : MonoBehaviour
     public void SellTurret()
     {
         currentTurret.Sell();
+        if (warriorTurret)
+        {
+            Player.money += 100;
+        }
+        else Player.money += 70; 
+
         meshRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
         currentTurret = null;
         turretToConstruct = null;
