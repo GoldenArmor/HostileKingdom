@@ -8,12 +8,10 @@ public class ButtonManager : MonoBehaviour
     LevelLogic levelLogic;
 
     [Header("Scenes")]
-    const int titleScene = 2;
-    const int gameplayScene = 3;
-    const int optionsScene = 4;
-    const int tavernScene = 8;
-    const int lostScene = 5;
-    const int wonScene = 6;
+    const int titleScene = 1;
+    const int gameplayScene = 2;
+    const int lostScene = 3;
+    const int wonScene = 4;
 
     [SerializeField]
     AudioSource audioSource;
@@ -59,18 +57,6 @@ public class ButtonManager : MonoBehaviour
     {
         musicAudioSource.Stop();
         levelLogic.StartLoad(gameplayScene);
-    }
-
-    public void ChangeToOptions()
-    {
-        musicAudioSource.Stop();
-        levelLogic.StartLoad(optionsScene);
-    }
-
-    public void ChangeToTavern()
-    {
-        musicAudioSource.Stop();
-        levelLogic.StartLoad(tavernScene);
     }
 
     public void ChangeToLost()
