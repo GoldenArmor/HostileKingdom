@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -210,17 +210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLogic: {fileID: 242680712}
+  statsManager: {fileID: 0}
   gamePause: 0
   mouse: {fileID: 0}
   cameraController: {fileID: 0}
   cameraRotation: {fileID: 0}
   cameraZoom: {fileID: 0}
   isGodModeEnabled: 0
-  immunityEnabled: 0
-  hero: {fileID: 0}
-  archer: {fileID: 0}
-  mage: {fileID: 0}
-  paladin: {fileID: 0}
 --- !u!114 &242680712
 MonoBehaviour:
   m_ObjectHideFlags: 0
