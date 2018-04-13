@@ -129,10 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4265662716636120}
   - component: {fileID: 54899098654862884}
-  - component: {fileID: 135412171511694734}
   - component: {fileID: 95838251936647672}
   - component: {fileID: 195126787911388244}
   - component: {fileID: 114155869692857750}
+  - component: {fileID: 65497003176658326}
   m_Layer: 10
   m_Name: Pollo_Enemy
   m_TagString: Enemy
@@ -331,7 +331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1324462333637998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224696261813769486}
@@ -510,6 +510,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65497003176658326
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324462333637998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 4.5, z: 4.5}
+  m_Center: {x: 0, y: 2.25, z: 0}
 --- !u!95 &95838251936647672
 Animator:
   serializedVersion: 3
@@ -689,18 +701,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!135 &135412171511694734
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1324462333637998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 6
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137454787885763698
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -766,7 +766,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1324462333637998}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.25
+  m_Radius: 2.5
   m_Speed: 25
   m_Acceleration: 35
   avoidancePriority: 50

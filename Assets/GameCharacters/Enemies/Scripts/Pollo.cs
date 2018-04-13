@@ -21,9 +21,7 @@ public class Pollo : Characters
     #region Updates
     protected override void IdleUpdate()
     {
-
         SetMovement(); 
-
     }
 
     protected override void MoveUpdate()
