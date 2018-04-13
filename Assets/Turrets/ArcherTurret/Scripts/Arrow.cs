@@ -44,14 +44,24 @@ public class Arrow : MonoBehaviour, IPooledObject
         target = newTarget; 
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(collision.gameObject); 
-        myTransform.parent = collision.transform;
-        target = Vector3.zero; 
-        if (collision.gameObject.CompareTag("Enemy"))
+    void OnTriggerEnter(Collider other)
+    {   
+        if(other.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage, false); 
+            if(other.GetComponent<Enemy>() != null)
+            {
+                other.GetComponent<Enemy>().TakeDamage(damage, false);
+                //Debug.Log(collision.gameObject); 
+                myTransform.parent = other.transform;
+                target = Vector3.zero;
+            }
+            if(other.GetComponent<Pollo>() != null)
+            {
+                other.GetComponent<Pollo>().TakeDamage(damage, false);
+                //Debug.Log(collision.gameObject); 
+                myTransform.parent = other.transform;
+                target = Vector3.zero;
+            }
         }
     }
 }

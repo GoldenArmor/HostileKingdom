@@ -107,7 +107,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626380180735748}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6522561, y: 6.7815733, z: 0.58920705}
@@ -125,4 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTransform: {fileID: 4497795223927946}
   target: {x: 0, y: 0, z: 0}
-  velocity: 1
+  velocity: 0.25
+  damage: 0.5
