@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject); 
+        //Debug.Log(collision.gameObject); 
         myTransform.parent = collision.transform;
         target = Vector3.zero; 
     }

@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4497795223927946}
   - component: {fileID: 33816837585551730}
   - component: {fileID: 23594371658445244}
-  - component: {fileID: 95234262294045884}
+  - component: {fileID: 65214007488987872}
+  - component: {fileID: 54982438635538758}
+  - component: {fileID: 114804039699189432}
   m_Layer: 0
   m_Name: Flecha
   m_TagString: Untagged
@@ -35,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626380180735748}
-  m_LocalRotation: {x: -0, y: 0.93946666, z: -0, w: 0.3426404}
-  m_LocalPosition: {x: -36.29279, y: 5.093059, z: -29.12867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 139.92401, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23594371658445244
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -83,20 +85,44 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626380180735748}
   m_Mesh: {fileID: 4300000, guid: 489ed9aedba18cc4190dc2d45ad6efdb, type: 3}
---- !u!95 &95234262294045884
-Animator:
-  serializedVersion: 3
+--- !u!54 &54982438635538758
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626380180735748}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &65214007488987872
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626380180735748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6522561, y: 6.7815733, z: 0.58920705}
+  m_Center: {x: -0.035065226, y: 0.09502399, z: -0.013604033}
+--- !u!114 &114804039699189432
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626380180735748}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 489ed9aedba18cc4190dc2d45ad6efdb, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acd28a3dce5af9449e4b00ef0dc8657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTransform: {fileID: 4497795223927946}
+  target: {x: 0, y: 0, z: 0}
+  velocity: 0.25
