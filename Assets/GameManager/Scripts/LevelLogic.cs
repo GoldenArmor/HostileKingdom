@@ -35,6 +35,8 @@ public class LevelLogic : MonoBehaviour
         UpdateSceneState();
 
         if (currentScene == managerScene) StartLoad(nextScene);
+
+        AudioManager.Initialize(); 
     }
 
     void UpdateSceneState()
