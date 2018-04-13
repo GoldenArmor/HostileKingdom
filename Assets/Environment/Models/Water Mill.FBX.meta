@@ -1,21 +1,22 @@
 fileFormatVersion: 2
-guid: 60117d766cfc21f4e9706f854920a95e
-timeCreated: 1519253031
+guid: b3815a18757901b479c41c682239fb15
+timeCreated: 1523578118
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #47'
+    2100000: 'Material #26'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: WaterMill
+    4300000: Object083
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 'Material #47'
+      name: 'Material #26'
     second: {fileID: 2100000, guid: 26ceeedc7e90ebf4d9f881578a17b3e6, type: 2}
   materials:
     importMaterials: 1
@@ -46,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.2
+    globalScale: 0.5
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -68,7 +69,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 0
