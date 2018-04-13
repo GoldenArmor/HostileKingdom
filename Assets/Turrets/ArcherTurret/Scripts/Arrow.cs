@@ -10,7 +10,10 @@ public class Arrow : MonoBehaviour, IPooledObject
     Vector3 target;
 
     [SerializeField]
-    float velocity; 
+    float velocity;
+
+    [SerializeField]
+    float damage; 
 
     public void PooledStart()
     {
@@ -46,5 +49,9 @@ public class Arrow : MonoBehaviour, IPooledObject
         //Debug.Log(collision.gameObject); 
         myTransform.parent = collision.transform;
         target = Vector3.zero; 
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage, false); 
+        }
     }
 }
