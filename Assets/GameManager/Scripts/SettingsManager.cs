@@ -6,9 +6,16 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    //float oldMasterVolume = AudioManager.GetMasterVolume(); 
+    float oldMasterVolume; 
 
     bool isFullScreen = true;
+    [SerializeField]
+    GameObject menu;
+
+    void Start()
+    {
+        oldMasterVolume = AudioManager.GetMasterVolume();
+    }
 
     public void SetFirstResolution()
     {
@@ -21,6 +28,22 @@ public class SettingsManager : MonoBehaviour
     public void SetThirdResolution()
     {
         Screen.SetResolution(1920, 1080, isFullScreen);
+    }
+
+    public void SetResolution(int label)
+    {
+        if (label == 1)
+        {
+            Screen.SetResolution(1280, 720, isFullScreen);
+        }
+        if (label == 2)
+        {
+            Screen.SetResolution(1600, 1200, isFullScreen);
+        }
+        if (label == 3)
+        {
+            Screen.SetResolution(1920, 1080, isFullScreen);
+        }
     }
 
     public void SetMusicVolume(float volume)
@@ -38,11 +61,11 @@ public class SettingsManager : MonoBehaviour
     {
         if (isEnabled)
         {
-            //AudioManager.SetMasterVolume(oldMasterVolume);
+            AudioManager.SetMasterVolume(oldMasterVolume);
         }
         else
         {          
-            //oldMasterVolume = AudioManager.GetMasterVolume();
+            oldMasterVolume = AudioManager.GetMasterVolume();
             AudioManager.SetMasterVolume(0);
         }
     }
@@ -52,9 +75,20 @@ public class SettingsManager : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex); 
     }
 
-    public void SetFullscreen()
+    public void SetFullscreen(bool newFullScreen)
     {
-        Screen.fullScreen = isFullScreen; 
+        Screen.fullScreen = newFullScreen; 
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+        menu.SetActive(true); 
+    }
+    public void Enable()
+    {
+        gameObject.SetActive(true);
+        menu.SetActive(false);
     }
 }
 
