@@ -234,6 +234,20 @@ public class Characters : MonoBehaviour, IPooledObject
         //isBeingAttacked = isAttacked; 
     }
 
+    public virtual void TakeDamage(float damage, bool isAttacked)
+    {
+        currentHitPoints -= damage;
+
+        UpdateLifebar();
+
+        if(currentHitPoints <= 0)
+        {
+            if(!isDead) SetDead();
+        }
+
+        //isBeingAttacked = isAttacked; 
+    }
+
     public virtual void ClearTarget()
     {
         unitsCanAttack.Remove(selectedTarget.transform);
