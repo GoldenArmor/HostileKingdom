@@ -9,6 +9,8 @@ public class DEBUGInputManager : MonoBehaviour
 
     [SerializeField]
     bool gamePause;
+    [SerializeField]
+    StatsManager statsManager; 
 
     [Header("MouseInputsManager")]
     [SerializeField]
@@ -36,7 +38,14 @@ public class DEBUGInputManager : MonoBehaviour
         mousePosition = Input.mousePosition;
         if (wasLoaded)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) gamePause = !gamePause;
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                gamePause = !gamePause;
+                if (gamePause == false)
+                {
+                    statsManager.UnPaused();
+                }
+            }
 
             if (Input.GetKeyDown(KeyCode.F10))
             {
@@ -51,6 +60,7 @@ public class DEBUGInputManager : MonoBehaviour
 
             if (gamePause == true)
             {
+                statsManager.Paused();
                 Time.timeScale = 0.0f;
                 Paused();
             }

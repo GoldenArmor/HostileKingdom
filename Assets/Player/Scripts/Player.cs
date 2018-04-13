@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
             selectableSurfaces.Add(selectableList[i].gameObject);
         }
         mainCamera = Camera.main;
+        lives = 20;
+        money = 550; 
     }
 
     void Update()

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ced5826af6370eb4e9999f5a24b546fb
-timeCreated: 1523554004
+guid: 39e8e22015b5e4446a1e57e73645d9cb
+timeCreated: 1523576812
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -32,8 +32,9 @@ ModelImporter:
     100048: Bip001 Spine
     100050: Bip001 Spine1
     100052: Bip001 Spine2
-    100054: soldado
-    100056: //RootNode
+    100054: root
+    100056: soldado
+    100058: //RootNode
     400000: ARM
     400002: Bip001
     400004: Bip001 Footsteps
@@ -61,8 +62,9 @@ ModelImporter:
     400048: Bip001 Spine
     400050: Bip001 Spine1
     400052: Bip001 Spine2
-    400054: soldado
-    400056: //RootNode
+    400054: root
+    400056: soldado
+    400058: //RootNode
     2100000: lambert2SG
     4300000: soldado
     4300002: ARM
@@ -100,7 +102,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

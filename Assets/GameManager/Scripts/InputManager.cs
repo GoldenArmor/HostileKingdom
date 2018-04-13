@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     LevelLogic levelLogic;
     LevelLoader levelLoader;
     bool wasLoaded = true;
+    [SerializeField]
+    StatsManager statsManager; 
 
     [SerializeField]
     bool gamePause;
@@ -40,7 +42,14 @@ public class InputManager : MonoBehaviour
         mousePosition = Input.mousePosition;
         if (wasLoaded)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) gamePause = !gamePause;
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                gamePause = !gamePause;
+                if (gamePause == false)
+                {
+                    statsManager.UnPaused();
+                }
+            }
 
             if (Input.GetKeyDown(KeyCode.F10))
             {
@@ -55,6 +64,7 @@ public class InputManager : MonoBehaviour
 
             if (gamePause == true)
             {
+                statsManager.Paused();
                 Time.timeScale = 0.0f;
                 Paused();
             }
