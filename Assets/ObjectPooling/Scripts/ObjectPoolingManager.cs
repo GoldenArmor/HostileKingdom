@@ -22,6 +22,15 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
+    static GenericPooling<Pollo> polloPool;
+    public static GenericPooling<Pollo> PolloPool
+    {
+        get
+        {
+            return polloPool;
+        }
+    }
+
     static GenericPooling<ArcherTurret> archerTurretPool;
     public static GenericPooling<ArcherTurret> ArcherTurretPool
     {
@@ -52,7 +61,8 @@ public class ObjectPoolingManager : MonoBehaviour
     void Awake()
     {
         enemyPool = new GenericPooling<Enemy>();
-        allyPool = new GenericPooling<Ally>(); 
+        allyPool = new GenericPooling<Ally>();
+        polloPool = new GenericPooling<Pollo>(); 
         archerTurretPool = new GenericPooling<ArcherTurret>();
         warriorTurretPool = new GenericPooling<WarriorTurret>();
         arrowPool = new GenericPooling<Arrow>(); 
@@ -93,7 +103,7 @@ public class GenericPooling<T> where T : MonoBehaviour, IPooledObject
 
         if (objectPrefab.GetComponent<T>() != null)
         {
-            T newObject = Object.Instantiate(objectPrefab).GetComponent<T>();
+            T newObject = Object.Instantiate(objectPrefab, spawnPoint.position, spawnPoint.rotation).GetComponent<T>();
             newObject.name = objectPrefab.name;
             InitializeObject(newObject, spawnPoint);
             pooledObjects.Add(newObject);
