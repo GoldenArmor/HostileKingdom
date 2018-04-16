@@ -55,13 +55,6 @@ public class Arrow : MonoBehaviour, IPooledObject
                 myTransform.parent = other.transform;
                 target = Vector3.zero;
             }
-            if(other.GetComponent<Pollo>() != null)
-            {
-                other.GetComponent<Pollo>().TakeDamage(damage, false);
-                //Debug.Log(collision.gameObject); 
-                myTransform.parent = other.transform;
-                target = Vector3.zero;
-            }
         }
     }
 }

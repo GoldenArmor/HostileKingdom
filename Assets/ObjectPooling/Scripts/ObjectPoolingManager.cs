@@ -22,15 +22,6 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    static GenericPooling<Pollo> polloPool;
-    public static GenericPooling<Pollo> PolloPool
-    {
-        get
-        {
-            return polloPool;
-        }
-    }
-
     static GenericPooling<ArcherTurret> archerTurretPool;
     public static GenericPooling<ArcherTurret> ArcherTurretPool
     {
@@ -62,7 +53,6 @@ public class ObjectPoolingManager : MonoBehaviour
     {
         enemyPool = new GenericPooling<Enemy>();
         allyPool = new GenericPooling<Ally>();
-        polloPool = new GenericPooling<Pollo>(); 
         archerTurretPool = new GenericPooling<ArcherTurret>();
         warriorTurretPool = new GenericPooling<WarriorTurret>();
         arrowPool = new GenericPooling<Arrow>(); 
