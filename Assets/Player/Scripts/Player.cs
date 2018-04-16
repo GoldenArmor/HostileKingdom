@@ -28,9 +28,6 @@ public class Player : MonoBehaviour
 
     Camera mainCamera;
 
-    [SerializeField]
-    ButtonManager buttonManager; 
-
     public static int money;
     public static int lives; 
 
@@ -53,7 +50,7 @@ public class Player : MonoBehaviour
     {
         if (lives <= 0)
         {
-            buttonManager.ChangeToLost();
+            //buttonManager.ChangeToLost();
         }
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
         if(Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))

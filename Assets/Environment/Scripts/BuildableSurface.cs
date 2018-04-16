@@ -10,7 +10,7 @@ public class BuildableSurface : MonoBehaviour
     List<Renderer> meshRenderers = new List<Renderer>();
 
     [SerializeField]
-    GameObject meshesGameObject; 
+    GameObject constructionZone; 
 
     public CanvasManager constructionBarCanvas; 
 
@@ -29,12 +29,6 @@ public class BuildableSurface : MonoBehaviour
 
     bool warriorTurret; 
 
-    [Header("Color")]
-    [HideInInspector]
-    public Color hoverColor;
-    [SerializeField]
-    Color startColor;
-
     [Header("TurretPhases")]
     [SerializeField]
     GameObject[] archerTurretPhases;
@@ -42,6 +36,14 @@ public class BuildableSurface : MonoBehaviour
     GameObject[] warriorTurretPhases;
 
     public bool isSelected;
+
+    [Header("Feedback")]
+    [SerializeField]
+    SpawnScalePingPong spawnScaleHighlight;
+    [SerializeField]
+    Color startColor;
+    [HideInInspector]
+    public Color hoverColor;
 
     public void MyStart()
     {
@@ -59,12 +61,20 @@ public class BuildableSurface : MonoBehaviour
 
     public void SelectTurret()
     {
-        if (currentTurret != null) currentTurret.Select(); 
+        if (currentTurret != null)
+        {
+            currentTurret.Select();
+            spawnScaleHighlight.ResetEasing();
+        }
     }
 
     public void UnselectTurret()
     {
-        if (currentTurret != null) currentTurret.Unselect();
+        if (currentTurret != null)
+        {
+            currentTurret.Unselect();
+            spawnScaleHighlight.ResetEasing(); 
+        }
     }
 
     public bool CanBuild()
@@ -133,7 +143,7 @@ public class BuildableSurface : MonoBehaviour
             if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
             {
                 warriorTurretPhases[0].SetActive(true);
-                meshesGameObject.SetActive(false);
+                constructionZone.SetActive(false);
             }
             if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
             {
@@ -151,7 +161,7 @@ public class BuildableSurface : MonoBehaviour
             if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
             {
                 archerTurretPhases[0].SetActive(true);
-                meshesGameObject.SetActive(false);
+                constructionZone.SetActive(false);
             }
             if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
             {
@@ -178,6 +188,7 @@ public class BuildableSurface : MonoBehaviour
     public void BeginConstruct(GameObject turret, bool isWarriorTurret)
     {
         isBuilding = true;
+        spawnScaleHighlight.ResetEasing(); 
         //constructionBar.enabled = true;
         turretToConstruct = turret; 
         constructionBarCanvas.Initialize(constructionBarCanvas.myTransform.position);
@@ -201,7 +212,7 @@ public class BuildableSurface : MonoBehaviour
         meshRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
         currentTurret = null;
         turretToConstruct = null;
-        meshesGameObject.SetActive(true);
+        constructionZone.SetActive(true);
         canBuild = true;
         UpdateConstructionBar(); 
     }
