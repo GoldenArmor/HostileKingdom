@@ -1,22 +1,18 @@
 fileFormatVersion: 2
-guid: 674eaecdef5733348840792ff49dfdc5
-timeCreated: 1519252476
+guid: a063fcc0e182e9e4d97cf6cb277be1d1
+timeCreated: 1523756729
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #47'
+    2100000: lambert5
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Fountain
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 'Material #47'
-    second: {fileID: 2100000, guid: 105ac0b1ac1a94449abc05b1210798d7, type: 2}
+    4300000: polySurface10
+    9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,13 +42,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.17
+    globalScale: 175
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -67,11 +63,11 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalSmoothAngle: 15
+    normalImportMode: 0
+    tangentImportMode: 0
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -90,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

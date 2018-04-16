@@ -9,74 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1557465954980208}
+  m_RootGameObject: {fileID: 1506069728778292}
   m_IsPrefabParent: 1
---- !u!1 &1557465954980208
+--- !u!1 &1506069728778292
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4146045856394198}
-  - component: {fileID: 33098198067072794}
-  - component: {fileID: 23696043917026770}
+  - component: {fileID: 4529291188331418}
+  - component: {fileID: 33972944538329932}
+  - component: {fileID: 23587768590251390}
+  - component: {fileID: 65809862977800372}
   m_Layer: 0
-  m_Name: GuardHouse
+  m_Name: Fance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &1790339427410808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4689262026081334}
-  - component: {fileID: 65578216592329052}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &4146045856394198
+--- !u!4 &4529291188331418
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4689262026081334}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4689262026081334
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790339427410808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1506069728778292}
+  m_LocalRotation: {x: -0, y: 0.3744749, z: -0, w: 0.9272371}
+  m_LocalPosition: {x: 79.4, y: 9.998177, z: 93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4146045856394198}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23696043917026770
+  m_LocalEulerAnglesHint: {x: 0, y: 43.984, z: 0}
+--- !u!23 &23587768590251390
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
+  m_GameObject: {fileID: 1506069728778292}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 875bae4b9d25d6c43988f51f0fa852ae, type: 2}
+  - {fileID: 2100000, guid: 45c2374751c39734898d8e7818e2ec5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,22 +76,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33098198067072794
+--- !u!33 &33972944538329932
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
-  m_Mesh: {fileID: 4300002, guid: 7280e93fa608a0b48a264846c64fdb44, type: 3}
---- !u!65 &65578216592329052
+  m_GameObject: {fileID: 1506069728778292}
+  m_Mesh: {fileID: 4300000, guid: 726b43377145a9b41a34d6e5fbc1ce55, type: 3}
+--- !u!65 &65809862977800372
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790339427410808}
+  m_GameObject: {fileID: 1506069728778292}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.582848, y: 16.89004, z: 15.55035}
-  m_Center: {x: -0.0052108765, y: 8.44502, z: -0.08530164}
+  m_Size: {x: 8.613576, y: 7.046478, z: 1.4325625}
+  m_Center: {x: 0, y: 3.5232365, z: 0}

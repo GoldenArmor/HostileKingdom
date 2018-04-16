@@ -9,74 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1557465954980208}
+  m_RootGameObject: {fileID: 1073900288412290}
   m_IsPrefabParent: 1
---- !u!1 &1557465954980208
+--- !u!1 &1073900288412290
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4146045856394198}
-  - component: {fileID: 33098198067072794}
-  - component: {fileID: 23696043917026770}
+  - component: {fileID: 4574977407049568}
+  - component: {fileID: 33774182928163682}
+  - component: {fileID: 23118553279692156}
+  - component: {fileID: 65031862703497340}
   m_Layer: 0
-  m_Name: GuardHouse
+  m_Name: CastleTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1790339427410808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4689262026081334}
-  - component: {fileID: 65578216592329052}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &4146045856394198
+--- !u!4 &4574977407049568
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
+  m_GameObject: {fileID: 1073900288412290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 97.5, y: 10, z: 135.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4689262026081334}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4689262026081334
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790339427410808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4146045856394198}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23696043917026770
+--- !u!23 &23118553279692156
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
+  m_GameObject: {fileID: 1073900288412290}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 875bae4b9d25d6c43988f51f0fa852ae, type: 2}
+  - {fileID: 2100000, guid: a9497d644208fda45b6bc0e988baa016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,22 +76,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33098198067072794
+--- !u!33 &33774182928163682
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557465954980208}
-  m_Mesh: {fileID: 4300002, guid: 7280e93fa608a0b48a264846c64fdb44, type: 3}
---- !u!65 &65578216592329052
+  m_GameObject: {fileID: 1073900288412290}
+  m_Mesh: {fileID: 4300000, guid: f796149662c29174aa675d9507c583fd, type: 3}
+--- !u!65 &65031862703497340
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790339427410808}
+  m_GameObject: {fileID: 1073900288412290}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.582848, y: 16.89004, z: 15.55035}
-  m_Center: {x: -0.0052108765, y: 8.44502, z: -0.08530164}
+  m_Size: {x: 25.79459, y: 70.33856, z: 25.79461}
+  m_Center: {x: -0.0000023841858, y: 35.16928, z: -0.000011920929}
