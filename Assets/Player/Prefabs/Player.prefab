@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cd195df506aa544897e3ad4a0c40f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ZoomSpeed: 50
+  ZoomSpeed: 150
   minY: 125
   maxY: 300
 --- !u!114 &114357608686680922
@@ -859,7 +859,7 @@ MonoBehaviour:
   panShiftSpeed: 350
   panNormalSpeed: 150
   panBorderThickness: 10
-  panLimit: {x: 250, y: 350}
+  panLimit: {x: 300, y: 450}
 --- !u!114 &114735421609742494
 MonoBehaviour:
   m_ObjectHideFlags: 1
