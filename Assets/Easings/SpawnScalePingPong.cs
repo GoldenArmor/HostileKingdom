@@ -26,6 +26,13 @@ public class SpawnScalePingPong : MonoBehaviour
         currentTime = 0;
     }
 
+    public void InstantEnd()
+    {
+        transform.localScale = finalValue;
+
+        currentTime = durationTime;
+    }
+
     void Start ()
     {
         currentTime = durationTime;

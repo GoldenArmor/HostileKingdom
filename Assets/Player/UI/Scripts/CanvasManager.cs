@@ -20,4 +20,9 @@ public class CanvasManager : MonoBehaviour
         //gameObject.SetActive(false);
         spawnEasing.ResetEasing();
     }
+
+    public void InstantEnd()
+    {
+        spawnEasing.InstantEnd();
+    }
 }

@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
         for (int i = 0; i < selectableList.Length; i++)
         {
             selectableList[i].MyStart();
-            selectableList[i].ChangeColor(startColor);
-            selectableList[i].hoverColor = hoverColor; 
+            //selectableList[i].ChangeColor(startColor);
+            //selectableList[i].hoverColor = hoverColor;
             selectableSurfaces.Add(selectableList[i].gameObject);
         }
         mainCamera = Camera.main;
@@ -53,26 +53,26 @@ public class Player : MonoBehaviour
             //buttonManager.ChangeToLost();
         }
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        if(Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
-        {
-            if(hit.transform.CompareTag("BuildableSurface"))
-            {
-                colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
-                if(!colorizedSurface.isSelected)
-                {
-                    colorizedSurface.ChangeColor(hoverColor);
-                }
-            }
+        //if(Physics.Raycast(ray, out hit, maxDistance, mask, QueryTriggerInteraction.UseGlobal))
+        //{
+        //    if(hit.transform.CompareTag("BuildableSurface"))
+        //    {
+        //        colorizedSurface = hit.transform.GetComponent<BuildableSurface>();
+        //        if(!colorizedSurface.isSelected)
+        //        {
+        //            colorizedSurface.ChangeColor(hoverColor);
+        //        }
+        //    }
 
-            else
-            {
-                if(colorizedSurface != null && !colorizedSurface.isSelected)
-                {
-                    colorizedSurface.ChangeColor(startColor);
-                    colorizedSurface = null;
-                }
-            }
-        }
+        //    else
+        //    {
+        //        if(colorizedSurface != null && !colorizedSurface.isSelected)
+        //        {
+        //            colorizedSurface.ChangeColor(startColor);
+        //            colorizedSurface = null;
+        //        }
+        //    }
+        //}
     }
 
     public void SetMousePosition(Vector3 newMousePosition)
@@ -138,8 +138,7 @@ public class Player : MonoBehaviour
             selectedSurface = null;
             return; 
         }
-        selectedSurface.isSelected = true;
-        selectedSurface.ChangeColor(hoverColor);
+        selectedSurface.Select(); 
 
         if (selectedSurface.CanBuild())
         {
@@ -157,14 +156,14 @@ public class Player : MonoBehaviour
         if (selectedSurface.CanBuild())
         {
             constructionCanvas.Hide();
+            constructionCanvas.InstantEnd(); 
         }
         else
         {
             selectedSurface.UnselectTurret(); 
             sellingCanvas.Hide(); 
         }
-        selectedSurface.isSelected = false;
-        selectedSurface.ChangeColor(startColor);  
+        selectedSurface.Unselect(); 
         selectedSurface = null;
     }
 
@@ -191,15 +190,13 @@ public class Player : MonoBehaviour
     void Construct()
     {
         constructionCanvas.Hide();
-        selectedSurface.isSelected = false;
-        selectedSurface.ChangeColor(startColor);
+        selectedSurface.Unselect(); 
         selectedSurface = null;
     }
 
     public void Sell()
     {
-        selectedSurface.isSelected = false;
-        selectedSurface.ChangeColor(startColor);
+        selectedSurface.Unselect(); 
         selectedSurface.SellTurret();
         selectedSurface = null; 
         sellingCanvas.Hide(); 

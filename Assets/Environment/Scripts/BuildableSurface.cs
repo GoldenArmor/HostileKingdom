@@ -42,13 +42,14 @@ public class BuildableSurface : MonoBehaviour
     SpawnScalePingPong spawnScaleHighlight;
     [SerializeField]
     Color startColor;
-    [HideInInspector]
-    public Color hoverColor;
+    [SerializeField]
+    Color hoverColor;
 
     public void MyStart()
     {
         canBuild = true;
         UpdateConstructionBar();
+        ChangeColor(startColor);
         //for (int i = 0; i < archerTurretPhases.Length; i++)
         //{
         //    archerTurretPhases[i].transform.position = buildingPoint.position;
@@ -73,6 +74,7 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret.Select();
             spawnScaleHighlight.ResetEasing();
+            ChangeColor(hoverColor); 
         }
     }
 
@@ -81,7 +83,8 @@ public class BuildableSurface : MonoBehaviour
         if (currentTurret != null)
         {
             currentTurret.Unselect();
-            spawnScaleHighlight.ResetEasing(); 
+            spawnScaleHighlight.ResetEasing();
+            ChangeColor(startColor); 
         }
     }
 
@@ -90,21 +93,33 @@ public class BuildableSurface : MonoBehaviour
         return canBuild; 
     }
 
-    //void OnMouseEnter()
-    //{
-    //    if (!isSelected)
-    //    {
-    //        ChangeColor(hoverColor);
-    //    }
-    //}
+    void OnMouseEnter()
+    {
+        if (!isSelected)
+        {
+            ChangeColor(hoverColor);
+        }
+    }
 
-    //void OnMouseExit()
-    //{
-    //    if (!isSelected)
-    //    {
-    //        ChangeColor(startColor);
-    //    }
-    //}
+    void OnMouseExit()
+    {
+        if (!isSelected)
+        {
+            ChangeColor(startColor);
+        }
+    }
+
+    public void Select()
+    {
+        isSelected = true;
+        ChangeColor(hoverColor); 
+    }
+
+    public void Unselect()
+    {
+        isSelected = false;
+        ChangeColor(startColor);
+    }
 
     public void ChangeColor(Color newColor)
     {
@@ -139,9 +154,8 @@ public class BuildableSurface : MonoBehaviour
 
     public void UpdateConstruct(GameObject turret)
     {
-        ChangeColor(startColor);
-        isSelected = false; 
-
+        Unselect();
+        
         currentConstructionCooldown += Time.deltaTime;
 
         UpdateConstructionBar();
@@ -215,8 +229,9 @@ public class BuildableSurface : MonoBehaviour
         {
             Player.money += 100;
         }
-        else Player.money += 70; 
+        else Player.money += 70;
 
+        ChangeColor(startColor); 
         meshRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
         currentTurret = null;
         turretToConstruct = null;
