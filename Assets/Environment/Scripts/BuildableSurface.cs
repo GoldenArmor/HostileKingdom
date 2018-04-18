@@ -48,7 +48,15 @@ public class BuildableSurface : MonoBehaviour
     public void MyStart()
     {
         canBuild = true;
-        UpdateConstructionBar(); 
+        UpdateConstructionBar();
+        //for (int i = 0; i < archerTurretPhases.Length; i++)
+        //{
+        //    archerTurretPhases[i].transform.position = buildingPoint.position;
+        //    archerTurretPhases[i].transform.rotation = buildingPoint.rotation;
+
+        //    warriorTurretPhases[i].transform.position = buildingPoint.position;
+        //    warriorTurretPhases[i].transform.rotation = buildingPoint.rotation;
+        //}
     }
 
     void Update()
