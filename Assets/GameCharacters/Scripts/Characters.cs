@@ -67,6 +67,7 @@ public class Characters : MonoBehaviour, IPooledObject
     protected virtual void MyStart()
     {
         currentHitPoints = startingHitPoints;
+        isDead = false; 
    
         SetIdle();
     }
@@ -234,7 +235,7 @@ public class Characters : MonoBehaviour, IPooledObject
         //isBeingAttacked = isAttacked; 
     }
 
-    public virtual void TakeDamage(float damage, bool isAttacked)
+    public virtual void TakeDamage(float damage)
     {
         currentHitPoints -= damage;
 

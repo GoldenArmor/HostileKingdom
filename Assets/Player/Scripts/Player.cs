@@ -13,12 +13,12 @@ public class Player : MonoBehaviour
     float maxDistance = Mathf.Infinity; //Máxima distancia que puede recorrer el rayo lanzado des de la cámara. 
     Vector3 mousePosition; 
 
-    [Header("Color")]
-    [SerializeField]
-    Color hoverColor;
-    [SerializeField]
-    Color startColor;
-    BuildableSurface colorizedSurface; 
+    //[Header("Color")]
+    //[SerializeField]
+    //Color hoverColor;
+    //[SerializeField]
+    //Color startColor;
+    //BuildableSurface colorizedSurface; 
 
     [Header("Construction")]
     [SerializeField]

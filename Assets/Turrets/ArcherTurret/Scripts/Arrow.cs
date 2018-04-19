@@ -50,7 +50,7 @@ public class Arrow : MonoBehaviour, IPooledObject
         {
             if(other.GetComponent<Enemy>() != null)
             {
-                other.GetComponent<Enemy>().TakeDamage(damage, false);
+                other.GetComponent<Enemy>().TakeDamage(damage);
                 //Debug.Log(collision.gameObject); 
                 myTransform.parent = other.transform;
                 target = Vector3.zero;
