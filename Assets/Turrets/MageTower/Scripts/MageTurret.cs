@@ -21,6 +21,10 @@ public class MageTurret : MonoBehaviour
     float attackCooldown;
     float currentCooldown;
 
+    [SerializeField]
+    float damageMultiplier;
+    float currentMultiplier; 
+
     bool isAttacking; 
 
     [SerializeField]
@@ -33,7 +37,8 @@ public class MageTurret : MonoBehaviour
     void Start()
     {
         enemiesCanAttack = new List<Enemy>();
-        currentDamage = baseDamage; 
+        currentDamage = baseDamage;
+        currentMultiplier = damageMultiplier; 
     }
 
     void Update()
@@ -59,7 +64,7 @@ public class MageTurret : MonoBehaviour
     {
         if (currentDamage <= 200)
         {
-            currentDamage += damageIncrease;
+            currentDamage += damageIncrease * currentMultiplier;
         }
  
         target.TakeDamage(currentDamage);
@@ -68,6 +73,8 @@ public class MageTurret : MonoBehaviour
         {
             ClearTarget();
         }
+
+        currentMultiplier += damageIncrease; 
     }
 
     void ClearTarget()
@@ -75,6 +82,7 @@ public class MageTurret : MonoBehaviour
         enemiesCanAttack.Remove(target);
         target = null;
         currentDamage = baseDamage;
+        currentMultiplier = damageMultiplier; 
         isAttacking = false; 
     }
 

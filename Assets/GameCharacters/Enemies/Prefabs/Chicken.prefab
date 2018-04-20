@@ -129,10 +129,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4265662716636120}
   - component: {fileID: 54899098654862884}
-  - component: {fileID: 65497003176658326}
   - component: {fileID: 95838251936647672}
   - component: {fileID: 195126787911388244}
   - component: {fileID: 114308457901448292}
+  - component: {fileID: 136477199282180060}
   m_Layer: 10
   m_Name: Chicken
   m_TagString: Enemy
@@ -510,18 +510,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65497003176658326
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1324462333637998}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.5, y: 4.5, z: 4.5}
-  m_Center: {x: 0, y: 2.25, z: 0}
 --- !u!95 &95838251936647672
 Animator:
   serializedVersion: 3
@@ -701,6 +689,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!136 &136477199282180060
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324462333637998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.25
+  m_Height: 5.616681
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.7983403, z: 0}
 --- !u!137 &137454787885763698
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
