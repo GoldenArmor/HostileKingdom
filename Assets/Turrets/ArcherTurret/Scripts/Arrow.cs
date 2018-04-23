@@ -15,14 +15,21 @@ public class Arrow : MonoBehaviour, IPooledObject
     [SerializeField]
     float damage; 
 
+    [SerializeField]
+    bool hasCollided;
+
+    [SerializeField]
+    float lifeCounter;
+    float currentLifeCounter; 
+
     public void PooledStart()
     {
-
+        currentLifeCounter = lifeCounter; 
     }
 
     public void PooledAwake()
     {
-
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -31,6 +38,17 @@ public class Arrow : MonoBehaviour, IPooledObject
         {
             myTransform.LookAt(target);
             myTransform.position = Vector3.Lerp(myTransform.position, target, velocity); 
+        }
+
+        if (hasCollided)
+        {
+            currentLifeCounter -= Time.deltaTime;
+
+            if (currentLifeCounter <= 0)
+            {
+                myTransform.parent = null;
+                gameObject.SetActive(false); 
+            }
         }
     }
 
@@ -56,5 +74,7 @@ public class Arrow : MonoBehaviour, IPooledObject
                 target = Vector3.zero;
             }
         }
+
+        hasCollided = true; 
     }
 }
