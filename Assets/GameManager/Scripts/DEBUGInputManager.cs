@@ -121,10 +121,6 @@ public class DEBUGInputManager : MonoBehaviour
         {
             mouse.ClickState();
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            mouse.ChangePatrolPoint();
-        }
         #endregion
     }
 

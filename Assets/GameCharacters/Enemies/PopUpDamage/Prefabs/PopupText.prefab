@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 224126770649480532}
   - component: {fileID: 222856564486117040}
   - component: {fileID: 114415791739635308}
-  - component: {fileID: 114376929965687378}
-  - component: {fileID: 111691639628329130}
+  - component: {fileID: 95369969933596704}
   m_Layer: 5
   m_Name: DamageDisplay
   m_TagString: Untagged
@@ -47,21 +46,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &111691639628329130
-Animation:
+--- !u!95 &95369969933596704
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508099829230982}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: e2d059290c3a0ed4d9999fba4c83d44d, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: e2d059290c3a0ed4d9999fba4c83d44d, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38cbe0cef9b2ac94c8a3e09dbd62826c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114041094205802742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,8 +74,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c103918e285b4459cbd9ffeefef619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 111691639628329130}
+  anim: {fileID: 95369969933596704}
   text: {fileID: 114415791739635308}
+  endAnimClip: {fileID: 7400000, guid: af8a7cb861cf9664588fa4a8a40751d9, type: 2}
 --- !u!114 &114262891777754170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,20 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   myTransform: {fileID: 224231470659493096}
---- !u!114 &114376929965687378
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508099829230982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 3, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!114 &114415791739635308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8088235, g: 0.25573096, b: 0.25573096, a: 1}
+  m_Color: {r: 1, g: 0.95598376, b: 0.77205884, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -122,8 +110,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 150
+    m_Font: {fileID: 12800000, guid: 9f7258f5c512fa7469fa9d8077924c0d, type: 3}
+    m_FontSize: 175
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
