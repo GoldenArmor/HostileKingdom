@@ -6,12 +6,25 @@ using UnityEngine.UI;
 public class PopupText : MonoBehaviour, IPooledObject
 {
     [SerializeField]
-    Animation anim; 
+    Animator anim;  
     [SerializeField]
     Text text;
 
-    float totalDamage; 
-    
+    float totalDamage;
+    bool isBeingDamaged;
+    bool beginEndCounter; 
+    float endCounter;
+    [SerializeField]
+    AnimationClip endAnimClip;
+    int triggerHashValue;
+
+    void Start()
+    {
+        anim = GetComponentInChildren<Animator>(); 
+        triggerHashValue = Animator.StringToHash("EndDamage");
+        anim.enabled = true; 
+    }
+
     public void PooledAwake()
     {
         gameObject.SetActive(true); 
@@ -19,26 +32,22 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
+        endCounter = 2;  
     }
 
     void Update()
     {
-        if (!anim.isPlaying || transform.parent == null)
+        if (beginEndCounter || transform.parent == null)
         {
             totalDamage = 0;
-            anim.Stop(); 
-            transform.SetParent(null); 
-            gameObject.SetActive(false); 
+            beginEndCounter = false;
+            transform.SetParent(null);
+            gameObject.SetActive(false);
         }
     }
 
-    public void SetTextAnim(float damage)
+    public void SetDamage(float damage)
     {
-        if(!anim.isPlaying)
-        {
-            anim.Play();
-        }
-
         if (damage > 0)
         {
             text.text = ((int)totalDamage + (int)damage).ToString();
@@ -47,7 +56,13 @@ public class PopupText : MonoBehaviour, IPooledObject
         {
             text.text = (totalDamage + damage).ToString();
         }
-        totalDamage += damage; 
+        totalDamage += damage;
+    }
+
+    public void ClearDamage()
+    {
+        anim.SetTrigger(triggerHashValue);         
+        beginEndCounter = true; 
     }
 
     public bool IsActive()

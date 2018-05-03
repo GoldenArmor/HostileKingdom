@@ -12,17 +12,8 @@ public class Characters : MonoBehaviour, IPooledObject
 
     [Header("Stats")]
     public float startingHitPoints;
+    [SerializeField]
     float currentHitPoints;
-    public float armor;
-    public float attack;
-    [SerializeField]
-    float magicAttack;
-    [SerializeField]
-    float magicArmor;
-    public float attackRange;
-    [SerializeField]
-    protected float attackCooldown;
-    public string characterName;
     public bool isBeingAttacked;
 
     [Header("LifeBar")]
@@ -37,15 +28,6 @@ public class Characters : MonoBehaviour, IPooledObject
     [Header("Sounds")]
     float footstepsCounter;
     int randomAudioClip; 
-
-    [Header("CharactersInteraction")]
-    [SerializeField]
-    protected List<Transform> unitsCanAttack = new List<Transform>();
-    protected Transform closestObject;
-    protected Characters selectedTarget;
-    protected Transform targetTransform;
-    protected float distanceFromTarget = Mathf.Infinity;
-    float rotateSpeed = 125f;
 
     [Header("NavMeshAgent")]
     public NavMeshAgent agent;
@@ -68,8 +50,6 @@ public class Characters : MonoBehaviour, IPooledObject
     {
         currentHitPoints = startingHitPoints;
         isDead = false; 
-   
-        SetIdle();
     }
 
     protected virtual void MyUpdate()
@@ -132,41 +112,11 @@ public class Characters : MonoBehaviour, IPooledObject
     #endregion
 
     #region Sets
-    protected virtual void SetIdle()
-    {
-        agent.isStopped = true;
-        anim.SetBool("IsMoving", false); 
-        anim.SetTrigger("Idle");
-        state = UnitState.Idle;
-    }
-
     public virtual void SetMovement()
     {
         agent.isStopped = false;
         anim.SetBool("IsMoving", true);
         state = UnitState.Movement;
-    }
-
-    protected void SetChase()
-    {
-        agent.isStopped = false;
-        anim.SetBool("IsMoving", true);
-        state = UnitState.Chase;
-    }
-
-    protected virtual void SetAttack()
-    {
-        agent.isStopped = true;
-        anim.SetBool("IsMoving", true);
-        anim.SetTrigger("Attack");
-        state = UnitState.Attack;
-    }
-
-    protected virtual void SetStun()
-    {
-        agent.isStopped = true;
-        anim.SetTrigger("Stun");
-        state = UnitState.Stun;
     }
 
     public virtual void SetDead()
@@ -182,37 +132,6 @@ public class Characters : MonoBehaviour, IPooledObject
     #endregion
 
     #region CalculationVoids
-    protected virtual void LookAtTarget()
-    {
-        Vector3 lookDir = targetTransform.position - transform.position;
-        Quaternion q = Quaternion.LookRotation(lookDir);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotateSpeed);
-    }
-
-    protected virtual void FindClosestObject()
-    {
-        for (int i = 0; i < unitsCanAttack.Count; i++)
-        {
-            if (closestObject != null)
-            {
-                if (Vector3.Distance(transform.position, unitsCanAttack[i].position) <=
-                Vector3.Distance(transform.position, closestObject.position))
-                {
-                    closestObject = unitsCanAttack[i];
-                }
-            }
-            else closestObject = unitsCanAttack[i];
-            selectedTarget = closestObject.GetComponent<Characters>();
-            targetTransform = closestObject;
-        }
-    }
-
-    protected virtual void CalculateDistanceFromTarget() //Calculates the distance between the Unit and the Selected enemy. 
-    {
-        targetTransform = selectedTarget.transform;
-        distanceFromTarget = Vector3.Distance(transform.position, targetTransform.position);
-    }
-
     void UpdateLifebar()
     {
         lifeBar.fillAmount = currentHitPoints / startingHitPoints;
@@ -232,17 +151,6 @@ public class Characters : MonoBehaviour, IPooledObject
         }
 
         //isBeingAttacked = isAttacked; 
-    }
-
-    public virtual void ClearTarget()
-    {
-        unitsCanAttack.Remove(selectedTarget.transform);
-        distanceFromTarget = Mathf.Infinity;
-        //if (selectedTarget.isDead == false) selectedTarget.SetDead();
-        targetTransform = null;
-        selectedTarget = null;
-        closestObject = null;
-        SetIdle();
     }
 
     public void PooledAwake()

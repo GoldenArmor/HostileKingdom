@@ -80,6 +80,7 @@ public class MageTurret : MonoBehaviour
     void ClearTarget()
     {
         enemiesCanAttack.Remove(target);
+        target.ClearDamage(); 
         target = null;
         currentDamage = baseDamage;
         currentMultiplier = damageMultiplier; 
@@ -102,6 +103,10 @@ public class MageTurret : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other.gameObject == target)
+            {
+                ClearTarget(); 
+            }
             enemiesCanAttack.Remove(other.GetComponent<Enemy>());
         }
     }

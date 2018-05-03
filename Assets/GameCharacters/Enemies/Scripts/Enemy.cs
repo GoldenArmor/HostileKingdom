@@ -24,57 +24,12 @@ public class Enemy : Characters
 
     protected override void MyUpdate()
     {
-        if (selectedTarget != null)
-        {
-            //if (selectedTarget.isBeingAttacked)
-            //{
-            //    ClearTarget();
-            //    return;
-            //}
-            CalculateDistanceFromTarget();
-            //if (!selectedTarget.isActiveAndEnabled)
-            //{
-            //    ClearUnit();
-            //}
-        }
-        else
-        {
-            if (unitsCanAttack.Count > 0)
-            {
-                FindClosestObject();
-                return; 
-            }
+        SetMovement();
 
-            SetMovement();
-        }
-        base.MyUpdate();
+        base.MyUpdate(); 
     }
 
     #region Updates
-    protected override void IdleUpdate()
-    {
-        if (selectedTarget != null)
-        {
-            if (distanceFromTarget > attackRange)
-            {
-                SetChase();
-                return;
-            }
-
-            LookAtTarget();
-            timeCounter -= Time.deltaTime;
-            if (selectedTarget.isDead)
-            {
-                ClearUnit();
-                return;
-            }
-            if (timeCounter <= 0)
-            {
-                SetAttack();
-            }
-        }
-    }
-
     protected override void MoveUpdate()
     {
         if (Vector3.Distance(transform.position, agent.destination) < agent.stoppingDistance)
@@ -82,48 +37,14 @@ public class Enemy : Characters
             SetMovement();
         }
     }
-
-    protected override void ChaseUpdate()
-    {
-        agent.SetDestination(targetTransform.position);
-
-        if (distanceFromTarget <= attackRange)
-        {
-            SetAttack();
-        }
-    }
-
-    protected override void AttackUpdate()
-    {
-        selectedTarget.TakeDamage(attack);
-
-        SetIdle();
-    }
     #endregion
 
     #region Sets
-    protected override void SetIdle()
-    {
-        timeCounter = attackCooldown;
-        base.SetIdle();
-    }
-
-    protected override void SetAttack()
-    {
-        base.SetAttack();
-    }
-
     public override void SetDead()
     {
         //enemiesManager.enemiesCount.Remove(this);
         EnemyWaveManager.enemiesAlive--;
         Player.money += moneyValue;
-        if (newDamagePopup != null)
-        {
-            newDamagePopup.transform.SetParent(null);
-            newDamagePopup.gameObject.SetActive(false);
-            newDamagePopup = null;
-        }
         base.SetDead();
     }
 
@@ -137,27 +58,11 @@ public class Enemy : Characters
     #region OnTriggerVoids
     void OnTriggerEnter(Collider other) //If a unit enters the collider, it's added to the interactive units list.
     {
-        if (other.CompareTag("Ally"))
-        {
-            unitsCanAttack.Add(other.transform);
-            SetChase();
-        }
         if (other.CompareTag("Objective"))
         {
             Player.lives -= 1;
             SetDead();
             Player.money -= moneyValue; 
-        }
-    }
-
-    void OnTriggerExit(Collider other) //Units which leave the collider are deleted from the interactive units list. 
-    {
-        if (other.CompareTag("Ally"))
-        {
-            unitsCanAttack.Remove(other.transform);
-            //targetTransform = null;
-            //selectedTarget = null;
-            //distanceFromTarget = Mathf.Infinity;
         }
     }
     #endregion
@@ -170,42 +75,34 @@ public class Enemy : Characters
             {
                 newDamagePopup = ObjectPoolingManager.PopupPool.GetObject(popupTextPrefab, myCanvas.transform);
                 newDamagePopup.transform.SetParent(myCanvas.transform, false);
+                newDamagePopup.transform.localPosition = Vector3.zero;
                 newDamagePopup.transform.localScale = Vector3.one;
-                newDamagePopup.SetTextAnim(damage);
+                newDamagePopup.SetDamage(damage);
             }
             else
             {
 
-                newDamagePopup.SetTextAnim(damage);
+                newDamagePopup.SetDamage(damage);
             }
         }
         else
         {
             newDamagePopup = ObjectPoolingManager.PopupPool.GetObject(popupTextPrefab, transform);
             newDamagePopup.transform.SetParent(myCanvas.transform, false);
+            newDamagePopup.transform.localPosition = Vector3.zero;
             newDamagePopup.transform.localScale = Vector3.one;
-            newDamagePopup.SetTextAnim(damage);
+            newDamagePopup.SetDamage(damage);
         }
 
         base.TakeDamage(damage);
     }
 
-    void ClearUnit()
+    public void ClearDamage()
     {
-        unitsCanAttack.Remove(selectedTarget.transform);
-        distanceFromTarget = Mathf.Infinity;
-        //if (selectedTarget.isDead == false) selectedTarget.SetDead();
-        targetTransform = null;
-        selectedTarget = null;
-        closestObject = null;
-        SetIdle();
-    }
-
-    void OnDrawGizmos()
-    {
-        Color newColor = Color.green;
-        newColor.a = 0.2f;
-        Gizmos.color = newColor;
-        Gizmos.DrawSphere(transform.position, attackRange);
+        if (newDamagePopup != null)
+        {
+            newDamagePopup.ClearDamage(); 
+            newDamagePopup = null;
+        }
     }
 }

@@ -4,49 +4,47 @@ using UnityEngine;
 
 public class WarriorTurret : Turret
 {
-    [SerializeField]
-    WarriorGroup myGroup;
-    [SerializeField]
-    RangeCircleScale selectionCircleAnim;
-    [SerializeField]
-    ParticleSystem[] selectionCirclePart;
+    //[SerializeField]
+    //RangeCircleScale selectionCircleAnim;
+    //[SerializeField]
+    //ParticleSystem[] selectionCirclePart;
 
-    public override void PooledStart()
-    {
-        base.PooledStart();
-        myGroup.PooledStart();
-        for (int i = 0; i < selectionCirclePart.Length; i++)
-        {
-            selectionCirclePart[i].Stop();
-        }
-        //selectionCircleAnim.ResetEasing(); 
-    }
+    //public override void PooledStart()
+    //{
+    //    base.PooledStart();
+    //    myGroup.PooledStart();
+    //    for (int i = 0; i < selectionCirclePart.Length; i++)
+    //    {
+    //        selectionCirclePart[i].Stop();
+    //    }
+    //    //selectionCircleAnim.ResetEasing(); 
+    //}
 
-    public override void Select()
-    {
-        selectionCircleAnim.ResetEasing();
-        for (int i = 0; i < selectionCirclePart.Length; i++)
-        {
-            selectionCirclePart[i].Play(); 
-        }
-        base.Select();        
-    }
+    //public override void Select()
+    //{
+    //    selectionCircleAnim.ResetEasing();
+    //    for (int i = 0; i < selectionCirclePart.Length; i++)
+    //    {
+    //        selectionCirclePart[i].Play(); 
+    //    }
+    //    base.Select();        
+    //}
 
-    public override void Unselect()
-    {
-        selectionCircleAnim.ResetEasing();
-        for (int i = 0; i < selectionCirclePart.Length; i++)
-        {
-            selectionCirclePart[i].Stop();
-        }
-        base.Unselect();
-    }
+    //public override void Unselect()
+    //{
+    //    selectionCircleAnim.ResetEasing();
+    //    for (int i = 0; i < selectionCirclePart.Length; i++)
+    //    {
+    //        selectionCirclePart[i].Stop();
+    //    }
+    //    base.Unselect();
+    //}
 
-    public override void Sell()
-    {
-        selectionCircleAnim.ResetEasing();
-        selectionCircleAnim.InstantEnd();
-        base.Sell();
-        myGroup.Sell(); 
-    }
+    //public override void Sell()
+    //{
+    //    selectionCircleAnim.ResetEasing();
+    //    selectionCircleAnim.InstantEnd();
+    //    base.Sell();
+    //    myGroup.Sell(); 
+    //}
 }
