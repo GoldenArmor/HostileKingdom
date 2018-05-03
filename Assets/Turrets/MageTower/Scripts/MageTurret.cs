@@ -11,8 +11,8 @@ public class MageTurret : MonoBehaviour
     [SerializeField]
     float range;
     [SerializeField]
-    float baseDamage;
-    float currentDamage; 
+    float baseDamage = 0.00f;
+    float currentDamage = 0.00f; 
 
     [SerializeField]
     float damageIncrease;

@@ -5,7 +5,15 @@ using UnityEngine;
 public class Enemy : Characters
 {
     [SerializeField]
-    int moneyValue; 
+    int moneyValue;
+
+    [Header("Popup Text")]
+    [SerializeField]
+    Canvas myCanvas; 
+    [SerializeField]
+    GameObject popupTextPrefab;
+
+    PopupText newDamagePopup;
 
     protected override void MyStart()
     {
@@ -87,7 +95,7 @@ public class Enemy : Characters
 
     protected override void AttackUpdate()
     {
-        selectedTarget.TakeDamage(attack, this, true);
+        selectedTarget.TakeDamage(attack);
 
         SetIdle();
     }
@@ -109,7 +117,13 @@ public class Enemy : Characters
     {
         //enemiesManager.enemiesCount.Remove(this);
         EnemyWaveManager.enemiesAlive--;
-        Player.money += moneyValue; 
+        Player.money += moneyValue;
+        if (newDamagePopup != null)
+        {
+            newDamagePopup.transform.SetParent(null);
+            newDamagePopup.gameObject.SetActive(false);
+            newDamagePopup = null;
+        }
         base.SetDead();
     }
 
@@ -147,6 +161,34 @@ public class Enemy : Characters
         }
     }
     #endregion
+
+    public override void TakeDamage(float damage)
+    {
+        if (newDamagePopup != null)
+        {
+            if (!newDamagePopup.IsActive())
+            {
+                newDamagePopup = ObjectPoolingManager.PopupPool.GetObject(popupTextPrefab, myCanvas.transform);
+                newDamagePopup.transform.SetParent(myCanvas.transform, false);
+                newDamagePopup.transform.localScale = Vector3.one;
+                newDamagePopup.SetTextAnim(damage);
+            }
+            else
+            {
+
+                newDamagePopup.SetTextAnim(damage);
+            }
+        }
+        else
+        {
+            newDamagePopup = ObjectPoolingManager.PopupPool.GetObject(popupTextPrefab, transform);
+            newDamagePopup.transform.SetParent(myCanvas.transform, false);
+            newDamagePopup.transform.localScale = Vector3.one;
+            newDamagePopup.SetTextAnim(damage);
+        }
+
+        base.TakeDamage(damage);
+    }
 
     void ClearUnit()
     {

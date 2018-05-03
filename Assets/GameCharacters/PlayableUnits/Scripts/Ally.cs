@@ -103,8 +103,6 @@ public class Ally : Characters
 
     protected override void AttackUpdate()
     {
-        selectedTarget.TakeDamage(attack, this, true);
-
         SetIdle();
     }
     #endregion

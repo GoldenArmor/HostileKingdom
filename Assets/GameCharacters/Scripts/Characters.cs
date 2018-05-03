@@ -220,21 +220,6 @@ public class Characters : MonoBehaviour, IPooledObject
     #endregion
 
     #region PublicVoids
-    public virtual void TakeDamage(float damage, Characters attacker, bool isAttacked)
-    {
-        currentHitPoints -= damage;
-
-        UpdateLifebar();
-
-        if (currentHitPoints <= 0)
-        {
-            attacker.ClearTarget();
-           if (!isDead) SetDead(); 
-        }
-
-        //isBeingAttacked = isAttacked; 
-    }
-
     public virtual void TakeDamage(float damage)
     {
         currentHitPoints -= damage;

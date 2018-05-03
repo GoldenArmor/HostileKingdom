@@ -49,13 +49,23 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
+    static GenericPooling<PopupText> popupPool;
+    public static GenericPooling<PopupText> PopupPool
+    {
+        get
+        {
+            return popupPool; 
+        }
+    }
+
     void Awake()
     {
         enemyPool = new GenericPooling<Enemy>();
         allyPool = new GenericPooling<Ally>();
         archerTurretPool = new GenericPooling<ArcherTurret>();
         warriorTurretPool = new GenericPooling<WarriorTurret>();
-        arrowPool = new GenericPooling<Arrow>(); 
+        arrowPool = new GenericPooling<Arrow>();
+        popupPool = new GenericPooling<PopupText>(); 
     }
 }
 
