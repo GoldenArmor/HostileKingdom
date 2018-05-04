@@ -32,17 +32,20 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
-        endCounter = 2;  
+        endCounter = 1.5f;  
     }
 
     void Update()
     {
         if (beginEndCounter || transform.parent == null)
         {
-            totalDamage = 0;
-            beginEndCounter = false;
-            transform.SetParent(null);
-            gameObject.SetActive(false);
+            endCounter -= Time.deltaTime; 
+            if (endCounter <= 0)
+            {
+                totalDamage = 0;
+                beginEndCounter = false;
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -62,7 +65,8 @@ public class PopupText : MonoBehaviour, IPooledObject
     public void ClearDamage()
     {
         anim.SetTrigger(triggerHashValue);         
-        beginEndCounter = true; 
+        beginEndCounter = true;
+        transform.SetParent(null);
     }
 
     public bool IsActive()
