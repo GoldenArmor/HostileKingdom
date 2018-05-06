@@ -11,18 +11,26 @@ public class WavesManager : MonoBehaviour
 
     [Header("Wave Control")]
     [SerializeField]
-    Transform spawnPoint; 
-    [SerializeField]
-    float waveDelay;
-    [SerializeField]
     Text waveDelayText; 
     float timer;
     int waveIndex;
+    int waveTimerIndex; 
 
     Wave currentWave; 
     bool isSpawning;
+    bool hasSpawnedLastFrame; 
     float spawnCounter;
-    int spawnedEnemyIndex; 
+    int spawnedEnemyIndex;
+
+    [SerializeField]
+    EnemyWaveManager ememyWaveManager; 
+
+    void Start()
+    {
+        currentWave = waves[waveIndex];
+        timer = currentWave.waveDelay;
+        spawnedEnemyIndex = currentWave.count;
+    }
 
     void Update()
     {
@@ -31,26 +39,35 @@ public class WavesManager : MonoBehaviour
             SpawnWave();
         }
 
-        if (EnemyWaveManager.enemiesAlive > 0)
-        {
-            //Debug.Log(EnemyWaveManager.enemiesAlive);
-            return;
-        }
+        //if (EnemyWaveManager.enemiesAlive > 0)
+        //{
+        //    //Debug.Log(EnemyWaveManager.enemiesAlive);
+        //    return;
+        //}
+
+        timer -= Time.deltaTime;
+
+        timer = Mathf.Clamp(timer, 0f, Mathf.Infinity);
+
+        waveDelayText.text = string.Format("{0:00}", timer);
 
         if (timer <= 0)
         {
             isSpawning = true;
-            currentWave = waves[waveIndex];
-            spawnedEnemyIndex = currentWave.count;
-            timer = waveDelay;
-            return; 
+            hasSpawnedLastFrame = true;
+            ememyWaveManager.ChangeWavesCount(waveIndex + 1); 
         }
+        if (hasSpawnedLastFrame)
+        {
+            waveTimerIndex += 1;
+            if (waveTimerIndex > waves.Length -1)
+            {
+                return; 
+            }
 
-        timer -= Time.deltaTime;
-
-        timer = Mathf.Clamp(timer, 0f, Mathf.Infinity); 
-
-        waveDelayText.text = string.Format("{0}", timer); 
+            timer = waves[waveTimerIndex].waveDelay;
+            hasSpawnedLastFrame = false; 
+        }
     }
 
     void SpawnWave()
@@ -61,7 +78,7 @@ public class WavesManager : MonoBehaviour
 
         if (spawnCounter <= 0)
         {
-            SpawnUnit(currentWave.character, spawnPoint);
+            SpawnUnit(currentWave.character, RandomTransform());
             spawnedEnemyIndex--; 
 
             spawnCounter = 1f / currentWave.rate; 
@@ -69,6 +86,10 @@ public class WavesManager : MonoBehaviour
             {
                 isSpawning = false; 
                 waveIndex++;
+
+                currentWave = waves[waveIndex];
+                spawnedEnemyIndex = currentWave.count;
+
                 if (waveIndex > waves.Length - 1)
                 {
                     enabled = false; 
@@ -91,5 +112,11 @@ public class WavesManager : MonoBehaviour
         EnemyWaveManager.enemiesAlive++; 
 
         //Cuando un enemigo muere tengo que restarle EnemiesAlive--; 
+    }
+
+    Transform RandomTransform()
+    {
+
+        return currentWave.spawnPoint[Random.Range(0, currentWave.spawnPoint.Length)]; 
     }
 }
