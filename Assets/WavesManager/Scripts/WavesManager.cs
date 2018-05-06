@@ -50,7 +50,7 @@ public class WavesManager : MonoBehaviour
 
         timer = Mathf.Clamp(timer, 0f, Mathf.Infinity); 
 
-        //waveDelayText.text = string.Format("{0:00.00}", timer); 
+        waveDelayText.text = string.Format("{0}", timer); 
     }
 
     void SpawnWave()
@@ -71,7 +71,6 @@ public class WavesManager : MonoBehaviour
                 waveIndex++;
                 if (waveIndex > waves.Length - 1)
                 {
-                    Debug.Log("LEVEL WON!");
                     enabled = false; 
                 }
             }

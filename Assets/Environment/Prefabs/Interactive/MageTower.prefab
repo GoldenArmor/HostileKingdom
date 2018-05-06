@@ -199,9 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raySpawnPoint: {fileID: 4415201549145084}
   range: 50
-  baseDamage: 0.25
-  damageIncrease: 0.01
-  attackCooldown: 5
+  baseDamage: 0
+  damageIncrease: 0.001
+  attackCooldown: 2
+  damageMultiplier: 15
   enemiesCanAttack: []
 --- !u!114 &114655909418948482
 MonoBehaviour:
