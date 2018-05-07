@@ -20,7 +20,10 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     [SerializeField]
     float lifeCounter;
-    float currentLifeCounter; 
+    float currentLifeCounter;
+
+    [SerializeField]
+    ParticleSystem partSystem; 
 
     public void PooledStart()
     {
@@ -69,12 +72,13 @@ public class Arrow : MonoBehaviour, IPooledObject
             if(other.GetComponent<Enemy>() != null)
             {
                 other.GetComponent<Enemy>().TakeDamage(damage);
-                //Debug.Log(collision.gameObject); 
+                Debug.Log(other); 
                 myTransform.parent = other.transform;
                 target = Vector3.zero;
             }
         }
 
-        hasCollided = true; 
+        hasCollided = true;
+        partSystem.Play(); 
     }
 }
