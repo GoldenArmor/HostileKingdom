@@ -1,17 +1,36 @@
 fileFormatVersion: 2
-guid: 32661464117622e48a7d1b0e8e3b4faf
-timeCreated: 1523621221
+guid: 528b63dcb0d039947866bcafae043faf
+timeCreated: 1525725617
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert40
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: polySurface106
-    9500000: //RootNode
+    100000: Cylinder001
+    100002: Cylinder002
+    100004: //RootNode
+    100006: Plane001
+    100008: Tube001
+    400000: Cylinder001
+    400002: Cylinder002
+    400004: //RootNode
+    400006: Plane001
+    400008: Tube001
+    2100000: Cylinder001Mat
+    2100002: Cylinder002Mat
+    2100004: Plane001Mat
+    2100006: Tube001Mat
+    2300000: Cylinder001
+    2300002: Cylinder002
+    2300004: Plane001
+    2300006: Tube001
+    3300000: Cylinder001
+    3300002: Cylinder002
+    3300004: Plane001
+    3300006: Tube001
+    4300000: Cylinder001
+    4300002: Cylinder002
+    4300004: Plane001
+    4300006: Tube001
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -42,7 +61,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50000
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -86,7 +105,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
