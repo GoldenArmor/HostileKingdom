@@ -61,37 +61,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &1959414969263544
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4661176159385246}
-  - component: {fileID: 65584677101432300}
-  - component: {fileID: 65330468161018412}
-  - component: {fileID: 65448149541620850}
-  m_Layer: 0
-  m_Name: Colliders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &4661176159385246
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1959414969263544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4752664626045314}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4714196792576088
 Transform:
   m_ObjectHideFlags: 1
@@ -103,7 +72,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752664626045314}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4752664626045314
 Transform:
@@ -111,28 +80,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082699035890458}
-  m_LocalRotation: {x: -0, y: -0.18335043, z: -0, w: -0.98304766}
-  m_LocalPosition: {x: 76.87689, y: 0, z: 21.674608}
+  m_LocalRotation: {x: -0, y: -0.94301885, z: -0, w: -0.33273947}
+  m_LocalPosition: {x: 222.6, y: 9.998169, z: -252.9}
   m_LocalScale: {x: 1.0000012, y: 1, z: 1.0000012}
   m_Children:
-  - {fileID: 4661176159385246}
   - {fileID: 4714196792576088}
   - {fileID: 4904039935958900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -338.87, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -218.87, z: 0}
 --- !u!4 &4904039935958900
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060465003622112}
-  m_LocalRotation: {x: -0, y: 0.18335043, z: -0, w: -0.98304766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.5636415, y: 5.480507, z: -0.030228015}
-  m_LocalScale: {x: 2.5501375, y: 2.5501413, z: 2.5501385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4752664626045314}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23229382167281960
 MeshRenderer:
@@ -175,42 +143,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082699035890458}
   m_Mesh: {fileID: 4300000, guid: 22aa950295e33b14ca5f094576e4fd1c, type: 3}
---- !u!65 &65330468161018412
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1959414969263544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.067768, y: 2.3477135, z: 2.0589619}
-  m_Center: {x: 7.1650944, y: 8.065056, z: -0.044157982}
---- !u!65 &65448149541620850
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1959414969263544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.389683, y: 1.6325359, z: 1.9522247}
-  m_Center: {x: 4.4869137, y: 12.41924, z: -0.038763046}
---- !u!65 &65584677101432300
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1959414969263544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.0215607, y: 14.206743, z: 3.9037037}
-  m_Center: {x: -0.029907227, y: 7.1033716, z: 0.0035772324}
 --- !u!108 &108680301867227320
 Light:
   m_ObjectHideFlags: 1
@@ -221,8 +153,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0.9837728, b: 0.85294116, a: 1}
-  m_Intensity: 1.09
-  m_Range: 35.79
+  m_Intensity: 0.5
+  m_Range: 35
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -307,7 +239,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -518772368
+  randomSeed: -90287727
   InitialModule:
     serializedVersion: 3
     enabled: 1
