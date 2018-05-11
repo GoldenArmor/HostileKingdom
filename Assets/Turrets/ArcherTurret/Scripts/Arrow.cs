@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     public void PooledAwake()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     void Update()
@@ -66,19 +66,21 @@ public class Arrow : MonoBehaviour, IPooledObject
     }
 
     void OnTriggerEnter(Collider other)
-    {   
+    {
         if(other.CompareTag("Enemy"))
         {
             if(other.GetComponent<Enemy>() != null)
             {
                 other.GetComponent<Enemy>().TakeDamage(damage);
-                Debug.Log(other); 
+                Debug.Log(other);
                 myTransform.parent = other.transform;
                 target = Vector3.zero;
             }
         }
 
         hasCollided = true;
-        partSystem.Play(); 
+        partSystem.Play();
+
+        Debug.Log(other); 
     }
 }

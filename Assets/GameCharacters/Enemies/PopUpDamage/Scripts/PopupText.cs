@@ -20,7 +20,7 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>(); 
+        anim = GetComponent<Animator>(); 
         triggerHashValue = Animator.StringToHash("EndDamage");
         anim.enabled = true; 
     }
