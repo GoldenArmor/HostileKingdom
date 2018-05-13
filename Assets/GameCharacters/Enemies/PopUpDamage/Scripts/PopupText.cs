@@ -18,9 +18,9 @@ public class PopupText : MonoBehaviour, IPooledObject
     AnimationClip endAnimClip;
     int triggerHashValue;
 
-    void Start()
+    void Awake()
     {
-        anim = GetComponent<Animator>(); 
+        anim = GetComponentInChildren<Animator>(); 
         triggerHashValue = Animator.StringToHash("EndDamage");
         anim.enabled = true; 
     }
