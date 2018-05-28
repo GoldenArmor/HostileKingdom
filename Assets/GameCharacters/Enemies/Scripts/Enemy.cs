@@ -13,6 +13,10 @@ public class Enemy : Characters
     [SerializeField]
     GameObject popupTextPrefab;
 
+    [Header("ExplosionWhenDie")]
+    [SerializeField]
+    BodyExplosion bodyExplosion; 
+
     PopupText newDamagePopup;
 
     protected override void MyStart()
@@ -45,6 +49,10 @@ public class Enemy : Characters
         //enemiesManager.enemiesCount.Remove(this);
         EnemyWaveManager.enemiesAlive--;
         Player.money += moneyValue;
+        if (bodyExplosion != null)
+        {
+            bodyExplosion.Die(); 
+        }
         base.SetDead();
     }
 
