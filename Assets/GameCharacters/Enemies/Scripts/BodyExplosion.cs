@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BodyExplosion : MonoBehaviour
 {
@@ -46,7 +44,7 @@ public class BodyExplosion : MonoBehaviour
         for (int i = 0; i < rigidbodies.Length; i++)
         {
             bodyParts[i].transform.SetParent(null);
-            fullGolem.SetActive(false); 
+            fullBody.SetActive(false); 
             bodyParts[i].SetActive(true);
             rigidbodies[i].AddExplosionForce(RandomExplosionForce(), explosionCenter.position, explosionRadius, upForce, ForceMode.Impulse);
         }
