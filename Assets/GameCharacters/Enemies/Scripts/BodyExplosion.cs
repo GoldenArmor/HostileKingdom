@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golem : MonoBehaviour
+public class BodyExplosion : MonoBehaviour
 {
     [Header("Body Parts")]
     [SerializeField]
-    GameObject fullGolem;
+    GameObject fullBody;
     [SerializeField]
     GameObject[] bodyParts;
     Rigidbody[] rigidbodies;
@@ -48,7 +48,12 @@ public class Golem : MonoBehaviour
             bodyParts[i].transform.SetParent(null);
             fullGolem.SetActive(false); 
             bodyParts[i].SetActive(true);
-            rigidbodies[i].AddExplosionForce(explosionForce, explosionCenter.position, explosionRadius, upForce, ForceMode.Impulse);
+            rigidbodies[i].AddExplosionForce(RandomExplosionForce(), explosionCenter.position, explosionRadius, upForce, ForceMode.Impulse);
         }
+    }
+
+    float RandomExplosionForce()
+    {
+        return Random.Range(explosionForce, explosionForce + 20); 
     }
 }
