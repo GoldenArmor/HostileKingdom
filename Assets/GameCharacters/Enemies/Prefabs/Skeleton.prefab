@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 33260219830641138}
   - component: {fileID: 23877121482638992}
   - component: {fileID: 54472317834721940}
+  - component: {fileID: 65019994368902274}
   m_Layer: 10
   m_Name: RightClavicle
   m_TagString: Untagged
@@ -374,6 +375,7 @@ GameObject:
   - component: {fileID: 33757274786820788}
   - component: {fileID: 23817389202132882}
   - component: {fileID: 54887296120267894}
+  - component: {fileID: 65895615160051882}
   m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
@@ -439,6 +441,7 @@ GameObject:
   - component: {fileID: 33091428470237552}
   - component: {fileID: 23616684368435946}
   - component: {fileID: 54353478481898696}
+  - component: {fileID: 65932177463570226}
   m_Layer: 10
   m_Name: RightArm
   m_TagString: Untagged
@@ -457,6 +460,7 @@ GameObject:
   - component: {fileID: 33547034244406892}
   - component: {fileID: 23038569363084552}
   - component: {fileID: 54139692982955870}
+  - component: {fileID: 65164621918654158}
   m_Layer: 10
   m_Name: BodyLegs
   m_TagString: Untagged
@@ -520,6 +524,7 @@ GameObject:
   - component: {fileID: 33626749781699146}
   - component: {fileID: 23841805662785100}
   - component: {fileID: 54973581614656062}
+  - component: {fileID: 65337846757375162}
   m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
@@ -538,6 +543,7 @@ GameObject:
   - component: {fileID: 33377735107131030}
   - component: {fileID: 23985710075223384}
   - component: {fileID: 54462326437008870}
+  - component: {fileID: 65295245879323886}
   m_Layer: 10
   m_Name: LeftArm
   m_TagString: Untagged
@@ -650,6 +656,7 @@ GameObject:
   - component: {fileID: 33346902784690602}
   - component: {fileID: 23575193510011882}
   - component: {fileID: 54690547679308238}
+  - component: {fileID: 65922405469911916}
   m_Layer: 10
   m_Name: RightHand
   m_TagString: Untagged
@@ -865,6 +872,7 @@ GameObject:
   - component: {fileID: 33714038044952678}
   - component: {fileID: 23441471760753006}
   - component: {fileID: 54870603246935652}
+  - component: {fileID: 65087067194878868}
   m_Layer: 10
   m_Name: LeftHand
   m_TagString: Untagged
@@ -1007,6 +1015,7 @@ GameObject:
   - component: {fileID: 33343699899864256}
   - component: {fileID: 23414882451370876}
   - component: {fileID: 54044101257711426}
+  - component: {fileID: 65103604451618494}
   m_Layer: 10
   m_Name: LeftClavicle
   m_TagString: Untagged
@@ -2493,6 +2502,114 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65019994368902274
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213727986138580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5325384, y: 2.2735507, z: 3.1854486}
+  m_Center: {x: 1.7578912, y: 7.2028666, z: -0.3622192}
+--- !u!65 &65087067194878868
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857706388466170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4958234, y: 2.7754822, z: 2.0089202}
+  m_Center: {x: -2.1482623, y: 4.0765567, z: -0.068332}
+--- !u!65 &65103604451618494
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947167295809388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.532539, y: 2.2735515, z: 3.1854484}
+  m_Center: {x: -1.7579046, y: 7.2028728, z: -0.36222896}
+--- !u!65 &65164621918654158
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422483274728246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0297952, y: 8.574717, z: 3.012985}
+  m_Center: {x: -0.0000071885247, y: 4.2847166, z: 0.008514212}
+--- !u!65 &65295245879323886
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448468641041172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999103, y: 2.355999, z: 0.8076237}
+  m_Center: {x: -1.8468089, y: 6.0178504, z: -0.2780532}
+--- !u!65 &65337846757375162
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448203373865146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5700665, y: 2.4521868, z: 2.9263768}
+  m_Center: {x: -0.00003697053, y: 8.632871, z: 0.01679298}
+--- !u!65 &65895615160051882
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317039084785504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.68425477, y: 1.7294909, z: 7.639232}
+  m_Center: {x: 2.0745373, y: 3.3089855, z: 2.6579673}
+--- !u!65 &65922405469911916
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562403190013068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4958228, y: 2.7754815, z: 2.0089197}
+  m_Center: {x: 2.1482496, y: 4.076563, z: -0.0683214}
+--- !u!65 &65932177463570226
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397313871484232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999098, y: 2.3559988, z: 0.8076236}
+  m_Center: {x: 1.846792, y: 6.0178614, z: -0.2780505}
 --- !u!95 &95723843834670960
 Animator:
   serializedVersion: 3
@@ -2564,6 +2681,7 @@ MonoBehaviour:
   upForce: 20
   explosionRadius: 20
   isDead: 0
+  dieCounter: 0
 --- !u!114 &114183452037333340
 MonoBehaviour:
   m_ObjectHideFlags: 1
