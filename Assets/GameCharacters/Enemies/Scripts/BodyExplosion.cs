@@ -42,8 +42,8 @@ public class BodyExplosion : MonoBehaviour
         {
             rigidbodies[i] = bodyParts[i].GetComponent<Rigidbody>();
 
-            bodyPartColliders[i] = bodyParts[i].GetComponent<BoxCollider>();
-            bodyPartColliders[i].enabled = false;
+            //bodyPartColliders[i] = bodyParts[i].GetComponent<BoxCollider>();
+            //bodyPartColliders[i].enabled = false;
 
             bodyPartRenderers[i] = bodyParts[i].GetComponent<Renderer>();
 
@@ -55,14 +55,6 @@ public class BodyExplosion : MonoBehaviour
         materialPropertyBlock = new MaterialPropertyBlock(); 
 
         currentDieCounter = dieCounter; 
-    }
-
-    void IgnoreCollisions()
-    {
-        for (int i = 0; i < bodyPartColliders.Length; i++)
-        {
-            Physics.IgnoreCollision()
-        }
     }
 
     public void PooledStart()
@@ -91,13 +83,13 @@ public class BodyExplosion : MonoBehaviour
                 bodyPartRenderers[i].SetPropertyBlock(materialPropertyBlock); 
             }
 
-            if (currentDieCounter <= dieCounter - 1)
-            {
-                for (int i = 0; i < bodyPartColliders.Length; i++)
-                {
-                    bodyPartColliders[i].enabled = true; 
-                }
-            }
+            //if (currentDieCounter <= dieCounter - 1)
+            //{
+            //    for (int i = 0; i < bodyPartColliders.Length; i++)
+            //    {
+            //        bodyPartColliders[i].enabled = true; 
+            //    }
+            //}
 
             if (currentDieCounter <= 0)
             {
