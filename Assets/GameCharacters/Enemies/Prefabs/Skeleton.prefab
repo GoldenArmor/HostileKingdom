@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 4337294564044054}
   - component: {fileID: 54077701456025994}
   - component: {fileID: 195906714770526680}
-  - component: {fileID: 114375454651354712}
+  - component: {fileID: 114180334612269406}
   - component: {fileID: 114331939414865370}
   m_Layer: 10
   m_Name: Skeleton
@@ -2537,6 +2537,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114180334612269406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887382429614504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048987e71276e2a4692963b0c9f0f916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullBody: {fileID: 1289570145058470}
+  bodyParts:
+  - {fileID: 1422483274728246}
+  - {fileID: 1448203373865146}
+  - {fileID: 1947167295809388}
+  - {fileID: 1448468641041172}
+  - {fileID: 1857706388466170}
+  - {fileID: 1213727986138580}
+  - {fileID: 1397313871484232}
+  - {fileID: 1562403190013068}
+  - {fileID: 1317039084785504}
+  explosionCenter: {fileID: 4065673053946102}
+  explosionForce: 15
+  upForce: 20
+  explosionRadius: 20
+  isDead: 0
 --- !u!114 &114183452037333340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2591,34 +2618,7 @@ MonoBehaviour:
   myCanvas: {fileID: 223103413565692848}
   popupTextPrefab: {fileID: 1975458904623058, guid: 752548bbe8550ad43bbe68fe6e4f5a9e,
     type: 2}
-  bodyExplosion: {fileID: 114375454651354712}
---- !u!114 &114375454651354712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887382429614504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39bc577a2a68d24b85937dff2f9214d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fullBody: {fileID: 1289570145058470}
-  bodyParts:
-  - {fileID: 1422483274728246}
-  - {fileID: 1448203373865146}
-  - {fileID: 1947167295809388}
-  - {fileID: 1448468641041172}
-  - {fileID: 1857706388466170}
-  - {fileID: 1213727986138580}
-  - {fileID: 1397313871484232}
-  - {fileID: 1562403190013068}
-  - {fileID: 1317039084785504}
-  explosionCenter: {fileID: 4065673053946102}
-  explosionForce: 15
-  upForce: 25
-  explosionRadius: 20
-  isDead: 0
+  bodyExplosion: {fileID: 114180334612269406}
 --- !u!114 &114436246390287194
 MonoBehaviour:
   m_ObjectHideFlags: 1
