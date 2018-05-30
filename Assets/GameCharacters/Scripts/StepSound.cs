@@ -17,7 +17,8 @@ public class StepSound : MonoBehaviour
     void Start()
     {
         //DEBUG 
-        AudioManager.Initialize(); 
+        AudioManager.Initialize();
+        terrain = GameObject.Find("Terrain"); 
     }
 
     void Update()
