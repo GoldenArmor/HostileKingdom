@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 23877121482638992}
   - component: {fileID: 54472317834721940}
   - component: {fileID: 65019994368902274}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: RightClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 23817389202132882}
   - component: {fileID: 54887296120267894}
   - component: {fileID: 65895615160051882}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 23616684368435946}
   - component: {fileID: 54353478481898696}
   - component: {fileID: 65932177463570226}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 23038569363084552}
   - component: {fileID: 54139692982955870}
   - component: {fileID: 65164621918654158}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: BodyLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 23841805662785100}
   - component: {fileID: 54973581614656062}
   - component: {fileID: 65337846757375162}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 23985710075223384}
   - component: {fileID: 54462326437008870}
   - component: {fileID: 65295245879323886}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 23575193510011882}
   - component: {fileID: 54690547679308238}
   - component: {fileID: 65922405469911916}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 23441471760753006}
   - component: {fileID: 54870603246935652}
   - component: {fileID: 65087067194878868}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 23414882451370876}
   - component: {fileID: 54044101257711426}
   - component: {fileID: 65103604451618494}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: LeftClavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   upForce: 20
   explosionRadius: 20
   isDead: 0
-  dieCounter: 0
+  dieCounter: 5
 --- !u!114 &114183452037333340
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,11 +19,13 @@ public class Enemy : Characters
 
     PopupText newDamagePopup;
 
+    [Header("Sounds")]
+    AudioPlayer audioPlayer; 
+
     protected override void MyStart()
     {
         base.MyStart();
         objective = GameObject.FindGameObjectWithTag("Objective").transform; 
-        
     }
 
     protected override void MyUpdate()

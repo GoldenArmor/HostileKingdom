@@ -10,6 +10,7 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip[] sfxClips;
     public AudioClip[] ambientClips;
     public AudioClip[] musicClips;
+    public AudioClip[] footStepsClips; 
     private AudioSource musicSource;
     private AudioSource ambientSource;
 
@@ -63,6 +64,23 @@ public class AudioPlayer : MonoBehaviour
     {
         ambientSource.TryStop();
         Destroy(ambientSource);
+    }
+    #endregion
+
+    #region FootSteps
+    //3D
+    public void PlayFootSteps(int clip)
+    {
+        PlayFootSteps(clip, RandomValue(), RandomValue());
+    }
+    public void PlayFootSteps(int clip, float volume, float pitch)
+    {
+        Play(footStepsClips[clip], volume, pitch, false, false, "SFX");
+    }
+
+    float RandomValue()
+    {
+        return Random.Range(0.85f, 1.15f); 
     }
     #endregion
 
