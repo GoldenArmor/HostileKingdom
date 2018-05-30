@@ -127,7 +127,7 @@ public class Characters : MonoBehaviour, IPooledObject
         anim.SetTrigger("Die");
         state = UnitState.Dead;
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
     #endregion
 
@@ -158,7 +158,7 @@ public class Characters : MonoBehaviour, IPooledObject
         gameObject.SetActive(true);
     }
 
-    public void PooledStart()
+    public virtual void PooledStart()
     {
         MyStart();
         UpdateLifebar();

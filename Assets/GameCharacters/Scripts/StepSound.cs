@@ -12,23 +12,31 @@ public class StepSound : MonoBehaviour
     [SerializeField]
     AudioPlayer audioPlayer;
 
+    float otherSoundCounter = 15f;
+
     void Start()
     {
         //DEBUG 
         AudioManager.Initialize(); 
     }
 
+    void Update()
+    {
+        otherSoundCounter -= Time.deltaTime;
+        
+        if (otherSoundCounter <= 0)
+        {
+            otherSoundCounter = 15f;
+
+            audioPlayer.PlayFootSteps(1); 
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == terrain)
         {
-            audioPlayer.PlayFootSteps(RandomStepSound());
+            audioPlayer.PlayFootSteps(0);
         }
-        Debug.Log(other);
-    }
-
-    int RandomStepSound()
-    {
-        return Random.Range(0, audioPlayer.footStepsClips.Length - 1); 
     }
 }

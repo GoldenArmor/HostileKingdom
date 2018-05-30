@@ -20,16 +20,35 @@ public class Enemy : Characters
     PopupText newDamagePopup;
 
     [Header("Sounds")]
-    AudioPlayer audioPlayer; 
+    [SerializeField]
+    AudioPlayer audioPlayer;
+
+    public bool die; 
 
     protected override void MyStart()
     {
         base.MyStart();
+        die = false; 
         objective = GameObject.FindGameObjectWithTag("Objective").transform; 
+    }
+
+    public override void PooledStart()
+    {
+        bodyExplosion.PooledStart(); 
+        base.PooledStart();
     }
 
     protected override void MyUpdate()
     {
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.F)) die = true; 
+
+        if (die)
+        {
+            SetDead();  
+            return;
+        }
+
         SetMovement();
 
         base.MyUpdate(); 
@@ -43,24 +62,38 @@ public class Enemy : Characters
             SetMovement();
         }
     }
+
+    protected override void DeadUpdate()
+    {
+        base.DeadUpdate();
+    }
     #endregion
 
     #region Sets
     public override void SetDead()
     {
         //enemiesManager.enemiesCount.Remove(this);
-        EnemyWaveManager.enemiesAlive--;
-        Player.money += moneyValue;
-        if (bodyExplosion != null)
+        if (!isDead)
         {
-            bodyExplosion.Die(); 
+            die = true; 
+            EnemyWaveManager.enemiesAlive--;
+            Player.money += moneyValue;
+            if (bodyExplosion != null)
+            {
+                bodyExplosion.Die();
+                audioPlayer.PlaySFX(0);
+            }
+            base.SetDead();
         }
-        base.SetDead();
+        else
+        {
+            DeadUpdate(); 
+        }
     }
 
     public override void SetMovement()
     {
-        agent.SetDestination(objective.position);
+        if(objective != null) agent.SetDestination(objective.position);
         base.SetMovement();
     }
     #endregion

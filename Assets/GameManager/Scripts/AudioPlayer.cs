@@ -18,7 +18,7 @@ public class AudioPlayer : MonoBehaviour
     //3D
     public void PlaySFX(int clip)
     {
-        PlaySFX(clip, 1, 1);
+        PlaySFX(clip, RandomValue(), RandomValue());
     }
     public void PlaySFX(int clip, float volume, float pitch)
     {

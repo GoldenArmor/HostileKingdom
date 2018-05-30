@@ -60,7 +60,6 @@ public class BodyExplosion : MonoBehaviour
     {
         if (isDead)
         {
-            Die();
             currentDieCounter -= Time.deltaTime;
 
             for (int i = 0; i < bodyParts.Length; i++)
@@ -78,12 +77,15 @@ public class BodyExplosion : MonoBehaviour
                 }
                 isDead = false;
                 currentDieCounter = dieCounter;
+                gameObject.SetActive(false);
             }
         }
     }
 
     public void Die()
     {
+        isDead = true; 
+
         for (int i = 0; i < rigidbodies.Length; i++)
         {
             bodyParts[i].transform.SetParent(null);
@@ -95,6 +97,6 @@ public class BodyExplosion : MonoBehaviour
 
     float RandomExplosionForce()
     {
-        return Random.Range(explosionForce, explosionForce + 1);
+        return Random.Range(explosionForce, explosionForce + 5);
     }
 }
