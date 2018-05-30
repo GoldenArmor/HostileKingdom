@@ -21567,6 +21567,22 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
   m_IsPrefabParent: 0
@@ -28561,17 +28577,17 @@ MonoBehaviour:
     spawnPoint:
     - {fileID: 1561433563}
     waveDelay: 5
-  - character: {fileID: 1324462333637998, guid: 3d1ed081a338d89468d38d4e830812c1,
+  - character: {fileID: 1887382429614504, guid: 66cff7d787b02bd4da5271cfd2d56c69,
       type: 2}
-    count: 5
+    count: 10
     rate: 1
     spawnPoint:
     - {fileID: 1561433563}
     - {fileID: 66160968}
     waveDelay: 10
-  - character: {fileID: 1324462333637998, guid: 3d1ed081a338d89468d38d4e830812c1,
+  - character: {fileID: 1276752192737720, guid: 65e183a804a48f44eb928b8983222fb4,
       type: 2}
-    count: 5
+    count: 1
     rate: 1
     spawnPoint:
     - {fileID: 66160968}
@@ -29882,7 +29898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &460479044
 Transform:
   m_ObjectHideFlags: 0
@@ -34574,7 +34590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &493041995
 Animator:
   serializedVersion: 3
@@ -77054,6 +77070,22 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
   m_IsPrefabParent: 0
@@ -95010,7 +95042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1589482100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104796,7 +104828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1839123608
 Animator:
   serializedVersion: 3
@@ -106541,8 +106573,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1879296467}
-  m_LocalRotation: {x: 0.000000016727626, y: 0.9238795, z: 0.38268346, w: -0.000000040384055}
-  m_LocalPosition: {x: 0, y: -138.26, z: 145}
+  m_LocalRotation: {x: -0.29596087, y: -0.6867431, z: -0.3692052, w: 0.55179584}
+  m_LocalPosition: {x: 85.48848, y: -152.67981, z: 249.77982}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

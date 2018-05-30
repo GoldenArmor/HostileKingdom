@@ -319,12 +319,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114463919637523268, guid: 66cff7d787b02bd4da5271cfd2d56c69,
+    - target: {fileID: 114586980275190234, guid: 66cff7d787b02bd4da5271cfd2d56c69,
         type: 2}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1025073788}
-    - target: {fileID: 114586980275190234, guid: 66cff7d787b02bd4da5271cfd2d56c69,
+    - target: {fileID: 114463919637523268, guid: 66cff7d787b02bd4da5271cfd2d56c69,
         type: 2}
       propertyPath: terrain
       value: 
@@ -4327,20 +4327,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 114891922115788490, guid: 65e183a804a48f44eb928b8983222fb4,
-        type: 2}
-      propertyPath: terrain
-      value: 
-      objectReference: {fileID: 1025073788}
     - target: {fileID: 114328649348150866, guid: 65e183a804a48f44eb928b8983222fb4,
         type: 2}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1025073788}
-    - target: {fileID: 1276752192737720, guid: 65e183a804a48f44eb928b8983222fb4, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114891922115788490, guid: 65e183a804a48f44eb928b8983222fb4,
+        type: 2}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1025073788}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65e183a804a48f44eb928b8983222fb4, type: 2}
   m_IsPrefabParent: 0

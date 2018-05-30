@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MageTurret : MonoBehaviour
+public class MageTurret : Turret
 {
     [SerializeField]
     Transform raySpawnPoint; 
@@ -39,6 +39,13 @@ public class MageTurret : MonoBehaviour
         enemiesCanAttack = new List<Enemy>();
         currentDamage = baseDamage;
         currentMultiplier = damageMultiplier; 
+    }
+
+    public override void PooledStart()
+    {
+        enemiesCanAttack = new List<Enemy>();
+        currentDamage = baseDamage;
+        currentMultiplier = damageMultiplier;
     }
 
     void Update()

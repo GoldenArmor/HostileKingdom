@@ -27,7 +27,7 @@ public class BodyExplosion : MonoBehaviour
     float dieCounter;
     float currentDieCounter; 
 
-    void Start()
+    void Awake()
     {
         rigidbodies = new Rigidbody[bodyParts.Length];
         iniPositions = new Vector3[bodyParts.Length];

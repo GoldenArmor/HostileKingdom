@@ -139,7 +139,7 @@ public class BuildableSurface : MonoBehaviour
 
         if(warriorTurret)
         {
-            currentTurret = ObjectPoolingManager.WarriorTurretPool.GetObject(turret, buildingPoint);
+            currentTurret = ObjectPoolingManager.MageTurretPool.GetObject(turret, buildingPoint);
         }
         else
         {

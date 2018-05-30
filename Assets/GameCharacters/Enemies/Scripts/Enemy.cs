@@ -34,7 +34,7 @@ public class Enemy : Characters
 
     public override void PooledStart()
     {
-        bodyExplosion.PooledStart(); 
+        if (bodyExplosion != null) bodyExplosion.PooledStart(); 
         base.PooledStart();
     }
 

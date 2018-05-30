@@ -974,6 +974,7 @@ GameObject:
   - component: {fileID: 114180334612269406}
   - component: {fileID: 114331939414865370}
   - component: {fileID: 114899143606605266}
+  - component: {fileID: 136235919864234468}
   m_Layer: 10
   m_Name: Skeleton
   m_TagString: Enemy
@@ -2980,6 +2981,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!136 &136235919864234468
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887382429614504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.7
+  m_Height: 13.232546
+  m_Direction: 1
+  m_Center: {x: 0, y: 6.7891026, z: 0}
 --- !u!137 &137631102239937350
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

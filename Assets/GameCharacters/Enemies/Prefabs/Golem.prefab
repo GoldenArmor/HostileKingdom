@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 114050638642061584}
   - component: {fileID: 114609851471382182}
   - component: {fileID: 114156450460213076}
+  - component: {fileID: 136524640713509996}
   m_Layer: 10
   m_Name: Golem
   m_TagString: Enemy
@@ -3330,6 +3331,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain: {fileID: 0}
   audioPlayer: {fileID: 114156450460213076}
+--- !u!136 &136524640713509996
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276752192737720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.66
+  m_Height: 16.856247
+  m_Direction: 1
+  m_Center: {x: 0, y: 8.490124, z: 0}
 --- !u!137 &137202708374437716
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

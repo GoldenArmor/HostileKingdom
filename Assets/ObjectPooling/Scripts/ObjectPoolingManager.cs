@@ -31,12 +31,12 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    static GenericPooling<WarriorTurret> warriorTurretPool;
-    public static GenericPooling<WarriorTurret> WarriorTurretPool
+    static GenericPooling<MageTurret> mageTurretPool;
+    public static GenericPooling<MageTurret> MageTurretPool
     {
         get
         {
-            return warriorTurretPool;
+            return mageTurretPool;
         }
     }
 
@@ -63,7 +63,7 @@ public class ObjectPoolingManager : MonoBehaviour
         enemyPool = new GenericPooling<Enemy>();
         allyPool = new GenericPooling<Ally>();
         archerTurretPool = new GenericPooling<ArcherTurret>();
-        warriorTurretPool = new GenericPooling<WarriorTurret>();
+        mageTurretPool = new GenericPooling<MageTurret>();
         arrowPool = new GenericPooling<Arrow>();
         popupPool = new GenericPooling<PopupText>(); 
     }
