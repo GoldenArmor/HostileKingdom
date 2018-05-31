@@ -32,6 +32,9 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
+        anim = GetComponentInChildren<Animator>();
+        triggerHashValue = Animator.StringToHash("EndDamage");
+        anim.enabled = true;
         endCounter = 1.5f;  
     }
 

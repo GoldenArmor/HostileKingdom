@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Characters
 {
     [SerializeField]
-    int moneyValue;
+    protected int moneyValue;
 
     [Header("Popup Text")]
     [SerializeField]
@@ -21,7 +21,7 @@ public class Enemy : Characters
 
     [Header("Sounds")]
     [SerializeField]
-    AudioPlayer audioPlayer;
+    protected AudioPlayer audioPlayer;
 
     public bool die; 
 
@@ -75,6 +75,7 @@ public class Enemy : Characters
         //enemiesManager.enemiesCount.Remove(this);
         if (!isDead)
         {
+            ClearDamage(); 
             die = true; 
             EnemyWaveManager.enemiesAlive--;
             Player.money += moneyValue;
@@ -124,7 +125,6 @@ public class Enemy : Characters
             }
             else
             {
-
                 newDamagePopup.SetDamage(damage);
             }
         }

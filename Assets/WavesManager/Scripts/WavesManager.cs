@@ -34,6 +34,11 @@ public class WavesManager : MonoBehaviour
 
     void Update()
     {
+        if (waveIndex >= waves.Length)
+        {
+            return; 
+        }
+
         if (isSpawning)
         { 
             SpawnWave();

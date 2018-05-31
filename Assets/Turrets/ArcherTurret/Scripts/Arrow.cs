@@ -80,7 +80,5 @@ public class Arrow : MonoBehaviour, IPooledObject
 
         hasCollided = true;
         partSystem.Play();
-
-        Debug.Log(other); 
     }
 }
