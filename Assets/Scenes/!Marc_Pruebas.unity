@@ -21747,6 +21747,18 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
   m_IsPrefabParent: 0
@@ -34981,7 +34993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1580005614829204, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79afdd13357a05d47b8696bae5139f59, type: 2}
@@ -68756,8 +68768,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1056022709}
-  m_LocalRotation: {x: 0.004166428, y: 0.9860545, z: 0.1645045, w: -0.024848538}
-  m_LocalPosition: {x: -1230.2094, y: -1421.1514, z: 7185.5293}
+  m_LocalRotation: {x: 0.23322383, y: 0.61223996, z: 0.19561751, w: -0.7297278}
+  m_LocalPosition: {x: 867.46893, y: -756.363, z: -209.55093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77044,6 +77056,18 @@ Prefab:
     - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: ShapeModule.radiusThickness
@@ -105006,7 +105030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1839123608
 Animator:
   serializedVersion: 3
@@ -108292,7 +108316,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.9
+  m_Intensity: 1.05
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
