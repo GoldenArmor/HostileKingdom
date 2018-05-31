@@ -37,6 +37,8 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     void Update()
     {
+        if (target != null) myTransform.LookAt(target);
+
         if (target != Vector3.zero)
         {
             myTransform.LookAt(target);

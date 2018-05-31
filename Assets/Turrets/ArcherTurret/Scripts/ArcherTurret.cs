@@ -58,8 +58,11 @@ public class ArcherTurret : Turret
         {
             int newRandomEnemy = RandomEnemy(); 
             newArrow.GetTarget(enemiesCanAttack[newRandomEnemy].transform.position);
-            float xRotation = newArcher.transform.rotation.x; 
-            newArcher.transform.LookAt(enemiesCanAttack[newRandomEnemy].transform);            
+
+            Vector3 lookPosition = enemiesCanAttack[newRandomEnemy].transform.position - newArcher.transform.position;
+            lookPosition.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPosition);
+            newArcher.transform.rotation = rotation; 
         }
         else newArrow.GetTarget(enemiesCanAttack[0].transform.position); 
     }
