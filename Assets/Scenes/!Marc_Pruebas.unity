@@ -9746,7 +9746,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 166386760}
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 4.28008e-15}
-  m_LocalPosition: {x: 1271.9524, y: -11478.519, z: 2526.681}
+  m_LocalPosition: {x: 1271.9524, y: -12058, z: 2527}
   m_LocalScale: {x: 4547.8857, y: 4.0480666, z: 13708.075}
   m_Children: []
   m_Father: {fileID: 1080507556}
@@ -21365,6 +21365,10 @@ Prefab:
     - target: {fileID: 199962, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: m_Name
       value: CartoonFire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: ShapeModule.radiusThickness
@@ -42494,7 +42498,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -416.14883
+      value: -376.2
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalPosition.y
@@ -42502,7 +42506,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 111.5815
+      value: 122.6
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalRotation.x
@@ -42510,7 +42514,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.032822877
+      value: 0.98171794
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalRotation.z
@@ -42518,7 +42522,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.99946123
+      value: 0.1903415
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_RootOrder
@@ -42530,7 +42534,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -302.742
+      value: -561.945
       objectReference: {fileID: 0}
     - target: {fileID: 4752664626045314, guid: 8a6663d5746a2b74f958a72a313bb916, type: 2}
       propertyPath: m_LocalScale.x
@@ -76649,6 +76653,10 @@ Prefab:
     - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 19893630, guid: 5d4dc9a34baf7a642974a49d19ae29a9, type: 2}
       propertyPath: ShapeModule.radiusThickness
