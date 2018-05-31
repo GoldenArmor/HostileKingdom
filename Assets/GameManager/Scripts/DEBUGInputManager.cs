@@ -5,7 +5,7 @@ using UnityEngine;
 public class DEBUGInputManager : MonoBehaviour
 {
     LevelLoader levelLoader;
-    bool wasLoaded;
+    bool wasLoaded = true;
 
     [SerializeField]
     bool gamePause;
