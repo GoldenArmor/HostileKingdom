@@ -137,8 +137,8 @@ public static class AudioManager
         source.spatialBlend = 1;
         source.dopplerLevel = 0;
         source.rolloffMode = AudioRolloffMode.Logarithmic;
-        source.minDistance = 5;
-        source.maxDistance = 15;
+        source.minDistance = 1;
+        source.maxDistance = 5;
 
         return source;
     }
