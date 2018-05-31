@@ -23,6 +23,9 @@ public class Enemy : Characters
     [SerializeField]
     protected AudioPlayer audioPlayer;
 
+    [Header("Arrows")]
+    public List<Arrow> arrows = new List<Arrow>();
+
     public bool die; 
 
     protected override void MyStart()
@@ -83,6 +86,14 @@ public class Enemy : Characters
             {
                 bodyExplosion.Die();
                 audioPlayer.PlaySFX(0);
+            }
+            if (arrows.Count > 0)
+            {
+                for(int i = 0; i < arrows.Count; i++)
+                {
+                    arrows[i].ClearArrow();
+                    arrows.Remove(arrows[i]); 
+                }
             }
             base.SetDead();
         }

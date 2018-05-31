@@ -43,12 +43,15 @@ public class ArcherTurret : Turret
 
     void Attack()
     {
-        arrowSpawnPoint = RandomArcher().arrowSpawnPoint; 
-        RandomArcher().anim.SetTrigger("Attack"); 
+        Archer newArcher = RandomArcher(); 
+        arrowSpawnPoint = newArcher.arrowSpawnPoint;
+        newArcher.anim.SetTrigger("Attack");
         Arrow newArrow = ObjectPoolingManager.ArrowPool.GetObject(arrowPrefab, arrowSpawnPoint);
         if (enemiesCanAttack.Count > 1)
         {
-            newArrow.GetTarget(enemiesCanAttack[RandomEnemy()].transform.position);
+            int newRandomEnemy = RandomEnemy(); 
+            newArrow.GetTarget(enemiesCanAttack[newRandomEnemy].transform.position);
+            newArcher.transform.LookAt(enemiesCanAttack[newRandomEnemy].transform);
         }
         else newArrow.GetTarget(enemiesCanAttack[0].transform.position); 
     }

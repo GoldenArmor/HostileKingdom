@@ -74,6 +74,10 @@ public class InputManager : MonoBehaviour
                 NoPaused();
             }
         }
+        else
+        {
+            SearchLevelLoader(); 
+        }
     }
 
     public void SearchLevelLoader()
