@@ -32,6 +32,13 @@ public class ArcherTurret : Turret
     {
         if (enemiesCanAttack.Count > 0)
         {
+            for(int i = 0; i < enemiesCanAttack.Count; i++)
+            {
+                if(!enemiesCanAttack[i].activeSelf)
+                {
+                    enemiesCanAttack.Remove(enemiesCanAttack[i]); 
+                }
+            }
             currentCooldown -= Time.deltaTime; 
             if (currentCooldown <= 0)
             {
@@ -51,7 +58,8 @@ public class ArcherTurret : Turret
         {
             int newRandomEnemy = RandomEnemy(); 
             newArrow.GetTarget(enemiesCanAttack[newRandomEnemy].transform.position);
-            newArcher.transform.LookAt(enemiesCanAttack[newRandomEnemy].transform);
+            float xRotation = newArcher.transform.rotation.x; 
+            newArcher.transform.LookAt(enemiesCanAttack[newRandomEnemy].transform);            
         }
         else newArrow.GetTarget(enemiesCanAttack[0].transform.position); 
     }

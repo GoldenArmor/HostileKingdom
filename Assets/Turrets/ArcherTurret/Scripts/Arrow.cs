@@ -62,7 +62,8 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     public void GetTarget(Vector3 newTarget)
     {
-        target = newTarget; 
+        target = newTarget;
+        myTransform.LookAt(target); 
     }
 
     void OnTriggerEnter(Collider other)
