@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     LevelLogic levelLogic;
     LevelLoader levelLoader;
-    bool wasLoaded = true;
+    bool wasLoaded;
     [SerializeField]
     StatsManager statsManager; 
 
@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
     [Header("MouseInputsManager")]
     [SerializeField]
     Player mouse;
-    Vector3 mousePosition;
+    public static Vector3 mousePosition;
 
     [Header("CameraInputs")]
     [SerializeField]
@@ -91,7 +91,7 @@ public class InputManager : MonoBehaviour
         cameraController = levelLoader.cameraController;
         cameraRotation = levelLoader.cameraRotation;
         cameraZoom = levelLoader.cameraZoom;
-        wasLoaded = false;
+        wasLoaded = true;
     }
 
     void Paused()

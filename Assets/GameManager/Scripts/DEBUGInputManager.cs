@@ -5,7 +5,7 @@ using UnityEngine;
 public class DEBUGInputManager : MonoBehaviour
 {
     LevelLoader levelLoader;
-    bool wasLoaded = true;
+    bool wasLoaded;
 
     [SerializeField]
     bool gamePause;
@@ -87,7 +87,7 @@ public class DEBUGInputManager : MonoBehaviour
         cameraController = levelLoader.cameraController;
         cameraRotation = levelLoader.cameraRotation; 
         cameraZoom = levelLoader.cameraZoom;
-        wasLoaded = false;
+        wasLoaded = true;
     }
 
     void Paused()
