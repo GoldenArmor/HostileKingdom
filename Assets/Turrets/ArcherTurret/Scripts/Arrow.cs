@@ -71,8 +71,9 @@ public class Arrow : MonoBehaviour, IPooledObject
         {
             if(other.GetComponent<Enemy>() != null)
             {
-                other.GetComponent<Enemy>().TakeDamage(damage);
-                Debug.Log(other);
+                Enemy newEnemy = other.GetComponent<Enemy>(); 
+                newEnemy.TakeDamage(damage);
+                newEnemy.arrows.Add(this); 
                 myTransform.parent = other.transform;
                 target = Vector3.zero;
             }
@@ -80,5 +81,11 @@ public class Arrow : MonoBehaviour, IPooledObject
 
         hasCollided = true;
         partSystem.Play();
+    }
+
+    public void ClearArrow()
+    {
+        myTransform.parent = null;
+        gameObject.SetActive(false);
     }
 }
