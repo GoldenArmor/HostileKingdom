@@ -15,14 +15,16 @@ public class PopupText : MonoBehaviour, IPooledObject
     bool beginEndCounter; 
     float endCounter;
     [SerializeField]
-    AnimationClip endAnimClip;
+    Animation fallText;
+    [SerializeField]
+    Animation scaledText; 
     int triggerHashValue;
 
     void Awake()
     {
-        anim = GetComponentInChildren<Animator>(); 
-        triggerHashValue = Animator.StringToHash("EndDamage");
-        anim.enabled = true; 
+        //anim = GetComponentInChildren<Animator>() as Animator; 
+        //triggerHashValue = Animator.StringToHash("EndDamage");
+        //anim.enabled = true; 
     }
 
     public void PooledAwake()
@@ -32,9 +34,10 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
-        anim = GetComponentInChildren<Animator>();
-        triggerHashValue = Animator.StringToHash("EndDamage");
-        anim.enabled = true;
+        //anim = GetComponentInChildren<Animator>() as Animator;
+        //triggerHashValue = Animator.StringToHash("EndDamage");
+        //anim.enabled = true;
+        scaledText.Play(); 
         endCounter = 1.5f;  
     }
 
@@ -67,9 +70,14 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void ClearDamage()
     {
-        anim.SetTrigger(triggerHashValue);         
-        beginEndCounter = true;
+        Vector3 oldPosition = transform.parent.position; 
         transform.SetParent(null);
+        transform.position = oldPosition; 
+        //transform.localScale = Vector3.one; 
+        //anim.SetTrigger(triggerHashValue);
+        scaledText.Stop();
+        fallText.Play(); 
+        beginEndCounter = true;
     }
 
     public bool IsActive()

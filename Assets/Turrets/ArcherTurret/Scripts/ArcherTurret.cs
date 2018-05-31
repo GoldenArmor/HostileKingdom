@@ -57,14 +57,14 @@ public class ArcherTurret : Turret
         if (enemiesCanAttack.Count > 1)
         {
             int newRandomEnemy = RandomEnemy(); 
-            newArrow.GetTarget(enemiesCanAttack[newRandomEnemy].transform.position);
+            newArrow.GetTarget(enemiesCanAttack[newRandomEnemy]);
 
             Vector3 lookPosition = enemiesCanAttack[newRandomEnemy].transform.position - newArcher.transform.position;
             lookPosition.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPosition);
             newArcher.transform.rotation = rotation; 
         }
-        else newArrow.GetTarget(enemiesCanAttack[0].transform.position); 
+        else newArrow.GetTarget(enemiesCanAttack[0]); 
     }
 
     int RandomEnemy()

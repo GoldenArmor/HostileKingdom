@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour, IPooledObject
     [SerializeField]
     Transform myTransform;
     [SerializeField]
-    Vector3 target;
+    GameObject target;
 
     [SerializeField]
     float velocity;
@@ -26,7 +26,7 @@ public class Arrow : MonoBehaviour, IPooledObject
     ParticleSystem partSystem; 
 
     public void PooledStart()
-    {
+    { 
         currentLifeCounter = lifeCounter; 
     }
 
@@ -37,12 +37,10 @@ public class Arrow : MonoBehaviour, IPooledObject
 
     void Update()
     {
-        if (target != null) myTransform.LookAt(target);
-
-        if (target != Vector3.zero)
+        if (target != null && !hasCollided)
         {
-            myTransform.LookAt(target);
-            myTransform.position = Vector3.Lerp(myTransform.position, target, velocity); 
+            myTransform.LookAt(target.transform);
+            myTransform.position = Vector3.Lerp(myTransform.position, target.transform.position, velocity); 
         }
 
         if (hasCollided)
@@ -52,6 +50,8 @@ public class Arrow : MonoBehaviour, IPooledObject
             if (currentLifeCounter <= 0)
             {
                 myTransform.parent = null;
+                hasCollided = false;
+                partSystem.Stop(); 
                 gameObject.SetActive(false); 
             }
         }
@@ -62,10 +62,10 @@ public class Arrow : MonoBehaviour, IPooledObject
         return gameObject.activeSelf; 
     }
 
-    public void GetTarget(Vector3 newTarget)
+    public void GetTarget(GameObject newTarget)
     {
         target = newTarget;
-        myTransform.LookAt(target); 
+        myTransform.LookAt(target.transform); 
     }
 
     void OnTriggerEnter(Collider other)
@@ -78,12 +78,16 @@ public class Arrow : MonoBehaviour, IPooledObject
                 newEnemy.TakeDamage(damage);
                 newEnemy.arrows.Add(this); 
                 myTransform.parent = other.transform;
-                target = Vector3.zero;
+                //target.transform.position = Vector3.zero;
             }
+            hasCollided = true;
+            partSystem.Play();
         }
-
-        hasCollided = true;
-        partSystem.Play();
+        //myTransform.parent = other.transform;    
+        else
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), other); 
+        }
     }
 
     public void ClearArrow()
