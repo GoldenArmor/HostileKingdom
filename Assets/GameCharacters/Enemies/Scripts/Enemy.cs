@@ -37,15 +37,13 @@ public class Enemy : Characters
 
     public override void PooledStart()
     {
-        if (bodyExplosion != null) bodyExplosion.PooledStart(); 
+        if (bodyExplosion != null) bodyExplosion.PooledStart();
+        isBeingAttacked = false;
         base.PooledStart();
     }
 
     protected override void MyUpdate()
     {
-        //DEBUG
-        if (Input.GetKeyDown(KeyCode.F)) die = true; 
-
         if (die)
         {
             SetDead();  
@@ -78,7 +76,7 @@ public class Enemy : Characters
         //enemiesManager.enemiesCount.Remove(this);
         if (!isDead)
         {
-            ClearDamage(); 
+            //ClearDamage(); 
             die = true; 
             EnemyWaveManager.enemiesAlive--;
             Player.money += moneyValue;
@@ -99,6 +97,7 @@ public class Enemy : Characters
         }
         else
         {
+            ClearDamage();
             DeadUpdate(); 
         }
     }
@@ -151,7 +150,7 @@ public class Enemy : Characters
         base.TakeDamage(damage);
     }
 
-    public void ClearDamage()
+    public virtual void ClearDamage()
     {
         if (newDamagePopup != null)
         {

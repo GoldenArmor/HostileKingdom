@@ -45,11 +45,13 @@ public class Arrow : MonoBehaviour, IPooledObject
 
         if (hasCollided)
         {
+            target.GetComponent<Enemy>().ClearDamage(); 
             currentLifeCounter -= Time.deltaTime;
 
             if (currentLifeCounter <= 0)
             {
                 myTransform.parent = null;
+                target = null;
                 hasCollided = false;
                 partSystem.Stop(); 
                 gameObject.SetActive(false); 

@@ -6,9 +6,6 @@ using UnityEngine;
 public class MageTurret : Turret
 {
     [SerializeField]
-    Transform raySpawnPoint; 
-
-    [SerializeField]
     float range;
     [SerializeField]
     float baseDamage = 0.00f;
@@ -32,7 +29,17 @@ public class MageTurret : Turret
 
     Enemy oldClosestEnemy; 
     Enemy closestEnemy;
-    Enemy target; 
+    Enemy target;
+
+    [Header("AttackRay")]
+    [SerializeField]
+    Transform raySpawnPoint; 
+    [SerializeField]
+    LineRenderer lr;
+    [SerializeField]
+    ParticleSystem partSystemTurret;
+    [SerializeField]
+    ParticleSystem finalRaySystem; 
 
     void Start()
     {
@@ -57,13 +64,18 @@ public class MageTurret : Turret
                 Attack();
                 return; 
             }
+            finalRaySystem.Stop();
 
             currentCooldown -= Time.deltaTime;
             if (currentCooldown <= 0)
-            {
+            {   
                 FindClosestTarget(); 
                 currentCooldown = attackCooldown;
             }
+        }
+        else
+        {
+            lr.enabled = false; 
         }
     }
 
@@ -73,25 +85,46 @@ public class MageTurret : Turret
         {
             currentDamage += damageIncrease * currentMultiplier;
         }
- 
+
         target.TakeDamage(currentDamage);
         
         if (target.isDead)
         {
-            ClearTarget();
+            ClearDeadTarget();
+            return; 
         }
 
-        currentMultiplier += damageIncrease; 
+        currentMultiplier += damageIncrease;
+
+        lr.enabled = true; 
+        lr.SetPosition(0, raySpawnPoint.position); 
+        lr.SetPosition(1, target.transform.position);
+
+        finalRaySystem.Play();
+        finalRaySystem.transform.position = lr.GetPosition(1);
+    }
+
+    void ClearDeadTarget()
+    {
+        lr.enabled = false;
+        enemiesCanAttack.Remove(target);
+        target = null;
+        currentDamage = baseDamage;
+        currentMultiplier = damageMultiplier;
+        isAttacking = false;
+        finalRaySystem.Stop();
     }
 
     void ClearTarget()
     {
+        target.ClearDamage();
+        lr.enabled = false;
         enemiesCanAttack.Remove(target);
-        target.ClearDamage(); 
         target = null;
         currentDamage = baseDamage;
         currentMultiplier = damageMultiplier; 
-        isAttacking = false; 
+        isAttacking = false;
+        finalRaySystem.Stop();
     }
 
     void OnTriggerEnter(Collider other)
@@ -110,12 +143,19 @@ public class MageTurret : Turret
     {
         if (other.CompareTag("Enemy"))
         {
-            if (other.gameObject == target)
+            if (target != null && Vector3.Distance(target.transform.
+                position, transform.position) > range)
             {
                 ClearTarget(); 
             }
             enemiesCanAttack.Remove(other.GetComponent<Enemy>());
         }
+    }
+
+    public override void Sell()
+    {
+        base.Sell();
+        EndSell();
     }
 
     protected virtual void FindClosestTarget()
@@ -145,9 +185,5 @@ public class MageTurret : Turret
         Gizmos.color = color;
 
         Gizmos.DrawWireSphere(transform.position, range);
-        if (isAttacking)
-        {
-            Debug.DrawLine(raySpawnPoint.position, target.transform.position, Color.red); 
-        }
     }
 }

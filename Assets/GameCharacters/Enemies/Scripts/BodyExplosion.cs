@@ -48,6 +48,7 @@ public class BodyExplosion : MonoBehaviour
 
     public void PooledStart()
     {
+        fullBody.SetActive(true); 
         for (int i = 0; i < bodyParts.Length; i++)
         {
             bodyParts[i].transform.parent = transformParents[i];

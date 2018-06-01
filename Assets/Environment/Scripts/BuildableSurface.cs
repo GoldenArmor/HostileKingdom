@@ -8,6 +8,7 @@ public class BuildableSurface : MonoBehaviour
 {
     [SerializeField]
     List<Renderer> meshRenderers = new List<Renderer>();
+    List<Renderer> turretRenderers = new List<Renderer>(); 
 
     [SerializeField]
     GameObject constructionZone; 
@@ -26,14 +27,16 @@ public class BuildableSurface : MonoBehaviour
     public Turret currentTurret; 
     [SerializeField]
     Image constructionBar;
+    [SerializeField]
+    ParticleSystem constructionParticles; 
 
-    bool warriorTurret; 
+    bool mageTurret; 
 
     [Header("TurretPhases")]
     [SerializeField]
     GameObject[] archerTurretPhases;
     [SerializeField]
-    GameObject[] warriorTurretPhases;
+    GameObject[] mageTurretPhases;
 
     public bool isSelected;
 
@@ -44,6 +47,10 @@ public class BuildableSurface : MonoBehaviour
     Color startColor;
     [SerializeField]
     Color hoverColor;
+    [SerializeField]
+    Color turretStartColor;
+    [SerializeField]
+    Color turretHoverColor; 
 
     public void MyStart()
     {
@@ -74,7 +81,7 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret.Select();
             spawnScaleHighlight.ResetEasing();
-            ChangeColor(hoverColor); 
+            ChangeTurretColor(turretHoverColor); 
         }
     }
 
@@ -84,7 +91,7 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret.Unselect();
             spawnScaleHighlight.ResetEasing();
-            ChangeColor(startColor); 
+            ChangeTurretColor(turretStartColor); 
         }
     }
 
@@ -98,6 +105,10 @@ public class BuildableSurface : MonoBehaviour
         if (!isSelected)
         {
             ChangeColor(hoverColor);
+            if (currentTurret != null)
+            {
+                ChangeTurretColor(turretHoverColor); 
+            }
         }
     }
 
@@ -106,6 +117,10 @@ public class BuildableSurface : MonoBehaviour
         if (!isSelected)
         {
             ChangeColor(startColor);
+            if (currentTurret != null)
+            {
+                ChangeTurretColor(turretStartColor);
+            }
         }
     }
 
@@ -129,6 +144,14 @@ public class BuildableSurface : MonoBehaviour
         }
     }
 
+    public void ChangeTurretColor(Color newColor)
+    {
+        for (int i = 0; i < turretRenderers.Count; i++)
+        {
+            turretRenderers[i].material.color = newColor;
+        }
+    }
+
     void Construct(GameObject turret)
     {
         if (!CanBuild())
@@ -137,7 +160,7 @@ public class BuildableSurface : MonoBehaviour
             return;
         }
 
-        if(warriorTurret)
+        if(mageTurret)
         {
             currentTurret = ObjectPoolingManager.MageTurretPool.GetObject(turret, buildingPoint);
         }
@@ -145,11 +168,11 @@ public class BuildableSurface : MonoBehaviour
         {
             currentTurret = ObjectPoolingManager.ArcherTurretPool.GetObject(turret, buildingPoint);
         }
-        meshRenderers.Add(currentTurret.gameObject.GetComponent<MeshRenderer>());
+        turretRenderers.Add(currentTurret.gameObject.GetComponent<MeshRenderer>());
         canBuild = false;
 
         archerTurretPhases[2].SetActive(false);
-        warriorTurretPhases[2].SetActive(false); 
+        mageTurretPhases[2].SetActive(false); 
     }
 
     public void UpdateConstruct(GameObject turret)
@@ -160,22 +183,22 @@ public class BuildableSurface : MonoBehaviour
 
         UpdateConstructionBar();
 
-        if (warriorTurret)
+        if (mageTurret)
         {
             if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
             {
-                warriorTurretPhases[0].SetActive(true);
+                mageTurretPhases[0].SetActive(true);
                 constructionZone.SetActive(false);
             }
             if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
             {
-                warriorTurretPhases[0].SetActive(false);
-                warriorTurretPhases[1].SetActive(true);
+                mageTurretPhases[0].SetActive(false);
+                mageTurretPhases[1].SetActive(true);
             }
             if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
             {
-                warriorTurretPhases[1].SetActive(false);
-                warriorTurretPhases[2].SetActive(true);
+                mageTurretPhases[1].SetActive(false);
+                mageTurretPhases[2].SetActive(true);
             }
         }
         else
@@ -201,6 +224,7 @@ public class BuildableSurface : MonoBehaviour
         {
             constructionBarCanvas.Hide(); 
             isBuilding = false;
+            constructionParticles.Stop(); 
             currentConstructionCooldown = 0;
             //constructionBar.enabled = false;
             Construct(turretToConstruct);         
@@ -210,11 +234,12 @@ public class BuildableSurface : MonoBehaviour
     public void BeginConstruct(GameObject turret, bool isWarriorTurret)
     {
         isBuilding = true;
-        spawnScaleHighlight.ResetEasing(); 
+        spawnScaleHighlight.ResetEasing();
+        constructionParticles.Play(); 
         //constructionBar.enabled = true;
         turretToConstruct = turret; 
         constructionBarCanvas.Initialize(constructionBarCanvas.myTransform.position);
-        warriorTurret = isWarriorTurret; 
+        mageTurret = isWarriorTurret; 
     }
 
     void UpdateConstructionBar()
@@ -225,14 +250,14 @@ public class BuildableSurface : MonoBehaviour
     public void SellTurret()
     {
         currentTurret.Sell();
-        if (warriorTurret)
+        if (mageTurret)
         {
             Player.money += 100;
         }
         else Player.money += 70;
 
         ChangeColor(startColor); 
-        meshRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
+        turretRenderers.Remove(currentTurret.gameObject.GetComponent<MeshRenderer>());
         currentTurret = null;
         turretToConstruct = null;
         constructionZone.SetActive(true);

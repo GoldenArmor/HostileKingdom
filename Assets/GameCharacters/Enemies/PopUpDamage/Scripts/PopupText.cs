@@ -9,6 +9,8 @@ public class PopupText : MonoBehaviour, IPooledObject
     Animator anim;  
     [SerializeField]
     Text text;
+    [SerializeField]
+    Canvas popupCanvas; 
 
     float totalDamage;
     bool isBeingDamaged;
@@ -20,13 +22,6 @@ public class PopupText : MonoBehaviour, IPooledObject
     Animation scaledText; 
     int triggerHashValue;
 
-    void Awake()
-    {
-        //anim = GetComponentInChildren<Animator>() as Animator; 
-        //triggerHashValue = Animator.StringToHash("EndDamage");
-        //anim.enabled = true; 
-    }
-
     public void PooledAwake()
     {
         gameObject.SetActive(true); 
@@ -34,9 +29,7 @@ public class PopupText : MonoBehaviour, IPooledObject
 
     public void PooledStart()
     {
-        //anim = GetComponentInChildren<Animator>() as Animator;
-        //triggerHashValue = Animator.StringToHash("EndDamage");
-        //anim.enabled = true;
+        popupCanvas.transform.localScale = Vector3.one; 
         scaledText.Play(); 
         endCounter = 1.5f;  
     }
@@ -73,8 +66,6 @@ public class PopupText : MonoBehaviour, IPooledObject
         Vector3 oldPosition = transform.parent.position; 
         transform.SetParent(null);
         transform.position = oldPosition; 
-        //transform.localScale = Vector3.one; 
-        //anim.SetTrigger(triggerHashValue);
         scaledText.Stop();
         fallText.Play(); 
         beginEndCounter = true;
