@@ -15329,7 +15329,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 387178213}
+      - m_Target: {fileID: 0}
         m_MethodName: ClickRandomSound
         m_Mode: 1
         m_Arguments:
@@ -28163,7 +28163,6 @@ GameObject:
   - component: {fileID: 387178211}
   - component: {fileID: 387178210}
   - component: {fileID: 387178212}
-  - component: {fileID: 387178213}
   m_Layer: 0
   m_Name: Inputmanager
   m_TagString: Untagged
@@ -28221,20 +28220,6 @@ MonoBehaviour:
   cameraRotation: {fileID: 1187512972}
   cameraZoom: {fileID: 453092316}
   isGodModeEnabled: 0
---- !u!114 &387178213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 387178209}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7870f22e2a799542b692fa3ddfb4f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelLogic: {fileID: 0}
-  audioSource: {fileID: 0}
-  musicAudioSource: {fileID: 0}
 --- !u!4 &387221410 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4081425543583276, guid: 56a43d1d5ce69f846807ac18fc55679c,
@@ -35529,7 +35514,7 @@ Prefab:
         type: 2}
       propertyPath: buttonManager
       value: 
-      objectReference: {fileID: 387178213}
+      objectReference: {fileID: 1067373699}
     - target: {fileID: 114088130478145562, guid: 79afdd13357a05d47b8696bae5139f59,
         type: 2}
       propertyPath: m_Enabled
@@ -60797,7 +60782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 387178213}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeToMenu
         m_Mode: 1
         m_Arguments:
@@ -60808,7 +60793,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 387178213}
+      - m_Target: {fileID: 0}
         m_MethodName: ClickRandomSound
         m_Mode: 1
         m_Arguments:
@@ -69658,6 +69643,43 @@ Transform:
   m_PrefabParentObject: {fileID: 4071901437738236, guid: 1d1e3e88b62603944ba4007f56bc9927,
     type: 2}
   m_PrefabInternal: {fileID: 174328827}
+--- !u!1 &1067373697 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1798365880848924, guid: 79afdd13357a05d47b8696bae5139f59,
+    type: 2}
+  m_PrefabInternal: {fileID: 497511672}
+--- !u!114 &1067373698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1067373697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: 0
+  sfxClips:
+  - {fileID: 8300000, guid: ad8da83584074344fa31ee97b8df4580, type: 3}
+  ambientClips: []
+  musicClips:
+  - {fileID: 8300000, guid: 21f5251e6b9b0aa47b1c6f98f4d0853c, type: 3}
+  - {fileID: 8300000, guid: 4bc222498485191418cee91d9b3ab539, type: 3}
+  footStepsClips: []
+--- !u!114 &1067373699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1067373697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7870f22e2a799542b692fa3ddfb4f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLogic: {fileID: 0}
+  audioPlayer: {fileID: 1067373698}
 --- !u!4 &1070488322 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4081425543583276, guid: 56a43d1d5ce69f846807ac18fc55679c,

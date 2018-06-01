@@ -20,11 +20,25 @@ public class ButtonManager : MonoBehaviour
 
 	[SerializeField]
 	AudioPlayer audioPlayer; 
+	float musicCounter = 30f; 
 
     void Start()
     {
         levelLogic = GameObject.FindGameObjectWithTag("Manager").GetComponent<LevelLogic>();
+		audioPlayer.PlayMusic (0);
     }
+
+	void Update()
+	{
+		musicCounter -= Time.deltaTime; 
+
+		if (musicCounter <= 0) 
+		{
+			audioPlayer.StopMusic (); 
+			audioPlayer.PlayMusic(Random.Range (0, audioPlayer.musicClips.Length - 1));
+			musicCounter = 30f; 
+		}
+	}
 
     public void ClickRandomSound()
     {
