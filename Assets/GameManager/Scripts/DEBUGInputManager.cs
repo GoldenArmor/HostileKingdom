@@ -33,6 +33,11 @@ public class DEBUGInputManager : MonoBehaviour
     [SerializeField]
     bool isGodModeEnabled;
 
+	void Start()
+	{
+		AudioManager.Initialize (); 
+	}
+
     void Update()
     {
         mousePosition = Input.mousePosition;
