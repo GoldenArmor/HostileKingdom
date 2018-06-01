@@ -199,6 +199,8 @@ GameObject:
   - component: {fileID: 81801187485283376}
   - component: {fileID: 114331939706931832}
   - component: {fileID: 114795224849244574}
+  - component: {fileID: 114686945868020130}
+  - component: {fileID: 114138012383104022}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -431,7 +433,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -530,6 +532,7 @@ MonoBehaviour:
     m_Bits: 4294965215
   constructionCanvas: {fileID: 114735421609742494}
   sellingCanvas: {fileID: 114820515379430730}
+  buttonManager: {fileID: 114138012383104022}
 --- !u!114 &114107087110453492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -557,6 +560,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114138012383104022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798365880848924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7870f22e2a799542b692fa3ddfb4f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLogic: {fileID: 0}
+  audioPlayer: {fileID: 114686945868020130}
 --- !u!114 &114276311240428834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,6 +874,25 @@ MonoBehaviour:
   panNormalSpeed: 150
   panBorderThickness: 10
   panLimit: {x: 300, y: 450}
+--- !u!114 &114686945868020130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798365880848924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d6d594addd08540aae8314a861d393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: 0
+  sfxClips:
+  - {fileID: 8300000, guid: ad8da83584074344fa31ee97b8df4580, type: 3}
+  ambientClips: []
+  musicClips:
+  - {fileID: 8300000, guid: 21f5251e6b9b0aa47b1c6f98f4d0853c, type: 3}
+  - {fileID: 8300000, guid: 4bc222498485191418cee91d9b3ab539, type: 3}
+  footStepsClips: []
 --- !u!114 &114735421609742494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1052,6 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 114088130478145562}
+  statsManager: {fileID: 0}
   cameraController: {fileID: 114647227522025176}
   cameraRotation: {fileID: 114569277669009432}
   cameraZoom: {fileID: 114331939706931832}

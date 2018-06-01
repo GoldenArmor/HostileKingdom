@@ -11,6 +11,8 @@ public class StatsManager : MonoBehaviour
     Text money;
     [SerializeField]
     GameObject pausePanel; 
+	[SerializeField]
+	InputManager inputManager; 
 
     void Update()
     {
@@ -25,6 +27,7 @@ public class StatsManager : MonoBehaviour
 
     public void UnPaused()
     {
+		inputManager.gamePause = false; 
         pausePanel.SetActive(false);
     }
 }

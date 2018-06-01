@@ -13,8 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     StatsManager statsManager; 
 
-    [SerializeField]
-    bool gamePause;
+    public bool gamePause;
 
     [Header("MouseInputsManager")]
     [SerializeField]
@@ -70,6 +69,7 @@ public class InputManager : MonoBehaviour
             }
             else
             {
+				statsManager.UnPaused();
                 Time.timeScale = 1.0f;
                 NoPaused();
             }
@@ -95,6 +95,7 @@ public class InputManager : MonoBehaviour
         cameraController = levelLoader.cameraController;
         cameraRotation = levelLoader.cameraRotation;
         cameraZoom = levelLoader.cameraZoom;
+		statsManager = levelLoader.statsManager;
         wasLoaded = true;
     }
 
