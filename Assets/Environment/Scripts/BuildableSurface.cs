@@ -28,7 +28,7 @@ public class BuildableSurface : MonoBehaviour
     [SerializeField]
     Image constructionBar;
     [SerializeField]
-    ParticleSystem constructionParticles; 
+    ParticleSystem[] constructionParticles; 
 
     bool mageTurret; 
 
@@ -57,6 +57,10 @@ public class BuildableSurface : MonoBehaviour
         canBuild = true;
         UpdateConstructionBar();
         ChangeColor(startColor);
+        for (int i = 0; i < constructionParticles.Length; i++)
+        {
+            constructionParticles[i].Stop(); 
+        }
         //for (int i = 0; i < archerTurretPhases.Length; i++)
         //{
         //    archerTurretPhases[i].transform.position = buildingPoint.position;
@@ -187,16 +191,19 @@ public class BuildableSurface : MonoBehaviour
         {
             if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
             {
+                constructionParticles[0].Play();
                 mageTurretPhases[0].SetActive(true);
                 constructionZone.SetActive(false);
             }
             if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
             {
+                constructionParticles[1].Play();
                 mageTurretPhases[0].SetActive(false);
                 mageTurretPhases[1].SetActive(true);
             }
             if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
             {
+                constructionParticles[2].Play();
                 mageTurretPhases[1].SetActive(false);
                 mageTurretPhases[2].SetActive(true);
             }
@@ -205,16 +212,19 @@ public class BuildableSurface : MonoBehaviour
         {
             if (currentConstructionCooldown >= constructionCooldown / 3 && currentConstructionCooldown < constructionCooldown / 2)
             {
+                constructionParticles[0].Play();
                 archerTurretPhases[0].SetActive(true);
                 constructionZone.SetActive(false);
             }
             if (currentConstructionCooldown >= constructionCooldown / 2 && currentConstructionCooldown < constructionCooldown / 1.5f)
             {
+                constructionParticles[1].Play();
                 archerTurretPhases[0].SetActive(false);
                 archerTurretPhases[1].SetActive(true);
             }
             if (currentConstructionCooldown >= constructionCooldown / 1.5f && currentConstructionCooldown < constructionCooldown)
             {
+                constructionParticles[2].Play();
                 archerTurretPhases[1].SetActive(false);
                 archerTurretPhases[2].SetActive(true);
             }
@@ -224,7 +234,10 @@ public class BuildableSurface : MonoBehaviour
         {
             constructionBarCanvas.Hide(); 
             isBuilding = false;
-            constructionParticles.Stop(); 
+            for (int i = 0; i < constructionParticles.Length; i++)
+            {
+                constructionParticles[i].Stop(); 
+            }
             currentConstructionCooldown = 0;
             //constructionBar.enabled = false;
             Construct(turretToConstruct);         
@@ -234,8 +247,7 @@ public class BuildableSurface : MonoBehaviour
     public void BeginConstruct(GameObject turret, bool isWarriorTurret)
     {
         isBuilding = true;
-        spawnScaleHighlight.ResetEasing();
-        constructionParticles.Play(); 
+        spawnScaleHighlight.ResetEasing(); 
         //constructionBar.enabled = true;
         turretToConstruct = turret; 
         constructionBarCanvas.Initialize(constructionBarCanvas.myTransform.position);
